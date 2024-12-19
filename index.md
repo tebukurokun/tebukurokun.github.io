@@ -2,7 +2,10 @@
 
 ## tebukuro
 
-- https://github.com/tebukurokun
+- <a href="[https://github.com](https://github.com/tebukurokun)" target="_blank">
+    <i class="fab fa-github"></i>
+  </a>
+- [github](https://github.com/tebukurokun)
 - novice programmer
 - Live in Tokyo, Japan
 
