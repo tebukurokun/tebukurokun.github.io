@@ -3,7 +3,7 @@
 ## tebukuro
 
 - <a href="https://github.com/tebukurokun" target="_blank">
-    <i class="fab fa-github"></i>GitHub
+    <i class="fab fa-github"></i> GitHub
   </a>
 - novice programmer
 - Born in 1995
