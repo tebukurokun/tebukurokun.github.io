@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>tebukuro</title>
+    <meta
+      name="description"
+      content="tebukuro — software developer based in Tokyo, Japan since 2018. TypeScript / React / Kotlin / Spring / AWS / Terraform."
+    />
+    <meta name="theme-color" content="#08060f" />
+    <link rel="canonical" href="https://tebukurokun.github.io/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="tebukuro" />
+    <meta property="og:title" content="tebukuro" />
+    <meta
+      property="og:description"
+      content="software developer based in Tokyo, Japan since 2018. TypeScript / React / Kotlin / Spring / AWS / Terraform."
+    />
+    <meta property="og:url" content="https://tebukurokun.github.io/" />
+    <meta property="og:image" content="https://tebukurokun.github.io/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="tebukuro — software developer in Tokyo" />
+    <meta property="og:locale" content="ja_JP" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="tebukuro" />
+    <meta
+      name="twitter:description"
+      content="software developer based in Tokyo, Japan since 2018. TypeScript / React / Kotlin / Spring / AWS / Terraform."
+    />
+    <meta name="twitter:image" content="https://tebukurokun.github.io/og-image.png" />
+    <meta name="twitter:image:alt" content="tebukuro — software developer in Tokyo" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      :root {
+        --bg: #08060f;
+        --bg-2: #0d0a1c;
+        --fg: #e8e6f5;
+        --muted: #8a86a6;
+        --neon-1: #b14bff; /* purple */
+        --neon-2: #00e0ff; /* cyan   */
+        --neon-3: #ff3df0; /* pink   */
+        --card-bg: rgba(255, 255, 255, 0.03);
+        --card-border: rgba(177, 75, 255, 0.25);
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        background: var(--bg);
+        color: var(--fg);
+      }
+
+      body {
+        font-family:
+          "Space Grotesk",
+          system-ui,
+          -apple-system,
+          "Helvetica Neue",
+          sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+        line-height: 1.6;
+        letter-spacing: 0.01em;
+      }
+
+      /* === Background layers === */
+      .bg-gradient {
+        position: fixed;
+        inset: 0;
+        z-index: -3;
+        background:
+          radial-gradient(
+            ellipse 60% 50% at 20% 10%,
+            rgba(177, 75, 255, 0.25),
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 50% 50% at 85% 30%,
+            rgba(0, 224, 255, 0.18),
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 60% 60% at 50% 100%,
+            rgba(255, 61, 240, 0.15),
+            transparent 60%
+          ),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      }
+
+      .bg-grid {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background-image:
+          linear-gradient(rgba(177, 75, 255, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 224, 255, 0.05) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: radial-gradient(
+          ellipse 80% 70% at 50% 40%,
+          #000 40%,
+          transparent 100%
+        );
+        -webkit-mask-image: radial-gradient(
+          ellipse 80% 70% at 50% 40%,
+          #000 40%,
+          transparent 100%
+        );
+      }
+
+      .bg-noise {
+        position: fixed;
+        inset: 0;
+        z-index: -1;
+        pointer-events: none;
+        opacity: 0.06;
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      }
+
+      /* === Layout === */
+      main {
+        max-width: 980px;
+        margin: 0 auto;
+        padding: clamp(4rem, 10vh, 7rem) clamp(1.25rem, 5vw, 3rem) 6rem;
+        position: relative;
+      }
+
+      /* === Hero === */
+      .hero {
+        margin-bottom: 6rem;
+      }
+
+      .badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.35rem 0.85rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        color: var(--neon-2);
+        background: rgba(0, 224, 255, 0.08);
+        border: 1px solid rgba(0, 224, 255, 0.3);
+        border-radius: 999px;
+        margin-bottom: 1.75rem;
+        animation: fadeUp 0.7s ease both;
+      }
+      .badge::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: var(--neon-2);
+        border-radius: 50%;
+        box-shadow: 0 0 8px var(--neon-2);
+        animation: pulse 1.6s ease-in-out infinite;
+      }
+
+      .hero h1 {
+        font-size: clamp(3rem, 9vw, 6.5rem);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.04em;
+        background: linear-gradient(
+          135deg,
+          #fff 0%,
+          var(--neon-1) 50%,
+          var(--neon-2) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 1.25rem;
+        animation: fadeUp 0.8s ease 0.05s both;
+        position: relative;
+      }
+      .hero h1::after {
+        content: "_";
+        color: var(--neon-2);
+        -webkit-text-fill-color: var(--neon-2);
+        animation: blink 1s steps(1) infinite;
+        margin-left: 0.1em;
+      }
+
+      .hero .tagline {
+        font-family: "JetBrains Mono", monospace;
+        font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+        color: var(--muted);
+        max-width: 38ch;
+        animation: fadeUp 0.8s ease 0.15s both;
+      }
+      .hero .tagline .prompt {
+        color: var(--neon-1);
+        margin-right: 0.5rem;
+      }
+      .hero .tagline .line {
+        display: block;
+      }
+      .hero .tagline .line + .line {
+        margin-top: 0.35rem;
+      }
+
+      .socials {
+        display: flex;
+        gap: 0.85rem;
+        margin-top: 2rem;
+        animation: fadeUp 0.8s ease 0.25s both;
+      }
+      .socials a {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        color: var(--fg);
+        text-decoration: none;
+        font-size: 1.15rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+        border-radius: 12px;
+        transition: all 0.25s ease;
+      }
+      .socials a:hover {
+        color: var(--neon-2);
+        border-color: var(--neon-2);
+        box-shadow: 0 0 16px rgba(0, 224, 255, 0.4);
+        transform: translateY(-2px);
+      }
+
+      /* === Section headings === */
+      .section-label {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        color: var(--muted);
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        margin-bottom: 2rem;
+      }
+      .section-label::before {
+        content: "";
+        width: 12px;
+        height: 12px;
+        border: 1.5px solid var(--neon-1);
+        transform: rotate(45deg);
+        box-shadow: 0 0 8px rgba(177, 75, 255, 0.6);
+      }
+      .section-label::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          rgba(177, 75, 255, 0.4),
+          transparent
+        );
+      }
+
+      /* === Stack === */
+      .stack-section {
+        margin-bottom: 5rem;
+      }
+
+      .stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      .chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        padding: 0.45rem 0.9rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.82rem;
+        color: var(--fg);
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(177, 75, 255, 0.25);
+        border-radius: 999px;
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        transition: all 0.25s ease;
+        opacity: 0;
+        animation: fadeUp 0.5s ease forwards;
+      }
+      .chip::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--neon-1);
+        box-shadow: 0 0 6px var(--neon-1);
+      }
+      .chip:hover {
+        border-color: var(--neon-2);
+        color: var(--neon-2);
+        transform: translateY(-2px);
+      }
+      .chip:hover::before {
+        background: var(--neon-2);
+        box-shadow: 0 0 8px var(--neon-2);
+      }
+      .stack .chip:nth-child(1) {
+        animation-delay: 0.35s;
+      }
+      .stack .chip:nth-child(2) {
+        animation-delay: 0.4s;
+      }
+      .stack .chip:nth-child(3) {
+        animation-delay: 0.45s;
+      }
+      .stack .chip:nth-child(4) {
+        animation-delay: 0.5s;
+      }
+      .stack .chip:nth-child(5) {
+        animation-delay: 0.55s;
+      }
+      .stack .chip:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      .stack .chip:nth-child(7) {
+        animation-delay: 0.65s;
+      }
+
+      /* === Works grid === */
+      .works {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .card {
+        position: relative;
+        display: block;
+        padding: 1.75rem 1.6rem 1.6rem;
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 16px;
+        color: inherit;
+        text-decoration: none;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        overflow: hidden;
+        transition:
+          transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+          border-color 0.35s ease,
+          box-shadow 0.35s ease;
+        isolation: isolate;
+        opacity: 0;
+        animation: fadeUp 0.7s ease forwards;
+      }
+      .works .card:nth-child(1) {
+        animation-delay: 0.35s;
+      }
+      .works .card:nth-child(2) {
+        animation-delay: 0.45s;
+      }
+      .works .card:nth-child(3) {
+        animation-delay: 0.55s;
+      }
+      .works .card:nth-child(4) {
+        animation-delay: 0.65s;
+      }
+      .works .card:nth-child(5) {
+        animation-delay: 0.75s;
+      }
+
+      /* "Coming soon" placeholder card */
+      .card.placeholder {
+        cursor: default;
+        border-style: dashed;
+        border-color: rgba(177, 75, 255, 0.35);
+        background: transparent;
+      }
+      .card.placeholder:hover {
+        transform: none;
+        box-shadow: none;
+      }
+      .card.placeholder:hover::before {
+        opacity: 0;
+      }
+      .card.placeholder:hover::after {
+        opacity: 0;
+      }
+      .card.placeholder:hover h3 {
+        color: var(--fg);
+        background: none;
+        -webkit-text-fill-color: var(--fg);
+      }
+      .card.placeholder .card-index {
+        color: var(--neon-3);
+      }
+      .card.placeholder .card-index .blink {
+        display: inline-block;
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: var(--neon-3);
+        box-shadow: 0 0 8px var(--neon-3);
+        margin-right: 0.45rem;
+        vertical-align: middle;
+        animation: pulse 1.4s ease-in-out infinite;
+      }
+
+      .card::before {
+        content: "";
+        position: absolute;
+        inset: -1px;
+        border-radius: inherit;
+        padding: 1px;
+        background: linear-gradient(
+          135deg,
+          var(--neon-1),
+          var(--neon-2),
+          var(--neon-3)
+        );
+        -webkit-mask:
+          linear-gradient(#000 0 0) content-box,
+          linear-gradient(#000 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        opacity: 0;
+        transition: opacity 0.35s ease;
+        z-index: -1;
+      }
+      .card::after {
+        content: "";
+        position: absolute;
+        top: var(--my, 50%);
+        left: var(--mx, 50%);
+        width: 280px;
+        height: 280px;
+        background: radial-gradient(
+          circle,
+          rgba(177, 75, 255, 0.18),
+          transparent 70%
+        );
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+        z-index: -1;
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+        border-color: transparent;
+        box-shadow:
+          0 20px 50px rgba(177, 75, 255, 0.18),
+          0 0 30px rgba(0, 224, 255, 0.1);
+      }
+      .card:hover::before {
+        opacity: 1;
+      }
+      .card:hover::after {
+        opacity: 1;
+      }
+
+      .card .card-index {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        color: var(--neon-2);
+        letter-spacing: 0.1em;
+        margin-bottom: 0.85rem;
+      }
+      .card h3 {
+        font-size: 1.3rem;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        margin-bottom: 0.65rem;
+        transition: color 0.3s ease;
+      }
+      .card:hover h3 {
+        background: linear-gradient(135deg, var(--neon-1), var(--neon-2));
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+      }
+      .card p {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.6;
+      }
+      .card .arrow {
+        position: absolute;
+        top: 1.6rem;
+        right: 1.4rem;
+        font-size: 0.95rem;
+        color: var(--muted);
+        transition:
+          transform 0.3s ease,
+          color 0.3s ease;
+      }
+      .card:hover .arrow {
+        color: var(--neon-2);
+        transform: translate(4px, -4px);
+      }
+
+      /* === Footer === */
+      footer {
+        text-align: center;
+        padding: 2.5rem 1rem 1rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        color: var(--muted);
+        letter-spacing: 0.1em;
+      }
+      footer .dot {
+        color: var(--neon-1);
+        margin: 0 0.5rem;
+      }
+
+      /* === Animations === */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes blink {
+        50% {
+          opacity: 0;
+        }
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+        50% {
+          transform: scale(1.4);
+          opacity: 0.6;
+        }
+      }
+
+      @media (max-width: 540px) {
+        main {
+          padding-top: 3.5rem;
+        }
+        .hero {
+          margin-bottom: 4rem;
+        }
+        .card {
+          padding: 1.5rem 1.3rem 1.3rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-gradient" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+    <div class="bg-noise" aria-hidden="true"></div>
+
+    <main>
+      <section class="hero">
+        <span class="badge">TOKYO · JAPAN</span>
+        <h1>tebukuro</h1>
+        <p class="tagline">
+          <span class="line"><span class="prompt">&gt;</span>born in 1995</span>
+          <span class="line"
+            ><span class="prompt">&gt;</span>software developer since 2018</span
+          >
+          <span class="line"
+            ><span class="prompt">&gt;</span>based in Tokyo, Japan</span
+          >
+        </p>
+
+        <div class="socials">
+          <a
+            href="https://github.com/tebukurokun"
+            target="_blank"
+            rel="noopener"
+            aria-label="GitHub"
+          >
+            <i class="fa-brands fa-github"></i>
+          </a>
+          <a
+            href="https://steamcommunity.com/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Steam"
+          >
+            <i class="fa-brands fa-steam"></i>
+          </a>
+        </div>
+      </section>
+
+      <section class="stack-section">
+        <div class="section-label">Tech Stack</div>
+        <div class="stack">
+          <span class="chip">TypeScript</span>
+          <span class="chip">React</span>
+          <span class="chip">Kotlin</span>
+          <span class="chip">Spring</span>
+          <span class="chip">AWS</span>
+          <span class="chip">Terraform</span>
+          <span class="chip">etc.</span>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-label">Works</div>
+        <div class="works">
+          <a
+            class="card"
+            href="https://hyakumeiten-map.vercel.app/"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="arrow"
+              ><i class="fa-solid fa-arrow-up-right-from-square"></i
+            ></span>
+            <div class="card-index">01 / MAP</div>
+            <h3>ラーメン百名店マップ</h3>
+            <p>ラーメン百名店の情報をマップで見ることができるサイト。</p>
+          </a>
+
+          <a
+            class="card"
+            href="https://wordle-hint.netlify.app/"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="arrow"
+              ><i class="fa-solid fa-arrow-up-right-from-square"></i
+            ></span>
+            <div class="card-index">02 / GAME</div>
+            <h3>wordle hint</h3>
+            <p>
+              5文字の英単語を推測するパズルゲーム "wordle"
+              のヒントを出してくれるサイト。
+            </p>
+          </a>
+
+          <a
+            class="card"
+            href="https://art-memory-game.netlify.app/"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="arrow"
+              ><i class="fa-solid fa-arrow-up-right-from-square"></i
+            ></span>
+            <div class="card-index">03 / GAME</div>
+            <h3>絵画神経衰弱ゲーム</h3>
+            <p>同じ作者の絵画でペアを作る神経衰弱。</p>
+          </a>
+
+          <a
+            class="card"
+            href="https://tebukurokun.github.io/alert-loop/"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="arrow"
+              ><i class="fa-solid fa-arrow-up-right-from-square"></i
+            ></span>
+            <div class="card-index">04 / JOKE</div>
+            <h3>無限アラートループ</h3>
+            <p>アラートが無限に出るので閲覧注意。</p>
+          </a>
+
+          <div class="card placeholder">
+            <div class="card-index">
+              <span class="blink"></span>05 / COMING SOON
+            </div>
+            <h3>More to come...</h3>
+            <p>お楽しみに。</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>© tebukuro <span class="dot">◆</span> built with care</footer>
+
+    <script>
+      // Cursor-tracked glow on cards
+      document.querySelectorAll(".card").forEach((card) => {
+        card.addEventListener("pointermove", (e) => {
+          const rect = card.getBoundingClientRect();
+          card.style.setProperty("--mx", `${e.clientX - rect.left}px`);
+          card.style.setProperty("--my", `${e.clientY - rect.top}px`);
+        });
+      });
+    </script>
+  </body>
+</html>
