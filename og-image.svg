@@ -42,7 +42,6 @@
   <!-- Main title (center) -->
   <g text-anchor="middle">
     <text x="600" y="350" font-family="'Space Grotesk', system-ui, sans-serif" font-weight="700" font-size="220" fill="url(#titleGrad)" letter-spacing="-9">tebukuro</text>
-    <text x="600" y="410" font-family="'JetBrains Mono', ui-monospace, monospace" font-size="26" fill="#8a86a6" letter-spacing="6">PORTFOLIO</text>
   </g>
 
   <!-- URL footer -->
