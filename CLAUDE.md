@@ -4,9 +4,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A single-page personal site (`index.html`) deployed via GitHub Pages at `https://tebukurokun.github.io/`. There is no build system, no framework, no package manager — just a static HTML file. All CSS lives inline in a `<style>` block, all JS in a `<script>` block at the end of `<body>`. Edits go directly into `index.html`.
+A personal site deployed via GitHub Pages at `https://tebukuro.me/` (custom domain via `CNAME`; `tebukurokun.github.io` 301-redirects there). The main page is `index.html`, plus a standalone `privacy.html` (privacy policy, required for AdSense). There is no build system, no framework, no package manager — just static HTML files. All CSS lives inline in each file's `<style>` block, all JS in a `<script>` block at the end of `<body>`.
 
 The `master` branch is the deployment branch. Pushing to `origin/master` publishes the site.
+
+Traffic to the apex domain is proxied through Cloudflare (DNS zone lives there). `https://tebukuro.me/blog/*` is **not** served by this repo — a Cloudflare Worker route (`tebukuro.me/blog*`, repo `../tebukuro-blog`) handles it. The old `blog.tebukuro.me` 301s to `/blog/` via a Cloudflare Redirect Rule. Keep root-page links to the blog as `/blog/` (same origin).
 
 ## Commands
 

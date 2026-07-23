@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>プライバシーポリシー | tebukuro</title>
+    <meta
+      name="description"
+      content="tebukuro.me のプライバシーポリシー。広告配信・アクセス解析における情報の取り扱いについて説明します。"
+    />
+    <meta name="theme-color" content="#08060f" />
+    <link rel="canonical" href="https://tebukuro.me/privacy.html" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #08060f;
+        --bg-2: #0d0a1c;
+        --fg: #e8e6f5;
+        --muted: #8a86a6;
+        --neon-1: #b14bff; /* purple */
+        --neon-2: #00e0ff; /* cyan   */
+        --neon-3: #ff3df0; /* pink   */
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html,
+      body {
+        background: var(--bg);
+        color: var(--fg);
+      }
+
+      body {
+        font-family:
+          "Space Grotesk",
+          system-ui,
+          -apple-system,
+          "Helvetica Neue",
+          sans-serif;
+        min-height: 100vh;
+        overflow-x: hidden;
+        position: relative;
+        line-height: 1.8;
+        letter-spacing: 0.01em;
+      }
+
+      /* === Background layers === */
+      .bg-gradient {
+        position: fixed;
+        inset: 0;
+        z-index: -3;
+        background:
+          radial-gradient(
+            ellipse 60% 50% at 20% 10%,
+            rgba(177, 75, 255, 0.25),
+            transparent 60%
+          ),
+          radial-gradient(
+            ellipse 50% 50% at 85% 30%,
+            rgba(0, 224, 255, 0.18),
+            transparent 60%
+          ),
+          linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+      }
+
+      .bg-grid {
+        position: fixed;
+        inset: 0;
+        z-index: -2;
+        background-image:
+          linear-gradient(rgba(177, 75, 255, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 224, 255, 0.05) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: radial-gradient(
+          ellipse 80% 70% at 50% 40%,
+          #000 40%,
+          transparent 100%
+        );
+        -webkit-mask-image: radial-gradient(
+          ellipse 80% 70% at 50% 40%,
+          #000 40%,
+          transparent 100%
+        );
+      }
+
+      main {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: clamp(3rem, 8vh, 5rem) clamp(1.25rem, 5vw, 2rem) 4rem;
+      }
+
+      .back {
+        display: inline-block;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.85rem;
+        color: var(--muted);
+        text-decoration: none;
+        margin-bottom: 2.5rem;
+        transition: color 0.25s ease;
+      }
+      .back:hover {
+        color: var(--neon-2);
+      }
+
+      h1 {
+        font-size: clamp(1.6rem, 4.5vw, 2.2rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        background: linear-gradient(
+          135deg,
+          #fff 0%,
+          var(--neon-1) 60%,
+          var(--neon-2) 100%
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        margin-bottom: 0.75rem;
+      }
+
+      .updated {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.8rem;
+        color: var(--muted);
+        margin-bottom: 3rem;
+      }
+
+      h2 {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin: 2.75rem 0 1rem;
+      }
+      h2::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border: 1.5px solid var(--neon-1);
+        transform: rotate(45deg);
+        box-shadow: 0 0 8px rgba(177, 75, 255, 0.6);
+        flex-shrink: 0;
+      }
+
+      p,
+      ul {
+        color: var(--muted);
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+      }
+      ul {
+        padding-left: 1.4rem;
+      }
+      li {
+        margin-bottom: 0.35rem;
+      }
+
+      a {
+        color: var(--neon-2);
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+
+      footer {
+        text-align: center;
+        padding: 2.5rem 1rem 1rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        color: var(--muted);
+        letter-spacing: 0.1em;
+      }
+      footer .dot {
+        color: var(--neon-1);
+        margin: 0 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-gradient" aria-hidden="true"></div>
+    <div class="bg-grid" aria-hidden="true"></div>
+
+    <main>
+      <a class="back" href="/">&lt; back to top</a>
+
+      <h1>プライバシーポリシー</h1>
+      <p class="updated">制定日: 2026年7月23日</p>
+
+      <p>
+        本プライバシーポリシーは、tebukuro（以下「当方」）が運営するウェブサイト
+        tebukuro.me およびそのサブドメイン上の各サイト（以下「当サイト」）における、
+        利用者情報の取り扱いについて定めるものです。
+      </p>
+
+      <h2>広告配信について</h2>
+      <p>
+        当サイトは、第三者配信の広告サービス「Google AdSense」を利用しています。
+        Google などの第三者配信事業者は Cookie
+        を使用し、利用者の当サイトや他サイトへの過去のアクセス情報に基づいて広告を配信することがあります。
+      </p>
+      <p>
+        パーソナライズド広告に使用される Cookie は、
+        <a
+          href="https://adssettings.google.com/"
+          target="_blank"
+          rel="noopener"
+          >広告設定</a
+        >で無効にできます。また、
+        <a href="https://www.aboutads.info/" target="_blank" rel="noopener"
+          >www.aboutads.info</a
+        >
+        にアクセスすることで、第三者配信事業者のパーソナライズド広告 Cookie
+        を無効にすることもできます。詳細は
+        <a
+          href="https://policies.google.com/technologies/ads?hl=ja"
+          target="_blank"
+          rel="noopener"
+          >Google のポリシーと規約</a
+        >をご確認ください。
+      </p>
+
+      <h2>アクセス解析について</h2>
+      <p>
+        当サイトの一部では、アクセス状況の把握のために Cloudflare Web Analytics
+        を利用しています。この解析ツールは Cookie
+        を使用せず、個人を特定する情報を収集しません。
+      </p>
+
+      <h2>ブログのスター機能について</h2>
+      <p>
+        ブログ記事のスター（☆）機能は、記事ごとの累計カウントのみを保存します。
+        送信者を特定する情報（IP アドレス・アカウント情報など）は記録しません。
+      </p>
+
+      <h2>お問い合わせ</h2>
+      <p>
+        当サイトに関するお問い合わせは、以下のフォームよりお願いいたします。
+      </p>
+      <p>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSf5z7Uc6gFn1-kyc6cNLszMvAnVyzWexTWho7TrquKbQBZwyA/viewform"
+          target="_blank"
+          rel="noopener"
+          >お問い合わせフォーム</a
+        >
+      </p>
+
+      <h2>免責事項</h2>
+      <p>
+        当サイトのコンテンツ・情報については、可能な限り正確な情報を掲載するよう努めていますが、
+        正確性や安全性を保証するものではありません。当サイトの利用によって生じた損害等について、
+        当方は一切の責任を負いかねますのでご了承ください。
+      </p>
+      <p>
+        当サイトからリンクやバナーなどによって他のサイトに移動した場合、
+        移動先サイトで提供される情報・サービス等について当方は一切の責任を負いません。
+      </p>
+
+      <h2>プライバシーポリシーの変更</h2>
+      <p>
+        当方は、必要に応じて本ポリシーの内容を変更することがあります。
+        変更後のプライバシーポリシーは、本ページに掲載した時点から効力を生じるものとします。
+      </p>
+    </main>
+
+    <footer>© tebukuro <span class="dot">◆</span> built with care</footer>
+  </body>
+</html>

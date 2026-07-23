@@ -9,7 +9,7 @@
       content="tebukuro — software developer based in Tokyo, Japan since 2018. TypeScript / React / Kotlin / Spring / AWS / Terraform."
     />
     <meta name="theme-color" content="#08060f" />
-    <link rel="canonical" href="https://tebukurokun.github.io/" />
+    <link rel="canonical" href="https://tebukuro.me/" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
@@ -22,10 +22,10 @@
       property="og:description"
       content="software developer based in Tokyo, Japan since 2018. TypeScript / React / Kotlin / Spring / AWS / Terraform."
     />
-    <meta property="og:url" content="https://tebukurokun.github.io/" />
+    <meta property="og:url" content="https://tebukuro.me/" />
     <meta
       property="og:image"
-      content="https://tebukurokun.github.io/og-image.png"
+      content="https://tebukuro.me/og-image.png"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -44,7 +44,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://tebukurokun.github.io/og-image.png"
+      content="https://tebukuro.me/og-image.png"
     />
     <meta
       name="twitter:image:alt"
@@ -361,6 +361,20 @@
         animation-delay: 0.65s;
       }
 
+      /* === Blog === */
+      .blog-section {
+        margin-bottom: 5rem;
+      }
+      .blog-section .chip {
+        text-decoration: none;
+        animation-delay: 0.7s;
+      }
+      .blog-section .blog-note {
+        color: var(--muted);
+        font-size: 0.92rem;
+        margin-bottom: 1.25rem;
+      }
+
       /* === BBS === */
       .bbs-section {
         margin-top: 5rem;
@@ -566,6 +580,18 @@
         color: var(--neon-1);
         margin: 0 0.5rem;
       }
+      footer .foot-nav {
+        margin-bottom: 0.85rem;
+      }
+      footer .foot-nav a {
+        color: var(--muted);
+        text-decoration: none;
+        margin: 0 0.75rem;
+        transition: color 0.25s ease;
+      }
+      footer .foot-nav a:hover {
+        color: var(--neon-2);
+      }
 
       /* === Animations === */
       @keyframes fadeUp {
@@ -647,12 +673,7 @@
           >
             <i class="fa-brands fa-github"></i>
           </a>
-          <a
-            href="https://blog.tebukuro.me/"
-            target="_blank"
-            rel="noopener"
-            aria-label="Blog"
-          >
+          <a href="https://tebukuro.me/blog/" aria-label="Blog">
             <i class="fa-solid fa-blog"></i>
           </a>
           <a
@@ -678,6 +699,17 @@
           <span class="chip">Terraform</span>
           <span class="chip">etc.</span>
         </div>
+      </section>
+
+      <section class="blog-section">
+        <div class="section-label">Blog</div>
+        <p class="blog-note">
+          開発していて詰まったこと・調べたことの技術メモや、日々の雑記を書いています。
+        </p>
+        <a class="chip" href="/blog/">
+          <i class="fa-solid fa-blog"></i>
+          ブログ記事一覧
+        </a>
       </section>
 
       <section>
@@ -812,7 +844,18 @@
       </section>
     </main>
 
-    <footer>© tebukuro <span class="dot">◆</span> built with care</footer>
+    <footer>
+      <nav class="foot-nav">
+        <a href="/privacy.html">プライバシーポリシー</a>
+        <a
+          href="https://docs.google.com/forms/d/e/1FAIpQLSf5z7Uc6gFn1-kyc6cNLszMvAnVyzWexTWho7TrquKbQBZwyA/viewform"
+          target="_blank"
+          rel="noopener"
+          >お問い合わせ</a
+        >
+      </nav>
+      © tebukuro <span class="dot">◆</span> built with care
+    </footer>
 
     <script>
       // Cursor-tracked glow on cards
