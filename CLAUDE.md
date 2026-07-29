@@ -18,6 +18,17 @@ open index.html
 
 # Regenerate OGP image after editing og-image.svg (requires rsvg-convert from librsvg)
 rsvg-convert -w 1200 -h 630 og-image.svg -o og-image.png
+
+# Regenerate app icons after editing icon.svg or icon-glyph.png (requires rsvg-convert + ImageMagick)
+rsvg-convert -w 512 -h 512 icon.svg -o /tmp/bg512.png
+magick /tmp/bg512.png \( icon-glyph.png -resize 380x380 \) -gravity center -composite \
+  -background "#08060f" -flatten /tmp/icon512.png
+magick /tmp/bg512.png \( icon-glyph.png -resize 272x272 \) -gravity center -composite \
+  -background "#08060f" -flatten icon-maskable-512x512.png
+magick /tmp/icon512.png -resize 512x512 -strip android-chrome-512x512.png
+magick /tmp/icon512.png -resize 192x192 -strip android-chrome-192x192.png
+magick /tmp/icon512.png -resize 180x180 -strip apple-touch-icon.png
+magick /tmp/icon512.png -define icon:auto-resize=48,32,16 favicon.ico
 ```
 
 There is no linter, formatter, test suite, or CI configured. The repo formatter (Prettier-style) appears to be applied externally by the user's editor — preserve the existing whitespace style when editing.
@@ -29,6 +40,15 @@ There is no linter, formatter, test suite, or CI configured. The repo formatter 
 - **Background is three stacked fixed layers** (`.bg-gradient`, `.bg-grid`, `.bg-noise`) behind everything with negative `z-index`. New foreground elements don't need their own background.
 - **External CDNs:** Google Fonts (Space Grotesk + JetBrains Mono) and FontAwesome v6 via cdnjs. The original FA kit script was removed because its v5 icon names didn't match the v6 markup; keep using v6 class syntax (`fa-brands fa-github`, `fa-solid fa-...`).
 - **Cards animate in via staggered `animation-delay`** on `:nth-child()` selectors. When adding a new work card, extend `.works .card:nth-child(N)` with a delay roughly 0.10s after the previous one.
+
+## Icon policy
+
+Two sources: `icon.svg` (the dark neon background, pure vector, same palette as `og-image.svg`) and `icon-glyph.png` (the 🧤 glyph, background already cut to transparent). Everything else is generated — don't hand-edit `apple-touch-icon.png`, `android-chrome-*.png`, `icon-maskable-512x512.png`, or `favicon.ico`.
+
+- **Home-screen icons must be opaque.** iOS composites alpha onto black and Android onto white, so the generated PNGs are flattened onto `#08060f`.
+- **`icon-maskable-512x512.png` carries a smaller glyph** so it survives Android's adaptive-icon crop (safe zone is the inner 80% circle). It's declared `"purpose": "maskable"` in `site.webmanifest`, separate from the `"any"` entries.
+- **`favicon.svg` stays the transparent emoji SVG** — it's the browser-tab icon and should sit on the tab bar without a dark box. `favicon.ico` is the fallback for browsers without SVG favicon support.
+- Both `index.html` and `privacy.html` carry the full head block (icons + manifest + `apple-mobile-web-app-*`). Keep them in sync.
 
 ## OGP image policy
 
