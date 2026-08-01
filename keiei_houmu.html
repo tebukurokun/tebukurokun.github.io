@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>中小企業診断士1次試験 最終チェックシート｜経営法務</title>
+  <style>
+    :root {
+      --ink: #172033;
+      --muted: #5b667a;
+      --line: #d9e0ea;
+      --paper: #ffffff;
+      --wash: #f4f7fb;
+      --accent: #2856a8;
+      --accent-dark: #19396f;
+      --accent-soft: #eaf1ff;
+      --warn: #9a4e00;
+      --warn-soft: #fff4df;
+      --ok: #176b4d;
+      --ok-soft: #e9f7f1;
+      --shadow: 0 12px 32px rgba(23, 32, 51, .08);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--wash);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
+      font-size: 16px;
+      line-height: 1.75;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    a { color: var(--accent); text-underline-offset: .18em; }
+    .hero {
+      color: #fff;
+      background: linear-gradient(135deg, var(--accent-dark), var(--accent));
+      padding: 3.5rem max(1.25rem, calc((100vw - 1120px) / 2));
+    }
+    .eyebrow { margin: 0 0 .5rem; font-weight: 700; letter-spacing: .08em; opacity: .84; }
+    h1 { margin: 0; font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.16; }
+    .subtitle { margin: .65rem 0 0; font-size: clamp(1.2rem, 2.6vw, 1.75rem); font-weight: 700; }
+    .layout {
+      width: min(1120px, calc(100% - 2rem));
+      margin: 2rem auto 4rem;
+      display: grid;
+      grid-template-columns: 270px minmax(0, 1fr);
+      gap: 2rem;
+      align-items: start;
+    }
+    .toc {
+      position: sticky;
+      top: 1rem;
+      max-height: calc(100vh - 2rem);
+      overflow: auto;
+      padding: 1.25rem;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+    }
+    .toc h2 { margin: 0 0 .75rem; font-size: 1.05rem; color: var(--accent-dark); }
+    .toc ol { margin: 0; padding-left: 1.35rem; }
+    .toc li { margin: .28rem 0; font-size: .91rem; line-height: 1.45; }
+    .toc a { color: var(--ink); text-decoration: none; }
+    .toc a:hover { color: var(--accent); text-decoration: underline; }
+    main { min-width: 0; }
+    section {
+      margin-bottom: 1.35rem;
+      padding: 1.6rem clamp(1.1rem, 3vw, 2rem);
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      scroll-margin-top: 1rem;
+    }
+    h2 { margin: 0 0 1rem; color: var(--accent-dark); font-size: 1.55rem; line-height: 1.35; }
+    h3 { margin: 1.5rem 0 .55rem; color: var(--accent); font-size: 1.16rem; line-height: 1.4; }
+    h3:first-child { margin-top: 0; }
+    p { margin: .6rem 0; }
+    ul, ol { margin: .5rem 0 .9rem; padding-left: 1.5rem; }
+    li { margin: .2rem 0; }
+    strong { color: #102f67; }
+    .table-wrap { width: 100%; overflow-x: auto; margin: .85rem 0 1rem; }
+    table { width: 100%; border-collapse: collapse; font-size: .94rem; }
+    th, td { border: 1px solid var(--line); padding: .65rem .72rem; text-align: left; vertical-align: top; }
+    th { background: var(--accent-soft); color: var(--accent-dark); font-weight: 750; }
+    tbody tr:nth-child(even) { background: #fafbfd; }
+    .callout { margin: 1rem 0; padding: .85rem 1rem; border-left: 5px solid var(--accent); background: var(--accent-soft); border-radius: 8px; }
+    .warn { border-left-color: var(--warn); background: var(--warn-soft); }
+    .formula { font-weight: 800; text-align: center; letter-spacing: .01em; }
+    .checklist { background: linear-gradient(180deg, var(--ok-soft), #fff); border-color: #b9dfd0; }
+    .checklist h2 { color: var(--ok); }
+    .checklist li::marker { color: var(--ok); }
+    .back { display: block; margin-top: 1.25rem; font-size: .85rem; text-align: right; }
+    footer { padding: 1.5rem; color: var(--muted); text-align: center; font-size: .85rem; }
+    @media (max-width: 820px) {
+      .hero { padding-top: 2.5rem; padding-bottom: 2.5rem; }
+      .layout { grid-template-columns: 1fr; width: min(100% - 1rem, 760px); margin-top: 1rem; gap: 1rem; }
+      .toc { position: static; max-height: none; }
+      section { border-radius: 10px; }
+      table { min-width: 580px; }
+    }
+    @media print {
+      @page { size: A4; margin: 12mm; }
+      body { background: #fff; font-size: 9.5pt; line-height: 1.5; }
+      .hero { padding: 0 0 8mm; color: #000; background: none; border-bottom: 2pt solid #333; }
+      .eyebrow { color: #444; }
+      h1 { font-size: 22pt; }
+      .subtitle { font-size: 15pt; }
+      .layout { display: block; width: 100%; margin: 6mm 0 0; }
+      .toc { position: static; max-height: none; box-shadow: none; border: 1px solid #999; break-after: page; }
+      .toc ol { columns: 2; column-gap: 8mm; }
+      section { padding: 5mm 0; margin: 0; border: 0; border-radius: 0; box-shadow: none; break-inside: auto; }
+      section + section { border-top: 1px solid #bbb; }
+      h2, h3 { break-after: avoid; }
+      table, .callout, ul, ol { break-inside: avoid; }
+      th { background: #e8e8e8 !important; color: #000; }
+      strong { color: #000; }
+      a { color: #000; text-decoration: none; }
+      .back, footer { display: none; }
+    }
+  </style>
+</head>
+<body id="top">
+  <header class="hero">
+    <p class="eyebrow">中小企業診断士1次試験</p>
+    <h1>最終チェックシート</h1>
+    <p class="subtitle">経営法務</p>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="目次">
+      <h2>目次</h2>
+      <ol start="0">
+        <li><a href="#s0">本番の判断ルール</a></li>
+        <li><a href="#s1">会社の種類</a></li>
+        <li><a href="#s2">公開会社・大会社</a></li>
+        <li><a href="#s3">機関設計の数字</a></li>
+        <li><a href="#s4">株主総会の決議</a></li>
+        <li><a href="#s5">少数株主権</a></li>
+        <li><a href="#s6">株式</a></li>
+        <li><a href="#s7">組織再編</a></li>
+        <li><a href="#s8">民法・契約</a></li>
+        <li><a href="#s9">消滅時効</a></li>
+        <li><a href="#s10">相続</a></li>
+        <li><a href="#s11">知的財産権</a></li>
+        <li><a href="#s12">倒産法制</a></li>
+        <li><a href="#last">最後の5分チェック</a></li>
+      </ol>
+    </nav>
+
+    <main>
+      <section id="s0">
+        <h2>0．本番の判断ルール</h2>
+        <ol>
+          <li><strong>原則と例外を分ける</strong>
+            <ul>
+              <li>「必ず」「一切」「当然に」「直ちに」は疑う。</li>
+              <li>株式会社一般の規定か、公開会社・大会社・取締役会設置会社だけの規定かを確認。</li>
+            </ul>
+          </li>
+          <li><strong>会社法は主語を見る</strong>
+            <ul><li>株主総会／取締役会／代表取締役／監査役／裁判所のどれが決定するか。</li></ul>
+          </li>
+          <li><strong>知的財産権は4点セット</strong>
+            <ul><li>保護対象</li><li>登録の要否</li><li>存続期間</li><li>審査の有無</li></ul>
+          </li>
+          <li><strong>知らない英文契約・国際取引問題</strong>
+            <ul><li>当事者の合意・契約条項を優先。</li><li>INCOTERMSは「費用負担」と「危険移転」を分ける。</li></ul>
+          </li>
+        </ol>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+
+      <section id="s1">
+        <h2>1．会社の種類</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>会社</th><th>出資者の責任</th><th>所有と経営</th><th>定款認証</th></tr></thead>
+          <tbody>
+            <tr><td>株式会社</td><td>間接有限責任</td><td>原則分離</td><td>必要</td></tr>
+            <tr><td>合同会社</td><td>間接有限責任</td><td>原則一致</td><td>不要</td></tr>
+            <tr><td>合名会社</td><td>直接無限責任</td><td>原則一致</td><td>不要</td></tr>
+            <tr><td>合資会社</td><td>無限責任社員＋有限責任社員</td><td>原則一致</td><td>不要</td></tr>
+          </tbody>
+        </table></div>
+        <ul>
+          <li>持分会社＝合名・合資・合同会社。</li>
+          <li>持分会社の業務執行は原則として社員。</li>
+          <li>合同会社でも、社員は原則として出資額を限度とする有限責任。</li>
+          <li>株式会社・持分会社とも最低資本金制度なし。</li>
+        </ul>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+
+      <section id="s2">
+        <h2>2．公開会社・大会社</h2>
+        <h3>公開会社</h3>
+        <div class="callout"><strong>発行する株式の全部または一部について、譲渡制限を設けていない株式会社。</strong></div>
+        <ul>
+          <li>上場会社と同義ではない。</li>
+          <li>一種類でも自由譲渡株式があれば公開会社。</li>
+          <li>公開会社は取締役会が必要。</li>
+        </ul>
+        <h3>大会社</h3>
+        <p>次のどちらかを満たす株式会社。</p>
+        <ul><li>資本金：<strong>5億円以上</strong></li><li>負債総額：<strong>200億円以上</strong></li></ul>
+        <div class="callout warn">公開会社かどうかと、大会社かどうかは別問題。</div>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+
+      <section id="s3">
+        <h2>3．機関設計の数字</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>機関</th><th>最低人数・要件</th></tr></thead>
+          <tbody>
+            <tr><td>取締役</td><td>原則1人以上</td></tr>
+            <tr><td>取締役会</td><td>取締役3人以上</td></tr>
+            <tr><td>監査役</td><td>1人以上</td></tr>
+            <tr><td>監査役会</td><td>監査役3人以上、半数以上が社外監査役</td></tr>
+            <tr><td>監査等委員会</td><td>取締役3人以上、過半数が社外取締役</td></tr>
+            <tr><td>指名・監査・報酬委員会</td><td>各3人以上、各委員会の過半数が社外取締役</td></tr>
+          </tbody>
+        </table></div>
+        <ul>
+          <li>取締役会設置会社では、取締役会が代表取締役を選定。</li>
+          <li>監査等委員会設置会社・指名委員会等設置会社には監査役を置かない。</li>
+          <li>指名委員会等設置会社では、業務執行を担当するのは主に<strong>執行役</strong>。</li>
+          <li>公開会社かつ大会社は、原則として会計監査人が必要。</li>
+          <li>公開会社かつ大会社で、監査等委員会設置会社・指名委員会等設置会社でない場合は、原則として監査役会が必要。</li>
+        </ul>
+        <p>会社法上の公開会社・大会社の定義と機関設計は現行会社法による。</p>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+
+      <section id="s4">
+        <h2>4．株主総会の決議</h2>
+        <h3>普通決議</h3>
+        <p>原則：</p>
+        <ul><li>議決権の過半数を有する株主が出席</li><li>出席株主の議決権の過半数で決議</li></ul>
+        <p>主な対象：</p>
+        <ul><li>役員の選任</li><li>剰余金配当</li><li>計算書類の承認</li><li>自己株式の取得の一部</li></ul>
+        <h3>特別決議</h3>
+        <p>原則：</p>
+        <ul><li>議決権の過半数を有する株主が出席</li><li>出席株主の議決権の<strong>3分の2以上</strong></li></ul>
+        <p>主な対象：</p>
+        <ul><li>定款変更</li><li>株式併合</li><li>事業全部の譲渡</li><li>合併・会社分割・株式交換</li><li>募集株式の有利発行</li><li>資本金減少</li><li>解散</li></ul>
+        <h3>覚え方</h3>
+        <div class="callout formula">会社の土台・株主の権利を大きく変える＝特別決議。</div>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+
+      <section id="s5">
+        <h2>5．少数株主権</h2>
+        <p>公開会社では、原則として保有期間6か月が付く。</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>権利</th><th>要件の目安</th></tr></thead>
+          <tbody>
+            <tr><td>株主提案権</td><td>1％以上または300個以上の議決権</td></tr>
+            <tr><td>株主総会招集請求</td><td>3％以上の議決権</td></tr>
+            <tr><td>会計帳簿閲覧請求</td><td>3％以上の議決権</td></tr>
+            <tr><td>株主代表訴訟</td><td>原則1株、公開会社では6か月保有</td></tr>
+            <tr><td>取締役の違法行為差止め</td><td>原則1株、公開会社では6か月保有</td></tr>
+          </tbody>
+        </table></div>
+        <ul>
+          <li>株主提案は原則として総会日の<strong>8週間前まで</strong>。</li>
+          <li>非公開会社では、6か月の保有期間要件がないものが多い。</li>
+          <li>「議決権割合」と「株式数」を混同しない。</li>
+        </ul>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+
+      <section id="s6">
+        <h2>6．株式</h2>
+        <h3>株式分割と株式併合</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>項目</th><th>株式分割</th><th>株式併合</th></tr></thead>
+          <tbody>
+            <tr><td>株式数</td><td>増える</td><td>減る</td></tr>
+            <tr><td>会社財産</td><td>変わらない</td><td>変わらない</td></tr>
+            <tr><td>原則決議</td><td>取締役会設置会社では取締役会</td><td>株主総会特別決議</td></tr>
+            <tr><td>端数</td><td>通常問題になりにくい</td><td>端数が生じやすい</td></tr>
+          </tbody>
+        </table></div>
+        <h3>新株予約権</h3>
+        <ul>
+          <li>将来、一定条件で株式を取得できる権利。</li>
+          <li>ストックオプションは新株予約権の利用形態。</li>
+          <li>行使されるまで株主ではない。</li>
+          <li>有利発行は原則として株主総会特別決議。</li>
+        </ul>
+        <h3>種類株式</h3>
+        <p>設定できる主な内容：</p>
+        <ul><li>剰余金配当</li><li>残余財産分配</li><li>議決権制限</li><li>譲渡制限</li><li>取得請求権・取得条項</li><li>拒否権</li><li>役員選任権</li></ul>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+
+      <section id="s7">
+        <h2>7．組織再編</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>手法</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td>合併</td><td>会社全体を統合</td></tr>
+            <tr><td>会社分割</td><td>事業に関する権利義務を包括承継</td></tr>
+            <tr><td>株式交換</td><td>既存会社を完全子会社化</td></tr>
+            <tr><td>株式移転</td><td>新設会社の完全子会社になる</td></tr>
+            <tr><td>事業譲渡</td><td>個別の契約・資産・負債を移転</td></tr>
+          </tbody>
+        </table></div>
+        <h3>事業譲渡と会社分割</h3>
+        <ul>
+          <li>事業譲渡：<strong>個別承継</strong>
+            <ul><li>原則として契約相手の同意が必要。</li><li>債務移転にも原則として債権者の同意が必要。</li></ul>
+          </li>
+          <li>会社分割：<strong>包括承継</strong>
+            <ul><li>個別の承諾なしに承継される。</li><li>代わりに債権者保護手続が問題となる。</li></ul>
+          </li>
+        </ul>
+        <h3>簡易・略式</h3>
+        <ul><li>簡易組織再編：対価等が純資産額の概ね<strong>5分の1以下</strong></li><li>略式組織再編：相手会社が議決権の概ね<strong>90％以上</strong>を保有</li></ul>
+        <div class="callout formula">「簡易＝規模が小さい」「略式＝支配関係が強い」。</div>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+
+      <section id="s8">
+        <h2>8．民法・契約</h2>
+        <h3>契約成立</h3>
+        <ul>
+          <li>原則として申込みと承諾の合致。</li>
+          <li>契約自由の原則：<ul><li>締結するか</li><li>相手を誰にするか</li><li>内容</li><li>方式</li></ul></li>
+          <li>保証契約など、書面・電磁的記録が必要な契約もある。</li>
+        </ul>
+        <h3>意思表示</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>状況</th><th>原則</th></tr></thead>
+          <tbody>
+            <tr><td>心裡留保</td><td>原則有効</td></tr>
+            <tr><td>虚偽表示</td><td>当事者間では無効</td></tr>
+            <tr><td>錯誤</td><td>一定の場合に取消し可能</td></tr>
+            <tr><td>詐欺</td><td>取消し可能</td></tr>
+            <tr><td>強迫</td><td>取消し可能</td></tr>
+          </tbody>
+        </table></div>
+        <ul>
+          <li>虚偽表示の無効は善意の第三者に対抗できない。</li>
+          <li>詐欺による取消しは、善意かつ無過失の第三者に対抗できない。</li>
+          <li>強迫による取消しは、原則として第三者にも対抗できる。</li>
+        </ul>
+        <h3>代理</h3>
+        <ul>
+          <li>権限内の代理行為→本人に効果帰属。</li>
+          <li>無権代理→本人が追認しない限り、原則として本人に効果なし。</li>
+          <li>表見代理→本人側に外観作出などの帰責性があり、相手方が善意無過失なら本人に効果帰属。</li>
+          <li>自己契約・双方代理は原則禁止。</li>
+        </ul>
+        <h3>保証</h3>
+        <ul>
+          <li>保証契約は書面または電磁的記録が必要。</li>
+          <li>通常の保証人には、催告・検索の抗弁権がある。</li>
+          <li><strong>連帯保証人には催告・検索の抗弁権も分別の利益もない。</strong></li>
+        </ul>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+
+      <section id="s9">
+        <h2>9．消滅時効</h2>
+        <h3>一般の債権</h3>
+        <ul><li>権利を行使できると知った時から<strong>5年</strong></li><li>権利を行使できる時から<strong>10年</strong></li><li>いずれか早い方</li></ul>
+        <h3>不法行為</h3>
+        <ul><li>損害と加害者を知った時から<strong>3年</strong></li><li>不法行為時から<strong>20年</strong></li></ul>
+        <h3>生命・身体侵害</h3>
+        <ul><li>主観的期間は<strong>5年</strong></li><li>客観的期間は<strong>20年</strong></li></ul>
+        <h3>確定判決等で確定した権利</h3>
+        <ul><li>原則として<strong>10年</strong></li></ul>
+        <div class="callout">現行民法では、旧法の「時効の中断・停止」は「完成猶予・更新」に整理されている。</div>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+
+      <section id="s10">
+        <h2>10．相続</h2>
+        <h3>法定相続順位</h3>
+        <ol><li>子</li><li>直系尊属</li><li>兄弟姉妹</li></ol>
+        <div class="callout"><strong>配偶者は常に相続人。</strong></div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>組合せ</th><th>配偶者</th><th>他の相続人</th></tr></thead>
+          <tbody>
+            <tr><td>配偶者＋子</td><td>1/2</td><td>子全体で1/2</td></tr>
+            <tr><td>配偶者＋直系尊属</td><td>2/3</td><td>直系尊属全体で1/3</td></tr>
+            <tr><td>配偶者＋兄弟姉妹</td><td>3/4</td><td>兄弟姉妹全体で1/4</td></tr>
+          </tbody>
+        </table></div>
+        <ul>
+          <li>兄弟姉妹には遺留分がない。</li>
+          <li>遺留分は原則として法定相続分の2分の1。</li>
+          <li>直系尊属のみが相続人の場合、遺留分全体は3分の1。</li>
+          <li>相続放棄は原則として、相続開始を知った時から3か月以内。</li>
+        </ul>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+
+      <section id="s11">
+        <h2>11．知的財産権</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>権利</th><th>対象</th><th>発生</th><th>存続期間</th></tr></thead>
+          <tbody>
+            <tr><td>特許権</td><td>発明</td><td>審査・登録</td><td>出願から20年</td></tr>
+            <tr><td>実用新案権</td><td>物品の形状・構造・組合せの考案</td><td>無審査登録</td><td>出願から10年</td></tr>
+            <tr><td>意匠権</td><td>デザイン</td><td>審査・登録</td><td>出願から25年</td></tr>
+            <tr><td>商標権</td><td>商品・役務の識別標識</td><td>審査・登録</td><td>登録から10年、更新可</td></tr>
+            <tr><td>著作権</td><td>創作的表現</td><td>創作時に自動発生</td><td>原則死後70年</td></tr>
+          </tbody>
+        </table></div>
+        <h3>特許権</h3>
+        <p>要件：</p>
+        <ul><li>産業上利用可能性</li><li>新規性</li><li>進歩性</li><li>先願</li><li>公序良俗に反しない</li></ul>
+        <ul>
+          <li>日本は先発明主義ではなく<strong>先願主義</strong>。</li>
+          <li>出願公開は原則として出願から1年6か月後。</li>
+          <li>職務発明では、原始的に発明者が特許を受ける権利を取得するのが基本。</li>
+        </ul>
+        <h3>実用新案権</h3>
+        <ul><li>対象は物品の形状・構造・組合せ。</li><li>方法・プログラム自体は対象外。</li><li>実体審査なしで登録。</li><li>権利行使前に実用新案技術評価書が重要。</li></ul>
+        <h3>意匠権</h3>
+        <p>保護対象には次も含む。</p>
+        <ul><li>物品</li><li>建築物</li><li>画像</li><li>内装</li></ul>
+        <p>関連意匠・部分意匠・秘密意匠も押さえる。</p>
+        <h3>商標権</h3>
+        <ul>
+          <li>文字・図形・記号・立体・色彩・音など。</li>
+          <li>同一だけでなく類似範囲も保護。</li>
+          <li>3年以上継続して使用していない場合、不使用取消審判の対象。</li>
+          <li>普通名称・品質表示だけの商標は原則登録不可。</li>
+        </ul>
+        <h3>著作権</h3>
+        <ul>
+          <li>アイデアではなく<strong>表現</strong>を保護。</li>
+          <li>登録不要。</li>
+          <li>著作者人格権は譲渡・相続できない。</li>
+          <li>著作財産権は譲渡・相続可能。</li>
+          <li>法人著作は原則として公表後70年。</li>
+          <li>映画の著作物は原則として公表後70年。</li>
+        </ul>
+        <h3>営業秘密</h3>
+        <p>不正競争防止法上の3要件：</p>
+        <ol><li>秘密管理性</li><li>有用性</li><li>非公知性</li></ol>
+        <div class="callout warn">「社内情報だから営業秘密」ではない。秘密として管理されている必要がある。</div>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+
+      <section id="s12">
+        <h2>12．倒産法制</h2>
+        <div class="table-wrap"><table>
+          <thead><tr><th>手続</th><th>清算／再建</th><th>主な対象</th><th>経営権</th></tr></thead>
+          <tbody>
+            <tr><td>破産</td><td>清算</td><td>法人・個人</td><td>破産管財人</td></tr>
+            <tr><td>特別清算</td><td>清算</td><td>解散した株式会社</td><td>清算人、裁判所監督</td></tr>
+            <tr><td>民事再生</td><td>再建</td><td>法人・個人</td><td>原則、従来の経営者</td></tr>
+            <tr><td>会社更生</td><td>再建</td><td>株式会社</td><td>原則、更生管財人</td></tr>
+          </tbody>
+        </table></div>
+        <ul>
+          <li>破産＝会社を残す制度ではない。</li>
+          <li>民事再生＝経営者が原則として経営を継続するDIP型。</li>
+          <li>会社更生＝株式会社のみ。担保権や株主権も手続に取り込む強力な再建手続。</li>
+          <li>私的整理は裁判外。法的整理は裁判所が関与。</li>
+        </ul>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+
+      <section id="last" class="checklist">
+        <h2>最後の5分チェック</h2>
+        <ul>
+          <li>公開会社＝上場会社、ではない。</li>
+          <li>大会社＝資本金5億円以上または負債200億円以上。</li>
+          <li>取締役会＝取締役3人以上。</li>
+          <li>監査役会＝3人以上、半数以上社外。</li>
+          <li>普通決議＝過半数、特別決議＝3分の2。</li>
+          <li>株式併合・定款変更・組織再編＝特別決議。</li>
+          <li>事業譲渡＝個別承継、会社分割＝包括承継。</li>
+          <li>連帯保証人に催告・検索の抗弁権なし。</li>
+          <li>時効＝知って5年、行使可能から10年。</li>
+          <li>特許20・実用10・意匠25・商標10更新・著作70。</li>
+          <li>著作権は登録不要、アイデアは保護しない。</li>
+          <li>営業秘密＝秘密管理・有用・非公知。</li>
+          <li>破産＝清算、民事再生・会社更生＝再建。</li>
+        </ul>
+        <a class="back" href="#top">ページ上部へ</a>
+      </section>
+    </main>
+  </div>
+  <footer>直前は「最後の5分チェック」→表→本文の順で確認。</footer>
+</body>
+</html>
