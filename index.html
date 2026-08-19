@@ -168,6 +168,85 @@
         position: relative;
       }
 
+      /* === Top nav === */
+      html {
+        scroll-behavior: smooth;
+      }
+      .top-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.7rem clamp(1.25rem, 5vw, 3rem);
+        font-family: "JetBrains Mono", monospace;
+        background: rgba(8, 6, 15, 0.72);
+        border-bottom: 1px solid rgba(177, 75, 255, 0.18);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+      }
+      .top-nav .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        color: var(--fg);
+        font-size: 0.95rem;
+        font-weight: 700;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: color 0.25s ease;
+      }
+      .top-nav .brand:hover,
+      .top-nav .brand:focus-visible {
+        color: var(--neon-1);
+      }
+      /* favicon (/favicon.svg) と同じ絵文字。フォント差で欠けないよう
+         絵文字フォントを明示する。 */
+      .top-nav .brand-icon {
+        font-family:
+          "Apple Color Emoji",
+          "Segoe UI Emoji",
+          "Noto Color Emoji",
+          sans-serif;
+        font-size: 1.15rem;
+        line-height: 1;
+      }
+      .top-nav ul {
+        display: flex;
+        align-items: center;
+        gap: clamp(0.8rem, 3vw, 1.75rem);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        overflow-x: auto;
+        scrollbar-width: none;
+      }
+      .top-nav ul::-webkit-scrollbar {
+        display: none;
+      }
+      .top-nav a.nav-link {
+        display: block;
+        color: var(--muted);
+        font-size: 0.8rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        white-space: nowrap;
+        transition: color 0.25s ease;
+      }
+      .top-nav a.nav-link:hover,
+      .top-nav a.nav-link:focus-visible {
+        color: var(--neon-2);
+      }
+      /* 固定ナビの下に見出しが隠れないようにする */
+      main section[id] {
+        scroll-margin-top: 5rem;
+      }
+
       /* === Hero === */
       .hero {
         margin-bottom: 6rem;
@@ -633,13 +712,38 @@
 
       @media (max-width: 540px) {
         main {
-          padding-top: 3.5rem;
+          padding-top: 5rem;
         }
         .hero {
           margin-bottom: 4rem;
         }
         .card {
           padding: 1.5rem 1.3rem 1.3rem;
+        }
+      }
+
+      /* 狭い画面でナビのリンクが切れないよう、まず文字とすき間を詰める */
+      @media (max-width: 540px) {
+        .top-nav {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+        .top-nav ul {
+          gap: 0.65rem;
+        }
+        .top-nav a.nav-link {
+          font-size: 0.72rem;
+          letter-spacing: 0.04em;
+        }
+      }
+
+      /* さらに狭ければワードマークを畳み、手袋アイコンだけ残す */
+      @media (max-width: 420px) {
+        .top-nav .brand-name {
+          display: none;
+        }
+        .top-nav .brand-icon {
+          font-size: 1.35rem;
         }
       }
 
@@ -650,6 +754,7 @@
           animation-duration: 0.01ms !important;
           animation-iteration-count: 1 !important;
           transition-duration: 0.01ms !important;
+          scroll-behavior: auto !important;
         }
       }
     </style>
@@ -658,6 +763,28 @@
     <div class="bg-gradient" aria-hidden="true"></div>
     <div class="bg-grid" aria-hidden="true"></div>
     <div class="bg-noise" aria-hidden="true"></div>
+
+    <nav class="top-nav" aria-label="メインナビゲーション">
+      <a class="brand" href="/">
+        <span class="brand-icon" aria-hidden="true">🧤</span>
+        <span class="brand-name">tebukuro</span>
+      </a>
+      <ul>
+        <li><a class="nav-link" href="/blog/">Blog</a></li>
+        <li><a class="nav-link" href="#works">Works</a></li>
+        <li><a class="nav-link" href="#bbs">BBS</a></li>
+        <li><a class="nav-link" href="/privacy.html">Privacy</a></li>
+        <li>
+          <a
+            class="nav-link"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSf5z7Uc6gFn1-kyc6cNLszMvAnVyzWexTWho7TrquKbQBZwyA/viewform"
+            target="_blank"
+            rel="noopener"
+            >Contact</a
+          >
+        </li>
+      </ul>
+    </nav>
 
     <main>
       <section class="hero">
@@ -711,7 +838,7 @@
         </div>
       </section>
 
-      <section class="blog-section">
+      <section class="blog-section" id="blog">
         <div class="section-label">Blog</div>
         <p class="blog-note">
           開発したもの・調べたことのメモや、日々の雑記を書いています。
@@ -722,7 +849,7 @@
         </a>
       </section>
 
-      <section>
+      <section id="works">
         <div class="section-label">Works</div>
         <div class="works">
           <a
@@ -856,7 +983,7 @@
         </div>
       </section>
 
-      <section class="bbs-section">
+      <section class="bbs-section" id="bbs">
         <div class="section-label">BBS</div>
         <a
           class="chip"
