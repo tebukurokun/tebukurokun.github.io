@@ -1,0 +1,6 @@
+# クロール制御の大部分は Cloudflare の managed robots.txt が先頭に prepend する。
+# ここではサイトマップの所在を明示する（managed robots.txt は Sitemap 行を出さない）。
+User-agent: *
+Allow: /
+
+Sitemap: https://tebukuro.me/blog/sitemap-index.xml
