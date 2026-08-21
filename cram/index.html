@@ -76,6 +76,17 @@
     }
     .card-open { margin: 1rem 0 0; font-size: .9rem; font-weight: 700; color: var(--c); }
     .card-open::after { content: " →"; }
+    .card.placeholder {
+      --c: #8a94a6;
+      --c-soft: #eef1f5;
+      border-style: dashed;
+      box-shadow: none;
+      background: transparent;
+      cursor: default;
+    }
+    .card.placeholder:hover { transform: none; box-shadow: none; }
+    .card.placeholder .card-title { color: var(--muted); }
+    .card.placeholder::before { background: repeating-linear-gradient(180deg, var(--c) 0 6px, transparent 6px 12px); }
     .green { --c: #176b4d; --c-soft: #e9f7f1; }
     .blue { --c: #2856a8; --c-soft: #eaf1ff; }
     .teal { --c: #087f73; --c-soft: #e5f5f2; }
@@ -91,7 +102,7 @@
   <header class="hero">
     <p class="eyebrow">CRAM SHEETS</p>
     <h1>資格試験 一夜漬けシート</h1>
-    <p class="lead">試験前日から当日の朝に読み返すためのまとめシート集。定義・数値・判断ルールを、1ページの単一HTMLに詰め込んでいます。</p>
+    <p class="lead">試験前日から当日の朝に読み返すためのまとめシート集。定義・数値・判断ルールを、1ページの単一HTMLに詰め込んでいます。受験する試験が増えるたび、シートも随時追加していきます。</p>
   </header>
 
   <div class="layout">
@@ -120,6 +131,12 @@
         <ul class="tags"><li>確率分布</li><li>推定・検定</li><li>回帰</li><li>分散分析</li></ul>
         <p class="card-open">シートを開く</p>
       </a>
+
+      <div class="card placeholder">
+        <p class="card-exam">COMING SOON</p>
+        <p class="card-title">次のシートは準備中</p>
+        <p class="card-note">受験するたびに1枚ずつ書き足しています。次に受ける試験が決まったら、ここに追加されます。</p>
+      </div>
     </div>
 
     <footer>
