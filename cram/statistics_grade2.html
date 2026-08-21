@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="統計検定2級の出題範囲を、学習順・選択基準・公式・典型問題・誤解ポイントで整理した学習シート">
+  <title>統計検定2級 学習ナビ＆解説シート</title>
+  <style>
+    :root {
+      --ink: #18212b;
+      --muted: #5e6b75;
+      --paper: #fbfaf7;
+      --card: #ffffff;
+      --line: #dce2df;
+      --navy: #123d52;
+      --teal: #087f73;
+      --teal-soft: #e5f5f2;
+      --amber: #d47b14;
+      --amber-soft: #fff3df;
+      --red: #b7423b;
+      --red-soft: #fff0ed;
+      --blue-soft: #edf4fb;
+      --shadow: 0 12px 30px rgba(28, 52, 63, .09);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 2%, rgba(8,127,115,.08), transparent 24rem),
+        linear-gradient(180deg, #f7f7f2 0, var(--paper) 24rem);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      line-height: 1.72;
+    }
+    a { color: var(--teal); }
+    button, input { font: inherit; }
+    .hero {
+      color: white;
+      background: linear-gradient(132deg, #0f3548 0%, #15576b 54%, #087f73 100%);
+      padding: 56px max(24px, calc((100vw - 1180px) / 2));
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "μ  σ²  p  t  χ²  F";
+      position: absolute;
+      right: 5%; bottom: -18px;
+      font-family: Georgia, serif;
+      font-size: clamp(48px, 8vw, 112px);
+      letter-spacing: .08em;
+      color: rgba(255,255,255,.065);
+      white-space: nowrap;
+    }
+    .eyebrow { margin: 0 0 8px; color: #99e3d9; font-size: .82rem; font-weight: 800; letter-spacing: .16em; }
+    h1 { margin: 0; font-size: clamp(2rem, 4.8vw, 4rem); line-height: 1.12; letter-spacing: -.04em; }
+    .lead { max-width: 780px; margin: 18px 0 0; color: #e2f1f1; font-size: 1.06rem; }
+    .hero-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+    .hero-meta span { border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 6px 12px; font-size: .82rem; background: rgba(255,255,255,.07); }
+
+    .layout { max-width: 1180px; margin: 0 auto; padding: 28px 24px 80px; display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 28px; }
+    aside { position: sticky; top: 18px; align-self: start; }
+    .side-card { background: rgba(255,255,255,.94); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; }
+    .side-card + .side-card { margin-top: 14px; }
+    .side-title { margin: 0 0 10px; font-size: .78rem; color: var(--muted); font-weight: 800; letter-spacing: .12em; }
+    nav a { display: block; text-decoration: none; color: #31424b; padding: 7px 8px; border-left: 3px solid transparent; font-size: .9rem; }
+    nav a:hover, nav a:focus { color: var(--teal); border-color: var(--teal); background: var(--teal-soft); }
+    #search { width: 100%; border: 1px solid #cbd5d2; border-radius: 10px; padding: 9px 10px; background: white; }
+    .progress-wrap { margin-top: 12px; }
+    .progress-line { height: 8px; background: #e7edeb; border-radius: 999px; overflow: hidden; }
+    .progress-line > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--teal), #49b5a5); transition: width .25s; }
+    #progressText { display: block; margin-top: 5px; color: var(--muted); font-size: .78rem; }
+
+    main { min-width: 0; }
+    .notice { background: var(--amber-soft); border: 1px solid #eed4a7; border-radius: 13px; padding: 14px 16px; margin-bottom: 22px; }
+    .notice strong { color: #8a4c00; }
+    section { scroll-margin-top: 16px; margin-bottom: 28px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(20px, 4vw, 36px); }
+    section[hidden] { display: none; }
+    h2 { margin: 0 0 8px; font-size: clamp(1.45rem, 3vw, 2.1rem); line-height: 1.3; letter-spacing: -.025em; color: var(--navy); }
+    h3 { margin: 28px 0 10px; color: #174e60; font-size: 1.15rem; }
+    h4 { margin: 18px 0 6px; font-size: 1rem; }
+    p { margin: 8px 0 14px; }
+    ul, ol { padding-left: 1.35rem; }
+    li + li { margin-top: 5px; }
+    .section-kicker { color: var(--teal); font-size: .76rem; font-weight: 900; letter-spacing: .12em; }
+    .section-summary { margin-top: 0; color: var(--muted); }
+    .done-label { display: inline-flex; align-items: center; gap: 7px; float: right; padding: 5px 10px; border: 1px solid #cbd8d5; border-radius: 999px; color: #41545b; font-size: .78rem; cursor: pointer; user-select: none; }
+    .done-label input { accent-color: var(--teal); }
+
+    .roadmap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
+    .road-step { padding: 16px; border-radius: 13px; border: 1px solid var(--line); background: #fbfcfb; }
+    .road-step b { display: block; color: var(--teal); font-size: .78rem; letter-spacing: .08em; }
+    .road-step strong { display: block; margin: 3px 0 7px; }
+    .road-step small { color: var(--muted); }
+
+    .grid-2, .grid-3 { display: grid; gap: 14px; margin: 14px 0; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .mini { border: 1px solid var(--line); border-radius: 13px; padding: 15px; background: #fcfdfc; }
+    .mini h3, .mini h4 { margin-top: 0; }
+    .formula { margin: 12px 0; padding: 13px 15px; border-left: 4px solid var(--teal); background: var(--teal-soft); border-radius: 0 10px 10px 0; font-family: Georgia, "Times New Roman", "Noto Serif JP", serif; font-size: 1.03rem; overflow-x: auto; }
+    .formula .label { display: block; font-family: inherit; color: #36655e; font-size: .78rem; margin-bottom: 4px; }
+    .tip, .warning, .example, .exam {
+      margin: 14px 0; padding: 14px 16px; border-radius: 12px; border: 1px solid;
+    }
+    .tip { background: var(--blue-soft); border-color: #c9dcec; }
+    .warning { background: var(--red-soft); border-color: #efc8c2; }
+    .example { background: #f4f1fb; border-color: #ddd3f1; }
+    .exam { background: var(--amber-soft); border-color: #ecd2a5; }
+    .tip > strong, .warning > strong, .example > strong, .exam > strong { display: block; margin-bottom: 3px; }
+    .warning > strong { color: var(--red); }
+    .exam > strong { color: #8a4c00; }
+
+    .table-wrap { overflow-x: auto; margin: 14px 0 20px; border: 1px solid var(--line); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; min-width: 680px; background: white; font-size: .9rem; }
+    th { background: #edf4f3; color: #153f4e; text-align: left; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: #fafcfb; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: #eef2f1; border-radius: 5px; padding: 1px 5px; }
+    .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; background: var(--teal-soft); color: #075d55; font-size: .74rem; font-weight: 800; }
+    .decision { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 8px; margin: 16px 0; }
+    .decision > div { border: 1px solid var(--line); border-radius: 12px; padding: 13px; background: #fcfdfc; }
+    .decision .arrow { border: 0; display: grid; place-items: center; background: transparent; color: var(--teal); font-weight: 900; padding: 0; }
+
+    details { margin: 12px 0; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+    summary { cursor: pointer; padding: 13px 15px; font-weight: 750; color: #174e60; }
+    details > div { padding: 0 15px 15px; }
+    .quiz { border-top: 1px dashed #cfd8d5; margin-top: 25px; padding-top: 18px; }
+    .quiz button { border: 0; border-radius: 9px; padding: 8px 12px; color: white; background: var(--navy); cursor: pointer; }
+    .answer { display: none; margin-top: 10px; padding: 10px 12px; background: var(--teal-soft); border-radius: 9px; }
+    .answer.show { display: block; }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li { padding-left: 1.6rem; position: relative; }
+    .checklist li::before { content: "□"; position: absolute; left: 0; color: var(--teal); font-weight: bold; }
+    .source-note { font-size: .82rem; color: var(--muted); }
+    footer { max-width: 1180px; margin: 0 auto; padding: 0 24px 38px; color: var(--muted); font-size: .82rem; }
+
+    @media (max-width: 920px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { position: static; }
+      nav { columns: 2; }
+      .roadmap { grid-template-columns: repeat(2,1fr); }
+      .decision { grid-template-columns: 1fr; }
+      .decision .arrow { transform: rotate(90deg); }
+    }
+    @media (max-width: 620px) {
+      .hero { padding: 42px 20px; }
+      .layout { padding: 20px 14px 60px; }
+      section { padding: 20px 17px; }
+      .grid-2, .grid-3, .roadmap { grid-template-columns: 1fr; }
+      nav { columns: 1; }
+      .done-label { float: none; margin-bottom: 12px; }
+    }
+    @media print {
+      body { background: white; font-size: 10pt; }
+      .hero { padding: 24px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .hero::after, aside, .done-label, .quiz button { display: none !important; }
+      .layout { display: block; max-width: none; padding: 18px; }
+      section { box-shadow: none; break-inside: avoid; padding: 18px; margin-bottom: 14px; }
+      details > div { display: block !important; }
+      .answer { display: block; }
+      a { color: inherit; text-decoration: none; }
+      footer { padding: 10px 18px; }
+    }
+    .home { margin: 0 0 14px; }
+    .home a { color: #99e3d9; font-size: .85rem; text-decoration: none; }
+    .home a:hover { text-decoration: underline; }
+    .home-foot { margin: 32px 0 0; font-size: .85rem; text-align: center; }
+    @media print { .home, .home-foot { display: none; } }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <p class="home"><a href="index.html">← 一夜漬けシート一覧</a></p>
+    <p class="eyebrow">STATISTICS CERTIFICATE · GRADE 2</p>
+    <h1>統計検定2級<br>学習ナビ＆解説シート</h1>
+    <p class="lead">公式出題範囲を、暗記する用語の列ではなく「どの場面で、なぜ、その手法を選ぶか」という一本の流れに再編。基礎統計は既習として、推測統計と線形モデルを厚めに扱います。</p>
+    <div class="hero-meta"><span>単一HTML・印刷対応</span><span>公式・選択表・典型例</span><span>理解度チェック付き</span></div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <div class="side-card">
+        <p class="side-title">シート内検索</p>
+        <input id="search" type="search" placeholder="例：Welch、標本分布" aria-label="教材内を検索">
+        <div class="progress-wrap">
+          <div class="progress-line" aria-hidden="true"><span id="progressBar"></span></div>
+          <span id="progressText">学習済み 0 / 11</span>
+        </div>
+      </div>
+      <div class="side-card">
+        <p class="side-title">CONTENTS</p>
+        <nav>
+          <a href="#roadmap">0. 学習順序</a>
+          <a href="#describe">1. 記述と関係</a>
+          <a href="#design">2. データ収集</a>
+          <a href="#probability">3. 確率</a>
+          <a href="#distributions">4. 確率分布</a>
+          <a href="#sampling">5. 標本分布</a>
+          <a href="#estimation">6. 推定</a>
+          <a href="#testing">7. 仮説検定</a>
+          <a href="#categorical">8. カテゴリ検定</a>
+          <a href="#regression">9. 回帰</a>
+          <a href="#anova">10. 分散分析</a>
+          <a href="#finish">11. 直前整理</a>
+        </nav>
+      </div>
+    </aside>
+
+    <main>
+      <div class="notice"><strong>この教材の前提：</strong>平均・中央値・分散・標準偏差・基本グラフは既習。公式は「条件 → 統計量 → 従う分布 → 判断」の順で理解すると、推定と検定を別々に丸暗記せずに済みます。</div>
+
+      <section id="roadmap" data-title="学習順序 ロードマップ">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">START HERE</span>
+        <h2>0. 最短でつながる学習順序</h2>
+        <p class="section-summary">前半は「データ生成と確率」、後半は「標本から母集団へ」。回帰と分散分析は、最後に線形モデルとしてつなげます。</p>
+        <div class="roadmap">
+          <div class="road-step"><b>PHASE 1</b><strong>記述・収集</strong><small>データの形、相関、時系列、標本抽出、実験計画</small></div>
+          <div class="road-step"><b>PHASE 2</b><strong>確率モデル</strong><small>条件付き確率、期待値・分散、代表的な確率分布</small></div>
+          <div class="road-step"><b>PHASE 3</b><strong>推測統計</strong><small>標本分布 → 点・区間推定 → 仮説検定</small></div>
+          <div class="road-step"><b>PHASE 4</b><strong>線形モデル</strong><small>単回帰 → 重回帰 → 一元配置分散分析</small></div>
+        </div>
+        <div class="tip"><strong>一本の核</strong>標本統計量は標本ごとに揺れる。その「揺れの分布」が標本分布です。揺れの幅で区間を作れば<strong>推定</strong>、帰無仮説の下で今の値がどれほど珍しいかを測れば<strong>検定</strong>になります。</div>
+        <h3>優先順位</h3>
+        <ol>
+          <li><strong>最優先：</strong>正規・t・χ²・F分布の役割、区間推定、検定の選択、回帰・分散分析。</li>
+          <li><strong>次点：</strong>離散分布の使い分け、標本抽出、時系列、カテゴリカルデータ。</li>
+          <li><strong>確認中心：</strong>代表値・グラフなど既習範囲。ただし歪度、尖度、ローレンツ曲線、ジニ係数は漏らさない。</li>
+        </ol>
+      </section>
+
+      <section id="describe" data-title="記述統計 2変数 時系列 相関 回帰">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PHASE 1 · DESCRIBE</span>
+        <h2>1. データを記述し、関係を見る</h2>
+        <p class="section-summary">数値を出す前に、変数の型・分布の形・外れ値・層別の有無を確認します。</p>
+        <div class="grid-2">
+          <div class="mini"><h3>1変数</h3><ul><li>質的変数：棒・円・度数表</li><li>量的変数：幹葉図・ヒストグラム・累積度数</li><li>形：対称／裾の方向／単峰・多峰／一様</li><li>中心：平均・中央値・最頻値</li><li>散らばり：不偏分散（<em>n</em>-1）、標準偏差、範囲、IQR、箱ひげ図</li></ul></div>
+          <div class="mini"><h3>比較・形状</h3><ul><li>z得点：異なる尺度を平均0・標準偏差1へ</li><li>変動係数 CV = 標準偏差 / 平均：単位の違う相対散らばり</li><li>歪度：左右非対称、尖度：裾の重さ・ピーク形状</li><li>ローレンツ曲線とジニ係数：集中・不平等</li><li>一様頻度からのずれ：Σ(観測-期待)²/期待</li></ul></div>
+        </div>
+        <div class="warning"><strong>CVの落とし穴</strong>平均が0付近、負値が意味を持つ尺度、間隔尺度では解釈が不安定です。「0が絶対的な意味を持つ比率尺度」で使うのが基本。</div>
+
+        <h3>2変数：共分散・相関・偏相関</h3>
+        <div class="formula"><span class="label">標本相関係数</span>r = Σ(xᵢ-x̄)(yᵢ-ȳ) / √{Σ(xᵢ-x̄)² Σ(yᵢ-ȳ)²}</div>
+        <ul>
+          <li>相関係数は<strong>直線的関係</strong>の強さ。非線形な強い関係でも r ≈ 0 はあり得ます。</li>
+          <li>層別した散布図で群ごとの関係を確認。交絡変数が作る<strong>みかけの相関（擬相関）</strong>に注意。</li>
+          <li>偏相関は第3変数の線形な影響を調整した相関。因果を証明する指標ではありません。</li>
+          <li>相関行列では多変数の組合せを一覧化しますが、多数比較・外れ値・変数重複も点検します。</li>
+        </ul>
+
+        <h3>単回帰の入口</h3>
+        <div class="formula"><span class="label">最小二乗推定</span>ŷᵢ = b₀ + b₁xᵢ　　b₁ = Sxy / Sxx　　b₀ = ȳ - b₁x̄</div>
+        <div class="formula"><span class="label">変動の分解</span>SST = SSR + SSE　　R² = SSR / SST = 1 - SSE / SST</div>
+        <p>残差 <em>eᵢ = yᵢ - ŷᵢ</em> を、予測値・説明変数・観測順に対して描きます。曲線、扇形、不連続、時系列パターンがあれば、線形性・等分散性・独立性を疑います。対数などの変数変換は、関係の線形化や分散安定化に使います。</p>
+        <div class="warning"><strong>R²の誤解</strong>高いR²は因果・予測の妥当性・モデル仮定の正しさを保証しません。説明変数を増やすと通常R²は下がらないため、重回帰では自由度調整済みR²も見ます。</div>
+
+        <h3>時系列：順番を捨てない</h3>
+        <div class="grid-3">
+          <div class="mini"><h4>成長率・指数</h4><p>成長率 = (当期/前期)-1。基準時点を100とする指数化で変化を比較。</p></div>
+          <div class="mini"><h4>平均成長率</h4><p>倍率の平均は幾何平均。<br>(x₁x₂…xₙ)<sup>1/n</sup></p></div>
+          <div class="mini"><h4>依存構造</h4><p>系列相関を自己相関係数とコレログラムで確認。移動平均で短期変動を平滑化。</p></div>
+        </div>
+        <div class="exam"><strong>試験の見分け</strong>横断データの相関係数をそのまま時系列に使う前に、トレンドが共通して見かけの相関を生んでいないかを確認します。</div>
+      </section>
+
+      <section id="design" data-title="データソース 観察研究 実験研究 標本調査 無作為抽出 フィッシャー">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PHASE 1 · COLLECT</span>
+        <h2>2. どう集めたデータかを問う</h2>
+        <p class="section-summary">統計手法が高度でも、データ取得の偏りは後から消せません。公的統計などのデータソース、定義、対象母集団、欠測も確認します。</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>区別</th><th>目的・強み</th><th>典型的な注意</th></tr></thead>
+          <tbody>
+            <tr><td>全数調査</td><td>対象集団をすべて測る</td><td>非標本誤差、欠測、定義ずれは残る</td></tr>
+            <tr><td>標本調査</td><td>一部から母集団を推測</td><td>標本誤差と選択・無回答バイアスを分ける</td></tr>
+            <tr><td>観察研究</td><td>現実の状態を観察</td><td>交絡により、関連だけで因果を断定しにくい</td></tr>
+            <tr><td>実験研究</td><td>処理を割り付けて効果を比較</td><td>無作為割付・遵守・脱落・外的妥当性</td></tr>
+          </tbody>
+        </table></div>
+        <div class="tip"><strong>無作為抽出と無作為割付は別物</strong>無作為抽出は「母集団へ一般化できるか」、無作為割付は「群間差を処理の因果効果とみなせるか」に主に関係します。</div>
+
+        <h3>標本抽出法</h3>
+        <div class="grid-2">
+          <div class="mini"><h4>系統抽出</h4><p>無作為な開始点から一定間隔で選ぶ。名簿の周期性と抽出間隔が一致すると偏る。</p></div>
+          <div class="mini"><h4>層化抽出</h4><p>母集団を層に分け、各層から抽出。層内が均質なら精度向上。全層を含む。</p></div>
+          <div class="mini"><h4>クラスター抽出</h4><p>集団（学校・地域など）を選び、その中を調査。費用を抑えやすいが、集団内類似で誤差増大。</p></div>
+          <div class="mini"><h4>多段抽出</h4><p>地域→世帯→個人のように段階的に選ぶ。実務的だが設計を考慮した推定が必要。</p></div>
+        </div>
+
+        <h3>フィッシャーの3原則</h3>
+        <ul>
+          <li><strong>無作為化：</strong>処理割付をランダムにし、系統的な交絡を抑える。</li>
+          <li><strong>反復：</strong>各処理を複数単位に施し、偶然変動を評価する。</li>
+          <li><strong>局所管理（ブロック化）：</strong>似た実験単位をブロックにまとめ、不要な変動を除く。</li>
+        </ul>
+        <div class="quiz"><strong>30秒チェック：</strong>県内の全地域を人口層に分け、各層から住民を選ぶ方法は？<br><button type="button" data-answer="a-design">答えを見る</button><div class="answer" id="a-design">層化抽出。各層から標本を取る点が、選ばれたクラスター内を調べるクラスター抽出との違いです。</div></div>
+      </section>
+
+      <section id="probability" data-title="確率 条件付き確率 ベイズ 期待値 分散 共分散">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PHASE 2 · PROBABILITY</span>
+        <h2>3. 確率を「更新」と「合成」で捉える</h2>
+        <div class="grid-2">
+          <div class="mini"><h3>加法定理</h3><div class="formula">P(A∪B)=P(A)+P(B)-P(A∩B)</div><p>「または」。排反なら共通部分は0。</p></div>
+          <div class="mini"><h3>乗法定理</h3><div class="formula">P(A∩B)=P(A)P(B|A)</div><p>「かつ」。独立なら P(B|A)=P(B)。</p></div>
+        </div>
+        <div class="formula"><span class="label">ベイズの定理</span>P(A|B) = P(B|A)P(A) / P(B)</div>
+        <p>事前確率 P(A) を、観測Bの起こりやすさ P(B|A) で更新して事後確率 P(A|B) を得ます。分母は起こり得る原因で全確率を取ります。</p>
+        <div class="example"><strong>典型例：検査</strong>有病率1%、感度90%、偽陽性率5%なら、陽性者が有病である確率は 0.01×0.90 / (0.01×0.90 + 0.99×0.05) ≈ 15.4%。「感度90%だから陽性なら90%病気」は誤りです。</div>
+
+        <h3>確率変数の期待値・分散</h3>
+        <div class="formula">E(aX+b)=aE(X)+b　　Var(aX+b)=a²Var(X)</div>
+        <div class="formula">E(X+Y)=E(X)+E(Y)<br>Var(X+Y)=Var(X)+Var(Y)+2Cov(X,Y)</div>
+        <p>期待値の和に独立は不要。分散を単純に足せるのは共分散が0のときです。独立なら無相関ですが、無相関から独立は一般には言えません（2変量正規では例外的に言える）。</p>
+        <div class="warning"><strong>差の分散</strong>Var(X-Y)=Var(X)+Var(Y)-2Cov(X,Y)。独立なら「差」でも分散は足し算です。</div>
+      </section>
+
+      <section id="distributions" data-title="ベルヌーイ 二項 ポアソン 幾何 負の二項 超幾何 一様 指数 正規 2変量正規">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PHASE 2 · DISTRIBUTIONS</span>
+        <h2>4. 確率分布は「何を数えるか」で選ぶ</h2>
+        <p class="section-summary">問題文の名詞より、試行の独立性・復元の有無・数える対象・時間や空間の連続性を見ます。</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>分布</th><th>使う状況</th><th>平均</th><th>分散</th><th>見分ける語</th></tr></thead>
+          <tbody>
+            <tr><td>ベルヌーイ(p)</td><td>1回の成功/失敗</td><td>p</td><td>p(1-p)</td><td>0/1、1回</td></tr>
+            <tr><td>二項(n,p)</td><td>独立なn回で成功回数</td><td>np</td><td>np(1-p)</td><td>固定回数、一定p</td></tr>
+            <tr><td>ポアソン(λ)</td><td>一定区間内の稀な発生回数</td><td>λ</td><td>λ</td><td>単位時間・面積あたり件数</td></tr>
+            <tr><td>幾何(p)</td><td>最初の成功までの試行回数</td><td>1/p</td><td>(1-p)/p²</td><td>初成功まで、無記憶性</td></tr>
+            <tr><td>負の二項(r,p)</td><td>r回成功するまでの試行回数</td><td>r/p</td><td>r(1-p)/p²</td><td>r回目の成功まで</td></tr>
+            <tr><td>超幾何(N,K,n)</td><td>有限集団から非復元抽出した成功数</td><td>nK/N</td><td>np(1-p)(N-n)/(N-1)</td><td>戻さず、有限個から抽出</td></tr>
+            <tr><td>一様(a,b)</td><td>区間内が等密度</td><td>(a+b)/2</td><td>(b-a)²/12</td><td>どこも同程度</td></tr>
+            <tr><td>指数(λ)</td><td>ポアソン過程の次の発生までの時間</td><td>1/λ</td><td>1/λ²</td><td>待ち時間、無記憶性</td></tr>
+            <tr><td>正規(μ,σ²)</td><td>連続量、加法的な多数要因</td><td>μ</td><td>σ²</td><td>ベル型、標準化</td></tr>
+          </tbody>
+        </table></div>
+        <div class="tip"><strong>パラメータ流儀</strong>幾何・負の二項は「失敗数」を数える定義もあります。この表は「成功までの総試行回数」。問題文の確率変数の定義を必ず確認します。</div>
+
+        <h3>二項・ポアソン・超幾何の三択</h3>
+        <div class="decision">
+          <div><span class="pill">固定n回</span><strong> 独立・一定p</strong><br>→ 二項分布</div><div class="arrow">→</div>
+          <div><span class="pill">区間</span><strong> 発生回数</strong><br>→ ポアソン分布</div><div class="arrow">→</div>
+          <div><span class="pill">非復元</span><strong> 有限集団</strong><br>→ 超幾何分布</div>
+        </div>
+        <p>二項(n,p)は n が大きく p が小さく、np≈λならポアソン(λ)で近似できます。二項を正規近似する場合は一般に np と n(1-p) が十分大きいかを確認します。</p>
+
+        <h3>正規分布と2変量正規分布</h3>
+        <div class="formula">Z = (X-μ)/σ ∼ N(0,1)</div>
+        <p>標準化により標準正規表が使えます。2変量正規では等高線が楕円になり、相関が傾きと細長さを決めます。<strong>同時に正規</strong>なら相関0と独立が同値ですが、周辺分布がそれぞれ正規なだけでは十分ではありません。</p>
+        <div class="quiz"><strong>30秒チェック：</strong>50個中8個が不良。戻さず10個選んだときの不良数は？<br><button type="button" data-answer="a-dist">答えを見る</button><div class="answer" id="a-dist">超幾何分布。有限集団から非復元抽出するため、試行は独立ではありません。</div></div>
+      </section>
+
+      <section id="sampling" data-title="標本分布 大数の法則 中心極限定理 チェビシェフ 正規近似 連続修正 t カイ二乗 F">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PHASE 3 · SAMPLING DISTRIBUTIONS</span>
+        <h2>5. 標本統計量にも分布がある</h2>
+        <div class="formula">E(X̄)=μ　　Var(X̄)=σ²/n　　SE(X̄)=σ/√n</div>
+        <p>標本サイズを4倍にしても標準誤差は1/2。誤差を1/10にしたければ標本サイズは100倍必要です。</p>
+        <div class="grid-3">
+          <div class="mini"><h4>チェビシェフの不等式</h4><p>分布形を問わず P(|X-μ|≥kσ)≤1/k²。粗いが普遍的。</p></div>
+          <div class="mini"><h4>大数の法則</h4><p>nが増えると標本平均が母平均へ近づく。「値の収束」。</p></div>
+          <div class="mini"><h4>中心極限定理</h4><p>条件下で標本平均の標準化が正規分布へ近づく。「分布形の収束」。</p></div>
+        </div>
+        <div class="warning"><strong>CLTの誤解</strong>nが大きいと元データ自体が正規になるのではなく、標本平均などの分布が正規に近づきます。強い歪み・外れ値・依存がある場合は「n≥30」の機械的適用を避けます。</div>
+
+        <h3>4つの基準分布</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>分布</th><th>中心となる統計量</th><th>主な用途</th><th>自由度</th></tr></thead>
+          <tbody>
+            <tr><td>標準正規 Z</td><td>(X̄-μ)/(σ/√n)</td><td>母分散既知の平均、大標本の比率</td><td>なし</td></tr>
+            <tr><td>t</td><td>(X̄-μ)/(S/√n)</td><td>正規母集団・母分散未知の平均</td><td>n-1</td></tr>
+            <tr><td>χ²</td><td>(n-1)S²/σ²</td><td>正規母集団の母分散、度数の検定</td><td>n-1 など</td></tr>
+            <tr><td>F</td><td>(S₁²/σ₁²)/(S₂²/σ₂²)</td><td>分散比、回帰・分散分析</td><td>(n₁-1, n₂-1)</td></tr>
+          </tbody>
+        </table></div>
+        <p>t・χ²・Fの正確な分布は正規母集団の仮定と結びつきます。tは左右対称で、自由度が増えると標準正規へ近づく。χ²とFは0以上で右に歪みます。</p>
+
+        <h3>二項分布の正規近似と連続修正</h3>
+        <p>X∼Bin(n,p) を Y∼N(np, np(1-p)) で近似するとき、離散値の境界を0.5だけずらします。</p>
+        <div class="formula">P(X≤k) ≈ P(Y≤k+0.5)　　P(X≥k) ≈ P(Y≥k-0.5)</div>
+        <div class="exam"><strong>上側確率点の読み方</strong>表が「P(T ≥ t<sub>α</sub>)=α」を載せるか、下側累積確率を載せるかを確認。両側5%なら片側2.5%ずつです。</div>
+      </section>
+
+      <section id="estimation" data-title="点推定 推定量 推定値 一致性 不偏性 信頼区間 母平均 母分散 母比率 相関係数 差 比">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PHASE 3 · ESTIMATION</span>
+        <h2>6. 推定：点ではなく不確かさまで示す</h2>
+        <p><strong>推定量</strong>は標本の関数（確率変数）、<strong>推定値</strong>は実際の標本から計算した数値。不偏性は E(推定量)=母数、一致性は n→∞ で母数へ近づく性質です。</p>
+        <div class="formula"><span class="label">信頼区間の共通形</span>推定値 ± 臨界値 × 標準誤差</div>
+        <div class="warning"><strong>95%信頼区間の意味</strong>同じ方法で標本抽出と区間作成を繰り返すと、長期的に95%の区間が真の母数を含む、という手続きの性質です。作成済みの1区間について「母数が95%の確率で入る」とは頻度論では言いません。</div>
+
+        <h3>1母集団の区間推定</h3>
+        <p class="source-note">以下で q<sub>p</sub> は各分布の「下側累積確率がpとなる分位点」、信頼係数は1-α。</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>母数・条件</th><th>信頼区間</th><th>判断の鍵</th></tr></thead>
+          <tbody>
+            <tr><td>母平均μ・σ既知</td><td>x̄ ± z<sub>1-α/2</sub> σ/√n</td><td>Z</td></tr>
+            <tr><td>母平均μ・σ未知、正規</td><td>x̄ ± t<sub>n-1,1-α/2</sub> s/√n</td><td>t、自由度n-1</td></tr>
+            <tr><td>母分散σ²・正規</td><td>((n-1)s²/χ²<sub>n-1,1-α/2</sub>, (n-1)s²/χ²<sub>n-1,α/2</sub>)</td><td>逆順になる</td></tr>
+            <tr><td>母比率p・大標本</td><td>p̂ ± z<sub>1-α/2</sub>√{p̂(1-p̂)/n}</td><td>正規近似の妥当性</td></tr>
+            <tr><td>相関ρ・2変量正規</td><td>Fisher変換 z<sub>r</sub>=atanh(r)、SE=1/√(n-3)、最後にtanhで戻す</td><td>rを直接正規近似しない</td></tr>
+          </tbody>
+        </table></div>
+        <div class="tip"><strong>有限母集団補正</strong>有限母集団Nから非復元でn個を単純無作為抽出すると、標準誤差に √{(N-n)/(N-1)} を掛けます。抽出率が小さいと1に近く、影響は小さい。</div>
+
+        <h3>2母集団の区間推定</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>対象</th><th>中心と標準誤差</th><th>使う分布・注意</th></tr></thead>
+          <tbody>
+            <tr><td>平均差・分散既知</td><td>(x̄₁-x̄₂) ± z √(σ₁²/n₁+σ₂²/n₂)</td><td>Z</td></tr>
+            <tr><td>平均差・未知だが等分散</td><td>(x̄₁-x̄₂) ± t s<sub>p</sub>√(1/n₁+1/n₂)</td><td>プールt、df=n₁+n₂-2</td></tr>
+            <tr><td>平均差・未知、等分散不明</td><td>(x̄₁-x̄₂) ± t √(s₁²/n₁+s₂²/n₂)</td><td>Welch、近似自由度</td></tr>
+            <tr><td>母分散比 σ₁²/σ₂²</td><td>s₁²/s₂²をF分位点で割る</td><td>正規母集団、分子・分母の順序</td></tr>
+            <tr><td>母比率差 p₁-p₂</td><td>(p̂₁-p̂₂) ± z√{p̂₁(1-p̂₁)/n₁+p̂₂(1-p̂₂)/n₂}</td><td>区間では通常プールしない</td></tr>
+          </tbody>
+        </table></div>
+        <div class="exam"><strong>対応ありデータ</strong>同じ人の前後測定は独立2標本ではありません。各人の差 d を作り、差の母平均に対する1標本tとして扱います。</div>
+      </section>
+
+      <section id="testing" data-title="仮説検定 p値 帰無仮説 対立仮説 両側 片側 第一種 第二種 検出力 平均 分散 比率 Welch">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PHASE 3 · HYPOTHESIS TESTING</span>
+        <h2>7. 仮説検定：珍しさを基準に判断する</h2>
+        <ol>
+          <li>母数について H₀ と H₁ を、データを見る前に立てる。</li>
+          <li>H₀の下で分布が分かる検定統計量を選ぶ。</li>
+          <li>観測値以上にH₁方向へ極端な確率＝p値を求める。</li>
+          <li>p≤αならH₀を棄却。p&gt;αなら「棄却できない」。</li>
+          <li>効果量・信頼区間・前提も併せて解釈する。</li>
+        </ol>
+        <div class="grid-2">
+          <div class="mini"><h3>第1種の過誤</h3><p>H₀が真なのに棄却。確率を有意水準α以下に制御。</p></div>
+          <div class="mini"><h3>第2種の過誤</h3><p>H₁が真なのに棄却しない。確率β、検出力は1-β。</p></div>
+        </div>
+        <p>αを小さくすると、標本サイズなどを固定したままでは一般にβが増えます。検出力は効果が大きい、ばらつきが小さい、nが大きい、αが大きいほど高くなりやすい。</p>
+        <div class="warning"><strong>p値の誤解</strong>p値は「H₀が正しい確率」でも「偶然で結果が出た確率」でもありません。H₀を仮定したときに、観測値以上に極端な統計量が出る確率です。p&gt;0.05は同等性の証明ではありません。</div>
+
+        <h3>検定選択の地図</h3>
+        <div class="table-wrap"><table>
+          <thead><tr><th>問い</th><th>主な統計量</th><th>H₀下の分布</th><th>注意</th></tr></thead>
+          <tbody>
+            <tr><td>1母平均=μ₀、σ既知</td><td>(x̄-μ₀)/(σ/√n)</td><td>Z</td><td>σ既知は実務では稀</td></tr>
+            <tr><td>1母平均=μ₀、σ未知</td><td>(x̄-μ₀)/(s/√n)</td><td>t(n-1)</td><td>小標本は正規性</td></tr>
+            <tr><td>1母分散=σ₀²</td><td>(n-1)s²/σ₀²</td><td>χ²(n-1)</td><td>正規性に敏感</td></tr>
+            <tr><td>1母比率=p₀</td><td>(p̂-p₀)/√{p₀(1-p₀)/n}</td><td>近似Z</td><td>H₀のp₀でSE</td></tr>
+            <tr><td>独立2群・平均差、等分散</td><td>プール分散のt</td><td>t(n₁+n₂-2)</td><td>等分散仮定</td></tr>
+            <tr><td>独立2群・平均差、等分散不明</td><td>Welchのt</td><td>近似t</td><td>通常はこちらが堅牢</td></tr>
+            <tr><td>対応あり平均差</td><td>d̄/(s<sub>d</sub>/√n)</td><td>t(n-1)</td><td>差を1標本として扱う</td></tr>
+            <tr><td>2母分散の比=1</td><td>s₁²/s₂²</td><td>F(n₁-1,n₂-1)</td><td>正規性に敏感</td></tr>
+            <tr><td>2母比率の差=0</td><td>(p̂₁-p̂₂)/√{p̂(1-p̂)(1/n₁+1/n₂)}</td><td>近似Z</td><td>検定ではプールp̂</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>両側か片側か</h3>
+        <ul>
+          <li>H₁: μ≠μ₀ → 両側。差の方向を問わず、両端にα/2。</li>
+          <li>H₁: μ&gt;μ₀ または μ&lt;μ₀ → 片側。方向はデータを見る前に決める。</li>
+        </ul>
+        <div class="exam"><strong>区間推定との対応</strong>両側α検定でH₀: θ=θ₀を棄却することと、信頼係数1-αの両側信頼区間がθ₀を含まないことは、同じ前提・手法なら対応します。</div>
+        <details><summary>Welchの自由度（必要時に参照）</summary><div><div class="formula">ν ≈ (s₁²/n₁+s₂²/n₂)² / {(s₁²/n₁)²/(n₁-1)+(s₂²/n₂)²/(n₂-1)}</div><p>通常はソフトウェアが計算します。試験では、等分散プールtとの「分母と自由度の違い」を優先して理解。</p></div></details>
+        <div class="quiz"><strong>30秒チェック：</strong>p=0.08だった。「H₀が真である確率は8%」でよい？<br><button type="button" data-answer="a-test">答えを見る</button><div class="answer" id="a-test">誤り。p値はH₀を仮定した条件付き確率 P(観測以上に極端な統計量 | H₀) です。仮説の確率 P(H₀ | データ) ではありません。</div></div>
+      </section>
+
+      <section id="categorical" data-title="適合度検定 独立性検定 カイ二乗 クロス表">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PHASE 3 · CATEGORICAL DATA</span>
+        <h2>8. χ²検定：観測度数と期待度数を比べる</h2>
+        <div class="formula">χ² = Σ (O-E)² / E</div>
+        <div class="grid-2">
+          <div class="mini"><h3>適合度検定</h3><p>1つの質的変数の分布が、指定された比率に合うか。</p><p><strong>自由度：</strong>k-1-m（カテゴリk、データから推定した母数m）</p></div>
+          <div class="mini"><h3>独立性検定</h3><p>2つの質的変数が独立か。期待度数 E<sub>ij</sub>=(行合計×列合計)/n。</p><p><strong>自由度：</strong>(r-1)(c-1)</p></div>
+        </div>
+        <p>χ²はずれの総量を測るため常に0以上。棄却域は上側です。独立性検定で棄却したら「関連がある」と言えますが、どのセルが寄与したかは標準化残差などで追加確認します。</p>
+        <div class="warning"><strong>小さい期待度数</strong>χ²近似が悪くなります。カテゴリ統合が科学的に妥当か、2×2ならFisherの正確確率検定など別手法が必要かを検討します。</div>
+      </section>
+
+      <section id="regression" data-title="重回帰 偏回帰係数 検定 多重共線性 ダミー変数 自由度調整済み決定係数">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PHASE 4 · LINEAR MODELS</span>
+        <h2>9. 回帰分析：他の変数を固定した効果を読む</h2>
+        <div class="formula">Yᵢ = β₀ + β₁Xᵢ₁ + … + βₚXᵢₚ + εᵢ</div>
+        <p>偏回帰係数βⱼは、<strong>他の説明変数を一定にしたとき</strong>、Xⱼが1単位増えることに伴うYの平均変化。係数のt検定は H₀:βⱼ=0、モデル全体のF検定は「切片以外の係数がすべて0」を検討します。</p>
+        <div class="formula"><span class="label">自由度調整済み決定係数</span>R̄² = 1 - {SSE/(n-p-1)} / {SST/(n-1)}</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>確認点</th><th>何を見るか</th><th>問題があると</th></tr></thead>
+          <tbody>
+            <tr><td>線形性</td><td>残差 vs 予測値、部分残差</td><td>曲線パターン、変換や項追加を検討</td></tr>
+            <tr><td>等分散性</td><td>残差の広がり</td><td>扇形、標準誤差・検定が不適切</td></tr>
+            <tr><td>独立性</td><td>観測順残差、自己相関</td><td>標準誤差を過小評価し得る</td></tr>
+            <tr><td>正規性</td><td>残差の分布</td><td>小標本でt/F推測に影響</td></tr>
+            <tr><td>多重共線性</td><td>説明変数間相関、VIF</td><td>係数が不安定、SE増大、符号変化</td></tr>
+          </tbody>
+        </table></div>
+        <h3>ダミー変数</h3>
+        <p>kカテゴリなら通常k-1個の0/1変数を作り、除いたカテゴリを基準にします。切片は基準カテゴリ、ダミー係数は基準との差。切片とk個すべてのダミーを同時に入れると完全な多重共線性（ダミー変数トラップ）が起きます。</p>
+        <div class="warning"><strong>係数の有意性 ≠ 因果効果</strong>交絡、逆因果、選択バイアス、測定誤差があれば、調整済みでも因果とは限りません。また補外（観測範囲外の予測）は危険です。</div>
+        <div class="exam"><strong>出力表の読む順</strong>①モデル全体FとR̄² → ②係数・符号・単位 → ③標準誤差・t・p・信頼区間 → ④残差診断 → ⑤データ設計と解釈範囲。</div>
+      </section>
+
+      <section id="anova" data-title="実験計画 一元配置 分散分析 F比 処理群 対照群 反復 ブロック化">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PHASE 4 · ANOVA</span>
+        <h2>10. 分散分析：3群以上の平均差を一度に検定</h2>
+        <p>H₀: μ₁=…=μ<sub>k</sub>。群間のばらつきが、群内の偶然変動に比べて十分大きいかをF比で測ります。</p>
+        <div class="formula">SST = SSB（群間） + SSE（群内）</div>
+        <div class="formula">F = MSB/MSE = {SSB/(k-1)} / {SSE/(N-k)}</div>
+        <div class="table-wrap"><table>
+          <thead><tr><th>変動源</th><th>平方和</th><th>自由度</th><th>平均平方</th></tr></thead>
+          <tbody>
+            <tr><td>群間（処理）</td><td>SSB=Σnⱼ(x̄ⱼ-x̄)²</td><td>k-1</td><td>MSB=SSB/(k-1)</td></tr>
+            <tr><td>群内（誤差）</td><td>SSE=ΣΣ(xᵢⱼ-x̄ⱼ)²</td><td>N-k</td><td>MSE=SSE/(N-k)</td></tr>
+            <tr><td>全体</td><td>SST=ΣΣ(xᵢⱼ-x̄)²</td><td>N-1</td><td>-</td></tr>
+          </tbody>
+        </table></div>
+        <p><strong>前提：</strong>独立、各群が正規、等分散。Fが大きいほどH₀に反する。棄却できても「少なくとも1群の平均が異なる」までで、どの群かは多重比較が必要です。</p>
+        <div class="tip"><strong>回帰との統一</strong>一元配置ANOVAは、群をk-1個のダミー変数で表した回帰モデルと同じ線形モデルとして扱えます。ANOVAのF検定は、そのダミー係数がすべて0かを検定しています。</div>
+        <div class="warning"><strong>t検定を何度も行わない</strong>ペアごとに5%検定を繰り返すと、少なくとも1回誤って棄却する確率が増えます。ANOVA後はTukey法など、家族内誤差率を考えた多重比較を使います。</div>
+      </section>
+
+      <section id="finish" data-title="試験直前 公式 使い分け 誤解 ソフトウェア 出題範囲 網羅">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">FINAL REVIEW</span>
+        <h2>11. 試験直前の判断テンプレート</h2>
+        <h3>問題を見たらこの順に書く</h3>
+        <ol>
+          <li><strong>データ型：</strong>量的／質的、1群／2群以上、独立／対応あり。</li>
+          <li><strong>対象母数：</strong>平均、分散、比率、相関、回帰係数。</li>
+          <li><strong>条件：</strong>正規性、母分散既知、等分散、標本サイズ、非復元。</li>
+          <li><strong>統計量：</strong>Z、t、χ²、Fのどれか。自由度もセット。</li>
+          <li><strong>方向：</strong>片側／両側、信頼係数とα。</li>
+          <li><strong>結論：</strong>母集団・母数の言葉で、棄却／棄却できないを述べる。</li>
+        </ol>
+
+        <h3>頻出の混同 12</h3>
+        <div class="grid-2">
+          <ul class="checklist">
+            <li>標準偏差（データの散らばり）と標準誤差（推定量の散らばり）</li>
+            <li>母分散σ²と不偏分散s²（n-1で割る）</li>
+            <li>独立と排反</li>
+            <li>無相関と独立</li>
+            <li>大数の法則と中心極限定理</li>
+            <li>推定量と推定値</li>
+          </ul>
+          <ul class="checklist">
+            <li>有意差と実質的に大きな差</li>
+            <li>棄却できないこととH₀の証明</li>
+            <li>無作為抽出と無作為割付</li>
+            <li>独立2標本と対応のある標本</li>
+            <li>検定の比率SE（H₀でプール）と区間のSE</li>
+            <li>相関・回帰と因果</li>
+          </ul>
+        </div>
+
+        <h3>公式を覚える共通骨格</h3>
+        <div class="formula">検定統計量 = (推定値 - H₀の値) / H₀下の標準誤差</div>
+        <div class="formula">信頼区間 = 推定値 ± 分位点 × 推定標準誤差</div>
+        <p>χ²とFは左右対称でないため「±」型にしないことが重要です。分散区間はχ²分位点で割るので上下が逆になります。</p>
+
+        <h3>統計ソフトウェア出力で最低限読む場所</h3>
+        <ul>
+          <li>変数・標本サイズ・欠測処理が想定どおりか。</li>
+          <li>推定値、標準誤差、自由度、検定統計量、p値、信頼区間。</li>
+          <li>モデルならR²/調整済みR²、ANOVA表、残差・診断。</li>
+          <li>数値を出すだけでなく、問題の文脈に戻して結論を書く。</li>
+        </ul>
+
+        <details open><summary>公式出題範囲との対応チェック</summary><div>
+          <div class="table-wrap"><table>
+            <thead><tr><th>公式の大項目</th><th>このシート</th><th>含む内容</th></tr></thead>
+            <tbody>
+              <tr><td>データソース／データの分布</td><td>1・2</td><td>公的統計、変数型、グラフ、中心・散らばり、歪度・尖度、ジニ係数</td></tr>
+              <tr><td>2変数以上／時系列</td><td>1</td><td>相関・偏相関、単回帰、残差、指数・成長率・自己相関・移動平均</td></tr>
+              <tr><td>データ収集法</td><td>2</td><td>観察・実験、母集団・標本、抽出法、フィッシャー3原則</td></tr>
+              <tr><td>確率モデル</td><td>3・4</td><td>条件付き確率・ベイズ、期待値・分散、指定された全確率分布</td></tr>
+              <tr><td>標本分布</td><td>5</td><td>大数・CLT・チェビシェフ、正規近似、Z・t・χ²・F</td></tr>
+              <tr><td>推定</td><td>6</td><td>点推定の性質、1・2母集団の平均・分散・比率、相関</td></tr>
+              <tr><td>仮説検定</td><td>7・8</td><td>誤り・検出力、1・2母集団、適合度・独立性</td></tr>
+              <tr><td>線形モデル／実験計画</td><td>9・10</td><td>重回帰、ダミー、多重共線性、調整R²、一元配置ANOVA・F比</td></tr>
+              <tr><td>統計ソフトウェアの活用</td><td>11</td><td>出力の読み方、問題解決への接続</td></tr>
+            </tbody>
+          </table></div>
+        </div></details>
+
+        <div class="quiz"><strong>仕上げチェック：</strong>「対象母数・条件・標準誤差・分布・自由度・結論」を、各典型問題で言葉にできれば合格圏の骨格ができています。<br><button type="button" data-answer="a-final">学習の次の一手</button><div class="answer" id="a-final">過去問を解き、誤答を「知識不足」「手法選択」「計算」「表の読み」「解釈」の5種類に分類してください。手法選択の誤りは、このシートの選択表に戻るのが最短です。</div></div>
+        <p class="source-note">根拠：日本統計学会公式認定 統計検定「統計検定2級 出題範囲表」（2018年12月14日）。このHTMLは学習用に再構成した解説であり、公式問題・公式解説の転載ではありません。</p>
+      </section>
+    </main>
+  </div>
+
+  <p class="home-foot"><a href="index.html">← 一夜漬けシート一覧に戻る</a></p>
+  <footer>© Study sheet · 内容は2018-12-14版の統計検定2級出題範囲表に準拠。印刷時は検索・進捗UIを省略し、解答を展開します。</footer>
+
+  <script>
+    (() => {
+      const checks = [...document.querySelectorAll('.done')];
+      const key = 'statistics-grade2-study-progress-v1';
+      let saved = [];
+      try { saved = JSON.parse(localStorage.getItem(key) || '[]'); } catch (_) {}
+      checks.forEach((box, i) => {
+        box.checked = Boolean(saved[i]);
+        box.addEventListener('change', updateProgress);
+      });
+
+      function updateProgress() {
+        const state = checks.map(box => box.checked);
+        try { localStorage.setItem(key, JSON.stringify(state)); } catch (_) {}
+        const count = state.filter(Boolean).length;
+        document.getElementById('progressBar').style.width = `${count / checks.length * 100}%`;
+        document.getElementById('progressText').textContent = `学習済み ${count} / ${checks.length}`;
+      }
+      updateProgress();
+
+      document.querySelectorAll('[data-answer]').forEach(button => {
+        button.addEventListener('click', () => {
+          const answer = document.getElementById(button.dataset.answer);
+          answer.classList.toggle('show');
+          button.textContent = answer.classList.contains('show') ? '答えを隠す' : (button.dataset.answer === 'a-final' ? '学習の次の一手' : '答えを見る');
+        });
+      });
+
+      const search = document.getElementById('search');
+      const sections = [...document.querySelectorAll('main section')];
+      search.addEventListener('input', () => {
+        const query = search.value.trim().toLowerCase();
+        sections.forEach(section => {
+          section.hidden = Boolean(query) && !section.textContent.toLowerCase().includes(query);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

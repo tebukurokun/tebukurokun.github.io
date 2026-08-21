@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A personal site deployed via GitHub Pages at `https://tebukuro.me/` (custom domain via `CNAME`; `tebukurokun.github.io` 301-redirects there). The main page is `index.html`, plus a standalone `privacy.html` (privacy policy, required for AdSense). There is no build system, no framework, no package manager — just static HTML files. All CSS lives inline in each file's `<style>` block, all JS in a `<script>` block at the end of `<body>`.
+A personal site deployed via GitHub Pages at `https://tebukuro.me/` (custom domain via `CNAME`; `tebukurokun.github.io` 301-redirects there). The main page is `index.html`, plus a standalone `privacy.html` (privacy policy, required for AdSense) and `cram/` (資格試験一夜漬けシート: `cram/index.html` is the hub, one HTML per exam subject alongside it). There is no build system, no framework, no package manager — just static HTML files. All CSS lives inline in each file's `<style>` block, all JS in a `<script>` block at the end of `<body>`.
 
 The `master` branch is the deployment branch. Pushing to `origin/master` publishes the site.
 
@@ -41,6 +41,14 @@ There is no linter, formatter, test suite, or CI configured. The repo formatter 
 - **External CDNs:** Google Fonts (Space Grotesk + JetBrains Mono) and FontAwesome v6 via cdnjs. The original FA kit script was removed because its v5 icon names didn't match the v6 markup; keep using v6 class syntax (`fa-brands fa-github`, `fa-solid fa-...`).
 - **The Blog section's latest-post links (`.posts`) are hardcoded and must be updated by hand.** They exist to give crawlers real `<a href>` links to individual articles: Google's URL inspection reported `参照元ページ: 検出されませんでした` for every article, which is why they were not being indexed. Fetching `/blog/rss.xml` with JS would auto-update but would defeat the purpose, since the links must be in the initial HTML. **When you publish a new article, replace the top entry here** (the three newest, newest first). Article IDs and dates come from `https://tebukuro.me/blog/sitemap-0.xml` or the microCMS `blogs` endpoint.
 - **Cards animate in via staggered `animation-delay`** on `:nth-child()` selectors. When adding a new work card, extend `.works .card:nth-child(N)` with a delay roughly 0.10s after the previous one.
+
+## `cram/` (一夜漬けシート)
+
+Self-contained study sheets, one HTML file per exam subject, indexed by `cram/index.html` (`https://tebukuro.me/cram/`). Each sheet carries its own inline `<style>` and does **not** share the root page's dark neon design system — they are light, print-oriented documents with their own accent color (green = 中小企業政策, blue = 経営法務, teal = 統計検定2級).
+
+- Every sheet links back to the hub twice: `.home` in the hero and `.home-foot` before `<footer>`. Both are hidden in `@media print`.
+- Adding a sheet means adding a `.card` to `cram/index.html` (pick an accent class) and the two back links to the new file.
+- The pages moved out of the repo root on 2026-08-21. `chushokigyo_seisaku.html` and `keiei_houmu.html` were published at the root beforehand, so a Cloudflare Redirect Rule is needed if those old URLs are still shared.
 
 ## Icon policy
 
