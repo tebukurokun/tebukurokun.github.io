@@ -457,6 +457,51 @@
         font-size: 0.92rem;
         margin-bottom: 1.25rem;
       }
+      /* 最新記事。クローラーに個別記事へのリンクを渡すため、
+         JS で差し込まず初期 HTML に実体の <a> を置く。 */
+      .posts {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 1.5rem;
+        border-top: 1px solid var(--card-border);
+      }
+      .posts li {
+        border-bottom: 1px solid var(--card-border);
+      }
+      .posts a {
+        display: flex;
+        align-items: baseline;
+        gap: 0.9rem;
+        padding: 0.85rem 0.25rem;
+        color: var(--fg);
+        text-decoration: none;
+        transition:
+          color 0.25s ease,
+          padding-left 0.25s ease;
+      }
+      .posts a:hover {
+        color: var(--neon-2);
+        padding-left: 0.6rem;
+      }
+      .post-date {
+        flex: none;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+      .posts a:hover .post-date {
+        color: var(--neon-2);
+      }
+      .post-title {
+        font-size: 0.92rem;
+        line-height: 1.5;
+      }
+      @media (max-width: 480px) {
+        .posts a {
+          flex-direction: column;
+          gap: 0.2rem;
+        }
+      }
 
       /* === BBS === */
       .bbs-section {
@@ -843,6 +888,28 @@
         <p class="blog-note">
           スポーツ、カルチャー、お金の制度から CTF まで。気になったことを調べて書き残しています。
         </p>
+        <ul class="posts">
+          <li>
+            <a href="/blog/articles/3vauibjpj/">
+              <span class="post-date">2026.08.19</span>
+              <span class="post-title">なぜ「INMU KING」は頭に残るのか</span>
+            </a>
+          </li>
+          <li>
+            <a href="/blog/articles/jqhh-6mjbed/">
+              <span class="post-date">2026.07.26</span>
+              <span class="post-title">Diver OSINT 2026 Writeup</span>
+            </a>
+          </li>
+          <li>
+            <a href="/blog/articles/dclv3xbxg2v/">
+              <span class="post-date">2026.07.11</span>
+              <span class="post-title"
+                >なぜ愛されたいと願ってしまうと世界が表情を変えるのか？</span
+              >
+            </a>
+          </li>
+        </ul>
         <a class="chip" href="/blog/">
           <i class="fa-solid fa-blog"></i>
           ブログ記事一覧
