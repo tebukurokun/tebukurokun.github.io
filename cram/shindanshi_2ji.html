@@ -1,0 +1,1228 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="中小企業診断士2次試験の解法シート。80分の使い方、与件文マーキング、設問解釈、解答骨子のテンプレ文型と、事例I〜IVの必要知識。事例IVは計算パターンを厚めに解説">
+  <title>中小企業診断士2次試験 解法プロセス＆知識シート</title>
+  <style>
+    :root {
+      --ink: #211a15;
+      --muted: #6d6259;
+      --paper: #fbf9f6;
+      --card: #ffffff;
+      --line: #e4ddd4;
+      --deep: #5c2f11;
+      --main: #b0561d;
+      --main-soft: #fdf1e7;
+      --amber: #b8860b;
+      --amber-soft: #fdf5e0;
+      --red: #b7423b;
+      --red-soft: #fff0ed;
+      --blue-soft: #edf3fa;
+      --green: #2f6b45;
+      --green-soft: #ecf6f0;
+      --shadow: 0 12px 30px rgba(63, 42, 28, .09);
+      --radius: 16px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 8% 2%, rgba(176,86,29,.08), transparent 24rem),
+        linear-gradient(180deg, #f8f4ee 0, var(--paper) 24rem);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", "Hiragino Kaku Gothic ProN", Meiryo, sans-serif;
+      line-height: 1.72;
+    }
+    a { color: var(--main); }
+    button, input { font: inherit; }
+    .hero {
+      color: white;
+      background: linear-gradient(132deg, #2c1608 0%, #7a3a12 54%, #b0561d 100%);
+      padding: 56px max(24px, calc((100vw - 1180px) / 2));
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::after {
+      content: "事例Ⅰ  Ⅱ  Ⅲ  Ⅳ";
+      position: absolute;
+      right: 5%; bottom: -18px;
+      font-family: Georgia, serif;
+      font-size: clamp(48px, 8vw, 112px);
+      letter-spacing: .08em;
+      color: rgba(255,255,255,.06);
+      white-space: nowrap;
+    }
+    .eyebrow { margin: 0 0 8px; color: #f2c49c; font-size: .82rem; font-weight: 800; letter-spacing: .16em; }
+    h1 { margin: 0; font-size: clamp(2rem, 4.8vw, 4rem); line-height: 1.12; letter-spacing: -.04em; }
+    .lead { max-width: 780px; margin: 18px 0 0; color: #f6e7da; font-size: 1.06rem; }
+    .hero-meta { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+    .hero-meta span { border: 1px solid rgba(255,255,255,.25); border-radius: 999px; padding: 6px 12px; font-size: .82rem; background: rgba(255,255,255,.07); }
+
+    .layout { max-width: 1180px; margin: 0 auto; padding: 28px 24px 80px; display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 28px; }
+    aside { position: sticky; top: 18px; align-self: start; }
+    .side-card { background: rgba(255,255,255,.94); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: 18px; }
+    .side-card + .side-card { margin-top: 14px; }
+    .side-title { margin: 0 0 10px; font-size: .78rem; color: var(--muted); font-weight: 800; letter-spacing: .12em; }
+    nav a { display: block; text-decoration: none; color: #4a3c31; padding: 7px 8px; border-left: 3px solid transparent; font-size: .9rem; }
+    nav a:hover, nav a:focus { color: var(--main); border-color: var(--main); background: var(--main-soft); }
+    #search { width: 100%; border: 1px solid #d6cdc2; border-radius: 10px; padding: 9px 10px; background: white; }
+    .progress-wrap { margin-top: 12px; }
+    .progress-line { height: 8px; background: #eee7de; border-radius: 999px; overflow: hidden; }
+    .progress-line > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--main), #dd8b45); transition: width .25s; }
+    #progressText { display: block; margin-top: 5px; color: var(--muted); font-size: .78rem; }
+
+    main { min-width: 0; }
+    .notice { background: var(--amber-soft); border: 1px solid #ecd9a4; border-radius: 13px; padding: 14px 16px; margin-bottom: 22px; }
+    .notice strong { color: #8a5a00; }
+    section { scroll-margin-top: 16px; margin-bottom: 28px; background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); box-shadow: var(--shadow); padding: clamp(20px, 4vw, 36px); }
+    section[hidden] { display: none; }
+    h2 { margin: 0 0 8px; font-size: clamp(1.45rem, 3vw, 2.1rem); line-height: 1.3; letter-spacing: -.025em; color: var(--deep); }
+    h3 { margin: 28px 0 10px; color: #7c4218; font-size: 1.15rem; }
+    h4 { margin: 18px 0 6px; font-size: 1rem; }
+    p { margin: 8px 0 14px; }
+    ul, ol { padding-left: 1.35rem; }
+    li + li { margin-top: 5px; }
+    .section-kicker { color: var(--main); font-size: .76rem; font-weight: 900; letter-spacing: .12em; }
+    .section-summary { margin-top: 0; color: var(--muted); }
+    .done-label { display: inline-flex; align-items: center; gap: 7px; float: right; padding: 5px 10px; border: 1px solid #ddd2c6; border-radius: 999px; color: #5a4b3f; font-size: .78rem; cursor: pointer; user-select: none; }
+    .done-label input { accent-color: var(--main); }
+
+    .roadmap { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
+    .road-step { padding: 16px; border-radius: 13px; border: 1px solid var(--line); background: #fdfbf9; }
+    .road-step b { display: block; color: var(--main); font-size: .78rem; letter-spacing: .08em; }
+    .road-step strong { display: block; margin: 3px 0 7px; }
+    .road-step small { color: var(--muted); }
+
+    .grid-2, .grid-3 { display: grid; gap: 14px; margin: 14px 0; }
+    .grid-2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+    .mini { border: 1px solid var(--line); border-radius: 13px; padding: 15px; background: #fdfcfa; }
+    .mini h3, .mini h4 { margin-top: 0; }
+    .formula { margin: 12px 0; padding: 13px 15px; border-left: 4px solid var(--main); background: var(--main-soft); border-radius: 0 10px 10px 0; font-family: Georgia, "Times New Roman", "Noto Serif JP", serif; font-size: 1.03rem; overflow-x: auto; }
+    .formula .label { display: block; font-family: inherit; color: #8a4517; font-size: .78rem; margin-bottom: 4px; }
+    .tip, .warning, .example, .exam, .model {
+      margin: 14px 0; padding: 14px 16px; border-radius: 12px; border: 1px solid;
+    }
+    .tip { background: var(--blue-soft); border-color: #c9d9ec; }
+    .warning { background: var(--red-soft); border-color: #efc8c2; }
+    .example { background: #f5f1fb; border-color: #ddd3f1; }
+    .exam { background: var(--amber-soft); border-color: #ecd9a4; }
+    .model { background: var(--green-soft); border-color: #c6e0d0; }
+    .tip > strong, .warning > strong, .example > strong, .exam > strong, .model > strong { display: block; margin-bottom: 3px; }
+    .warning > strong { color: var(--red); }
+    .exam > strong { color: #8a5a00; }
+    .model > strong { color: var(--green); }
+    .model p:last-child, .tip p:last-child, .warning p:last-child, .example p:last-child, .exam p:last-child { margin-bottom: 0; }
+
+    .table-wrap { overflow-x: auto; margin: 14px 0 20px; border: 1px solid var(--line); border-radius: 12px; }
+    table { width: 100%; border-collapse: collapse; min-width: 680px; background: white; font-size: .9rem; }
+    th { background: #f6efe8; color: #5c2f11; text-align: left; }
+    th, td { padding: 10px 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+    tr:last-child td { border-bottom: 0; }
+    tbody tr:hover { background: #fdfaf7; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; background: #f3eee8; border-radius: 5px; padding: 1px 5px; }
+    .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; background: var(--main-soft); color: #8a4517; font-size: .74rem; font-weight: 800; }
+    .decision { display: grid; grid-template-columns: 1fr auto 1fr auto 1fr; align-items: stretch; gap: 8px; margin: 16px 0; }
+    .decision > div { border: 1px solid var(--line); border-radius: 12px; padding: 13px; background: #fdfcfa; }
+    .decision .arrow { border: 0; display: grid; place-items: center; background: transparent; color: var(--main); font-weight: 900; padding: 0; }
+
+    details { margin: 12px 0; border: 1px solid var(--line); border-radius: 12px; background: #fff; }
+    summary { cursor: pointer; padding: 13px 15px; font-weight: 750; color: #7c4218; }
+    details > div { padding: 0 15px 15px; }
+    .quiz { border-top: 1px dashed #ded4c8; margin-top: 25px; padding-top: 18px; }
+    .quiz button { border: 0; border-radius: 9px; padding: 8px 12px; color: white; background: var(--deep); cursor: pointer; }
+    .answer { display: none; margin-top: 10px; padding: 10px 12px; background: var(--main-soft); border-radius: 9px; }
+    .answer.show { display: block; }
+    .checklist { list-style: none; padding: 0; }
+    .checklist li { padding-left: 1.6rem; position: relative; }
+    .checklist li::before { content: "□"; position: absolute; left: 0; color: var(--main); font-weight: bold; }
+    .source-note { font-size: .82rem; color: var(--muted); }
+    .source-list { font-size: .9rem; color: var(--muted); }
+    .source-list a { word-break: break-all; }
+    footer { max-width: 1180px; margin: 0 auto; padding: 0 24px 38px; color: var(--muted); font-size: .82rem; }
+
+    @media (max-width: 920px) {
+      .layout { grid-template-columns: 1fr; }
+      aside { position: static; }
+      nav { columns: 2; }
+      .roadmap { grid-template-columns: repeat(2,1fr); }
+      .decision { grid-template-columns: 1fr; }
+      .decision .arrow { transform: rotate(90deg); }
+    }
+    @media (max-width: 620px) {
+      .hero { padding: 42px 20px; }
+      .layout { padding: 20px 14px 60px; }
+      section { padding: 20px 17px; }
+      .grid-2, .grid-3, .roadmap { grid-template-columns: 1fr; }
+      nav { columns: 1; }
+      .done-label { float: none; margin-bottom: 12px; }
+    }
+    @media print {
+      body { background: white; font-size: 10pt; }
+      .hero { padding: 24px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .hero::after, aside, .done-label, .quiz button { display: none !important; }
+      .layout { display: block; max-width: none; padding: 18px; }
+      section { box-shadow: none; break-inside: avoid; padding: 18px; margin-bottom: 14px; }
+      details > div { display: block !important; }
+      .answer { display: block; }
+      a { color: inherit; text-decoration: none; }
+      footer { padding: 10px 18px; }
+    }
+    .home { margin: 0 0 14px; }
+    .home a { color: #f2c49c; font-size: .85rem; text-decoration: none; }
+    .home a:hover { text-decoration: underline; }
+    .home-foot { margin: 32px 0 0; font-size: .85rem; text-align: center; }
+    @media print { .home, .home-foot { display: none; } }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <p class="home"><a href="index.html">← 一夜漬けシート一覧</a></p>
+    <p class="eyebrow">SMALL BUSINESS CONSULTANT · SECOND EXAM</p>
+    <h1>中小企業診断士2次試験<br>解法プロセス＆知識シート</h1>
+    <p class="lead">2次は知識量ではなく<strong>手順</strong>で決まる試験。80分をどう割り、与件文をどう解答に変換するかを前半に、事例I〜IVで必要になる知識を後半にまとめました。事例IVは公式だけでなく<strong>なぜその式になるのか</strong>まで解説しています。</p>
+    <div class="hero-meta"><span>単一HTML・印刷対応</span><span>80分の型と文型テンプレ</span><span>事例IVは計算パターン中心</span><span>令和8年度改正対応</span></div>
+  </header>
+
+  <div class="layout">
+    <aside>
+      <div class="side-card">
+        <p class="side-title">シート内検索</p>
+        <input id="search" type="search" placeholder="例：NPV、ダナドコ、段取り" aria-label="シート内を検索">
+        <div class="progress-wrap">
+          <div class="progress-line" aria-hidden="true"><span id="progressBar"></span></div>
+          <span id="progressText">学習済み 0 / 12</span>
+        </div>
+      </div>
+      <div class="side-card">
+        <p class="side-title">CONTENTS</p>
+        <nav>
+          <a href="#overview">0. 2次試験の全体像</a>
+          <a href="#timeline">1. 80分の使い方</a>
+          <a href="#marking">2. 与件文マーキング</a>
+          <a href="#question">3. 設問解釈</a>
+          <a href="#mapping">4. 対応付けと骨子</a>
+          <a href="#writing">5. 解答の文型</a>
+          <a href="#review">6. 見直し</a>
+          <a href="#case1">7. 事例I 組織・人事</a>
+          <a href="#case2">8. 事例II マーケ</a>
+          <a href="#case3">9. 事例III 生産</a>
+          <a href="#case4">10. 事例IV 財務</a>
+          <a href="#final">11. 直前チェック</a>
+          <a href="#sources">12. 参考リンク集</a>
+        </nav>
+      </div>
+    </aside>
+
+    <main>
+      <div class="notice"><strong>令和8年度（2026年度）の要点：</strong>筆記試験は<strong>2026年10月25日(日)</strong>、事例I〜IVが各80分・各100点。合格発表は2027年1月13日(水)。<strong>令和8年度から口述試験は廃止</strong>され、筆記試験の結果がそのまま2次試験の合否になります。受験手数料は15,100円（＋オンライン決済にかかる事務手数料525円）、申込受付は2026年9月1日(火)10:00〜9月18日(金)16:00のインターネット申込のみ。詳細は必ず<a href="#sources">公式ページ</a>で確認してください。</div>
+
+      <section id="overview" data-title="全体像 合格基準 60点 事例の性格 ロードマップ 1次との違い">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">START HERE</span>
+        <h2>0. 2次試験の全体像</h2>
+        <p class="section-summary">4事例×80分の記述試験。書けるのは「与件文に書いてあること」と「1次知識」の掛け算だけです。</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>科目</th><th>時間帯（令和8年度）</th><th>領域</th><th>性格</th></tr></thead>
+            <tbody>
+              <tr><td>A・事例Ⅰ</td><td>9:40〜11:00</td><td>組織（人事を含む）</td><td>抽象度が最も高い。与件の記述が薄く、1次知識で橋を架ける割合が大きい</td></tr>
+              <tr><td>B・事例Ⅱ</td><td>11:40〜13:00</td><td>マーケティング・流通</td><td>与件に具体材料（顧客・商品・地域資源）が多い。書くことは見つけやすいが取捨選択が難しい</td></tr>
+              <tr><td>C・事例Ⅲ</td><td>14:00〜15:20</td><td>生産・技術</td><td>問題点と対策が最も定型的。パターンを覚えれば安定して得点できる</td></tr>
+              <tr><td>D・事例Ⅳ</td><td>16:00〜17:20</td><td>財務・会計</td><td>唯一の計算科目。得点差が最も開く＝ここが合否を決めやすい</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>合格基準</h3>
+        <div class="formula"><span class="label">2次試験の合格基準（公式FAQ）</span>総点数の <strong>60%以上</strong>　かつ　1科目でも満点の <strong>40%未満がない</strong>こと</div>
+        <p>つまり<strong>合計240点／400点</strong>で、どの事例も40点は割らない。「4事例すべてで60点」ではなく「足し算で240点」なので、<strong>得意事例で稼ぎ、苦手事例を40点台で耐える</strong>という設計が成立します。</p>
+
+        <div class="tip"><strong>戦略の基本形</strong>事例I〜IIIは<strong>模範解答も配点内訳も公表されない</strong>ため、自分の得点を事前に読むことが難しく、狙って高得点を出しにくい。一方<strong>事例Ⅳは計算問題の比率が高く、正解が一意に決まる分だけ対策量が点数に反映されやすい</strong>。したがって「I〜IIIは要求を外さず手堅く積み、Ⅳで上積みする」という組み立てが、合計240点への現実的な近道になります。（得点の目安は受験界でよく言われる水準で、公式に公表されたものではありません。）</div>
+
+        <h3>1次試験との決定的な違い</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th></th><th>1次試験</th><th>2次試験</th></tr></thead>
+            <tbody>
+              <tr><td>問われるもの</td><td>知識を知っているか</td><td>知識を<strong>与件企業に当てはめられるか</strong></td></tr>
+              <tr><td>正解</td><td>公式に正解と配点が公表される</td><td>模範解答は非公表。公表されるのは「<strong>出題の趣旨</strong>」のみ</td></tr>
+              <tr><td>知識の深さ</td><td>広く細かく</td><td><strong>浅くていい</strong>。使う知識は1次の基本論点にほぼ限られる</td></tr>
+              <tr><td>失点の原因</td><td>知らなかった</td><td>設問要求とズレた／与件を拾えなかった／時間が足りなかった</td></tr>
+              <tr><td>やるべき練習</td><td>過去問の反復と暗記</td><td><strong>手順の反復</strong>。同じ80分の使い方を毎回再現する</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="warning"><strong>2次で最も多い失点は「知識不足」ではない</strong>設問が聞いていないことを書く（要求とのズレ）、与件に根拠のない一般論を書く、時間切れで空欄を残す──この3つで大半が説明できます。だからこのシートは前半すべてを<strong>手順</strong>に充てています。</div>
+
+        <h3>設問構成には型がある（出題の趣旨から）</h3>
+        <p>公表されている「出題の趣旨」を令和5〜7年度で通して読むと、事例Ⅰ〜Ⅳの設問の並びには共通した骨格があります。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>位置</th><th>問われること</th><th>出題の趣旨での表現（実例）</th></tr></thead>
+            <tbody>
+              <tr><td><strong>第1問</strong><br>事例Ⅰ・Ⅱ・Ⅲ</td><td><strong>ほぼ必ず環境分析</strong>（強み・弱み、内部／外部環境）</td><td>「B社内外の経営環境を分析する能力」（Ⅱ・R5/R6）「顧客・競合・自社の3つの視点から分析」（Ⅱ・R7）「C社の強みについて、分析する能力」（Ⅲ・R6）「2000年当時におけるA社の内部環境を分析」（Ⅰ・R6）</td></tr>
+              <tr><td><strong>第1問</strong><br>事例Ⅳ</td><td><strong>必ず経営分析</strong>（設問1で指標算出、設問2で記述）</td><td>「財務指標を算出する能力」＋「財務的問題点とその要因を分析する能力」（R5〜R7で共通）</td></tr>
+              <tr><td><strong>中盤</strong></td><td>個別テーマの<strong>課題整理と改善策の助言</strong></td><td>「課題を整理し、その改善の進め方について、助言する能力」（Ⅲ・R6）</td></tr>
+              <tr><td><strong>最終問</strong></td><td><strong>今後の方向性への助言</strong>（新規事業・全社的な取り組み）。配点が最も大きいことが多い</td><td>「新事業として食品用・医療用製品へ参入するため、C社の課題を整理し…助言する能力」（Ⅲ・R7、配点30点）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tip"><strong>第1問の環境分析は絶対に落とさない</strong>3事例とも第1問は「分析」であり、助言や施策を書く問題ではありません。ここは与件の抜き書きに近い作業で<strong>最も確実に得点できる</strong>のに、書き慣れていないと施策まで書いて字数を溢れさせます。過去問では第1問だけを繰り返し解く練習が効きます。</div>
+        <div class="warning"><strong>設問数と配点は年度で変わる</strong>令和6年度の事例Ⅲは<strong>5問</strong>（各20点）、令和7年度の事例Ⅰは4問で20/30/20/30点。「毎年4問・各25点」ではありません。<strong>開始2分の確認で、設問数と配点を必ず見ること</strong>——配点の大きい設問から書くという判断が、ここでしかできません。</div>
+
+        <h3>このシートの構成</h3>
+        <div class="roadmap">
+          <div class="road-step"><b>PART 1</b><strong>解答作成の手順</strong><small>80分の配分、マーキング、設問解釈、骨子、文型、見直し（1〜6章）</small></div>
+          <div class="road-step"><b>PART 2</b><strong>事例別の知識</strong><small>事例I〜IIIの切り口と定番因果（7〜9章）</small></div>
+          <div class="road-step"><b>PART 3</b><strong>事例IVの計算</strong><small>経営分析・CVP・NPV・その他頻出（10章）</small></div>
+          <div class="road-step"><b>PART 4</b><strong>直前と情報源</strong><small>当日の動きとチェック、公式リンク集（11〜12章）</small></div>
+        </div>
+
+        <div class="quiz">
+          <p><strong>理解度チェック：</strong>事例I〜IIIで62点ずつ取れた場合、合格するには事例IVで何点必要ですか。</p>
+          <button data-answer="a-overview">答えを見る</button>
+          <div id="a-overview" class="answer">240 −（62×3）＝240 − 186 ＝ <strong>54点</strong>。かつ40点未満の科目がないこと。逆に事例IVで80点取れれば、I〜IIIは平均54点弱でも合格圏に入ります。合計240点という設計を意識するだけで、当日の「捨て問」判断が変わります。</div>
+        </div>
+      </section>
+
+      <section id="timeline" data-title="80分 タイムマネジメント 時間配分 段取り 事例IV 捨て問">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PART 1 · PROCESS</span>
+        <h2>1. 80分のタイムマネジメント</h2>
+        <p class="section-summary">配分を毎回同じにすることが最大の対策。迷う時間をなくすため、時計を見る位置をあらかじめ決めておきます。</p>
+
+        <h3>事例I〜IIIの標準配分</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>経過</th><th>やること</th><th>狙い</th></tr></thead>
+            <tbody>
+              <tr><td>0〜2分</td><td>受験番号記入、問題用紙を破く／ページを開く、字数と設問数を確認</td><td>作業を先に済ませ、以降を思考だけに使う</td></tr>
+              <tr><td>2〜7分</td><td><strong>設問文を先に読む</strong>。制約条件に印をつけ、聞かれ方（理由／課題／助言）を分類</td><td>「何を探しに読むか」を決めてから与件に入る</td></tr>
+              <tr><td>7〜22分</td><td>与件文を通読＋マーキング（2章）。段落番号を振る</td><td>SWOTと社長の想いを拾い切る</td></tr>
+              <tr><td>22〜35分</td><td>設問と与件段落の<strong>対応付け</strong>、切り口の決定、骨子をメモ</td><td>書き始める前に全設問の方向を固める</td></tr>
+              <tr><td>35〜72分</td><td>解答用紙に記述。<strong>配点の高い設問／書ける設問から</strong></td><td>1設問あたり8〜10分。時間が来たら未完でも次へ</td></tr>
+              <tr><td>72〜80分</td><td>空欄の穴埋め、字数・誤字・設問要求の照合（6章）</td><td>空欄ゼロで提出する</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="warning"><strong>白紙が最大の失点</strong>ゼロ点は空欄だけです。与件の言葉を拾って並べただけの解答でも、部分点は入り得ます。「うまく書けないから後で」で回した設問が最後まで戻ってこないのが典型的な事故なので、<strong>35分を過ぎたら未完成でも必ず何かを書く</strong>と決めておきます。</div>
+
+        <h3>事例IVは別の配分にする</h3>
+        <p>事例IVだけは「全問解く」設計にしてはいけません。難問に20分溶かすと、確実に取れる経営分析やCVPまで崩れます。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>経過</th><th>やること</th></tr></thead>
+            <tbody>
+              <tr><td>0〜5分</td><td>全設問をざっと見て、<strong>難易度をA（確実）/B（時間があれば）/C（捨て）に仕分け</strong></td></tr>
+              <tr><td>5〜25分</td><td><strong>経営分析</strong>（第1問）を確実に仕上げる。ほぼ毎年出て配点も大きい、最も取りやすい問題</td></tr>
+              <tr><td>25〜45分</td><td>A判定の計算問題（CVP、NPVの前半、CF計算など）</td></tr>
+              <tr><td>45〜70分</td><td>B判定。記述問題（財務的なメリット・デメリットを述べよ等）は<strong>計算より先に</strong>書いてしまう</td></tr>
+              <tr><td>70〜80分</td><td>単位・符号・端数処理の確認、空欄に途中式だけでも記入</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tip"><strong>記述問題を先に取る</strong>事例IVの記述問題（「この投資案の留意点を述べよ」など）は、計算が解けなくても書けることが多く、しかも配点が高い。計算に詰まったら、まず解答用紙の記述欄を埋めてから戻ります。</div>
+
+        <div class="quiz">
+          <p><strong>理解度チェック：</strong>事例IIIで、残り15分の時点で第4問（配点20点・120字）が丸ごと空欄です。どうしますか。</p>
+          <button data-answer="a-timeline">答えを見る</button>
+          <div id="a-timeline" class="answer">完成度を諦めて<strong>即座に埋める</strong>。事例IIIの設問はほぼ「生産管理か生産現場の問題点と対策」に収束するので、与件で拾った問題点（例：生産計画が月次で固定、標準化されていない、情報が共有されていない）に対し、定番の対策（日次への短サイクル化、標準化・マニュアル化、DBによる一元管理・共有）を因果でつなげば形になります。推敲は残り3分でやる。</div>
+        </div>
+      </section>
+
+      <section id="marking" data-title="与件文 マーキング 色分け SWOT 社長の想い 制約条件 段落番号">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PART 1 · PROCESS</span>
+        <h2>2. 与件文マーキングのルール</h2>
+        <p class="section-summary">与件文は「解答の材料置き場」。読んで理解するのではなく、<strong>分類して取り出せる状態にする</strong>のが目的です。</p>
+
+        <h3>色分けの基準（4色ペンで固定する）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>色</th><th>拾うもの</th><th>与件での典型的な現れ方</th><th>使い道</th></tr></thead>
+            <tbody>
+              <tr><td>青</td><td><strong>強み（S）</strong></td><td>「高い技術力を持つ」「顧客からの信頼が厚い」「熟練職人が」「一貫生産体制」</td><td>助言問題の手段。ほぼ必ず解答に使う</td></tr>
+              <tr><td>赤</td><td><strong>弱み（W）／問題点</strong></td><td>「〜が課題である」「〜できていない」「属人的」「〜に時間がかかる」</td><td>事例IIIの対策問題の起点</td></tr>
+              <tr><td>青（点線）</td><td><strong>機会（O）</strong></td><td>「〜の需要が高まっている」「近隣に〜ができた」「引き合いが増えた」</td><td>強みと掛け合わせる相手</td></tr>
+              <tr><td>赤（点線）</td><td><strong>脅威（T）</strong></td><td>「競合が進出」「人口減少」「原材料が高騰」「大手が参入」</td><td>助言の前提条件・留意点</td></tr>
+              <tr><td>緑</td><td><strong>社長の想い・方針</strong></td><td>「社長は〜したいと考えている」「〜を目指している」</td><td><strong>最重要</strong>。助言はここに沿わせる</td></tr>
+              <tr><td>黄</td><td><strong>制約・数値・時制</strong></td><td>「従業員は20名」「創業以来」「3年前に」「〜せざるを得ない」</td><td>設問の時制指定との照合</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tip"><strong>色は増やさない</strong>7色以上に分けると、当日ペンを持ち替える時間と迷いが増えて逆効果になります。上の6分類でも多いと感じたら「青＝プラス要素／赤＝マイナス要素／緑＝社長の想い」の3色で十分機能します。<strong>過去問演習で使った色分けを当日も変えない</strong>ことのほうが大事です。</div>
+
+        <h3>与件文の構造（ほぼ毎年同じ）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>位置</th><th>書かれていること</th><th>注意</th></tr></thead>
+            <tbody>
+              <tr><td>第1段落</td><td>業種、資本金、従業員数、売上規模、事業内容</td><td>企業規模から「中小企業でも何ができるか」の当たりをつける</td></tr>
+              <tr><td>第2〜数段落</td><td>創業からの沿革。転換点、成功・失敗の経験</td><td><strong>過去の成功要因＝現在の強み</strong>。事例Iはここが解答の主材料</td></tr>
+              <tr><td>中盤</td><td>現在の事業内容、組織、顧客、生産・販売の実態</td><td>問題点と強みが混在。赤と青を細かく拾う</td></tr>
+              <tr><td>終盤</td><td>環境変化、直面している課題</td><td>機会と脅威の主産地</td></tr>
+              <tr><td>最終段落</td><td><strong>社長の想い・今後の方針</strong></td><td>助言問題のゴールはここ。解答が社長の意向に反していたら書き直す</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>手を動かすルール</h3>
+        <ul>
+          <li><strong>段落番号を振る</strong>（①②③…）。対応付けメモが「第3問→⑤⑧段落」と一行で書けるようになる</li>
+          <li><strong>強みと弱みが同居する文</strong>は両方引く。例「熟練職人の手作業により高品質を実現しているが、技能の承継が進んでいない」＝強みと弱みが1文に入っている典型</li>
+          <li><strong>逆接（しかし、一方、ただし）に丸をつける</strong>。与件の逆接の直後は、ほぼ問題点か転換点</li>
+          <li><strong>数値と時制に印</strong>。「3年前」「近年」「今後」は設問の時制指定と照合するために必要</li>
+          <li>1回目は通読、2回目でマーキング…と分けない。<strong>読みながら引く1回勝負</strong>にしないと時間が足りない</li>
+        </ul>
+
+        <div class="warning"><strong>与件にない事実を作らない</strong>「この業界なら普通こうだろう」という推測を書くと、採点者にとっては根拠のない記述になります。書いていいのは、<strong>与件に書いてある事実</strong>と、<strong>それに1次知識を当てはめた結論</strong>だけです。</div>
+
+        <div class="quiz">
+          <p><strong>理解度チェック：</strong>与件に「社長は、長年培った加工技術を活かして自社ブランド品を開発したいと考えている」とあります。この一文はどの色で、解答にどう効きますか。</p>
+          <button data-answer="a-marking">答えを見る</button>
+          <div id="a-marking" class="answer">緑（社長の想い）＋青（強み＝長年培った加工技術）の重ね引き。助言問題では「加工技術という強みを活かし、自社ブランド品を開発して高付加価値化を図る」という方向以外の提案は、社長の意向に反するため加点されにくくなります。<strong>社長の想いは解答の制約条件そのもの</strong>だと考えてください。</div>
+        </div>
+      </section>
+
+      <section id="question" data-title="設問解釈 制約条件 レイヤー 全社 事業 機能 理由 課題 助言 留意点 効果 書き出し">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PART 1 · PROCESS</span>
+        <h2>3. 設問解釈の型</h2>
+        <p class="section-summary">与件より先に設問を読む。設問文だけで「何をどこまで書くか」の枠は8割決まります。</p>
+
+        <div class="decision">
+          <div><b>STEP 1</b><br>設問文を音読するつもりで読む</div>
+          <div class="arrow">→</div>
+          <div><b>STEP 2</b><br>制約条件を囲む（時制・対象・レイヤー・字数）</div>
+          <div class="arrow">→</div>
+          <div><b>STEP 3</b><br>聞かれ方を分類し、書き出しの型を決める</div>
+        </div>
+
+        <h3>STEP 2：制約条件の抽出チェックリスト</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>制約</th><th>設問での現れ方</th><th>外すとどうなるか</th></tr></thead>
+            <tbody>
+              <tr><td><strong>時制</strong></td><td>「創業時」「A社長就任以前」「現在」「今後」</td><td>過去を聞かれて未来の助言を書く＝全滅。最頻出の事故</td></tr>
+              <tr><td><strong>対象</strong></td><td>「新規顧客に対して」「非正規社員について」「X社との取引において」</td><td>対象外の話で字数を使い、加点ゼロ</td></tr>
+              <tr><td><strong>レイヤー</strong></td><td>「全社的な」「事業戦略として」「施策を」</td><td>全社戦略を聞かれて現場のオペレーション改善を答える等のズレ</td></tr>
+              <tr><td><strong>立場</strong></td><td>「中小企業診断士として助言せよ」</td><td>評論で終わる。<strong>必ず実行可能な提案</strong>の形にする</td></tr>
+              <tr><td><strong>数の指定</strong></td><td>「2つあげよ」「それぞれ」「最も重要な」</td><td>指定数を満たさないと機械的に減点</td></tr>
+              <tr><td><strong>字数</strong></td><td>「100字以内」</td><td>解答欄は指定字数に対応した大きさで用意されるため、実際に問題になるのは<strong>字数不足</strong>。9割以上は必ず埋める</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tip"><strong>レイヤーの見分け方</strong><br>
+        <strong>全社戦略</strong>＝どの事業領域で戦うか（ドメイン、多角化、M&amp;A、組織構造）。<br>
+        <strong>事業戦略</strong>＝その領域でどう差別化するか（ターゲット、競争優位、STP）。<br>
+        <strong>機能戦略</strong>＝現場でどう回すか（生産、販売、人事の個別施策）。<br>
+        設問の主語が「A社は」なら全社〜事業、「A社の営業部門は」なら機能、と当たりをつけます。</div>
+
+        <h3>STEP 3：聞かれ方の分類と書き出しテンプレ</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>問われ方</th><th>求められているもの</th><th>書き出しの型</th></tr></thead>
+            <tbody>
+              <tr><td><strong>理由・要因</strong>を述べよ</td><td>与件の事実 → 結果への因果</td><td>「理由は①〜、②〜だから。」</td></tr>
+              <tr><td><strong>特徴</strong>を述べよ</td><td>他と比べた際の際立った点（評価は不要）</td><td>「特徴は①〜、②〜である。」</td></tr>
+              <tr><td><strong>問題点</strong>を述べよ</td><td>現状のマイナス（＝あるべき姿との差）</td><td>「問題点は①〜、②〜である。」</td></tr>
+              <tr><td><strong>課題</strong>を述べよ</td><td>これから取り組むべきこと（前向きな形）</td><td>「課題は①〜すること、②〜することである。」</td></tr>
+              <tr><td><strong>助言・提言</strong>せよ</td><td>実行可能な施策＋期待効果</td><td>「①〜し、②〜することで、〜を図る。」</td></tr>
+              <tr><td><strong>留意点</strong>を述べよ</td><td>実行時のリスクと、その回避策</td><td>「留意点は①〜、②〜である。」</td></tr>
+              <tr><td><strong>効果・メリット</strong>を述べよ</td><td>施策がもたらす結果（できれば定量・定性の両面）</td><td>「効果は①〜、②〜である。」</td></tr>
+              <tr><td><strong>相違・比較</strong>せよ</td><td>2つの対比軸を立てる</td><td>「Xは〜であるのに対し、Yは〜である。」</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="warning"><strong>「問題点」と「課題」を混ぜない</strong>問題点は<strong>現状のマイナス</strong>（例：生産計画が月次でしか立てられず、納期遅延が発生している）。課題は<strong>やるべきこと</strong>（例：生産計画を週次に短サイクル化すること）。設問が「課題」と言っているのに問題点だけ並べると、要求とズレた解答になります。</div>
+
+        <h3>設問文から知識を呼び出す</h3>
+        <p>設問文中のキーワードは、使うべき1次知識の指定です。与件を読む前に、余白に思いつく切り口をメモしておきます。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>設問中の言葉</th><th>呼び出す知識</th></tr></thead>
+            <tbody>
+              <tr><td>「組織構造」「体制」</td><td>機能別／事業部制／マトリックス、権限委譲、専門化</td></tr>
+              <tr><td>「人事施策」「モチベーション」</td><td>採用・配置・報酬・育成・評価（＋動機づけ理論）</td></tr>
+              <tr><td>「新規顧客」「ターゲット」</td><td>STP、デシル／RFM、ニーズの明確化</td></tr>
+              <tr><td>「生産性」「納期」「短縮」</td><td>生産計画・生産統制、段取り、標準化、DB共有</td></tr>
+              <tr><td>「差別化」</td><td>競争戦略（コストリーダーシップ／差別化／集中）</td></tr>
+              <tr><td>「連携」「協業」</td><td>外部資源活用、アウトソーシング、地域連携</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="quiz">
+          <p><strong>理解度チェック：</strong>「A社が、現在の組織構造を採用している<em>理由</em>を、<em>創業からの経緯</em>を踏まえて100字以内で述べよ」。この設問の制約条件をすべて挙げてください。</p>
+          <button data-answer="a-question">答えを見る</button>
+          <div id="a-question" class="answer">①<strong>時制＝過去〜現在</strong>（創業からの経緯／今後の助言ではない）、②<strong>対象＝現在の組織構造</strong>（他の施策の話は不可）、③<strong>問われ方＝理由</strong>（したがって「理由は①〜、②〜だから。」の因果で書く。助言や課題は書かない）、④<strong>レイヤー＝全社（組織構造）</strong>、⑤<strong>字数＝100字以内</strong>（＝2要素構成）。ここで「今後は事業部制に移行すべき」と書いたら、内容が正しくても加点されません。</div>
+        </div>
+      </section>
+
+      <section id="mapping" data-title="対応付け ひも付け 切り口 フレーム 多面性 優先順位 骨子">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PART 1 · PROCESS</span>
+        <h2>4. 対応付けと解答骨子</h2>
+        <p class="section-summary">書き始める前に、全設問の材料と方向を確定させる。ここで15分使うほうが、書き直すより速い。</p>
+
+        <h3>対応付けメモの作り方</h3>
+        <p>問題用紙の余白に、この形の表を手書きします。1設問1行、30秒で書けます。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>設問</th><th>要求（動詞）</th><th>使う段落</th><th>切り口</th><th>効果（着地点）</th></tr></thead>
+            <tbody>
+              <tr><td>第1問</td><td>理由（過去）</td><td>②③⑤</td><td>強み×成功体験</td><td>—（理由問題なので不要）</td></tr>
+              <tr><td>第2問</td><td>課題</td><td>⑥⑦</td><td>生産計画／標準化</td><td>納期短縮</td></tr>
+              <tr><td>第3問</td><td>助言（今後）</td><td>⑧⑨⑩</td><td>強み×機会</td><td>高付加価値化・差別化</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tip"><strong>段落の重複を疑う</strong>同じ段落を複数の設問に使っている場合、どちらかの対応付けを疑ってみてください。過去問を解くと、設問ごとに使う与件箇所がおおむね分かれていることが多く、<strong>与件の使い残しもゼロに近づける</strong>のが一つの目安になります。ただし出題者の設計意図が公表されているわけではないので、絶対のルールとしては扱わないこと。</div>
+
+        <h3>多面性の担保</h3>
+        <p>2次の採点は、内容の深さより<strong>要求された観点をいくつ拾えたか</strong>で差がつきます。1つの論点を掘り下げるより、<strong>2〜3個を並列に並べる</strong>ほうが期待値が高い。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>字数</th><th>要素数の目安</th><th>1要素あたり</th></tr></thead>
+            <tbody>
+              <tr><td>40〜60字</td><td>1〜2要素</td><td>30字前後</td></tr>
+              <tr><td>80〜100字</td><td>2要素</td><td>40〜45字</td></tr>
+              <tr><td>120〜150字</td><td>3要素</td><td>40〜45字</td></tr>
+              <tr><td>200字</td><td>3〜4要素＋効果</td><td>45〜50字</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="model"><strong>切り口（観点をずらす道具）の例</strong>要素が1つしか思いつかないときは、次の軸で「別の面」を探します。<br>
+        ・<strong>ヒト／モノ／カネ／情報</strong>　・<strong>短期／長期</strong>　・<strong>社内／社外</strong>　・<strong>売上増／コスト減</strong>　・<strong>質／量</strong>　・<strong>直接効果／間接効果</strong>　・<strong>組織／個人</strong></div>
+
+        <h3>根拠が足りないときの優先順位</h3>
+        <ol>
+          <li><strong>与件に明記された事実</strong>を使う（最優先。ほぼ確実に加点要素）</li>
+          <li>与件の事実に<strong>1次知識の一般論を1段だけ</strong>接続する（例：熟練依存 → 技能承継が困難）</li>
+          <li>それでも足りなければ、<strong>設問文中の言葉</strong>を使って埋める（出題者の想定内に留まる）</li>
+          <li>完全な一般論だけの記述は<strong>最後の手段</strong>。空欄よりはマシ、という位置づけ</li>
+        </ol>
+
+        <div class="quiz">
+          <p><strong>理解度チェック：</strong>「今後の施策を150字以内で助言せよ」。与件から使える強みが1つしか見つかりません。どう組み立てますか。</p>
+          <button data-answer="a-mapping">答えを見る</button>
+          <div id="a-mapping" class="answer">強みは1つでも、<strong>施策の面をずらして3要素</strong>にします。例：同じ「加工技術」という強みに対して、①製品面（自社ブランド品の開発）②販路面（EC・直販による新規顧客獲得）③組織面（技術承継のためのマニュアル化とOJT）。ヒト／モノ／情報、あるいは売上増／コスト減の軸で切ると要素が増えます。最後に「〜により差別化を図り、高付加価値化を実現する」と効果で締める。</div>
+        </div>
+      </section>
+
+      <section id="writing" data-title="文型 テンプレ 因果 構文 字数配分 体言止め 主語 禁じ手">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PART 1 · PROCESS</span>
+        <h2>5. 解答骨子のテンプレ文型</h2>
+        <p class="section-summary">文章のうまさは採点されません。<strong>因果が見えること</strong>と<strong>要素が数えられること</strong>だけが評価されます。</p>
+
+        <h3>基本構文</h3>
+        <div class="formula"><span class="label">助言問題の基本形</span>①【与件の根拠／強み】<strong>を活かし</strong>、②【具体的な施策】<strong>を行うことで</strong>、③【期待効果】<strong>を図る。</strong></div>
+        <div class="formula"><span class="label">理由・要因問題の基本形</span>理由は、①【事実】<strong>により</strong>【結果】したため、②【事実】<strong>により</strong>【結果】したため。</div>
+        <div class="formula"><span class="label">問題点・課題問題の基本形</span>①【現状】<strong>のため</strong>【不具合】が生じている点、②〜。／課題は①【動詞＋こと】、②〜。</div>
+
+        <div class="model"><strong>なぜ「①②」と番号を振るのか</strong>採点は要素の有無で行われると考えられており、番号があると採点者が要素を数えやすくなります。同時に、自分が「多面的に書けているか」を書きながら確認できる。<strong>字数の無駄になるので丸数字（①②）を使い、「1つ目は」とは書かない。</strong></div>
+
+        <h3>設問タイプ別の文型カタログ</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>タイプ</th><th>文型</th><th>例（事例II・100字）</th></tr></thead>
+            <tbody>
+              <tr><td>助言</td><td>【誰に】【何を】【どのように】【効果】</td><td>「①地域の子育て世帯に対し、②地元食材を使った総菜を、③SNSでの調理動画配信により訴求し、来店頻度向上と客単価上昇を図る。」</td></tr>
+              <tr><td>理由</td><td>因果を2本並べる</td><td>「理由は①創業以来の高級路線により固定客の信頼を得たため、②職人の育成に時間をかけ品質を維持できたため。」</td></tr>
+              <tr><td>課題</td><td>「〜すること」で揃える</td><td>「課題は①生産計画を週次に短サイクル化すること、②作業を標準化し多能工化を進めること、③在庫情報を一元管理すること。」</td></tr>
+              <tr><td>留意点</td><td>リスク＋回避策</td><td>「留意点は①既存顧客の離反を招かぬよう段階的に移行すること、②人員負荷が集中しないよう権限委譲を進めること。」</td></tr>
+              <tr><td>効果</td><td>定量＋定性</td><td>「効果は①段取り時間短縮による生産リードタイム短縮、②技能承継による品質の安定である。」</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>字数を稼がず、要素を増やす</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>やること</th><th>やらないこと</th></tr></thead>
+            <tbody>
+              <tr><td>与件の言葉をそのまま使う</td><td>自分の言葉に言い換えて字数を消費する</td></tr>
+              <tr><td>体言止めで要素を詰める（「〜の標準化」）</td><td>「〜であると考えられる」等の推量表現</td></tr>
+              <tr><td>主語をA社に統一し、多くは省略する</td><td>「A社は」を要素ごとに繰り返す</td></tr>
+              <tr><td>効果は最後に1回まとめる</td><td>要素ごとに効果を書いて字数を溶かす</td></tr>
+              <tr><td>指定字数の<strong>9割以上</strong>を埋める</td><td>余白を残す／字数超過</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="warning"><strong>禁じ手</strong>
+        <ul>
+          <li><strong>与件にない事実の創作</strong>（「A社には優秀な営業部隊があるので」＝書いていないなら使えない）</li>
+          <li><strong>一般論だけの解答</strong>（「PDCAを回すべきである」だけでは与件企業の話になっていない）</li>
+          <li><strong>設問要求とのズレ</strong>（理由を聞かれて対策を書く。内容が正しくても0点になり得る最大の事故）</li>
+          <li><strong>実現不可能な提案</strong>（従業員20名の企業に大規模な基幹システム導入や海外進出を勧める）</li>
+          <li><strong>社長の意向に反する提案</strong>（「後継者に承継したい」と言っている社長にM&amp;Aによる売却を勧める）</li>
+        </ul></div>
+
+        <div class="quiz">
+          <p><strong>理解度チェック：</strong>次の解答を、加点されやすい形に直してください。<br>「A社は、これまで培ってきた技術力が非常に高く、それは大きな強みであると考えられる。今後はその強みを活かしていくことが望ましいのではないかと思われる。」（100字設問）</p>
+          <button data-answer="a-writing">答えを見る</button>
+          <div id="a-writing" class="answer">推量表現（〜と考えられる／〜ではないか）と修飾（非常に、大きな）で字数の半分が消え、<strong>具体的な施策も効果もありません</strong>。直すとこうなります：<br>「①高い加工技術を活かし自社ブランド品を開発、②ECによる直販で新規顧客を開拓し、③技術のマニュアル化で承継を進め、高付加価値化と差別化を図る。」<br>同じ字数で<strong>要素3つ＋効果</strong>が入りました。</div>
+        </div>
+      </section>
+
+      <section id="review" data-title="見直し チェックリスト 誤字 字数 要求 社長の想い 提出前">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PART 1 · PROCESS</span>
+        <h2>6. 見直しチェックリスト</h2>
+        <p class="section-summary">残り8分でやること。書き直しではなく、<strong>事故の発見</strong>が目的です。</p>
+
+        <h3>優先順（上から順に確認する）</h3>
+        <ul class="checklist">
+          <li><strong>空欄がないか</strong>（最優先。1問空欄＝約20点の損失）</li>
+          <li><strong>設問要求と解答が一致しているか</strong>。理由を聞かれて対策を書いていないか。設問文の動詞をもう一度指でなぞる</li>
+          <li><strong>時制</strong>が合っているか。「創業時」を聞かれて現在の話をしていないか</li>
+          <li><strong>指定数</strong>を満たしているか。「2つあげよ」に1つしか書いていないか</li>
+          <li><strong>字数</strong>。超過していないか、9割埋まっているか</li>
+          <li><strong>社長の想い</strong>と矛盾していないか</li>
+          <li><strong>与件にない事実</strong>を書いていないか</li>
+          <li><strong>誤字・脱字</strong>、判読できない字。特に固有名詞（A社／X社の取り違え）</li>
+          <li><strong>受験番号</strong>の記入（毎回確認する）</li>
+        </ul>
+
+        <div class="tip"><strong>直すか、直さないか</strong>残り時間が5分未満なら、<strong>設問要求とのズレ以外は直さない</strong>。消して書き直す途中でタイムアップすると、消しただけの空欄が残ります。書き加えるだけで済む修正（要素を1つ足す）を優先してください。</div>
+
+        <div class="quiz">
+          <p><strong>理解度チェック：</strong>残り4分。第2問（120字）を読み返したら、設問は「問題点」を聞いているのに、自分は「対策」を書いていました。どうしますか。</p>
+          <button data-answer="a-review">答えを見る</button>
+          <div id="a-review" class="answer">これは<strong>直す価値がある唯一の類型</strong>（要求とのズレは内容が正しくても加点されない）。ただし全消しは危険なので、書いた対策を裏返して問題点に変換します。「生産計画を週次化すべき」→「生産計画が月次でしか立てられず、需要変動に対応できていない」。対策文は多くの場合、問題点の裏返しなので、語尾と主語を変えるだけで転換できます。</div>
+        </div>
+      </section>
+
+      <section id="case1" data-title="事例I 組織 人事 茶化 幸の日も毛深いねこ ネットワーク コミュニケーション 機能別 事業部制 権限委譲 同族 成果主義 PMI 組織活性化">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PART 2 · CASE Ⅰ</span>
+        <h2>7. 事例Ⅰ 組織・人事</h2>
+        <p class="section-summary">与件の記述が最も抽象的な事例。<strong>切り口を先に用意しておかないと手が止まる</strong>ので、フレームの暗記が効きます。</p>
+
+        <div class="tip"><strong>事例Ⅰの最終的な着地点は、ほぼ2つ</strong>①<strong>組織活性化・モラール向上</strong>、②<strong>継続的な競争優位の確立（人材の確保・育成による）</strong>。施策を書いたら、最後はこのどちらかにつなげると解答が締まります。</div>
+
+        <h3>第1問は環境分析</h3>
+        <p>事例Ⅰでも第1問は施策ではなく<strong>分析</strong>です（令和6年度「2000年当時におけるA社の内部環境を分析する能力」、令和7年度「新規事業への進出時における外部環境と内部環境の現状分析をする能力」）。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>聞かれ方</th><th>使う枠</th><th>書き方</th></tr></thead>
+            <tbody>
+              <tr><td>強み／弱みを述べよ</td><td>内部環境（S・W）</td><td>経営資源（ヒト・モノ・カネ・情報）と能力で切る。「強みは①熟練職人による高い加工技術、②長年の取引で築いた顧客との信頼関係。」</td></tr>
+              <tr><td>外部環境を分析せよ</td><td>機会・脅威（O・T）</td><td>市場（需要動向）・競合・技術・法規制で切る</td></tr>
+              <tr><td>〜当時の状況を分析せよ</td><td><strong>時制の指定に注意</strong></td><td>指定された時点の与件記述だけを使う。現在の話を混ぜない</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="warning"><strong>分析問題に助言を書かない</strong>「分析する能力を問う」設問に「〜すべきである」と書くと、要求とズレます。逆に「助言する能力を問う」設問に分析だけ書いても同じです。設問の動詞を必ず確認してください（3章）。</div>
+
+        <h3>組織・人事の切り口：「幸の日も毛深いねこ」</h3>
+        <p>人事施策を聞かれたら、この語呂で観点を洗い出します。全部使う必要はなく、与件に材料があるものを2〜3個選びます。前半9文字は主に<strong>人事制度</strong>の話で、末尾の「<strong>ねこ</strong>」を足すと<strong>組織活性化</strong>（部門間の連携と情報共有）の観点が入ります。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>音</th><th>観点</th><th>具体的な施策例</th></tr></thead>
+            <tbody>
+              <tr><td><strong>さ</strong></td><td>採用</td><td>中途採用による専門人材の獲得、新卒採用による年齢構成の是正</td></tr>
+              <tr><td><strong>ち</strong></td><td>賃金・報酬</td><td>成果に連動した報酬、資格手当、退職金制度</td></tr>
+              <tr><td><strong>の</strong></td><td>能力開発</td><td>OJT、Off-JT、資格取得支援、多能工化</td></tr>
+              <tr><td><strong>ひ</strong></td><td>評価</td><td>目標管理制度（MBO）、評価基準の明確化・公開</td></tr>
+              <tr><td><strong>も</strong></td><td>モチベーション</td><td>権限委譲、目標の共有、表彰、キャリアパス提示</td></tr>
+              <tr><td><strong>け</strong></td><td>権限委譲</td><td>意思決定の現場への委譲、責任と権限の一致</td></tr>
+              <tr><td><strong>ぶ</strong></td><td>部門・組織</td><td>専門部署の設置、プロジェクトチーム、兼務の解消</td></tr>
+              <tr><td><strong>か</strong></td><td>階層</td><td>階層のフラット化、中間管理職の育成</td></tr>
+              <tr><td><strong>い</strong></td><td>異動・配置<br><span class="source-note">（「意思決定」と読む流儀もある）</span></td><td>ジョブローテーション、適材適所、後継者の育成</td></tr>
+              <tr><td><strong>ね</strong></td><td>ネットワーク</td><td>部門横断のプロジェクトチーム、社外との連携（産学連携・他社との協業）、人的ネットワークの構築</td></tr>
+              <tr><td><strong>こ</strong></td><td>コミュニケーション</td><td>部門間交流の促進、情報共有の仕組み、経営理念・目標の共有、風通しの良い組織文化</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tip"><strong>語呂は1つに決めて使う</strong>この手の語呂は受験生の間で作られたもので、公式のものではなく<strong>変種が多い</strong>（「幸の日も毛深い」の9文字版、「ねこ」を足した11文字版、より短い「茶化」など。同じ文字に別の観点を当てる読み方も流通しています）。<strong>どれを使っても構いませんが、本番で思い出す語呂は1つに固定してください。</strong>複数覚えていると、当日どちらを書き出すか迷う時間が生まれます。</div>
+        <p class="source-note">「ねこ」の2文字は、事例Ⅰの着地点である<strong>組織活性化・モラール向上</strong>に最も直結する観点です。制度（採用・賃金・評価）だけで解答を作ると単調になりがちなので、要素が足りないときはここから1つ足すと多面性が出ます。</p>
+
+        <h3>組織構造の使い分け</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>構造</th><th>メリット</th><th>デメリット</th><th>与件でのトリガー</th></tr></thead>
+            <tbody>
+              <tr><td><strong>機能別組織</strong></td><td>専門性の蓄積、規模の経済、トップに情報集中</td><td>部門間対立、経営者の負担大、次世代経営者が育たない</td><td>単一事業、小規模、社長がすべて決めている</td></tr>
+              <tr><td><strong>事業部制組織</strong></td><td>迅速な意思決定、責任の明確化、<strong>経営者人材の育成</strong></td><td>経営資源の重複、事業部間セクショナリズム、短期志向</td><td>複数事業・複数地域、後継者育成が課題</td></tr>
+              <tr><td><strong>マトリックス組織</strong></td><td>資源の有効活用、複数軸への同時対応</td><td><strong>ワンマンツーボス</strong>による命令系統の混乱</td><td>プロジェクト型、少人数で多製品</td></tr>
+              <tr><td><strong>カンパニー制</strong></td><td>事業部制より独立性が高く、責任がより明確</td><td>全社最適が働きにくい</td><td>事業規模が大きい</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>頻出テーマと定番の因果</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>テーマ</th><th>押さえる論点</th></tr></thead>
+            <tbody>
+              <tr><td><strong>同族企業・事業承継</strong></td><td>意思決定は速いが独断に陥りやすい／後継者は<strong>権限委譲と修羅場経験</strong>で育てる／古参社員との軋轢に留意</td></tr>
+              <tr><td><strong>成果主義の導入</strong></td><td>短期志向・個人主義を招き、<strong>組織的な協働と技能承継が阻害される</strong>／評価基準の透明性とプロセス評価の併用で緩和</td></tr>
+              <tr><td><strong>専門部署の設置</strong></td><td>専門性の蓄積とノウハウの組織的共有／ただし<strong>人員数の制約</strong>があるので中小企業では兼務・小規模から</td></tr>
+              <tr><td><strong>非正規・高齢化</strong></td><td>技能承継の断絶がリスク／正社員登用、マニュアル化、シニアの指導役化</td></tr>
+              <tr><td><strong>M&amp;A後の統合（PMI）</strong></td><td><strong>組織文化の融合</strong>が最大の課題／人事制度の統一、交流機会、シナジーの明示</td></tr>
+              <tr><td><strong>外部連携</strong></td><td>不足する経営資源を外部で補う／自社は<strong>コア業務に集中</strong>／依存しすぎるとノウハウが蓄積しない</td></tr>
+              <tr><td><strong>組織文化</strong></td><td>創業者の理念が浸透＝強みだが、<strong>環境変化への抵抗</strong>にもなる（両面で書ける）</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="model"><strong>「なぜ〜したのか」への答え方</strong>事例Ⅰの理由問題は、ほぼ<strong>「経営資源が限られる中小企業だから」</strong>に帰着します。<br>
+        例：「なぜA社は特定顧客との取引に集中したのか」→ 経営資源が限られるため、<strong>選択と集中</strong>により限られた資源を投入し、専門性を高めて競争優位を築くため。<br>
+        例：「なぜ正社員を増やさなかったのか」→ 固定費の増加を避け、需要変動への<strong>柔軟性</strong>を確保するため。</div>
+
+        <div class="quiz">
+          <p><strong>理解度チェック：</strong>A社は成果主義的な賃金制度の導入を検討しています。留意点を100字で助言するなら、何を書きますか。</p>
+          <button data-answer="a-case1">答えを見る</button>
+          <div id="a-case1" class="answer">「留意点は①短期的成果への偏重により<strong>技能承継や組織的協働が阻害</strong>される点、②評価基準が不透明だと<strong>従業員のモラール低下</strong>を招く点。評価基準の明確化とプロセス評価の併用で緩和を図る。」<br>事例Iで成果主義が出たら、<strong>まず負の側面</strong>（個人主義化・協働の阻害・技能承継の断絶）を挙げ、対処をセットにするのが定石です。</div>
+        </div>
+      </section>
+
+      <section id="case2" data-title="事例II マーケティング 流通 ダナドコ STP 4P 関係性 デシル RFM 地域資源 商店街 小売">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PART 2 · CASE Ⅱ</span>
+        <h2>8. 事例Ⅱ マーケティング・流通</h2>
+        <p class="section-summary">与件に材料が多い分、<strong>誰に売るのかを外すと全部外れる</strong>。ターゲットの特定が最重要です。</p>
+
+        <h3>第1問は環境分析（3C／SWOT）</h3>
+        <p>事例Ⅱの第1問は令和5〜7年度すべて「B社内外の経営環境を分析する能力」でした。令和7年度は<strong>「顧客・競合・自社の3つの視点から」と3Cを名指し</strong>しています。ここは毎年ほぼ確実に出る得点源です。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>視点</th><th>与件から拾うもの</th><th>書き方の例</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Customer</strong><br>顧客・市場</td><td>顧客層（年代・世帯構成）、需要動向、地域の人口、ニーズの変化</td><td>「顧客は近隣の高齢世帯中心で、健康志向が高まっている」</td></tr>
+              <tr><td><strong>Competitor</strong><br>競合</td><td>大手・チェーンの進出、同業者数、競合の強み</td><td>「競合は郊外の大型店で、価格と品揃えで優位」</td></tr>
+              <tr><td><strong>Company</strong><br>自社</td><td>強み（技術・品揃え・立地・顧客との関係）と弱み（人員・資金・認知度）</td><td>「自社は対面接客と地元産食材の目利きが強みだが、認知度と発信力が弱い」</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tip"><strong>3CとSWOTの使い分け</strong>設問が「顧客・競合・自社」と指定していれば<strong>3C</strong>、「強みと弱み」なら<strong>内部環境（SW）</strong>、「経営環境」と広く聞かれたら<strong>SWOT</strong>で4面拾う。<strong>設問の言葉に合わせて枠を選ぶ</strong>のが安全で、指定された視点を1つでも落とすとその分の加点が消えます。</div>
+
+        <h3>解答の基本フレーム：「ダナドコ」</h3>
+        <div class="formula"><span class="label">事例Ⅱの助言問題は全部この形</span><strong>ダ</strong>れに　×　<strong>ナ</strong>にを　×　<strong>ド</strong>のように　→　<strong>コ</strong>うか（効果）</div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>要素</th><th>書くこと</th><th>与件のどこから取るか</th></tr></thead>
+            <tbody>
+              <tr><td><strong>誰に</strong></td><td>年代・性別・地理・ライフスタイルまで具体的に（「地域の高齢者」ではなく「近隣に住む健康志向の高齢夫婦世帯」）</td><td>顧客層、地域の人口構成、既存顧客の記述</td></tr>
+              <tr><td><strong>何を</strong></td><td>製品・サービス。<strong>強みが活きるもの</strong></td><td>強み、保有技術、地域資源、既存商品</td></tr>
+              <tr><td><strong>どのように</strong></td><td>チャネル・販促・価格。SNS、イベント、DM、実演、EC</td><td>既存の販路、社長の想い、競合との違い</td></tr>
+              <tr><td><strong>効果</strong></td><td>新規顧客獲得／来店・購買頻度向上／客単価向上／固定客化／売上向上</td><td>設問の要求（「売上向上策」なら売上に着地）</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="tip"><strong>ターゲットは絞る</strong>中小企業は経営資源が限られるので、「幅広い層に」は事例Ⅱでは減点方向です。<strong>与件に出てくる特定の顧客層を名指しする</strong>のが正解の形。誰に売るかを絞れば、何をどう売るかは自動的に決まります。</div>
+
+        <h3>頻出の知識</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>論点</th><th>要点</th></tr></thead>
+            <tbody>
+              <tr><td><strong>STP</strong></td><td>セグメンテーション（切り口：地理・人口動態・心理・行動）→ ターゲティング → ポジショニング（競合との相対的な位置）</td></tr>
+              <tr><td><strong>4P</strong></td><td>Product／Price／Place／Promotion。「安売り競争に乗らない」のは原則だが、<strong>Price そのものを問う設問は実際に出ます</strong>（令和5年度「プライシングの観点から」、令和7年度「価格設定およびダイナミックプライシング」）。値下げではなく<strong>価値に見合った価格設定・需要に応じた価格の出し分け</strong>として答えるのが筋</td></tr>
+              <tr><td><strong>関係性マーケティング</strong></td><td>新規獲得より<strong>既存顧客の維持</strong>のほうが低コスト。双方向コミュニケーション、顧客DB、会員制、イベントで固定客化</td></tr>
+              <tr><td><strong>デシル分析</strong></td><td>顧客を購買金額順に10等分し、上位層に施策を集中</td></tr>
+              <tr><td><strong>RFM分析</strong></td><td><strong>R</strong>ecency（最終購買日）・<strong>F</strong>requency（頻度）・<strong>M</strong>onetary（金額）で顧客を層別。休眠顧客の掘り起こしに使う</td></tr>
+              <tr><td><strong>地域資源の活用</strong></td><td>特産品・観光資源・伝統技術。<strong>模倣困難性</strong>が高く差別化の源泉になる</td></tr>
+              <tr><td><strong>他社との協業</strong></td><td>不足する経営資源を補完。地域の他業種と組み、相互送客・共同イベント・共同商品開発</td></tr>
+              <tr><td><strong>口コミ・SNS</strong></td><td>低コストで情報発信できる中小企業向けの手段。<strong>双方向性</strong>によりニーズ収集も同時にできる（＝一石二鳥なので書きやすい）</td></tr>
+              <tr><td><strong>B2B（法人取引）</strong></td><td>提案営業、共同開発、一貫対応、短納期対応が差別化要因</td></tr>
+              <tr><td><strong>チャネル戦略</strong></td><td>顧客接点をどう持つか。実店舗／EC／SNS／カタログ・DM／卸。<strong>複数チャネルを組み合わせて接点を増やす</strong>のが定番の助言（令和6年度「顧客接点を強化する施策について、チャネル戦略の観点から」）</td></tr>
+              <tr><td><strong>プライシング</strong></td><td>単なる値下げではなく、<strong>価値に見合った価格設定</strong>と<strong>需要に応じた出し分け</strong>。ダイナミックプライシング（時間帯・曜日・季節で価格を変え、需要を平準化し混雑を分散）、価格差別、セット価格、サブスクリプション</td></tr>
+              <tr><td><strong>サービス業の特性</strong></td><td>無形性・同時性・不均質性・消滅性。<strong>不均質性への対策＝標準化とマニュアル化</strong>、消滅性への対策＝需要の平準化</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>売上をどう増やすか（分解して考える）</h3>
+        <div class="formula"><span class="label">売上の分解</span>売上高 ＝ 客数（新規＋既存）× 購買頻度 × 客単価</div>
+        <p>「売上向上策を助言せよ」と言われたら、この3つのどこを上げるのかを決めます。1つの解答に<strong>新規獲得と既存深耕を両方</strong>入れると多面性が出せます。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>どこを上げるか</th><th>典型的な施策</th></tr></thead>
+            <tbody>
+              <tr><td>新規客数</td><td>SNS・HP発信、地域イベント出展、協業先からの送客、EC進出</td></tr>
+              <tr><td>購買頻度</td><td>会員制・ポイント、DM／メルマガ、定期便、季節ごとの新商品</td></tr>
+              <tr><td>客単価</td><td>関連商品の同時提案（クロスセル）、高価格帯商品の投入（アップセル）、セット販売</td></tr>
+              <tr><td>離反防止</td><td>顧客DBによる履歴管理、アフターフォロー、休眠顧客へのDM</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="quiz">
+          <p><strong>理解度チェック：</strong>「B社が新規顧客を獲得するための施策を100字で助言せよ」。ダナドコに沿って骨子を作ってください（与件は「地元産の果物を使った菓子製造・小売、近隣に子育て世帯が増加、社長はSNSに関心」とする）。</p>
+          <button data-answer="a-case2">答えを見る</button>
+          <div id="a-case2" class="answer">「①<strong>近隣に増加している子育て世帯</strong>に対し、②<strong>地元産果物を使った</strong>子供向け菓子・詰め合わせを、③<strong>SNSでの製造工程や地元農家の紹介動画により</strong>訴求し、④新規顧客を獲得し固定客化を図る。」<br>誰に＝与件の「増加している子育て世帯」を名指し、何を＝強みの地元産果物、どのように＝社長が関心を持つSNS、効果＝設問の要求（新規獲得）。<strong>4要素すべてが与件由来</strong>である点が重要です。</div>
+        </div>
+      </section>
+
+      <section id="case3" data-title="事例III 生産 技術 DRINK 生産計画 生産統制 5S 3定 段取り 外段取り ロット SLP 標準化 多能工 納期短縮">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PART 2 · CASE Ⅲ</span>
+        <h2>9. 事例Ⅲ 生産・技術</h2>
+        <p class="section-summary">最もパターン化された事例。<strong>問題点はほぼ決まった型で出て、対策も決まっている</strong>ので、暗記が最も効きます。</p>
+
+        <div class="tip"><strong>事例Ⅲの構造は毎年ほぼ同じ</strong>①C社の強み（技術力・一貫生産・短納期対応など）→ ②現場のオペレーション上の問題点 → ③生産管理上の問題点 → ④新規受注や新事業への対応。設問も「生産面の課題と対応策」「情報の活用」「今後の戦略」に分かれます。</div>
+
+        <h3>情報系の切り口：「DRINK」</h3>
+        <p>「情報の活用について助言せよ」と聞かれたら、この5つから与件に合うものを選びます。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>音</th><th>意味</th><th>書き方</th></tr></thead>
+            <tbody>
+              <tr><td><strong>D</strong></td><td>データベース化（Database）</td><td>受注・在庫・工程進捗・図面をDB化する</td></tr>
+              <tr><td><strong>R</strong></td><td>リアルタイム化（Real time）</td><td>実績を都度入力し、遅れを即座に検知する</td></tr>
+              <tr><td><strong>I</strong></td><td>一元管理（Integration）</td><td>部門ごとにバラバラな情報を統合する</td></tr>
+              <tr><td><strong>N</strong></td><td>ネットワーク化（Network）</td><td>営業・製造・購買を接続し、社外（顧客・協力会社）とも共有</td></tr>
+              <tr><td><strong>K</strong></td><td>共有化</td><td>全社で同じ情報を見られるようにし、属人性を排除</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>問題点 → 対策の定番セット（暗記推奨）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>与件に出る問題点</th><th>対策（解答に書く）</th><th>効果</th></tr></thead>
+            <tbody>
+              <tr><td>生産計画が<strong>月次でしか</strong>立てられない</td><td>計画を<strong>週次・日次へ短サイクル化</strong>し、変更に対応</td><td>納期遵守、仕掛在庫削減</td></tr>
+              <tr><td>生産計画が<strong>一部工程のみ</strong>で立てられている</td><td><strong>全工程</strong>を対象に計画を立案</td><td>工程間の停滞解消</td></tr>
+              <tr><td>作業が<strong>ベテランの経験・勘</strong>に依存</td><td><strong>標準化 → マニュアル化 → OJTで教育</strong>（この順で書く）</td><td>技能承継、品質安定、多能工化</td></tr>
+              <tr><td><strong>段取り替え</strong>に時間がかかる</td><td><strong>外段取り化</strong>（機械を止めずに準備）、治具の標準化、段取り作業の標準化</td><td>稼働率向上、小ロット化が可能に</td></tr>
+              <tr><td><strong>ロットサイズが大きい</strong></td><td>段取り短縮を前提に<strong>小ロット化</strong></td><td>在庫削減、リードタイム短縮、多品種対応</td></tr>
+              <tr><td><strong>在庫が過大</strong>／欠品が発生</td><td>在庫の<strong>実績データに基づく発注点管理</strong>、DBによる一元管理</td><td>在庫削減とキャッシュフロー改善</td></tr>
+              <tr><td><strong>工程間に仕掛品が滞留</strong></td><td><strong>ネック工程</strong>の能力増強、工程間の負荷平準化</td><td>リードタイム短縮</td></tr>
+              <tr><td>運搬・移動が多い、<strong>レイアウトが悪い</strong></td><td><strong>SLP</strong>による設備配置の見直し、工程順にレイアウト</td><td>運搬距離短縮</td></tr>
+              <tr><td>現場が<strong>乱雑</strong>、探す時間がある</td><td><strong>5S</strong>（整理・整頓・清掃・清潔・躾）と<strong>3定</strong>（定位・定品・定量）</td><td>作業効率向上、ミス削減</td></tr>
+              <tr><td><strong>設計・図面が個人管理</strong></td><td>CAD/CADデータの標準化とDB共有、<strong>設計の標準化・共通化</strong></td><td>設計工数削減、流用による短納期化</td></tr>
+              <tr><td><strong>営業と製造の情報が断絶</strong></td><td>受注情報の即時共有、定期的な生産会議</td><td>納期回答の精度向上</td></tr>
+              <tr><td><strong>需要予測が外れる</strong></td><td>顧客との<strong>内示情報の共有</strong>、実績データに基づく需要予測</td><td>過剰在庫と欠品の同時削減</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>生産管理の基礎用語</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>用語</th><th>内容</th></tr></thead>
+            <tbody>
+              <tr><td><strong>生産計画</strong></td><td>いつ・何を・どれだけ作るかを決める。大日程／中日程／小日程</td></tr>
+              <tr><td><strong>生産統制</strong></td><td>計画どおり進んでいるかを管理。<strong>進捗管理・現品管理・余力管理</strong>の3つ（設問で「統制面」と言われたらこれ）</td></tr>
+              <tr><td><strong>受注生産／見込生産</strong></td><td>受注生産＝納期とリードタイムが論点。見込生産＝需要予測と在庫が論点</td></tr>
+              <tr><td><strong>個別生産／ロット生産／連続生産</strong></td><td>多品種少量なら個別・ロット。段取り替えの頻度が問題になる</td></tr>
+              <tr><td><strong>内外作区分</strong></td><td>コア技術は内製、非コアは外注。<strong>外注はコスト変動費化と繁閑調整</strong>に効くが、ノウハウが蓄積しない</td></tr>
+              <tr><td><strong>QCD</strong></td><td>Quality（品質）・Cost（原価）・Delivery（納期）。事例Ⅲの効果はこの3つのどれかに着地する</td></tr>
+              <tr><td><strong>原価管理・価格転嫁</strong></td><td>材料費・人件費の高騰局面で頻出。<strong>製品別・工程別の原価を把握できていない</strong>ことが問題点になり、対策は<strong>実績データに基づく原価の可視化 → 根拠を示した価格交渉</strong>（令和6年度第4問）</td></tr>
+              <tr><td><strong>多能工化</strong></td><td>1人が複数工程を担当。負荷の平準化と欠員対応に効く。前提として<strong>作業の標準化</strong>が必要</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="model"><strong>事例Ⅲの解答は「順序」がある</strong>いきなり「DBを導入する」と書いてはいけません。<br>
+        <strong>標準化 → マニュアル化 → 教育（OJT）→ 多能工化</strong>、<br>
+        <strong>段取り短縮 → 小ロット化 → 在庫削減・リードタイム短縮</strong>、<br>
+        <strong>実績データの収集 → DB化・一元管理 → 全社共有 → 精度の高い計画</strong>。<br>
+        この因果の鎖をそのまま解答文にすると、多面的かつ論理的な記述になります。</div>
+
+        <div class="quiz">
+          <p><strong>理解度チェック：</strong>与件に「受注が増えたが納期遅延が頻発している。生産計画は月初に月次で作成し、その後の急な受注には現場責任者が都度判断して対応している」とあります。問題点と対応策を120字で。</p>
+          <button data-answer="a-case3">答えを見る</button>
+          <div id="a-case3" class="answer">「問題点は①生産計画が<strong>月次</strong>のため受注変動に対応できない点、②<strong>現場責任者の個人判断</strong>に依存し全体最適が図れない点。対応策は①計画を<strong>週次・日次へ短サイクル化</strong>し、②受注・進捗情報を<strong>DBで一元管理し全社共有</strong>することで、納期遵守を図る。」<br>「月次」と「属人的判断」は事例Ⅲの二大定番。それぞれ<strong>短サイクル化</strong>と<strong>情報の一元管理・共有</strong>という決まった対策がつきます。</div>
+        </div>
+      </section>
+
+      <section id="case4" data-title="事例IV 財務 会計 経営分析 収益性 効率性 安全性 CVP 損益分岐点 限界利益 NPV 正味現在価値 キャッシュフロー 減価償却 WACC ROI 為替 デリバティブ 標準原価">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PART 3 · CASE Ⅳ</span>
+        <h2>10. 事例Ⅳ 財務・会計</h2>
+        <p class="section-summary">唯一「対策量が点数に直結する」事例。公式を暗記するのではなく、<strong>なぜその式になるのか</strong>を押さえると、変化球にも対応できます。</p>
+
+        <div class="tip"><strong>事例Ⅳの得点設計</strong>第1問の<strong>経営分析</strong>（配点20〜25点）はほぼ毎年出て、最も取りやすい。ここと記述問題を確実に取れば、それだけで50点前後。残りをCVPとNPVで上積みして70点台に乗せる、というのが現実的な組み立てです。</div>
+
+        <h3>10-1. 経営分析</h3>
+        <p>与件企業と同業他社（または前年）の財務諸表を比較し、<strong>優れている指標と劣っている指標</strong>を挙げて、その原因を与件から説明する問題。</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>区分</th><th>指標</th><th>算式</th><th>単位</th><th>この指標が悪いときの与件の記述</th></tr></thead>
+            <tbody>
+              <tr><td rowspan="4"><strong>収益性</strong></td><td>売上高総利益率</td><td>売上総利益 ÷ 売上高 × 100</td><td>%</td><td>原材料高騰、値引き、低付加価値品の比率が高い</td></tr>
+              <tr><td>売上高営業利益率</td><td>営業利益 ÷ 売上高 × 100</td><td>%</td><td>人件費・販管費の負担が重い、広告費が過大</td></tr>
+              <tr><td>売上高経常利益率</td><td>経常利益 ÷ 売上高 × 100</td><td>%</td><td>借入金の支払利息が重い</td></tr>
+              <tr><td>売上高販管費比率</td><td>販管費 ÷ 売上高 × 100</td><td>%</td><td>人員過剰、店舗維持費、物流費</td></tr>
+              <tr><td rowspan="4"><strong>効率性</strong></td><td>総資本回転率</td><td>売上高 ÷ 総資本</td><td>回</td><td>売上に対して資産が過大（設備・在庫・売掛金）</td></tr>
+              <tr><td>売上債権回転率</td><td>売上高 ÷ 売上債権</td><td>回</td><td>回収条件が悪い、回収が遅い</td></tr>
+              <tr><td>棚卸資産回転率</td><td>売上高 ÷ 棚卸資産</td><td>回</td><td>在庫過大、滞留在庫、見込生産の失敗</td></tr>
+              <tr><td>有形固定資産回転率</td><td>売上高 ÷ 有形固定資産</td><td>回</td><td>設備投資に見合う売上がない、遊休資産</td></tr>
+              <tr><td rowspan="5"><strong>安全性</strong></td><td>自己資本比率</td><td>自己資本 ÷ 総資本 × 100</td><td>%</td><td>借入依存、累積赤字</td></tr>
+              <tr><td>流動比率</td><td>流動資産 ÷ 流動負債 × 100</td><td>%</td><td>短期借入が多い、手元資金が薄い</td></tr>
+              <tr><td>当座比率</td><td>当座資産 ÷ 流動負債 × 100</td><td>%</td><td>流動比率は高いが<strong>在庫が膨らんでいる</strong>ときに差が出る</td></tr>
+              <tr><td>固定比率</td><td>固定資産 ÷ 自己資本 × 100</td><td>%</td><td>自己資本を超える固定資産投資（低いほど良い）</td></tr>
+              <tr><td>固定長期適合率</td><td>固定資産 ÷（自己資本＋固定負債）× 100</td><td>%</td><td>設備投資を短期借入で賄っている</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="model"><strong>指標の選び方（この順で機械的に）</strong>
+        <ol>
+          <li><strong>3区分から1つずつ</strong>選ぶのが基本（収益性・効率性・安全性）。設問が「2つ」なら、与件の記述が濃い2区分から</li>
+          <li>各区分の中では、<strong>他社との差が最も大きい指標</strong>を選ぶ（電卓で比率を出して比べる）</li>
+          <li>選んだ指標について、<strong>与件に原因が書いてあるか</strong>を確認。書いていない指標は選ばない</li>
+          <li>「良い点1つ・悪い点2つ」型なら、良い点＝強みが表れている指標（多くは収益性か効率性）</li>
+        </ol></div>
+
+        <div class="warning"><strong>採点で落としやすい点</strong>①<strong>単位</strong>（%か回か）を書き忘れる、②小数第何位までかの<strong>指示を読み飛ばす</strong>、③指標名を略さない（「回転率」ではなく「棚卸資産回転率」）、④記述欄で<strong>与件の原因に触れていない</strong>（数値だけ並べても点にならない）。</div>
+
+        <div class="formula"><span class="label">経営分析の記述テンプレ（60〜80字）</span>①【与件の事実】<strong>により</strong>【指標名】が<strong>劣る</strong>。②【与件の事実】<strong>により</strong>【指標名】は<strong>優れる</strong>。</div>
+        <p class="source-note">例：「原材料価格の高騰を販売価格に転嫁できず売上高総利益率が低い。多品種少量生産により在庫が滞留し棚卸資産回転率も低いが、借入が少なく自己資本比率は高い。」</p>
+
+        <h3>10-2. CVP分析（損益分岐点）</h3>
+        <div class="formula"><span class="label">土台となる分解</span>売上高 － 変動費 ＝ <strong>限界利益</strong>　／　限界利益 － 固定費 ＝ 営業利益</div>
+        <div class="formula"><span class="label">限界利益率と変動費率</span>変動費率 ＝ 変動費 ÷ 売上高　／　<strong>限界利益率 ＝ 1 － 変動費率</strong></div>
+        <div class="formula"><span class="label">損益分岐点売上高（BEP）</span>BEP売上高 ＝ 固定費 ÷ 限界利益率</div>
+
+        <details>
+          <summary>なぜ固定費を「限界利益率」で割るのか</summary>
+          <div>
+            <p>売上が1円増えたとき、増えるのは1円まるごとではありません。そのうち変動費率の分は原材料などに消えるので、手元に残るのは<strong>限界利益率の分だけ</strong>です。</p>
+            <p>つまり「限界利益率＝売上1円あたり、固定費の回収に回せる金額」。固定費という穴を、1円あたり限界利益率ずつ埋めていくのだから、埋め切るのに必要な売上は</p>
+            <p><strong>必要な売上 ＝ 埋めるべき穴（固定費）÷ 1円あたり埋まる量（限界利益率）</strong></p>
+            <p>これがBEPの式です。目標利益がある場合は、埋めるべき穴が「固定費＋目標利益」に増えるだけ、と考えれば同じ形になります。</p>
+          </div>
+        </details>
+
+        <div class="formula"><span class="label">目標利益を達成する売上高</span>必要売上高 ＝ （固定費 ＋ 目標利益）÷ 限界利益率</div>
+        <div class="formula"><span class="label">安全余裕率</span>安全余裕率 ＝ （実際売上高 － BEP売上高）÷ 実際売上高 × 100　<span style="font-size:.85rem">…売上が何%落ちても赤字にならないか</span></div>
+        <div class="formula"><span class="label">損益分岐点比率</span>損益分岐点比率 ＝ BEP売上高 ÷ 実際売上高 × 100　＝　100% － 安全余裕率</div>
+        <div class="formula"><span class="label">経営レバレッジ係数</span>経営レバレッジ係数 ＝ 限界利益 ÷ 営業利益　<span style="font-size:.85rem">…固定費比率が高いほど大きく、売上変動に対する利益の振れ幅を表す</span></div>
+
+        <div class="exam"><strong>典型出題パターン</strong>
+        <ul>
+          <li><strong>固変分解（高低点法）</strong>：最高操業度と最低操業度の2点から　変動費率 ＝（高い方の費用 − 低い方の費用）÷（高い方の売上 − 低い方の売上）。そこから固定費 ＝ 総費用 − 変動費率×売上</li>
+          <li><strong>セールスミックス（制約1つ）</strong>：複数製品の場合、<strong>加重平均した限界利益率</strong>で計算する。制約条件（機械時間など）が<strong>1つ</strong>なら<strong>制約1単位あたりの限界利益</strong>が大きい製品を優先する</li>
+          <li><strong>セールスミックス（制約2つ以上）＝線形計画法</strong>：制約が2つ以上になると上の優先順位では解けない。各制約を不等式で書き、<strong>グラフの実行可能領域の頂点</strong>（＝2本の制約式の連立方程式の解）で限界利益を比べる。<span class="pill">頻出</span>令和6年度は「線形計画法を用いて」と明示、令和7年度も「2つの制約条件が存在する場合のセールスミックス」が出題されている</li>
+          <li><strong>感度分析</strong>：「販売単価を5%下げ、数量が10%増えたときの営業利益」→ 新しい限界利益率を出し直してから計算</li>
+          <li><strong>次期予測</strong>：固定費の増減（設備投資による減価償却増、人員増）を反映してからBEPを再計算</li>
+        </ul></div>
+
+        <div class="example"><strong>数値例</strong>売上高 5,000万円、変動費 3,000万円、固定費 1,600万円。<br>
+        変動費率 ＝ 3,000 ÷ 5,000 ＝ 0.6　→　限界利益率 ＝ 0.4<br>
+        BEP売上高 ＝ 1,600 ÷ 0.4 ＝ <strong>4,000万円</strong><br>
+        安全余裕率 ＝（5,000 − 4,000）÷ 5,000 ＝ <strong>20%</strong><br>
+        営業利益 600万円を目標にするなら ＝（1,600 ＋ 600）÷ 0.4 ＝ <strong>5,500万円</strong></div>
+
+        <h3>10-3. 意思決定会計・NPV（正味現在価値）</h3>
+        <p>事例Ⅳで最も配点が大きく、最も差がつく論点。手順を固定して、部分点を確実に拾います。</p>
+
+        <div class="formula"><span class="label">毎年のキャッシュフロー（税引後CF）</span>CF ＝ 税引後営業利益 ＋ 減価償却費<br>　　＝ （売上 − 現金支出費用 − 減価償却費）×（1 − 税率）＋ 減価償却費</div>
+
+        <details>
+          <summary>なぜ減価償却費を足し戻すのか（タックスシールド）</summary>
+          <div>
+            <p>減価償却費は<strong>費用だが現金は出ていかない</strong>。しかし税金の計算上は費用として認められるので、その分だけ<strong>納税額が減ります</strong>。</p>
+            <p>だから「利益計算では引く → 現金は出ていないので足し戻す」という2段階になります。上の式を展開すると</p>
+            <p>CF ＝（売上 − 現金支出費用）×(1 − 税率) ＋ <strong>減価償却費 × 税率</strong></p>
+            <p>この最後の項が<strong>減価償却のタックスシールド（節税効果）</strong>です。「減価償却費 × 税率」の分だけ現金が余分に残る、と覚えておくと、設備売却や取替投資の差額計算でも迷いません。</p>
+          </div>
+        </details>
+
+        <div class="formula"><span class="label">現在価値への割引</span>現在価値 ＝ 将来のCF ÷ (1 + r)<sup>n</sup>　　（r ＝ 割引率、n ＝ 年数）</div>
+        <div class="formula"><span class="label">正味現在価値</span>NPV ＝ Σ（各年のCFの現在価値） － 初期投資額　　→　<strong>NPV &gt; 0 なら投資する</strong></div>
+
+        <div class="tip"><strong>係数表の使い分け</strong><br>
+        <strong>複利現価係数</strong>＝ある1年分のCFを現在価値にする（例：5年後の売却収入）。<br>
+        <strong>年金現価係数</strong>＝<strong>毎年同額</strong>のCFがn年続くときの合計を一発で出す（＝複利現価係数のn年分の合計）。<br>
+        毎年のCFが同額なら年金現価係数を使うのが速い。金額が年ごとに違うなら複利現価係数を1年ずつ掛ける。<span class="source-note">（令和6年度の出題の趣旨は「複利現価係数と年金現価係数を用いて」と表記しています。問題文もこの用語で来ます。）</span></div>
+
+        <div class="model"><strong>NPV問題の解答手順（この順で必ず書く）</strong>
+        <ol>
+          <li><strong>初期投資額</strong>（設備の取得原価＋据付費。<strong>正味運転資本の増加</strong>も忘れずに投資額に含める）</li>
+          <li><strong>毎年の税引後CF</strong>を計算（上の式）</li>
+          <li><strong>最終年の追加CF</strong>：設備の<strong>売却収入</strong>、<strong>売却損益の税効果</strong>、<strong>正味運転資本の回収</strong></li>
+          <li>各年のCFを<strong>割引</strong>して合計</li>
+          <li><strong>初期投資額を引く</strong>→ NPV</li>
+        </ol>
+        <p>途中で詰まっても、<strong>1〜3の表を書いておけば部分点が入ります</strong>。必ず解答用紙に途中式を残すこと。</p></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>論点</th><th>処理</th></tr></thead>
+            <tbody>
+              <tr><td><strong>設備の売却</strong></td><td>売却額 ＞ 簿価 なら売却益に課税 → CF ＝ 売却額 −（売却額 − 簿価）× 税率。<br>売却額 ＜ 簿価 なら売却損で節税 → CF ＝ 売却額 ＋（簿価 − 売却額）× 税率</td></tr>
+              <tr><td><strong>正味運転資本</strong></td><td>売掛金・在庫の増加は<strong>現金の減少</strong>（投資時に支出）。プロジェクト終了時に<strong>全額回収</strong>する</td></tr>
+              <tr><td><strong>取替投資</strong></td><td>新旧を別々に計算せず、<strong>差額CF</strong>（新 − 旧）で解く。旧設備の売却収入は<strong>初期投資額から差し引く</strong></td></tr>
+              <tr><td><strong>埋没原価</strong></td><td>すでに支出済みで、どの案を選んでも変わらない費用は<strong>計算に含めない</strong>（過去の調査費用など）</td></tr>
+              <tr><td><strong>機会原価</strong></td><td>その案を選ぶことで失う利益は<strong>コストとして含める</strong>（遊休地を使うなら、賃貸できたはずの収入）</td></tr>
+              <tr><td><strong>差額原価収益分析</strong></td><td>意思決定会計の共通原理。<strong>案によって変わる収益・費用だけを拾う</strong>。埋没原価・回避不能固定費は無視し、機会原価は足す。この一文でセグメント廃止も取替投資も内外作も処理できる</td></tr>
+              <tr><td><strong>回収期間法</strong></td><td>投資額 ÷ 年間CF。<strong>時間価値と回収後のCFを無視</strong>する点が短所（記述問題で頻出）</td></tr>
+              <tr><td><strong>IRR</strong></td><td>NPV ＝ 0 となる割引率。<strong>IRR &gt; 資本コスト</strong>なら採用。複数解が出る場合があるのが短所</td></tr>
+              <tr><td><strong>期待値・デシジョンツリー</strong></td><td>各シナリオのCF × 確率 を合計。<strong>意思決定の分岐がある場合は後ろの分岐から順に</strong>期待値を計算する</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="example"><strong>数値例（基本形）</strong>初期投資 1,000万円、耐用年数5年・残存価額0の定額法、毎年の売上増 600万円、現金支出費用 300万円、税率30%、割引率5%（年金現価係数5年＝4.329）。<br>
+        減価償却費 ＝ 1,000 ÷ 5 ＝ 200万円<br>
+        税引前利益 ＝ 600 − 300 − 200 ＝ 100万円　→　税引後利益 ＝ 100 ×(1−0.3)＝ 70万円<br>
+        <strong>毎年のCF ＝ 70 ＋ 200 ＝ 270万円</strong><br>
+        CFの現在価値合計 ＝ 270 × 4.329 ＝ 1,168.83万円<br>
+        <strong>NPV ＝ 1,168.83 − 1,000 ＝ ＋168.83万円 → 投資すべき</strong></div>
+
+        <h3>10-4. その他の頻出論点</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>論点</th><th>要点・算式</th></tr></thead>
+            <tbody>
+              <tr><td><strong>CF計算書（間接法）</strong></td><td>税引前当期純利益 ＋減価償却費 ＋引当金増加 −売上債権増加 −棚卸資産増加 ＋仕入債務増加 −法人税等支払額。<br><strong>資産の増加はCFのマイナス、負債の増加はCFのプラス</strong>と覚える</td></tr>
+              <tr><td><strong>ROI（投資利益率）</strong></td><td>利益 ÷ 投資額 × 100。事業部評価に使うが、<strong>ROIを下げる好採算案件を却下</strong>してしまう欠点がある</td></tr>
+              <tr><td><strong>残余利益（RI）</strong></td><td>利益 −（投資額 × 資本コスト）。ROIの欠点を補うが、<strong>規模の異なる事業部の比較には不向き</strong></td></tr>
+              <tr><td><strong>WACC（加重平均資本コスト）</strong></td><td>WACC ＝ 負債比率 × 負債コスト ×(1−税率) ＋ 自己資本比率 × 株主資本コスト。<strong>負債の節税効果があるので(1−税率)を掛ける</strong></td></tr>
+              <tr><td><strong>企業価値</strong></td><td>企業価値 ＝ FCF ÷ WACC（定額成長なら FCF ÷（WACC − 成長率））</td></tr>
+              <tr><td><strong>FCF</strong></td><td>営業利益×(1−税率) ＋減価償却費 −設備投資 −運転資本増加</td></tr>
+              <tr><td><strong>為替リスク</strong></td><td><strong>為替予約</strong>＝レートを固定（確実だが有利な変動の利益も放棄）／<strong>通貨オプション</strong>＝不利なら権利行使、有利なら放棄（プレミアムが必要）／<strong>マリー・ネッティング</strong>＝債権債務の相殺</td></tr>
+              <tr><td><strong>リース</strong></td><td>初期投資が不要でCFの平準化、陳腐化リスクの回避。ただし<strong>総支払額は購入より大きい</strong>ことが多い</td></tr>
+              <tr><td><strong>標準原価差異</strong></td><td>価格差異＝(標準価格−実際価格)×実際数量／数量差異＝(標準数量−実際数量)×標準価格。<strong>「実際×実際」で囲った面積の差</strong>と図で覚える</td></tr>
+              <tr><td><strong>セグメントの廃止・継続</strong><span class="pill">頻出</span></td><td>製品や事業部をやめるべきかの判断。<strong>回避可能固定費</strong>（やめれば無くなる）と<strong>回避不能固定費</strong>（やめても残る）を分け、<strong>貢献利益（売上−変動費−回避可能固定費）がプラスなら継続</strong>。共通費が配賦されているだけの赤字部門を短絡的に切らせない設問が定番</td></tr>
+              <tr><td><strong>共通費の配賦</strong></td><td>売上高など単一基準で共通費を配賦すると、<strong>実際の資源消費と対応せず</strong>部門別損益が歪む。業績評価に使うと誤った意思決定を招く（活動基準原価計算＝ABCの発想で補う）</td></tr>
+              <tr><td><strong>内部振替価格</strong></td><td>事業部間取引の価格。<strong>全部原価＋一定利潤</strong>で振り替えると、供給事業部の非効率がそのまま買い手に転嫁され、<strong>事業部の業績を正しく評価できない</strong>。市価基準や限界原価基準が理論的には望ましい</td></tr>
+              <tr><td><strong>事業部長の業績評価</strong></td><td><strong>管理可能性の原則</strong>——事業部長が権限を持たない項目（本社が決めた設備投資、配賦された共通費）を含めて評価してはいけない。投資の意思決定権が社長にあるならROIでの評価は不適切</td></tr>
+              <tr><td><strong>資金調達手段</strong></td><td>借入（金利負担・返済義務あり、経営権は維持）／増資（返済不要だが持分が希薄化）／補助金・助成金／リース。<strong>新規事業のようにリスクが高くCFが不安定なら自己資本性の資金</strong>、というのが助言の軸</td></tr>
+              <tr><td><strong>延期オプション</strong></td><td>「今投資する」か「1年待って情報を得てから決める」かの比較。<strong>待つことで悪い結果を回避できる分だけ価値がある</strong>ので、待つ案のNPVが今すぐ投資するNPVを上回ることがある</td></tr>
+              <tr><td><strong>OEM生産</strong></td><td>財務的には<strong>設備投資と販売費を抑えつつ稼働率を上げられる</strong>が、相手先依存で価格決定力が弱く<strong>利益率は低い</strong>。自社ブランドとの比較で問われる</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>10-5. 電卓と部分点の運用</h3>
+        <ul>
+          <li><strong>端数処理の指示を最初に丸で囲む</strong>。「小数点第3位を四捨五入」「万円未満切り捨て」。ここだけで正解が不正解になります</li>
+          <li><strong>単位を必ず書く</strong>（%、回、円、万円）。解答欄に単位が印字されているかも確認する</li>
+          <li><strong>途中式を残す</strong>。最終値が違っても、CFの計算過程が合っていれば部分点が入ります。計算欄がある問題では必ず埋める</li>
+          <li><strong>電卓のメモリ機能（M+ / MR）</strong>を使う。年ごとのCFを割り引いて足す作業でミスが激減します</li>
+          <li><strong>捨て問の見極めは5分以内</strong>。設問を読んで解法が浮かばなければC判定にして先へ進み、記述問題に時間を回す</li>
+          <li><strong>検算は「桁」と「符号」だけ</strong>。時間がないときは、答えの桁数が常識的か、NPVの符号が妥当かだけを見る</li>
+        </ul>
+
+        <div class="warning"><strong>やりがちな事故</strong>①税率を掛け忘れる（税引<strong>後</strong>CFであることを毎回確認）、②減価償却費を足し戻し忘れる、③初期投資額を引き忘れてNPVが過大になる、④正味運転資本の回収を最終年に入れ忘れる、⑤年金現価係数を使うべきところで複利現価係数を1年分だけ掛ける。</div>
+
+        <div class="quiz">
+          <p><strong>理解度チェック：</strong>投資額600万円、毎年の税引前キャッシュ利益（減価償却前）250万円、耐用年数3年・残存価額0の定額法、税率30%。毎年の税引後CFはいくらですか。</p>
+          <button data-answer="a-case4">答えを見る</button>
+          <div id="a-case4" class="answer">減価償却費 ＝ 600 ÷ 3 ＝ 200万円<br>
+          税引前利益 ＝ 250 − 200 ＝ 50万円　→　税引後利益 ＝ 50 ×(1−0.3)＝ 35万円<br>
+          <strong>CF ＝ 35 ＋ 200 ＝ 235万円</strong><br>
+          別解（タックスシールドの形）：250 ×(1−0.3)＋ 200 × 0.3 ＝ 175 ＋ 60 ＝ <strong>235万円</strong>。<br>どちらの式でも同じ値になることを確認しておくと、本番で片方を忘れても復元できます。</div>
+        </div>
+      </section>
+
+      <section id="final" data-title="直前チェック 持ち物 当日 時間割 頻出フレーズ 効果ワード">
+        <label class="done-label"><input type="checkbox" class="done"> 学習済み</label>
+        <span class="section-kicker">PART 4 · FINAL</span>
+        <h2>11. 直前チェック＆頻出フレーズ集</h2>
+        <p class="section-summary">前日夜と当日朝に読み返す用。新しいことは覚えず、<strong>手順と語彙を思い出す</strong>ことに使ってください。</p>
+
+        <h3>効果ワード（解答の締めに使う語彙）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>事例</th><th>着地させる効果</th></tr></thead>
+            <tbody>
+              <tr><td>事例Ⅰ</td><td>組織活性化、モラール向上、技能承継、専門性の蓄積、権限委譲による意思決定の迅速化、継続的な競争優位の確立</td></tr>
+              <tr><td>事例Ⅱ</td><td>新規顧客獲得、来店・購買頻度向上、客単価向上、固定客化・関係性強化、差別化、売上向上</td></tr>
+              <tr><td>事例Ⅲ</td><td>生産リードタイム短縮、納期遵守率向上、在庫削減、稼働率向上、品質安定、生産性向上（QCDのどれか）</td></tr>
+              <tr><td>事例Ⅳ</td><td>収益性改善、キャッシュフロー改善、財務体質の強化、投資効率の向上</td></tr>
+              <tr><td>共通</td><td>高付加価値化、コスト削減、リスク分散、経営資源の有効活用</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>1次知識の即答リスト</h3>
+        <div class="grid-2">
+          <div class="mini">
+            <h4>組織・人事</h4>
+            <ul>
+              <li>組織構造：機能別／事業部制／マトリックス</li>
+              <li>人事：採用・配置・報酬・育成・評価</li>
+              <li>権限委譲 → 意思決定の迅速化＋後継者育成</li>
+              <li>成果主義 → 短期志向・協働阻害に留意</li>
+            </ul>
+          </div>
+          <div class="mini">
+            <h4>マーケティング</h4>
+            <ul>
+              <li>STP → 4P</li>
+              <li>売上 ＝ 客数 × 頻度 × 客単価</li>
+              <li>関係性マーケ：既存顧客維持が低コスト</li>
+              <li>サービスの4特性：無形性・同時性・不均質性・消滅性</li>
+            </ul>
+          </div>
+          <div class="mini">
+            <h4>生産</h4>
+            <ul>
+              <li>生産統制＝進捗・現品・余力</li>
+              <li>標準化 → マニュアル化 → OJT → 多能工化</li>
+              <li>段取り短縮（外段取り化）→ 小ロット化</li>
+              <li>QCD のどれで効果を出すか</li>
+            </ul>
+          </div>
+          <div class="mini">
+            <h4>財務</h4>
+            <ul>
+              <li>限界利益率 ＝ 1 − 変動費率</li>
+              <li>BEP ＝ 固定費 ÷ 限界利益率</li>
+              <li>CF ＝ 税引後営業利益 ＋ 減価償却費</li>
+              <li>NPV ＞ 0 なら投資</li>
+            </ul>
+          </div>
+        </div>
+
+        <h3>当日のタイムライン（令和8年度）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>時刻</th><th>科目</th><th>この事例で最初にやること</th></tr></thead>
+            <tbody>
+              <tr><td>9:40〜11:00</td><td>事例Ⅰ 組織・人事</td><td>設問先読み → 「茶化」の切り口を余白にメモ</td></tr>
+              <tr><td>11:40〜13:00</td><td>事例Ⅱ マーケ・流通</td><td>設問先読み → ダナドコの枠を余白に描く</td></tr>
+              <tr><td>14:00〜15:20</td><td>事例Ⅲ 生産・技術</td><td>設問先読み → 問題点/対策のどちらを聞かれているか分類</td></tr>
+              <tr><td>16:00〜17:20</td><td>事例Ⅳ 財務・会計</td><td>全設問をA/B/C判定 → 経営分析から着手</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">インターバルは事例Ⅰ→Ⅱが40分、<strong>事例Ⅱ→Ⅲが60分（昼休み）</strong>、事例Ⅲ→Ⅳが40分。第1時限は<strong>開始30分前までに入室</strong>します（遅刻は開始後30分までなら入室可、ただし時間延長なし）。昼休みに事例Ⅲの定番対策表を見返しておくと立ち上がりが速くなります。事例Ⅳは最後の1コマなので、集中力を残しておくこと。</p>
+
+        <h3>持ち物と当日の注意</h3>
+        <p>以下は令和8年度の第2次試験案内（公式PDF）の記載に基づきます。細かい制約が多く、知らずに持ち込むと使えないものがあるので、前日に一度読み合わせてください。</p>
+        <ul class="checklist">
+          <li><strong>受験票・写真票</strong>。<strong>郵送で届きます</strong>（令和8年度の発送日は10月13日(火)）。写真を貼って持参。Web申込システムからダウンロードできる申込確認票・領収書は<strong>代わりになりません</strong>（ダウンロードするのは合格発表後の合格証書のほう）</li>
+          <li>写真が貼られた<strong>本人確認書類</strong>（写真票の写真が不鮮明な場合に確認される）</li>
+          <li><strong>電卓</strong>（第2次試験のみ使用可）。四則演算・√・%・数値メモリ程度の携帯用電卓。目安サイズは縦180×横100×高さ30mm以内。<strong>机上に置けるのは1台</strong>（予備はバッグへ）</li>
+          <li>黒鉛筆またはシャープペンシル（HB〜B程度）、替芯、<strong>プラスチック製</strong>の消しゴム、鉛筆削り、定規</li>
+          <li>マーカー・色鉛筆（<strong>普段の演習と同じもの</strong>）。ただし<strong>解答用紙には使えません</strong>——マーキングは問題用紙（与件文）だけ</li>
+          <li>時計（会場に時計がない前提で。<strong>スマートウォッチ等のウェアラブル端末、通信・計算・撮影・辞書機能付き、秒針の音がするもの、大型は不可</strong>。携帯電話を時計代わりにするのも不可）</li>
+          <li>ふた付きペットボトル（<strong>700ml以内</strong>、カバー不可、水筒・缶不可）。<strong>机上には置けず足元</strong>。水分補給以外の飲食（アメ・ガム含む）は試験時間中禁止</li>
+          <li>昼食（会場で買えない前提で用意。自席で食べる）</li>
+          <li>上着など<strong>各自で体温調節できる服装</strong>（着席位置により空調の効き方が違う）。座布団・膝掛けは使用可</li>
+          <li>このシートを印刷したもの、または過去問の自分用まとめ</li>
+        </ul>
+        <div class="warning"><strong>持ち込めない／机上に置けないもの</strong>携帯電話・スマートフォン・ウェアラブル端末などの通信機器と電子機器類、イヤホン、書籍類（電源を切ってバッグへ。身に着けるのも不可）。<strong>筆入れ・筆箱</strong>も机上に置けません。<strong>耳栓と帽子は使用不可</strong>。ティッシュ・ハンカチ・目薬・マスクは机上可ですが、箱やケースは不可。<br>電卓については、<strong>関数電卓、プログラム入力・記憶機能付き、電子手帳や携帯電話付属の電卓、記録紙が出るもの</strong>は<strong>不正行為として対処される</strong>と明記されています（音が出るもの、電源コード式、ディスプレイが複数あるものも使用禁止）。</div>
+        <p class="source-note">試験開始後30分間と終了前5分間は退室できません。途中退室すると当該科目の試験時間中は再入室できず、問題用紙も持ち帰れません。</p>
+
+        <div class="warning"><strong>事例と事例の間で引きずらない</strong>4事例の合計240点で判定されます。前の事例で失敗したと思っても、実際の得点は開示されるまで分かりません（体感と実際の点数はよくズレます）。<strong>終わった事例のことは考えない</strong>と決めておくのが、最も効く当日メンタル対策です。</div>
+
+        <h3>最後の5分に思い出すこと</h3>
+        <ul class="checklist">
+          <li>空欄はないか</li>
+          <li>設問の動詞（理由／課題／助言／留意点）と解答の型は合っているか</li>
+          <li>時制は合っているか</li>
+          <li>社長の想いに反していないか</li>
+          <li>与件にない事実を書いていないか</li>
+          <li>受験番号を書いたか</li>
+        </ul>
+
+        <div class="quiz">
+          <p><strong>理解度チェック：</strong>事例Ⅰが終わった直後、「まったく書けなかった」と感じています。昼休みに何をしますか。</p>
+          <button data-answer="a-final">この後の一手</button>
+          <div id="a-final" class="answer">事例Ⅰの答案について考えるのをやめ、<strong>事例Ⅲの定番対策表（9章）を見返す</strong>。合否は4事例合計240点で決まり、事例Ⅰの体感と実際の得点は一致しないことが多い。むしろ「できなかった」と感じた事例が60点を超えることも珍しくありません。<strong>残り3事例で取り返せる構造になっている</strong>ことを思い出してください。</div>
+        </div>
+      </section>
+
+      <section id="sources" data-title="参考リンク 公式 中小企業診断協会 出題の趣旨 白書 ミラサポ 経営自己診断 J-Net21 一発合格道場 タキプロ ふぞろい">
+        <span class="section-kicker">PART 4 · LINKS</span>
+        <h2>12. 参考になるリンク集</h2>
+        <p class="section-summary">2次試験は模範解答が公表されない試験です。<strong>一次情報にあたる価値が特に高い</strong>ので、公式資料から順に並べています。</p>
+
+        <div class="tip"><strong>まず読むべきは「出題の趣旨」</strong>2次試験で公式に公表されるのは、問題文・解答用紙・<strong>出題の趣旨</strong>だけです。模範解答も配点内訳も出ません。「出題の趣旨」は各設問について出題者が何を問うたのかを数行で述べたもので、<strong>採点者が見ている観点を知る唯一の公式資料</strong>です（<strong>合格発表日の午前中</strong>に協会サイトへ掲載されます。1次試験のように翌日に正解と配点が出ることはありません）。過去問を解いたら必ず突き合わせてください。<br>読むときのコツは、<strong>末尾の動詞に線を引くこと</strong>——「分析する能力を問う」「助言する能力を問う」「算出する能力を問う」のどれかが必ず書いてあり、それが解答に求められた形そのものです。本シートの0章「設問構成の型」、7章・8章の第1問対策、10章の論点リストは、令和5〜7年度の出題の趣旨を実際に読んで組み立てています。</div>
+
+        <h3>公式・一次情報（一般社団法人 日本中小企業診断士協会連合会）</h3>
+        <ul class="source-list">
+          <li><a href="https://www.jf-cmca.jp/contents/007_shiken.html">中小企業診断士試験（トップ）</a>（最新年度の試験案内・日程・お知らせ。まずここ）</li>
+          <li><a href="https://www.jf-cmca.jp/contents/010_c_/010_c_r08_shiken/R08_2ji_shiken_about.html">令和8年度 第2次試験について（試験案内の概要）</a>（試験日・時間割・配点・受験資格・手数料）</li>
+          <li><a href="https://www.jf-cmca.jp/contents/010_c_/010_c_r08_shiken/R08_jyukentesuryokaitei_koujyutushikenhaishi.html">令和8年度からの試験における改正点について</a>（<strong>口述試験の廃止</strong>と受験手数料の改定）</li>
+          <li><a href="https://www.jf-cmca.jp/contents/010_c_/shikenmondai.html">試験問題</a>（過去の1次・2次の問題PDF。2次は平成19年度分から公開されている）</li>
+          <li><a href="https://www.jf-cmca.jp/contents/010_c_/001_shiken_kakokekka_syusi.html">出題の趣旨（年度別アーカイブ）</a>（平成16年度〜。<strong>最重要</strong>。事例ごとに1枚のPDF）</li>
+          <li><a href="https://www.jf-cmca.jp/contents/010_c_/010_c_r07_shiken/R07_2ji_shiken_shushi.html">令和7年度の出題の趣旨</a>／<a href="https://www.jf-cmca.jp/contents/010_c_/010_c_r06_shiken/R06_2ji_shiken_shushi.html">令和6年度</a>／<a href="https://www.jf-cmca.jp/contents/010_c_/010_c_r05_shiken/R05_2ji_shushi.html">令和5年度</a>（直近3年分。まずここから読む）</li>
+          <li><a href="https://www.jf-cmca.jp/contents/010_c_/001_shiken_kakokekka_2.html">過去の第2次試験結果・統計資料</a>（受験者数・合格者数・合格率の推移）</li>
+          <li><a href="https://www.jf-cmca.jp/contents/013_c_faq/001_faq_shiken.html">試験に関するよくある質問（FAQ）</a>（合格基準、免除、電卓の可否などの公式見解）</li>
+        </ul>
+
+        <h3>与件企業を理解するための知識（中小企業庁・中小機構）</h3>
+        <ul class="source-list">
+          <li><a href="https://www.chusho.meti.go.jp/pamflet/hakusyo/index.html">中小企業白書</a>（中小企業が直面する課題の全体像。事例の背景理解に効く）</li>
+          <li><a href="https://www.chusho.meti.go.jp/pamflet/g_book/index.html">中小企業施策利用ガイドブック</a>（助言問題で「使える制度」を知っておくと厚みが出る）</li>
+          <li><a href="https://mirasapo-plus.go.jp/">ミラサポplus</a>（中小企業向け支援制度と、実際の企業事例。事例II・IIIの発想の引き出しになる）</li>
+          <li><a href="https://j-net21.smrj.go.jp/">J-Net21（中小機構）</a>（業種別の動向、経営課題の解説記事が豊富）</li>
+          <li><a href="https://k-sindan.smrj.go.jp/">経営自己診断システム（中小機構）</a>（財務データを入れると<strong>業種別の指標平均</strong>と比較できる。事例IVの経営分析で「どの水準なら悪いのか」の感覚を作るのに有用）</li>
+          <li><a href="https://www.chusho.meti.go.jp/koukai/chousa/kihon/index.html">中小企業実態基本調査</a>（業種別・規模別の財務指標の原データ）</li>
+        </ul>
+
+        <h3>受験生向けリソース</h3>
+        <ul class="source-list">
+          <li><a href="https://rmc-oden.com/blog/">一発合格道場</a>（合格者による解法プロセスや事例別対策の記事が長期間蓄積されている）</li>
+          <li><a href="https://www.takipro.com/">タキプロ</a>（合格者支援団体。勉強会や解答の相互添削の情報）</li>
+          <li><a href="https://www.doyukan.co.jp/">同友館</a>（『ふぞろいな合格答案』の版元。<strong>受験生の再現答案から加点要素を推定した資料</strong>で、模範解答がない2次では代替的な採点基準として広く使われている）</li>
+        </ul>
+
+        <div class="warning"><strong>受験生向け資料の使い方</strong>再現答案集や受験生ブログの「模範解答」は<strong>公式のものではありません</strong>。あくまで推定です。まず自分で解き、次に「出題の趣旨」と突き合わせ、<strong>最後に</strong>他人の答案を見る、という順序を守らないと、手順が身につかないまま解答の丸暗記に流れます。</div>
+
+        <p class="source-list">このシートは合格を保証するものではありません。過去問演習と並行して使う、手順の確認用です。試験日程・受験資格・手数料・制度改正については、必ず上記の公式ページで最新の情報を確認してください。記載は2026年9月時点で公表されている令和8年度の情報に基づいています。</p>
+      </section>
+    </main>
+  </div>
+
+  <p class="home-foot"><a href="index.html">← 一夜漬けシート一覧に戻る</a></p>
+  <footer>© Study sheet · 中小企業診断士2次試験（令和8年度）対応。手順の再現性を上げるためのシートです。印刷時は検索・進捗UIを省略し、解答を展開します。</footer>
+
+  <script>
+    (() => {
+      const checks = [...document.querySelectorAll('.done')];
+      const key = 'shindanshi-2ji-study-progress-v1';
+      let saved = [];
+      try { saved = JSON.parse(localStorage.getItem(key) || '[]'); } catch (_) {}
+      checks.forEach((box, i) => {
+        box.checked = Boolean(saved[i]);
+        box.addEventListener('change', updateProgress);
+      });
+
+      function updateProgress() {
+        const state = checks.map(box => box.checked);
+        try { localStorage.setItem(key, JSON.stringify(state)); } catch (_) {}
+        const count = state.filter(Boolean).length;
+        document.getElementById('progressBar').style.width = `${count / checks.length * 100}%`;
+        document.getElementById('progressText').textContent = `学習済み ${count} / ${checks.length}`;
+      }
+      updateProgress();
+
+      document.querySelectorAll('[data-answer]').forEach(button => {
+        button.addEventListener('click', () => {
+          const answer = document.getElementById(button.dataset.answer);
+          answer.classList.toggle('show');
+          button.textContent = answer.classList.contains('show') ? '答えを隠す' : (button.dataset.answer === 'a-final' ? 'この後の一手' : '答えを見る');
+        });
+      });
+
+      const search = document.getElementById('search');
+      const sections = [...document.querySelectorAll('main section')];
+      search.addEventListener('input', () => {
+        const query = search.value.trim().toLowerCase();
+        sections.forEach(section => {
+          section.hidden = Boolean(query) && !section.textContent.toLowerCase().includes(query);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
