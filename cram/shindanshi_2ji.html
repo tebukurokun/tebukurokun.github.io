@@ -145,13 +145,17 @@
     .source-list a { word-break: break-all; }
     footer { max-width: 1180px; margin: 0 auto; padding: 0 24px 38px; color: var(--muted); font-size: .82rem; }
 
-    @media (max-width: 920px) {
+    @media (max-width: 1100px) {
       .layout { grid-template-columns: 1fr; }
       aside { position: static; }
       nav { columns: 2; }
       .roadmap { grid-template-columns: repeat(2,1fr); }
       .decision { grid-template-columns: 1fr; }
       .decision .arrow { transform: rotate(90deg); }
+    }
+    @media (max-width: 820px) {
+      table { min-width: 560px; font-size: .86rem; }
+      th, td { padding: 9px 10px; }
     }
     @media (max-width: 620px) {
       .hero { padding: 42px 20px; }
