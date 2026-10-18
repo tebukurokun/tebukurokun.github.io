@@ -97,6 +97,26 @@
       .hero { padding-top: 2.5rem; padding-bottom: 2.5rem; }
       .layout { margin-top: 1.5rem; }
     }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --ink: #e3e8ef;
+        --muted: #9aa5b5;
+        --line: #2a3442;
+        --paper: #171d27;
+        --wash: #0f141c;
+        --accent: #7ea6ef;
+        --accent-dark: #a9c4f5;
+        --shadow: 0 12px 32px rgba(0, 0, 0, .35);
+      }
+      .hero { background: linear-gradient(135deg, #0b1120, #102344 55%, #1d4380); }
+      .card:hover, .card:focus-visible { box-shadow: 0 18px 40px rgba(0, 0, 0, .5); }
+      .card.placeholder { --c: #6b7586; --c-soft: #1f2530; }
+      .green { --c: #4fc79a; --c-soft: #15302a; }
+      .blue { --c: #7ea6ef; --c-soft: #18243d; }
+      .teal { --c: #45c4b4; --c-soft: #11302d; }
+      .orange { --c: #ec9a5c; --c-soft: #3a2414; }
+    }
   </style>
 </head>
 <body>

@@ -181,6 +181,52 @@
     .home a:hover { text-decoration: underline; }
     .home-foot { margin: 32px 0 0; font-size: .85rem; text-align: center; }
     @media print { .home, .home-foot { display: none; } }
+    @media screen and (prefers-color-scheme: dark) {
+      :root {
+        color-scheme: dark;
+        --ink: #ece4dc;
+        --muted: #ab9f94;
+        --paper: #15110e;
+        --card: #1e1915;
+        --line: #3a3029;
+        --deep: #f1b07e;
+        --main: #ec9a5c;
+        --main-soft: #3a2414;
+        --amber: #e0b54a;
+        --amber-soft: #33290f;
+        --red: #f08a80;
+        --red-soft: #3a1d1a;
+        --blue-soft: #17222f;
+        --green: #79c995;
+        --green-soft: #15291d;
+        --shadow: 0 12px 30px rgba(0, 0, 0, .4);
+      }
+      body {
+        background:
+          radial-gradient(circle at 8% 2%, rgba(236,154,92,.08), transparent 24rem),
+          linear-gradient(180deg, #1c150f 0, var(--paper) 24rem);
+      }
+      .hero { background: linear-gradient(132deg, #1f0f05 0%, #5e2c0d 54%, #8f4516 100%); }
+      .side-card { background: rgba(30,25,21,.94); }
+      nav a { color: #cfc3b8; }
+      #search { border-color: var(--line); background: #14100d; color: var(--ink); }
+      .progress-line { background: #2e2620; }
+      .notice, .exam { border-color: #5a4a1f; }
+      .notice strong, .exam > strong { color: #f0c766; }
+      h3, summary, .formula .label, .pill { color: #f0a46b; }
+      .done-label { border-color: var(--line); color: var(--muted); }
+      .road-step, .mini, .decision > div { background: #231d18; }
+      .tip { border-color: #2d425a; }
+      .warning { border-color: #5e322d; }
+      .example { background: #221d2e; border-color: #3f3558; }
+      .model { border-color: #2b4a36; }
+      table, details { background: var(--card); }
+      th { background: #2a211a; color: #f1c29a; }
+      tbody tr:hover { background: #251e19; }
+      code { background: #2e2620; }
+      .quiz { border-top-color: var(--line); }
+      .quiz button { background: #8a4517; }
+    }
   </style>
 </head>
 <body>

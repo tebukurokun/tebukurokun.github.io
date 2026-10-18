@@ -47,6 +47,7 @@ There is no linter, formatter, test suite, or CI configured. The repo formatter 
 Self-contained study sheets, one HTML file per exam subject, indexed by `cram/index.html` (`https://tebukuro.me/cram/`). Each sheet carries its own inline `<style>` and does **not** share the root page's dark neon design system — they are light, print-oriented documents with their own accent color (green = 中小企業政策, blue = 経営法務, teal = 統計検定2級).
 
 - Every sheet links back to the hub twice: `.home` in the hero and `.home-foot` before `<footer>`. Both are hidden in `@media print`.
+- Dark mode follows the OS setting: each file ends its `<style>` with a `@media screen and (prefers-color-scheme: dark)` block that redefines the `:root` tokens and overrides the hard-coded colors (the `screen` guard keeps printing light). When you add a rule with a literal color, add its dark override there too.
 - Adding a sheet means adding a `.card` to `cram/index.html` (pick an accent class) and the two back links to the new file.
 - The pages moved out of the repo root on 2026-08-21. `chushokigyo_seisaku.html` and `keiei_houmu.html` were published at the root beforehand, so a Cloudflare Redirect Rule is needed if those old URLs are still shared.
 
