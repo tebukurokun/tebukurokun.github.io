@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A personal site deployed via GitHub Pages at `https://tebukuro.me/` (custom domain via `CNAME`; `tebukurokun.github.io` 301-redirects there). The main page is `index.html`, plus a standalone `privacy.html` (privacy policy, required for AdSense) and `cram/` (資格試験一夜漬けシート: `cram/index.html` is the hub, one HTML per exam subject alongside it). There is no build system, no framework, no package manager — just static HTML files. All CSS lives inline in each file's `<style>` block, all JS in a `<script>` block at the end of `<body>`.
+A personal site deployed via GitHub Pages at `https://tebukuro.me/` (custom domain via `CNAME`; `tebukurokun.github.io` 301-redirects there). The main page is `index.html`, plus a standalone `privacy.html` (privacy policy, required for AdSense) and `cram/` (資格試験一夜漬けシート: `cram/index.html` is the hub, one HTML per exam subject alongside it). There is no build system, no framework, no package manager — just static HTML files. All CSS lives inline in each file's `<style>` block, all JS in a `<script>` block at the end of `<body>` — except `shindanshi-2ji/`, whose pages share `style.css` and `site.js`.
 
 The `master` branch is the deployment branch. Pushing to `origin/master` publishes the site.
 
@@ -55,12 +55,13 @@ Self-contained study sheets, one HTML file per exam subject, indexed by `cram/in
 
 Per-case explanation pages for the 中小企業診断士2次試験, kept separate from the cram sheets (`https://tebukuro.me/shindanshi-2ji/`). `index.html` is the hub, one file per case named `rNN-jireiN.html` (e.g. `r06-jirei1.html`).
 
-- The case pages share one inline stylesheet; only the accent tokens (`--main`, `--main-soft`, `--deep`, `--hero-*`) differ per case (blue = 事例Ⅰ, rose = 事例Ⅱ, teal = 事例Ⅲ), in both the light `:root` and the dark-mode block. When changing the CSS, change it in every case page.
+- **Layout is shared, not copied.** Every page links `style.css` and `site.js` (deferred); pages carry no inline `<style>`/`<script>`. Pages identify themselves with `<body data-page="…">` (`hub` or the file's slug), and case pages add `data-case="N"`.
+- **Case colors** are the `[data-case="N"]` blocks in `style.css` (light and dark), overriding `--main`, `--main-soft`, `--deep`, `--hero-*`; blue = 事例Ⅰ, rose = 事例Ⅱ, teal = 事例Ⅲ. The base `:root` tokens are the hub's slate. The hub's cards reuse the same attribute (`<a class="case" data-case="1">`).
+- **The page list lives only in `YEARS` in `site.js`.** It renders the left sidebar (`<aside class="side">` is left empty in the HTML) and the prev/next `.case-nav` (also empty in the HTML). Each case's sidebar TOC is the `toc` array there — keep it in sync with the page's `<section id>`s. The current page's TOC is highlighted on scroll; below 980px only the current page's TOC is shown, and the hub hides the sidebar because its cards already list the cases.
 - Each answer example (`.ans-text`) shows its length in `.count` as `N／上限字`. Recount when editing an answer — every character, including punctuation, is one square on the answer sheet.
 - Answers are original study examples, not official model answers. 設問 text is paraphrased (要旨), with links to the official 問題PDF and 出題の趣旨. Prep-school comparisons carry the date they were checked against the published sources.
 - "答案例を隠して解く" toggles `body.practice`; the state is kept in `localStorage` key `shindanshi-2ji-practice-v1`. Print always shows the answers.
-- Every page (hub included) has the same left sidebar (`aside.side`) listing all pages; the current case page is marked `aria-current="page"` and carries its in-page TOC (`.side-toc`, highlighted on scroll). Below 980px the sidebar moves above the content on case pages and is hidden on the hub, whose cards already list the cases.
-- Adding a case means adding a card to the hub, adding it to the sidebar on every page, and fixing the prev/next `.case-nav` links on the neighboring pages.
+- Adding a case means: copy an existing case page (set `data-page`/`data-case`, add a `[data-case]` color block to `style.css` if it's a new number), add an entry to `YEARS` in `site.js`, and add a card to the hub's `index.html`.
 
 ## Icon policy
 
