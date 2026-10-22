@@ -51,6 +51,16 @@ Self-contained study sheets, one HTML file per exam subject, indexed by `cram/in
 - Adding a sheet means adding a `.card` to `cram/index.html` (pick an accent class) and the two back links to the new file.
 - The pages moved out of the repo root on 2026-08-21. `chushokigyo_seisaku.html` and `keiei_houmu.html` were published at the root beforehand, so a Cloudflare Redirect Rule is needed if those old URLs are still shared.
 
+## `shindanshi-2ji/` (2次試験 過去問解説)
+
+Per-case explanation pages for the 中小企業診断士2次試験, kept separate from the cram sheets (`https://tebukuro.me/shindanshi-2ji/`). `index.html` is the hub, one file per case named `rNN-jireiN.html` (e.g. `r06-jirei1.html`).
+
+- The case pages share one inline stylesheet; only the accent tokens (`--main`, `--main-soft`, `--deep`, `--hero-*`) differ per case (blue = 事例Ⅰ, rose = 事例Ⅱ, teal = 事例Ⅲ), in both the light `:root` and the dark-mode block. When changing the CSS, change it in every case page.
+- Each answer example (`.ans-text`) shows its length in `.count` as `N／上限字`. Recount when editing an answer — every character, including punctuation, is one square on the answer sheet.
+- Answers are original study examples, not official model answers. 設問 text is paraphrased (要旨), with links to the official 問題PDF and 出題の趣旨. Prep-school comparisons carry the date they were checked against the published sources.
+- "答案例を隠して解く" toggles `body.practice`; the state is kept in `localStorage` key `shindanshi-2ji-practice-v1`. Print always shows the answers.
+- Adding a case means adding a card to the hub and fixing the prev/next `.case-nav` links on the neighboring pages.
+
 ## Icon policy
 
 Two sources: `icon.svg` (the dark neon background, pure vector, same palette as `og-image.svg`) and `icon-glyph.png` (the 🧤 glyph, background already cut to transparent). Everything else is generated — don't hand-edit `apple-touch-icon.png`, `android-chrome-*.png`, `icon-maskable-512x512.png`, or `favicon.ico`.
