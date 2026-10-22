@@ -29,7 +29,7 @@
     .hero {
       color: #fff;
       background: linear-gradient(132deg, #11141f 0%, #262f4a 55%, #3e4a6e 100%);
-      padding: 52px max(20px, calc((100vw - 880px) / 2)) 48px;
+      padding: 52px max(20px, calc((100vw - 1180px) / 2 + 20px)) 48px;
       position: relative;
       overflow: hidden;
     }
@@ -48,7 +48,29 @@
     h1 { margin: 0; font-size: clamp(1.9rem, 4.6vw, 3rem); line-height: 1.2; letter-spacing: -.02em; }
     .lead { max-width: 700px; margin: 16px 0 0; color: #dde3f2; }
 
-    .wrap { max-width: 880px; margin: 0 auto; padding: 30px 20px 72px; }
+    .layout { max-width: 1180px; margin: 0 auto; padding: 30px 20px 72px; display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 28px; align-items: start; }
+    .content { min-width: 0; }
+
+    .side {
+      position: sticky;
+      top: 16px;
+      padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      font-size: .88rem;
+      line-height: 1.5;
+    }
+    .side ul { list-style: none; margin: 0; padding: 0; }
+    .side li + li { margin-top: 2px; }
+    .side-home { display: block; padding: 6px 8px 12px; margin-bottom: 12px; border-bottom: 1px solid var(--line); color: var(--ink); font-weight: 800; text-decoration: none; }
+    .side-home[aria-current="page"] { color: var(--accent); }
+    .side-year { margin: 0 0 6px; padding: 0 8px; color: var(--muted); font-size: .74rem; font-weight: 800; letter-spacing: .06em; }
+    .side-case { display: block; padding: 7px 10px; border-radius: 9px; color: var(--ink); text-decoration: none; }
+    .side-case small { display: block; color: var(--muted); font-size: .72rem; font-weight: 800; letter-spacing: .04em; }
+    a.side-case:hover { background: var(--wash); }
+    .side-case.soon { color: var(--muted); }
     h2 { margin: 0 0 4px; font-size: 1.35rem; color: var(--accent); }
     .year-note { margin: 0 0 16px; color: var(--muted); font-size: .9rem; }
     .cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
@@ -84,12 +106,17 @@
     .about ul { margin: 0; padding-left: 1.3rem; font-size: .92rem; }
     .about li + li { margin-top: 4px; }
     .related { margin-top: 18px; font-size: .92rem; }
-    footer { max-width: 880px; margin: 0 auto; padding: 0 20px 36px; color: var(--muted); font-size: .8rem; text-align: center; }
+    footer { max-width: 1180px; margin: 0 auto; padding: 0 20px 36px; color: var(--muted); font-size: .8rem; text-align: center; }
     footer a { color: var(--muted); }
 
+    /* 狭い画面では本文のカードが同じ一覧を兼ねるので、サイドバーは出さない */
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: minmax(0, 1fr); }
+      .side { display: none; }
+    }
     @media (max-width: 640px) {
       .hero { padding: 38px 16px 36px; }
-      .wrap { padding: 22px 16px 56px; }
+      .layout { padding: 22px 16px 56px; }
       .cases { grid-template-columns: 1fr; }
     }
     @media screen and (prefers-color-scheme: dark) {
@@ -120,49 +147,62 @@
     <p class="lead">事例ごとに1ページ。設問の要求と出題の趣旨、与件のどの事実を根拠にするか、字数内の答案例、受験指導校の解答例とどこで分かれたかを、設問単位で整理しています。</p>
   </header>
 
-  <main class="wrap">
-    <section aria-labelledby="r06">
-      <h2 id="r06">令和6年度（2024年度）</h2>
-      <p class="year-note">筆記試験 2024年10月27日実施。公式の問題PDF・出題の趣旨と照合済み。</p>
-      <div class="cases">
-        <a class="case c1" href="r06-jirei1.html">
-          <p class="case-no">事例Ⅰ · 組織・人事</p>
-          <p class="case-title">A社：地域物流から3PLへ</p>
-          <p class="case-note">2000年当時の強み・弱み、プロジェクトチームと長女の登用、Z社の依頼理由、配置転換の狙い、Z社との取引強化。</p>
-          <ul class="tags"><li>時点の限定</li><li>組織の分化と統合</li><li>人事処遇</li></ul>
-        </a>
-        <a class="case c2" href="r06-jirei2.html">
-          <p class="case-no">事例Ⅱ · マーケティング・流通</p>
-          <p class="case-title">B社：陶磁器「X焼」の産地問屋</p>
-          <p class="case-note">SWOT、感覚価値・観念価値を意識した返礼品、食器愛好家向けの新規事業、店舗とECの両方を使う顧客づくり。</p>
-          <ul class="tags"><li>ブランド価値構造</li><li>購入の障壁</li><li>チャネル連携</li></ul>
-        </a>
-        <a class="case c3" href="r06-jirei3.html">
-          <p class="case-no">事例Ⅲ · 生産・技術</p>
-          <p class="case-title">C社：搬送機器の受託生産</p>
-          <p class="case-note">強み、製缶工程の工程改善、工程管理の立て直し、価格交渉前の原価管理、自社企画製品の直販。</p>
-          <ul class="tags"><li>ボトルネック</li><li>実績工数</li><li>製作図面と製品図面</li></ul>
-        </a>
-        <div class="case placeholder">
-          <p class="case-no">事例Ⅳ · 財務・会計</p>
-          <p class="case-title">準備中</p>
-          <p class="case-note">計算過程つきの解説を作成中です。</p>
-        </div>
-      </div>
-    </section>
-
-    <div class="about">
-      <h2>このページの方針</h2>
-      <ul>
-        <li><strong>答案例は学習用の独自作成例です。</strong>2次試験では公式の模範解答も詳細な採点基準も公表されていません。</li>
-        <li>設問文は要旨で掲載しています。正確な文言と与件文は、各ページから公式の問題PDFで確認してください。</li>
-        <li>与件に書かれた事実と、そこからの推論・提案を分けて書いています。</li>
-        <li>予備校の解答例との比較は、公開資料を確認した日付を各ページに記載しています。</li>
+  <div class="layout">
+    <aside class="side" aria-label="過去問解説のページ一覧">
+      <a class="side-home" href="./" aria-current="page">中小企業診断士2次試験<br>過去問解説</a>
+      <p class="side-year">令和6年度（2024）</p>
+      <ul class="side-cases">
+        <li><a class="side-case" href="r06-jirei1.html"><small>事例Ⅰ</small>組織・人事</a></li>
+        <li><a class="side-case" href="r06-jirei2.html"><small>事例Ⅱ</small>マーケティング・流通</a></li>
+        <li><a class="side-case" href="r06-jirei3.html"><small>事例Ⅲ</small>生産・技術</a></li>
+        <li><span class="side-case soon"><small>事例Ⅳ</small>財務・会計（準備中）</span></li>
       </ul>
-    </div>
+    </aside>
 
-    <p class="related">解き方の手順と事例別の知識は、<a href="/cram/shindanshi_2ji.html">一夜漬けシート「事例I〜IV 解法プロセス＆知識シート」</a>にまとめています。</p>
-  </main>
+    <main class="content">
+      <section aria-labelledby="r06">
+        <h2 id="r06">令和6年度（2024年度）</h2>
+        <p class="year-note">筆記試験 2024年10月27日実施。公式の問題PDF・出題の趣旨と照合済み。</p>
+        <div class="cases">
+          <a class="case c1" href="r06-jirei1.html">
+            <p class="case-no">事例Ⅰ · 組織・人事</p>
+            <p class="case-title">A社：地域物流から3PLへ</p>
+            <p class="case-note">2000年当時の強み・弱み、プロジェクトチームと長女の登用、Z社の依頼理由、配置転換の狙い、Z社との取引強化。</p>
+            <ul class="tags"><li>時点の限定</li><li>組織の分化と統合</li><li>人事処遇</li></ul>
+          </a>
+          <a class="case c2" href="r06-jirei2.html">
+            <p class="case-no">事例Ⅱ · マーケティング・流通</p>
+            <p class="case-title">B社：陶磁器「X焼」の産地問屋</p>
+            <p class="case-note">SWOT、感覚価値・観念価値を意識した返礼品、食器愛好家向けの新規事業、店舗とECの両方を使う顧客づくり。</p>
+            <ul class="tags"><li>ブランド価値構造</li><li>購入の障壁</li><li>チャネル連携</li></ul>
+          </a>
+          <a class="case c3" href="r06-jirei3.html">
+            <p class="case-no">事例Ⅲ · 生産・技術</p>
+            <p class="case-title">C社：搬送機器の受託生産</p>
+            <p class="case-note">強み、製缶工程の工程改善、工程管理の立て直し、価格交渉前の原価管理、自社企画製品の直販。</p>
+            <ul class="tags"><li>ボトルネック</li><li>実績工数</li><li>製作図面と製品図面</li></ul>
+          </a>
+          <div class="case placeholder">
+            <p class="case-no">事例Ⅳ · 財務・会計</p>
+            <p class="case-title">準備中</p>
+            <p class="case-note">計算過程つきの解説を作成中です。</p>
+          </div>
+        </div>
+      </section>
+
+      <div class="about">
+        <h2>このページの方針</h2>
+        <ul>
+          <li><strong>答案例は学習用の独自作成例です。</strong>2次試験では公式の模範解答も詳細な採点基準も公表されていません。</li>
+          <li>設問文は要旨で掲載しています。正確な文言と与件文は、各ページから公式の問題PDFで確認してください。</li>
+          <li>与件に書かれた事実と、そこからの推論・提案を分けて書いています。</li>
+          <li>予備校の解答例との比較は、公開資料を確認した日付を各ページに記載しています。</li>
+        </ul>
+      </div>
+
+      <p class="related">解き方の手順と事例別の知識は、<a href="/cram/shindanshi_2ji.html">一夜漬けシート「事例I〜IV 解法プロセス＆知識シート」</a>にまとめています。</p>
+    </main>
+  </div>
 
   <footer>
     <p><a href="/">tebukuro.me</a></p>

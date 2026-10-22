@@ -59,7 +59,8 @@ Per-case explanation pages for the 中小企業診断士2次試験, kept separat
 - Each answer example (`.ans-text`) shows its length in `.count` as `N／上限字`. Recount when editing an answer — every character, including punctuation, is one square on the answer sheet.
 - Answers are original study examples, not official model answers. 設問 text is paraphrased (要旨), with links to the official 問題PDF and 出題の趣旨. Prep-school comparisons carry the date they were checked against the published sources.
 - "答案例を隠して解く" toggles `body.practice`; the state is kept in `localStorage` key `shindanshi-2ji-practice-v1`. Print always shows the answers.
-- Adding a case means adding a card to the hub and fixing the prev/next `.case-nav` links on the neighboring pages.
+- Every page (hub included) has the same left sidebar (`aside.side`) listing all pages; the current case page is marked `aria-current="page"` and carries its in-page TOC (`.side-toc`, highlighted on scroll). Below 980px the sidebar moves above the content on case pages and is hidden on the hub, whose cards already list the cases.
+- Adding a case means adding a card to the hub, adding it to the sidebar on every page, and fixing the prev/next `.case-nav` links on the neighboring pages.
 
 ## Icon policy
 

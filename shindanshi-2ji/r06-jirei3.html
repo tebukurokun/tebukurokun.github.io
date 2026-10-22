@@ -50,7 +50,7 @@
     .hero {
       color: #fff;
       background: linear-gradient(132deg, var(--hero-a) 0%, var(--hero-b) 55%, var(--hero-c) 100%);
-      padding: 48px max(20px, calc((100vw - 880px) / 2)) 44px;
+      padding: 48px max(20px, calc((100vw - 1180px) / 2 + 20px)) 44px;
       position: relative;
       overflow: hidden;
     }
@@ -83,24 +83,42 @@
     }
     .hero-meta a:hover { background: rgba(255,255,255,.18); }
 
-    .wrap { max-width: 880px; margin: 0 auto; padding: 26px 20px 72px; }
+    .layout { max-width: 1180px; margin: 0 auto; padding: 26px 20px 72px; display: grid; grid-template-columns: 240px minmax(0, 1fr); gap: 28px; align-items: start; }
+    .content { min-width: 0; }
+
+    .side {
+      position: sticky;
+      top: 16px;
+      max-height: calc(100vh - 32px);
+      overflow-y: auto;
+      padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      font-size: .88rem;
+      line-height: 1.5;
+    }
+    .side ul { list-style: none; margin: 0; padding: 0; }
+    .side li + li { margin-top: 2px; }
+    .side-home { display: block; padding: 6px 8px 12px; margin-bottom: 12px; border-bottom: 1px solid var(--line); color: var(--ink); font-weight: 800; text-decoration: none; }
+    .side-home:hover { color: var(--main); }
+    .side-year { margin: 0 0 6px; padding: 0 8px; color: var(--muted); font-size: .74rem; font-weight: 800; letter-spacing: .06em; }
+    .side-case { display: block; padding: 7px 10px; border-radius: 9px; color: var(--ink); text-decoration: none; }
+    .side-case small { display: block; color: var(--muted); font-size: .72rem; font-weight: 800; letter-spacing: .04em; }
+    a.side-case:hover { background: var(--wash); }
+    .side-case[aria-current="page"] { background: var(--main-soft); color: var(--main); font-weight: 700; }
+    .side-case[aria-current="page"] small { color: var(--main); }
+    .side-case.soon { color: var(--muted); }
+    .side .side-toc { margin: 6px 0 10px 14px; padding-left: 10px; border-left: 2px solid var(--line); }
+    .side-toc li + li { margin-top: 0; }
+    .side-toc a { display: block; margin-left: -12px; padding: 3px 8px 3px 10px; border-left: 2px solid transparent; color: var(--muted); font-size: .84rem; text-decoration: none; }
+    .side-toc a:hover, .side-toc a.active { color: var(--main); border-left-color: var(--main); }
+
     .notice { background: var(--amber-soft); border: 1px solid var(--amber-line); border-radius: 13px; padding: 13px 16px; margin: 0 0 18px; font-size: .92rem; }
     .notice strong { color: var(--amber-ink); }
 
-    .toolbar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin: 0 0 22px; }
-    .toc { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
-    .toc li { margin: 0; }
-    .toc a {
-      display: inline-block;
-      padding: 4px 11px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--card);
-      color: var(--ink);
-      font-size: .82rem;
-      text-decoration: none;
-    }
-    .toc a:hover, .toc a:focus-visible { border-color: var(--main); color: var(--main); }
+    .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 0 0 22px; }
     .practice-toggle {
       display: inline-flex; align-items: center; gap: 8px;
       padding: 6px 14px;
@@ -189,20 +207,28 @@
     .case-nav b { color: var(--main); }
     .case-nav span { color: var(--muted); border-style: dashed; background: transparent; }
     .home-foot { margin: 28px 0 0; font-size: .85rem; text-align: center; }
-    footer { max-width: 880px; margin: 0 auto; padding: 0 20px 36px; color: var(--muted); font-size: .8rem; text-align: center; }
+    footer { max-width: 1180px; margin: 0 auto; padding: 0 20px 36px; color: var(--muted); font-size: .8rem; text-align: center; }
     footer a { color: var(--muted); }
 
+    @media (max-width: 980px) {
+      .layout { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+      .side { position: static; max-height: none; }
+      .side .side-toc { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 6px; padding: 0; border-left: 0; }
+      .side-toc li + li { margin-top: 0; }
+      .side-toc a { margin: 0; padding: 2px 10px; border: 1px solid var(--line); border-radius: 999px; }
+      .side-toc a:hover, .side-toc a.active { border-color: var(--main); }
+    }
     @media (max-width: 620px) {
       .hero { padding: 36px 16px 34px; }
-      .wrap { padding: 20px 16px 56px; }
+      .layout { padding: 20px 16px 56px; }
       section { padding: 20px 16px; }
       .ans-text { font-size: 1rem; }
     }
     @media print {
       body { background: #fff; font-size: 10pt; }
       .hero { padding: 22px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-      .hero::after, .home, .home-foot, .toolbar, .case-nav, .reveal { display: none !important; }
-      .wrap { max-width: none; padding: 16px; }
+      .hero::after, .home, .home-foot, .side, .toolbar, .case-nav, .reveal { display: none !important; }
+      .layout { display: block; max-width: none; padding: 16px; }
       section { box-shadow: none; padding: 16px; margin-bottom: 12px; }
       .ans-text { display: block !important; }
       details.compare > div { display: block !important; }
@@ -255,311 +281,326 @@
     </div>
   </header>
 
-  <main class="wrap" id="top">
-    <p class="notice"><strong>読む前に：</strong>答案例は学習用に独自に作成したもので、<strong>公式の模範解答ではありません</strong>（2次試験では模範解答も詳細な採点基準も公表されていません）。設問文は要旨で載せているため、正確な文言は公式の問題PDFで確認してください。与件の事実と、そこからの推論を分けて書いています。</p>
-
-    <div class="toolbar">
-      <ul class="toc">
-        <li><a href="#overview">概要</a></li>
-        <li><a href="#q1">第1問</a></li>
-        <li><a href="#q2">第2問</a></li>
-        <li><a href="#q3">第3問</a></li>
-        <li><a href="#q4">第4問</a></li>
-        <li><a href="#q5">第5問</a></li>
-        <li><a href="#flow">設問のつながり</a></li>
-        <li><a href="#compare">予備校比較</a></li>
-        <li><a href="#points">学習ポイント</a></li>
-        <li><a href="#sources">出典</a></li>
+  <div class="layout">
+    <aside class="side" aria-label="過去問解説のページ一覧">
+      <a class="side-home" href="./">中小企業診断士2次試験<br>過去問解説</a>
+      <p class="side-year">令和6年度（2024）</p>
+      <ul class="side-cases">
+        <li><a class="side-case" href="r06-jirei1.html"><small>事例Ⅰ</small>組織・人事</a></li>
+        <li><a class="side-case" href="r06-jirei2.html"><small>事例Ⅱ</small>マーケティング・流通</a></li>
+        <li>
+          <a class="side-case" href="r06-jirei3.html" aria-current="page"><small>事例Ⅲ</small>生産・技術</a>
+          <ul class="side-toc">
+            <li><a href="#overview">概要</a></li>
+            <li><a href="#q1">第1問</a></li>
+            <li><a href="#q2">第2問</a></li>
+            <li><a href="#q3">第3問</a></li>
+            <li><a href="#q4">第4問</a></li>
+            <li><a href="#q5">第5問</a></li>
+            <li><a href="#flow">設問のつながり</a></li>
+            <li><a href="#compare">予備校比較</a></li>
+            <li><a href="#points">学習ポイント</a></li>
+            <li><a href="#sources">出典</a></li>
+          </ul>
+        </li>
+        <li><span class="side-case soon"><small>事例Ⅳ</small>財務・会計（準備中）</span></li>
       </ul>
-      <button type="button" class="practice-toggle" aria-pressed="false">答案例を隠して解く</button>
-    </div>
+    </aside>
 
-    <section id="overview">
-      <p class="kicker"><span>OVERVIEW</span></p>
-      <h2>事例の概要と設問構成</h2>
-      <p>C社は2011年設立、従業員70名、年商約14億円の搬送機器メーカーです。工作機械メーカーや物流機器メーカーの設備に組み込まれるローラコンベヤ・ベルトコンベヤを<strong>特注で受託生産</strong>しています。取引先8社のうちX社が受注金額の6割超。X社が中国から生産を国内に移したことで受注は増え続けていますが、製缶工程に負荷が集中し、工程管理は混乱、材料費・人件費の上昇も契約金額に反映しきれていません。</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th scope="col">設問</th><th scope="col">配点・字数</th><th scope="col">主題</th><th scope="col">中核の論点</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">第1問</th><td>20点・80字</td><td>C社の強み</td><td>提案力、特注品を作る技術・設備</td></tr>
-            <tr><th scope="row">第2問</th><td>20点・100字</td><td>生産能力を上げる工程改善</td><td>製缶工程のボトルネック解消</td></tr>
-            <tr><th scope="row">第3問</th><td>20点・100字</td><td>工程管理業務の改善</td><td>実績工数、計画の精度、進捗・負荷の管理</td></tr>
-            <tr><th scope="row">第4問</th><td>20点・120字</td><td>価格交渉前の社内の事前対策</td><td>原価管理、見積もり・契約のプロセス</td></tr>
-            <tr><th scope="row">第5問</th><td>20点・120字</td><td>自社企画製品の直接販売</td><td>今の能力と新事業に要る能力の差</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+    <main class="content" id="top">
+      <p class="notice"><strong>読む前に：</strong>答案例は学習用に独自に作成したもので、<strong>公式の模範解答ではありません</strong>（2次試験では模範解答も詳細な採点基準も公表されていません）。設問文は要旨で載せているため、正確な文言は公式の問題PDFで確認してください。与件の事実と、そこからの推論を分けて書いています。</p>
 
-    <section id="q1">
-      <p class="kicker"><span>第1問</span><span>配点20点</span><span>80字以内</span></p>
-      <h2>C社の強み</h2>
-      <div class="ask"><span class="label">設問（要旨）</span><p>C社の強みを80字以内で述べる。</p></div>
-      <div class="aim"><span class="label">出題の趣旨（公式）</span><p>C社の強みについて、分析する能力を問う問題である。</p></div>
-      <p>C社の受注を支える<strong>競争優位の源泉</strong>を整理します。</p>
-
-      <div class="answer">
-        <div class="answer-head"><strong>答案例</strong><span class="count">80／80字</span></div>
-        <p class="ans-text">強みは、社長が培った工場設備レイアウト設計と搬送機能の提案力、特注コンベヤの製作図面作成から主要部品の内製・組立まで対応できる技術者と生産設備を有する点である。</p>
-        <button type="button" class="reveal">答案例を表示</button>
+      <div class="toolbar">
+        <button type="button" class="practice-toggle" aria-pressed="false">答案例を隠して解く</button>
       </div>
 
-      <h3>与件の根拠</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th scope="col">与件の事実</th><th scope="col">強みとしての意味</th></tr></thead>
-          <tbody>
-            <tr><td>社長はX社で搬送機器を含む工場設備レイアウト設計を担当し、工場の生産性向上を顧客に提案してきた</td><td>生産性向上の知識・経験</td></tr>
-            <tr><td>社長の搬送機能についての有効な提案もあり、X社以外の特注品受託も獲得</td><td>実績に裏付けられた提案力</td></tr>
-            <tr><td>NC加工機などの生産設備を導入し、設計要員・製造要員を中心に採用</td><td>特注品を作れる経営資源</td></tr>
-            <tr><td>設計部が製作図面を作図し、部品構成表を作成</td><td>製造に向けた図面・部材管理の能力</td></tr>
-            <tr><td>フレームは製缶課、駆動部・搬送体は機械加工課で内製し、組立課が最終組立</td><td>主要な構造体を一貫して作れる</td></tr>
-          </tbody>
-        </table>
-      </div>
+      <section id="overview">
+        <p class="kicker"><span>OVERVIEW</span></p>
+        <h2>事例の概要と設問構成</h2>
+        <p>C社は2011年設立、従業員70名、年商約14億円の搬送機器メーカーです。工作機械メーカーや物流機器メーカーの設備に組み込まれるローラコンベヤ・ベルトコンベヤを<strong>特注で受託生産</strong>しています。取引先8社のうちX社が受注金額の6割超。X社が中国から生産を国内に移したことで受注は増え続けていますが、製缶工程に負荷が集中し、工程管理は混乱、材料費・人件費の上昇も契約金額に反映しきれていません。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">設問</th><th scope="col">配点・字数</th><th scope="col">主題</th><th scope="col">中核の論点</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">第1問</th><td>20点・80字</td><td>C社の強み</td><td>提案力、特注品を作る技術・設備</td></tr>
+              <tr><th scope="row">第2問</th><td>20点・100字</td><td>生産能力を上げる工程改善</td><td>製缶工程のボトルネック解消</td></tr>
+              <tr><th scope="row">第3問</th><td>20点・100字</td><td>工程管理業務の改善</td><td>実績工数、計画の精度、進捗・負荷の管理</td></tr>
+              <tr><th scope="row">第4問</th><td>20点・120字</td><td>価格交渉前の社内の事前対策</td><td>原価管理、見積もり・契約のプロセス</td></tr>
+              <tr><th scope="row">第5問</th><td>20点・120字</td><td>自社企画製品の直接販売</td><td>今の能力と新事業に要る能力の差</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
 
-      <h3>注意点</h3>
-      <ul>
-        <li>C社が作るのは<strong>製作図面</strong>で、<strong>製品仕様書・製品図面</strong>は顧客企業が作っています。「製品の基本設計から据付まで一貫対応」と書くと過大評価になります（第5問の伏線）。</li>
-        <li>X社向けの据付後のメンテナンスはC社の営業部が担当しています。強みの候補ですが、全顧客に対応できる体制とは限りません。</li>
-        <li>X社の受注比率が6割を超えることは、実績であると同時に依存のリスクでもあります。</li>
-        <li>国内への生産移管で受注が増えたことは、主に外部の機会です。</li>
-      </ul>
-    </section>
+      <section id="q1">
+        <p class="kicker"><span>第1問</span><span>配点20点</span><span>80字以内</span></p>
+        <h2>C社の強み</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>C社の強みを80字以内で述べる。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>C社の強みについて、分析する能力を問う問題である。</p></div>
+        <p>C社の受注を支える<strong>競争優位の源泉</strong>を整理します。</p>
 
-    <section id="q2">
-      <p class="kicker"><span>第2問</span><span>配点20点</span><span>100字以内</span></p>
-      <h2>生産能力を上げるための工程改善</h2>
-      <div class="ask"><span class="label">設問（要旨）</span><p>コロナ禍以降増加傾向にある受注量に対応するため、製造部は工程改善によって生産能力の向上を図ろうとしている。どのように工程改善を進めるべきか、100字以内で助言する。</p></div>
-      <div class="aim"><span class="label">出題の趣旨（公式）</span><p>コロナ禍以降の増加傾向にある受注量に対応するためのC社製造工程の課題を整理し、生産能力向上を図る工程改善の進め方について、助言する能力を問う問題である。</p></div>
-      <p>受注増に対応できるよう、<strong>現場の作業工程そのものの処理能力</strong>を上げます。第3問の「工程管理の仕組み」とは区別します。</p>
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong><span class="count">80／80字</span></div>
+          <p class="ans-text">強みは、社長が培った工場設備レイアウト設計と搬送機能の提案力、特注コンベヤの製作図面作成から主要部品の内製・組立まで対応できる技術者と生産設備を有する点である。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
 
-      <div class="answer">
-        <div class="answer-head"><strong>答案例</strong><span class="count">94／100字</span></div>
-        <p class="ans-text">製缶工程の作業者工程分析でムダを特定し、作業方法を改善・標準化する。併せて余力のある機械加工課と組立課の作業者を多能工化し、製缶工程への応援体制を構築して負荷を平準化し、生産能力を高める。</p>
-        <button type="button" class="reveal">答案例を表示</button>
-      </div>
+        <h3>与件の根拠</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">与件の事実</th><th scope="col">強みとしての意味</th></tr></thead>
+            <tbody>
+              <tr><td>社長はX社で搬送機器を含む工場設備レイアウト設計を担当し、工場の生産性向上を顧客に提案してきた</td><td>生産性向上の知識・経験</td></tr>
+              <tr><td>社長の搬送機能についての有効な提案もあり、X社以外の特注品受託も獲得</td><td>実績に裏付けられた提案力</td></tr>
+              <tr><td>NC加工機などの生産設備を導入し、設計要員・製造要員を中心に採用</td><td>特注品を作れる経営資源</td></tr>
+              <tr><td>設計部が製作図面を作図し、部品構成表を作成</td><td>製造に向けた図面・部材管理の能力</td></tr>
+              <tr><td>フレームは製缶課、駆動部・搬送体は機械加工課で内製し、組立課が最終組立</td><td>主要な構造体を一貫して作れる</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-      <h3>与件の根拠</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th scope="col">与件の事実</th><th scope="col">読み取れる課題</th></tr></thead>
-          <tbody>
-            <tr><td>製缶工程（製缶課）の残業や休日出勤が多い</td><td>負荷が集中し、工場全体の制約になっている可能性</td></tr>
-            <tr><td>納期対応のため週次日程計画表の変更が常態化</td><td>製缶工程の遅れが計画全体に波及</td></tr>
-            <tr><td>前工程の機械加工課・後工程の組立課は、特別な場合を除き残業も休日出勤もない</td><td>前後の工程には余力がある可能性</td></tr>
-          </tbody>
-        </table>
-      </div>
+        <h3>注意点</h3>
+        <ul>
+          <li>C社が作るのは<strong>製作図面</strong>で、<strong>製品仕様書・製品図面</strong>は顧客企業が作っています。「製品の基本設計から据付まで一貫対応」と書くと過大評価になります（第5問の伏線）。</li>
+          <li>X社向けの据付後のメンテナンスはC社の営業部が担当しています。強みの候補ですが、全顧客に対応できる体制とは限りません。</li>
+          <li>X社の受注比率が6割を超えることは、実績であると同時に依存のリスクでもあります。</li>
+          <li>国内への生産移管で受注が増えたことは、主に外部の機会です。</li>
+        </ul>
+      </section>
 
-      <h3>改善の進め方</h3>
-      <ol>
-        <li><strong>IE（インダストリアル・エンジニアリング）で作業を分析する。</strong>動作、運搬、待ち、段取りなどを測り、ムダを特定する。</li>
-        <li><strong>作業方法を改善し、標準化する。</strong>手順、工具の配置、段取りの方法を見直して作業時間を縮める。</li>
-        <li><strong>多能工を育てる。</strong>前後工程の作業者が、製缶工程の一部を安全に担当できるようにする。</li>
-        <li><strong>応援で負荷を平準化する。</strong>負荷の高い製缶工程に人員を柔軟に振り向ける。</li>
-      </ol>
-      <div class="tip"><strong>ボトルネックの考え方</strong>直列の工程では、工場全体の処理量は最も能力の低い工程で決まり得ます。<strong>他の工程だけ増強しても、完成品の出荷量は増えません。</strong>ただし工程別の能力は数値で示されていないため、製缶工程が制約だというのは残業などを手がかりにした推論です。</div>
-      <div class="warning"><strong>いきなり設備投資に飛ばない</strong>自動化も選択肢ですが、設備の能力や費用対効果は与件から分かりません。<strong>作業分析 → 改善 → 必要なら設備対策</strong>の順に考えると、仮定を増やさずに答案を作れます。</div>
-    </section>
+      <section id="q2">
+        <p class="kicker"><span>第2問</span><span>配点20点</span><span>100字以内</span></p>
+        <h2>生産能力を上げるための工程改善</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>コロナ禍以降増加傾向にある受注量に対応するため、製造部は工程改善によって生産能力の向上を図ろうとしている。どのように工程改善を進めるべきか、100字以内で助言する。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>コロナ禍以降の増加傾向にある受注量に対応するためのC社製造工程の課題を整理し、生産能力向上を図る工程改善の進め方について、助言する能力を問う問題である。</p></div>
+        <p>受注増に対応できるよう、<strong>現場の作業工程そのものの処理能力</strong>を上げます。第3問の「工程管理の仕組み」とは区別します。</p>
 
-    <section id="q3">
-      <p class="kicker"><span>第3問</span><span>配点20点</span><span>100字以内</span></p>
-      <h2>工程管理業務の改善</h2>
-      <div class="ask"><span class="label">設問（要旨）</span><p>受注量の増加や納期短縮の要請などの影響で製造部の工程管理が混乱している。どのように工程管理業務を改善するべきか、その進め方を100字以内で助言する。</p></div>
-      <div class="aim"><span class="label">出題の趣旨（公式）</span><p>受注量の増加や納期短縮要請などの影響で混乱しているC社製造部の工程管理業務の課題を整理し、その改善の進め方について、助言する能力を問う問題である。</p></div>
-      <p>焦点は、<strong>工数の見積もり、生産計画、進捗・負荷の管理、部門間の情報共有</strong>の仕組みです。</p>
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong><span class="count">94／100字</span></div>
+          <p class="ans-text">製缶工程の作業者工程分析でムダを特定し、作業方法を改善・標準化する。併せて余力のある機械加工課と組立課の作業者を多能工化し、製缶工程への応援体制を構築して負荷を平準化し、生産能力を高める。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
 
-      <div class="answer">
-        <div class="answer-head"><strong>答案例</strong><span class="count">99／100字</span></div>
-        <p class="ans-text">製造番号ごとの作業実績を収集・データ化し、標準工数を設定して大日程・週次日程計画の精度を高める。生産管理課を中心に営業・設計・製造間で受注、設計変更、納期、進捗、負荷情報を共有し、計画を随時見直す。</p>
-        <button type="button" class="reveal">答案例を表示</button>
-      </div>
+        <h3>与件の根拠</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">与件の事実</th><th scope="col">読み取れる課題</th></tr></thead>
+            <tbody>
+              <tr><td>製缶工程（製缶課）の残業や休日出勤が多い</td><td>負荷が集中し、工場全体の制約になっている可能性</td></tr>
+              <tr><td>納期対応のため週次日程計画表の変更が常態化</td><td>製缶工程の遅れが計画全体に波及</td></tr>
+              <tr><td>前工程の機械加工課・後工程の組立課は、特別な場合を除き残業も休日出勤もない</td><td>前後の工程には余力がある可能性</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-      <h3>与件の根拠</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th scope="col">与件の事実</th><th scope="col">課題・対応</th></tr></thead>
-          <tbody>
-            <tr><td>生産管理課が工数計画を立て、顧客の要求納期を基準に製造番号ごとの大日程計画を作る</td><td>製造番号をまたいだ負荷の調整、週次計画との整合</td></tr>
-            <tr><td>週次日程計画表の工数見積もりは製造部各課長の経験による</td><td>実績工数を分析し、見積もりの精度を上げる</td></tr>
-            <tr><td>生産会議（生産統制）は週1回、週末に開催</td><td>情報の更新と対応のタイミングを早める余地</td></tr>
-            <tr><td>設計変更・納期変更のときは、必要に応じて設計担当者が生産会議に参加</td><td>変更情報の連携を強める余地</td></tr>
-            <tr><td>製造部はIT利用を検討中。受注管理システムがあり、部品構成表はデジタルデータ</td><td>既存のデータを管理に生かす</td></tr>
-          </tbody>
-        </table>
-      </div>
+        <h3>改善の進め方</h3>
+        <ol>
+          <li><strong>IE（インダストリアル・エンジニアリング）で作業を分析する。</strong>動作、運搬、待ち、段取りなどを測り、ムダを特定する。</li>
+          <li><strong>作業方法を改善し、標準化する。</strong>手順、工具の配置、段取りの方法を見直して作業時間を縮める。</li>
+          <li><strong>多能工を育てる。</strong>前後工程の作業者が、製缶工程の一部を安全に担当できるようにする。</li>
+          <li><strong>応援で負荷を平準化する。</strong>負荷の高い製缶工程に人員を柔軟に振り向ける。</li>
+        </ol>
+        <div class="tip"><strong>ボトルネックの考え方</strong>直列の工程では、工場全体の処理量は最も能力の低い工程で決まり得ます。<strong>他の工程だけ増強しても、完成品の出荷量は増えません。</strong>ただし工程別の能力は数値で示されていないため、製缶工程が制約だというのは残業などを手がかりにした推論です。</div>
+        <div class="warning"><strong>いきなり設備投資に飛ばない</strong>自動化も選択肢ですが、設備の能力や費用対効果は与件から分かりません。<strong>作業分析 → 改善 → 必要なら設備対策</strong>の順に考えると、仮定を増やさずに答案を作れます。</div>
+      </section>
 
-      <h3>改善の進め方</h3>
-      <ol>
-        <li><strong>実績を集める：</strong>製造番号・作業内容・工程別の工数を記録する。</li>
-        <li><strong>見積もりの基準を整える：</strong>類似製品や作業別の実績から工数を見積もる。</li>
-        <li><strong>負荷を計画する：</strong>複数の製造番号の仕事量を工程別に合計し、使える能力と照らし合わせる。</li>
-        <li><strong>生産を統制する：</strong>進捗・余力・設計変更・納期変更を部門間で適時に共有し、必要に応じて日程を直す。</li>
-      </ol>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th scope="col">区分</th><th scope="col">役割</th><th scope="col">この事例での対策</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">生産計画</th><td>何を、いつ、どれだけ作るかを決める</td><td>標準工数と負荷に基づく日程計画</td></tr>
-            <tr><th scope="row">生産統制</th><td>実行状況を計画に合わせて調整する</td><td>進捗・余力・設計変更の情報共有</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="tip"><strong>ITの導入を目的にしない</strong>経験による見積もりが必ず不正確とは限りません。問題は、実績データで検証し改善していく体制が見えないことです。ERPやMESの導入を主題にするより、<strong>どのデータを、誰が、どう使うか</strong>を具体的に書きます。</div>
-    </section>
+      <section id="q3">
+        <p class="kicker"><span>第3問</span><span>配点20点</span><span>100字以内</span></p>
+        <h2>工程管理業務の改善</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>受注量の増加や納期短縮の要請などの影響で製造部の工程管理が混乱している。どのように工程管理業務を改善するべきか、その進め方を100字以内で助言する。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>受注量の増加や納期短縮要請などの影響で混乱しているC社製造部の工程管理業務の課題を整理し、その改善の進め方について、助言する能力を問う問題である。</p></div>
+        <p>焦点は、<strong>工数の見積もり、生産計画、進捗・負荷の管理、部門間の情報共有</strong>の仕組みです。</p>
 
-    <section id="q4">
-      <p class="kicker"><span>第4問</span><span>配点20点</span><span>120字以内</span></p>
-      <h2>価格交渉に備えた社内の事前対策</h2>
-      <div class="ask"><span class="label">設問（要旨）</span><p>顧客企業との契約金額は、材料費や人件費の高騰に合わせた見直しはしているものの、現状のコスト高に対応できていない。顧客企業との価格交渉を円滑に行うための社内の事前対策を、120字以内で助言する。</p></div>
-      <div class="aim"><span class="label">出題の趣旨（公式）</span><p>最近の材料費や人件費の高騰に対応するために、C社の原価管理および契約プロセスなどの課題を整理し、顧客企業との価格交渉を円滑に行うために必要な社内の事前対策について、助言する能力を問う問題である。</p></div>
-      <p>交渉術ではなく、<strong>社内の原価管理と、見積もり・契約判断の仕組み</strong>が問われています。</p>
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong><span class="count">99／100字</span></div>
+          <p class="ans-text">製造番号ごとの作業実績を収集・データ化し、標準工数を設定して大日程・週次日程計画の精度を高める。生産管理課を中心に営業・設計・製造間で受注、設計変更、納期、進捗、負荷情報を共有し、計画を随時見直す。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
 
-      <div class="answer">
-        <div class="answer-head"><strong>答案例</strong><span class="count">112／120字</span></div>
-        <p class="ans-text">製造番号別に部品構成表から材料・外注費を把握し、作業実績と賃率、残業・休日出勤、設計・納期変更の追加費用を集計して原価を精緻化する。営業部は製造・設計部と見積根拠と適正利益を共有し、最新原価に基づく見積・決裁基準を整備する。</p>
-        <button type="button" class="reveal">答案例を表示</button>
-      </div>
+        <h3>与件の根拠</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">与件の事実</th><th scope="col">課題・対応</th></tr></thead>
+            <tbody>
+              <tr><td>生産管理課が工数計画を立て、顧客の要求納期を基準に製造番号ごとの大日程計画を作る</td><td>製造番号をまたいだ負荷の調整、週次計画との整合</td></tr>
+              <tr><td>週次日程計画表の工数見積もりは製造部各課長の経験による</td><td>実績工数を分析し、見積もりの精度を上げる</td></tr>
+              <tr><td>生産会議（生産統制）は週1回、週末に開催</td><td>情報の更新と対応のタイミングを早める余地</td></tr>
+              <tr><td>設計変更・納期変更のときは、必要に応じて設計担当者が生産会議に参加</td><td>変更情報の連携を強める余地</td></tr>
+              <tr><td>製造部はIT利用を検討中。受注管理システムがあり、部品構成表はデジタルデータ</td><td>既存のデータを管理に生かす</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-      <h3>与件の根拠</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th scope="col">与件の事実</th><th scope="col">改善の方向</th></tr></thead>
-          <tbody>
-            <tr><td>営業部員が過去に製造した搬送機器の契約金額を参考に、材料費・社内加工費・その他経費を合計して見積もる</td><td>最新の原価と利益に基づく見積もり</td></tr>
-            <tr><td>最終契約金額も含めて営業部長が決裁</td><td>製造・設計部門の原価情報を決裁に反映</td></tr>
-            <tr><td>部品構成表はデジタルデータで、材料・外注品の発注と在庫管理に使われている</td><td>部材の数量・単価を原価管理に使う</td></tr>
-            <tr><td>工数見積もりは各課長の経験による</td><td>実績工数を原価に反映</td></tr>
-            <tr><td>製缶工程で残業・休日出勤が多い</td><td>追加の労務費を把握</td></tr>
-            <tr><td>顧客からの設計変更・納期変更がある</td><td>変更で生じる追加費用を集計</td></tr>
-          </tbody>
-        </table>
-      </div>
+        <h3>改善の進め方</h3>
+        <ol>
+          <li><strong>実績を集める：</strong>製造番号・作業内容・工程別の工数を記録する。</li>
+          <li><strong>見積もりの基準を整える：</strong>類似製品や作業別の実績から工数を見積もる。</li>
+          <li><strong>負荷を計画する：</strong>複数の製造番号の仕事量を工程別に合計し、使える能力と照らし合わせる。</li>
+          <li><strong>生産を統制する：</strong>進捗・余力・設計変更・納期変更を部門間で適時に共有し、必要に応じて日程を直す。</li>
+        </ol>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">区分</th><th scope="col">役割</th><th scope="col">この事例での対策</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">生産計画</th><td>何を、いつ、どれだけ作るかを決める</td><td>標準工数と負荷に基づく日程計画</td></tr>
+              <tr><th scope="row">生産統制</th><td>実行状況を計画に合わせて調整する</td><td>進捗・余力・設計変更の情報共有</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tip"><strong>ITの導入を目的にしない</strong>経験による見積もりが必ず不正確とは限りません。問題は、実績データで検証し改善していく体制が見えないことです。ERPやMESの導入を主題にするより、<strong>どのデータを、誰が、どう使うか</strong>を具体的に書きます。</div>
+      </section>
 
-      <h3>原価管理の流れ</h3>
-      <p>製造原価は一般に<strong>直接材料費＋直接労務費＋製造間接費</strong>で捉えます。C社ではこれに外注費の扱いを加え、販売費・一般管理費と必要な利益も見込んで見積もりに反映します。</p>
-      <ol>
-        <li>部品構成表と購買実績から、材料費・外注費を把握する。</li>
-        <li>製造番号別の実績工数、賃率、残業・休日出勤、変更による追加コストを集計する。</li>
-        <li>営業・製造・設計の各部で、最新の原価と見積もりの根拠を共有する。</li>
-        <li>適正な利益を見込んだ見積もり・決裁のルールを整え、交渉資料を作る。</li>
-      </ol>
-      <div class="warning"><strong>「契約プロセス」の課題は推論で書く</strong>与件の事実は「見積もりと最終契約金額を営業部が中心に決めている」こと。そこから「<strong>製造・設計部門の情報が十分に反映されていない可能性</strong>」を推論します。情報共有がまったくないと断定する必要も、決裁権限を社長に移す必要もありません。</div>
-    </section>
+      <section id="q4">
+        <p class="kicker"><span>第4問</span><span>配点20点</span><span>120字以内</span></p>
+        <h2>価格交渉に備えた社内の事前対策</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>顧客企業との契約金額は、材料費や人件費の高騰に合わせた見直しはしているものの、現状のコスト高に対応できていない。顧客企業との価格交渉を円滑に行うための社内の事前対策を、120字以内で助言する。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>最近の材料費や人件費の高騰に対応するために、C社の原価管理および契約プロセスなどの課題を整理し、顧客企業との価格交渉を円滑に行うために必要な社内の事前対策について、助言する能力を問う問題である。</p></div>
+        <p>交渉術ではなく、<strong>社内の原価管理と、見積もり・契約判断の仕組み</strong>が問われています。</p>
 
-    <section id="q5">
-      <p class="kicker"><span>第5問</span><span>配点20点</span><span>120字以内</span></p>
-      <h2>自社企画製品の直接販売へ事業を広げる</h2>
-      <div class="ask"><span class="label">設問（要旨）</span><p>社長は、小規模の工場施設や物流施設の新設・更新を計画している企業と直接契約し、自社企画の製品を設計・製造して事業を拡大したい。この事業展開を成功させるための推進方法を、120字以内で助言する。</p></div>
-      <div class="aim"><span class="label">出題の趣旨（公式）</span><p>小規模の工場施設や物流施設の新設や更新を計画している企業と直接契約し、自社企画の製品を設計、製造することで事業を拡大しようとするC社社長の構想について、C社の経営資源の課題などを整理し、成功するために必要な推進方法を助言する能力を問う問題である。</p></div>
-      <p>今の<strong>受託生産で持っている能力</strong>と、新事業で<strong>必要になる能力</strong>の差を洗い出します。出題の趣旨が「経営資源の課題などを整理し」と書いている点がヒントです。</p>
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong><span class="count">112／120字</span></div>
+          <p class="ans-text">製造番号別に部品構成表から材料・外注費を把握し、作業実績と賃率、残業・休日出勤、設計・納期変更の追加費用を集計して原価を精緻化する。営業部は製造・設計部と見積根拠と適正利益を共有し、最新原価に基づく見積・決裁基準を整備する。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
 
-      <div class="answer">
-        <div class="answer-head"><strong>答案例</strong><span class="count">118／120字</span></div>
-        <p class="ans-text">社長の工場レイアウト・搬送機能の提案ノウハウを営業・設計部に継承し、直接顧客のニーズを収集して自社企画製品を開発する。設計部に製品仕様・製品図面の作成能力を育成し、据付・保守は人員を確保して内製または外部連携で対応し、Ｘ社依存を下げる。</p>
-        <button type="button" class="reveal">答案例を表示</button>
-      </div>
+        <h3>与件の根拠</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">与件の事実</th><th scope="col">改善の方向</th></tr></thead>
+            <tbody>
+              <tr><td>営業部員が過去に製造した搬送機器の契約金額を参考に、材料費・社内加工費・その他経費を合計して見積もる</td><td>最新の原価と利益に基づく見積もり</td></tr>
+              <tr><td>最終契約金額も含めて営業部長が決裁</td><td>製造・設計部門の原価情報を決裁に反映</td></tr>
+              <tr><td>部品構成表はデジタルデータで、材料・外注品の発注と在庫管理に使われている</td><td>部材の数量・単価を原価管理に使う</td></tr>
+              <tr><td>工数見積もりは各課長の経験による</td><td>実績工数を原価に反映</td></tr>
+              <tr><td>製缶工程で残業・休日出勤が多い</td><td>追加の労務費を把握</td></tr>
+              <tr><td>顧客からの設計変更・納期変更がある</td><td>変更で生じる追加費用を集計</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-      <h3>現状と新事業の業務範囲</h3>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th scope="col">業務</th><th scope="col">現在の担当</th><th scope="col">新事業でC社に必要な対応</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">最終顧客のニーズ把握</th><td>主に顧客企業（メーカー）</td><td>直接の営業・現場調査・提案</td></tr>
-            <tr><th scope="row">製品仕様書の作成</th><td>顧客企業</td><td>仕様を決める能力を身につける</td></tr>
-            <tr><th scope="row">製品図面の作成</th><td>顧客企業</td><td>製品設計の能力を身につける</td></tr>
-            <tr><th scope="row">製作図面・部品構成表</th><td>C社 設計部</td><td>今の能力を生かす</td></tr>
-            <tr><th scope="row">部品製作・組立</th><td>C社 製造部</td><td>第2・3問の改善で能力を確保</td></tr>
-            <tr><th scope="row">据付</th><td>顧客企業</td><td>内製するか、協力会社に委託する</td></tr>
-            <tr><th scope="row">メンテナンス</th><td>顧客企業（X社向けのみC社の営業部）</td><td>保守体制と役割分担を決める</td></tr>
-          </tbody>
-        </table>
-      </div>
+        <h3>原価管理の流れ</h3>
+        <p>製造原価は一般に<strong>直接材料費＋直接労務費＋製造間接費</strong>で捉えます。C社ではこれに外注費の扱いを加え、販売費・一般管理費と必要な利益も見込んで見積もりに反映します。</p>
+        <ol>
+          <li>部品構成表と購買実績から、材料費・外注費を把握する。</li>
+          <li>製造番号別の実績工数、賃率、残業・休日出勤、変更による追加コストを集計する。</li>
+          <li>営業・製造・設計の各部で、最新の原価と見積もりの根拠を共有する。</li>
+          <li>適正な利益を見込んだ見積もり・決裁のルールを整え、交渉資料を作る。</li>
+        </ol>
+        <div class="warning"><strong>「契約プロセス」の課題は推論で書く</strong>与件の事実は「見積もりと最終契約金額を営業部が中心に決めている」こと。そこから「<strong>製造・設計部門の情報が十分に反映されていない可能性</strong>」を推論します。情報共有がまったくないと断定する必要も、決裁権限を社長に移す必要もありません。</div>
+      </section>
 
-      <h3>推論の要点</h3>
-      <ul>
-        <li>「製品の<strong>仕様・機能を決める</strong>」ことと、「決まった仕様を<strong>作るための図面を描く</strong>」ことは違う。</li>
-        <li>社長の提案力が優れていても、事業を広げるには営業・設計の人材への知識の移転が有効。</li>
-        <li>直接販売では、これまでメーカーが担っていた据付・保守などを誰が担うか決める必要がある。<strong>全面的な内製は必須ではなく</strong>、外部との連携も選択肢。</li>
-        <li>直販の収益性は保証されない。営業・設計・保守などの追加費用も生じる。</li>
-      </ul>
-    </section>
+      <section id="q5">
+        <p class="kicker"><span>第5問</span><span>配点20点</span><span>120字以内</span></p>
+        <h2>自社企画製品の直接販売へ事業を広げる</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>社長は、小規模の工場施設や物流施設の新設・更新を計画している企業と直接契約し、自社企画の製品を設計・製造して事業を拡大したい。この事業展開を成功させるための推進方法を、120字以内で助言する。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>小規模の工場施設や物流施設の新設や更新を計画している企業と直接契約し、自社企画の製品を設計、製造することで事業を拡大しようとするC社社長の構想について、C社の経営資源の課題などを整理し、成功するために必要な推進方法を助言する能力を問う問題である。</p></div>
+        <p>今の<strong>受託生産で持っている能力</strong>と、新事業で<strong>必要になる能力</strong>の差を洗い出します。出題の趣旨が「経営資源の課題などを整理し」と書いている点がヒントです。</p>
 
-    <section id="flow">
-      <p class="kicker"><span>STRUCTURE</span></p>
-      <h2>設問のつながり</h2>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th scope="col">設問</th><th scope="col">解決する問題</th><th scope="col">次への波及</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">第1問</th><td>提案力・製造技術という強みの特定</td><td>新事業での競争優位</td></tr>
-            <tr><th scope="row">第2問</th><td>製缶工程の能力の制約</td><td>受注増への対応、残業の抑制</td></tr>
-            <tr><th scope="row">第3問</th><td>計画・進捗管理の混乱</td><td>実績工数の蓄積、納期の確保</td></tr>
-            <tr><th scope="row">第4問</th><td>原価上昇の価格への転嫁の遅れ</td><td>適正な見積もり・契約条件</td></tr>
-            <tr><th scope="row">第5問</th><td>直販に足りない営業・製品設計・据付・保守の機能</td><td>自社企画製品の事業化</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p><strong>工程改善 → 工程管理の高度化 → 原価管理の高度化 → 新事業の実現</strong>という流れで捉えると、答案どうしの論理が整います。第3問で集める実績工数は、第4問の原価の根拠にもなります。</p>
-    </section>
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong><span class="count">118／120字</span></div>
+          <p class="ans-text">社長の工場レイアウト・搬送機能の提案ノウハウを営業・設計部に継承し、直接顧客のニーズを収集して自社企画製品を開発する。設計部に製品仕様・製品図面の作成能力を育成し、据付・保守は人員を確保して内製または外部連携で対応し、Ｘ社依存を下げる。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
 
-    <section id="compare">
-      <p class="kicker"><span>COMPARISON</span></p>
-      <h2>予備校の解答例との比較</h2>
-      <p>受験指導校の解答例を設問ごとに確認しました。<strong>どれも公式の解答ではなく、採点上の優劣は判断できません。</strong>方向性がそろう設問と、割れる設問を見分けるための参考です。</p>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th scope="col">設問</th><th scope="col">共通する方向性</th><th scope="col">分かれた点</th></tr></thead>
-          <tbody>
-            <tr><th scope="row">第1問</th><td><strong>社長の提案力</strong>（3校とも）</td><td>TACは提案力に絞る。KECは生産設備・技術力とX社との良好な取引関係を追加。EBAは搬送体・駆動部・フレームの内製と組立、メンテナンス対応を追加</td></tr>
-            <tr><th scope="row">第2問</th><td>製缶工程に負荷が偏っている点を起点にする</td><td>TACは各工程の要員数・作業量を分析して柔軟に要員を配置、KECは製缶工程をIEで合理化し自動化も検討、EBAは作業者工程分析と標準化のうえで前後工程の多能工が応援</td></tr>
-            <tr><th scope="row">第3問</th><td>経験ではなく<strong>データに基づく工数見積もり</strong>と、設計変更などの<strong>情報共有</strong></td><td>TACは工程管理システムを導入し製作図面と工数計画を取り込む、KECは顧客の要求納期ではなく実行可能な納期で計画、EBAは全製造番号を統合した大日程計画と、営業部・設計部の生産会議への参加</td></tr>
-            <tr><th scope="row">第4問</th><td>過去の契約金額ではなく<strong>最新の原価</strong>に基づく見積もり（3校とも）</td><td>TACは部品構成表の発注金額と実績工数から算出、KECは製造部が最新コストを分析して営業部に提供、EBAは残業・休日出勤や設計・納期変更による追加コスト、工場の稼働状況まで反映</td></tr>
-            <tr><th scope="row">第5問</th><td>社長の提案力を生かした営業と、メンテナンスへの対応</td><td>TACは小規模施設向けの特注品提案とメンテナンスしやすい設計、KECは営業部の強化（ニーズ収集、社長のノウハウの教育、X社向けメンテナンスの他部門への移管）、EBAは製品仕様書・製品図面の作成能力、据付の内製化、メンテナンス課の設置</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p>第5問は、出題の趣旨にある「経営資源の課題」に対応させるなら、<strong>現状と必要な業務の差を明記する答案</strong>が有力です。EBAの解説も、自社製品の販売経験がないC社の課題を「営業・メンテナンス・設計・据付」の4領域で整理しています。</p>
-      <p class="source-note">確認日：2026年10月22日。各校の資料は公開後に改訂されることがあります。リンクは<a href="#sources">出典</a>を参照。</p>
-    </section>
+        <h3>現状と新事業の業務範囲</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">業務</th><th scope="col">現在の担当</th><th scope="col">新事業でC社に必要な対応</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">最終顧客のニーズ把握</th><td>主に顧客企業（メーカー）</td><td>直接の営業・現場調査・提案</td></tr>
+              <tr><th scope="row">製品仕様書の作成</th><td>顧客企業</td><td>仕様を決める能力を身につける</td></tr>
+              <tr><th scope="row">製品図面の作成</th><td>顧客企業</td><td>製品設計の能力を身につける</td></tr>
+              <tr><th scope="row">製作図面・部品構成表</th><td>C社 設計部</td><td>今の能力を生かす</td></tr>
+              <tr><th scope="row">部品製作・組立</th><td>C社 製造部</td><td>第2・3問の改善で能力を確保</td></tr>
+              <tr><th scope="row">据付</th><td>顧客企業</td><td>内製するか、協力会社に委託する</td></tr>
+              <tr><th scope="row">メンテナンス</th><td>顧客企業（X社向けのみC社の営業部）</td><td>保守体制と役割分担を決める</td></tr>
+            </tbody>
+          </table>
+        </div>
 
-    <section id="points">
-      <p class="kicker"><span>TAKEAWAYS</span></p>
-      <h2>事例全体の学習ポイント</h2>
-      <ol>
-        <li><strong>物理的な工程の能力と、管理の精度を区別する。</strong>第2問は「工程改善」、第3問は「工程管理」。</li>
-        <li><strong>与件に明示された課題と推論を分ける。</strong>残業が多いのは事実、製缶工程がボトルネックだというのは推論。</li>
-        <li><strong>ITの導入そのものを目的にしない。</strong>実績データをどう意思決定に結び付けるかを書く。</li>
-        <li><strong>価格交渉の前に、原価の把握と、見積もり・決裁の社内体制が要る。</strong></li>
-        <li><strong>新事業で足りない能力は、業務範囲の変化から導く。</strong>特に製品設計と製作図面の作成の違い。</li>
-      </ol>
-    </section>
+        <h3>推論の要点</h3>
+        <ul>
+          <li>「製品の<strong>仕様・機能を決める</strong>」ことと、「決まった仕様を<strong>作るための図面を描く</strong>」ことは違う。</li>
+          <li>社長の提案力が優れていても、事業を広げるには営業・設計の人材への知識の移転が有効。</li>
+          <li>直接販売では、これまでメーカーが担っていた据付・保守などを誰が担うか決める必要がある。<strong>全面的な内製は必須ではなく</strong>、外部との連携も選択肢。</li>
+          <li>直販の収益性は保証されない。営業・設計・保守などの追加費用も生じる。</li>
+        </ul>
+      </section>
 
-    <section id="sources">
-      <p class="kicker"><span>SOURCES</span></p>
-      <h2>出典・参考資料</h2>
-      <h3>公式（一般社団法人 日本中小企業診断士協会連合会）</h3>
-      <ul class="source-list">
-        <li><a href="https://www.jf-cmca.jp/attach/test/shikenmondai/2ji2024/C2JI2024.pdf">令和6年度 第2次試験 事例Ⅲ 問題PDF</a></li>
-        <li><a href="https://www.jf-cmca.jp/attach/test/r06/2ji_shushi/r06_2ji_shushi_jirei3.pdf">令和6年度 事例Ⅲ 出題の趣旨</a></li>
-      </ul>
-      <h3>受験指導校の解答例（比較に使用）</h3>
-      <ul class="source-list">
-        <li><a href="https://www.tac-school.co.jp/file/tac/kouza_chusho/2024pdf/R6_2ji_kaitou_sokuhou.pdf">TAC 令和6年度 第2次試験 解答例</a></li>
-        <li><a href="https://www.kec.ne.jp/shindanshi/wp/wp-content/uploads/b7aecef1f8bfa917fc48f2e9e0476aa9.pdf">KECビジネススクール 事例Ⅲ 解答例</a></li>
-        <li><a href="https://note.com/ebaschool/n/nb0ea30e03622">EBA 事例Ⅲ 解説（note）</a></li>
-      </ul>
-      <p class="source-note">設問は要旨、答案例は本ページによる独自作成例です。整理：2026年10月21日／公式資料・解答例との照合：2026年10月22日。</p>
-    </section>
+      <section id="flow">
+        <p class="kicker"><span>STRUCTURE</span></p>
+        <h2>設問のつながり</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">設問</th><th scope="col">解決する問題</th><th scope="col">次への波及</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">第1問</th><td>提案力・製造技術という強みの特定</td><td>新事業での競争優位</td></tr>
+              <tr><th scope="row">第2問</th><td>製缶工程の能力の制約</td><td>受注増への対応、残業の抑制</td></tr>
+              <tr><th scope="row">第3問</th><td>計画・進捗管理の混乱</td><td>実績工数の蓄積、納期の確保</td></tr>
+              <tr><th scope="row">第4問</th><td>原価上昇の価格への転嫁の遅れ</td><td>適正な見積もり・契約条件</td></tr>
+              <tr><th scope="row">第5問</th><td>直販に足りない営業・製品設計・据付・保守の機能</td><td>自社企画製品の事業化</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p><strong>工程改善 → 工程管理の高度化 → 原価管理の高度化 → 新事業の実現</strong>という流れで捉えると、答案どうしの論理が整います。第3問で集める実績工数は、第4問の原価の根拠にもなります。</p>
+      </section>
 
-    <nav class="case-nav" aria-label="ほかの事例">
-      <a href="r06-jirei2.html"><small>← 前の事例</small><b>事例Ⅱ</b> マーケティング・流通</a>
-      <span><small>次の事例</small>事例Ⅳ（財務・会計）は準備中</span>
-    </nav>
-    <p class="home-foot"><a href="./">← 2次試験 過去問解説 一覧に戻る</a></p>
-  </main>
+      <section id="compare">
+        <p class="kicker"><span>COMPARISON</span></p>
+        <h2>予備校の解答例との比較</h2>
+        <p>受験指導校の解答例を設問ごとに確認しました。<strong>どれも公式の解答ではなく、採点上の優劣は判断できません。</strong>方向性がそろう設問と、割れる設問を見分けるための参考です。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">設問</th><th scope="col">共通する方向性</th><th scope="col">分かれた点</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">第1問</th><td><strong>社長の提案力</strong>（3校とも）</td><td>TACは提案力に絞る。KECは生産設備・技術力とX社との良好な取引関係を追加。EBAは搬送体・駆動部・フレームの内製と組立、メンテナンス対応を追加</td></tr>
+              <tr><th scope="row">第2問</th><td>製缶工程に負荷が偏っている点を起点にする</td><td>TACは各工程の要員数・作業量を分析して柔軟に要員を配置、KECは製缶工程をIEで合理化し自動化も検討、EBAは作業者工程分析と標準化のうえで前後工程の多能工が応援</td></tr>
+              <tr><th scope="row">第3問</th><td>経験ではなく<strong>データに基づく工数見積もり</strong>と、設計変更などの<strong>情報共有</strong></td><td>TACは工程管理システムを導入し製作図面と工数計画を取り込む、KECは顧客の要求納期ではなく実行可能な納期で計画、EBAは全製造番号を統合した大日程計画と、営業部・設計部の生産会議への参加</td></tr>
+              <tr><th scope="row">第4問</th><td>過去の契約金額ではなく<strong>最新の原価</strong>に基づく見積もり（3校とも）</td><td>TACは部品構成表の発注金額と実績工数から算出、KECは製造部が最新コストを分析して営業部に提供、EBAは残業・休日出勤や設計・納期変更による追加コスト、工場の稼働状況まで反映</td></tr>
+              <tr><th scope="row">第5問</th><td>社長の提案力を生かした営業と、メンテナンスへの対応</td><td>TACは小規模施設向けの特注品提案とメンテナンスしやすい設計、KECは営業部の強化（ニーズ収集、社長のノウハウの教育、X社向けメンテナンスの他部門への移管）、EBAは製品仕様書・製品図面の作成能力、据付の内製化、メンテナンス課の設置</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>第5問は、出題の趣旨にある「経営資源の課題」に対応させるなら、<strong>現状と必要な業務の差を明記する答案</strong>が有力です。EBAの解説も、自社製品の販売経験がないC社の課題を「営業・メンテナンス・設計・据付」の4領域で整理しています。</p>
+        <p class="source-note">確認日：2026年10月22日。各校の資料は公開後に改訂されることがあります。リンクは<a href="#sources">出典</a>を参照。</p>
+      </section>
+
+      <section id="points">
+        <p class="kicker"><span>TAKEAWAYS</span></p>
+        <h2>事例全体の学習ポイント</h2>
+        <ol>
+          <li><strong>物理的な工程の能力と、管理の精度を区別する。</strong>第2問は「工程改善」、第3問は「工程管理」。</li>
+          <li><strong>与件に明示された課題と推論を分ける。</strong>残業が多いのは事実、製缶工程がボトルネックだというのは推論。</li>
+          <li><strong>ITの導入そのものを目的にしない。</strong>実績データをどう意思決定に結び付けるかを書く。</li>
+          <li><strong>価格交渉の前に、原価の把握と、見積もり・決裁の社内体制が要る。</strong></li>
+          <li><strong>新事業で足りない能力は、業務範囲の変化から導く。</strong>特に製品設計と製作図面の作成の違い。</li>
+        </ol>
+      </section>
+
+      <section id="sources">
+        <p class="kicker"><span>SOURCES</span></p>
+        <h2>出典・参考資料</h2>
+        <h3>公式（一般社団法人 日本中小企業診断士協会連合会）</h3>
+        <ul class="source-list">
+          <li><a href="https://www.jf-cmca.jp/attach/test/shikenmondai/2ji2024/C2JI2024.pdf">令和6年度 第2次試験 事例Ⅲ 問題PDF</a></li>
+          <li><a href="https://www.jf-cmca.jp/attach/test/r06/2ji_shushi/r06_2ji_shushi_jirei3.pdf">令和6年度 事例Ⅲ 出題の趣旨</a></li>
+        </ul>
+        <h3>受験指導校の解答例（比較に使用）</h3>
+        <ul class="source-list">
+          <li><a href="https://www.tac-school.co.jp/file/tac/kouza_chusho/2024pdf/R6_2ji_kaitou_sokuhou.pdf">TAC 令和6年度 第2次試験 解答例</a></li>
+          <li><a href="https://www.kec.ne.jp/shindanshi/wp/wp-content/uploads/b7aecef1f8bfa917fc48f2e9e0476aa9.pdf">KECビジネススクール 事例Ⅲ 解答例</a></li>
+          <li><a href="https://note.com/ebaschool/n/nb0ea30e03622">EBA 事例Ⅲ 解説（note）</a></li>
+        </ul>
+        <p class="source-note">設問は要旨、答案例は本ページによる独自作成例です。整理：2026年10月21日／公式資料・解答例との照合：2026年10月22日。</p>
+      </section>
+
+      <nav class="case-nav" aria-label="ほかの事例">
+        <a href="r06-jirei2.html"><small>← 前の事例</small><b>事例Ⅱ</b> マーケティング・流通</a>
+        <span><small>次の事例</small>事例Ⅳ（財務・会計）は準備中</span>
+      </nav>
+      <p class="home-foot"><a href="./">← 2次試験 過去問解説 一覧に戻る</a></p>
+    </main>
+  </div>
 
   <footer>
     <p>中小企業診断士2次試験 過去問解説 · <a href="/">tebukuro.me</a></p>
@@ -585,6 +626,21 @@
       document.querySelectorAll('.reveal').forEach(btn => {
         btn.addEventListener('click', () => btn.closest('.answer').classList.add('shown'));
       });
+
+      // サイドバーの目次で、いま読んでいる節を強調する
+      const links = [...document.querySelectorAll('.side-toc a')];
+      const targets = links.map(a => document.querySelector(a.getAttribute('href')));
+      let ticking = false;
+      const spy = () => {
+        ticking = false;
+        let current = links[0];
+        targets.forEach((t, i) => { if (t && t.getBoundingClientRect().top <= 120) current = links[i]; });
+        links.forEach(a => a.classList.toggle('active', a === current));
+      };
+      addEventListener('scroll', () => {
+        if (!ticking) { ticking = true; requestAnimationFrame(spy); }
+      }, { passive: true });
+      spy();
     })();
   </script>
 </body>
