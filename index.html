@@ -464,7 +464,7 @@
         text-decoration: none;
         animation-delay: 0.7s;
       }
-      .blog-section .blog-note {
+      .section-note {
         color: var(--muted);
         font-size: 0.92rem;
         margin-bottom: 1.25rem;
@@ -580,6 +580,9 @@
       }
       .works .card:nth-child(10) {
         animation-delay: 1.25s;
+      }
+      .works .card:nth-child(11) {
+        animation-delay: 1.35s;
       }
 
       /* "Coming soon" placeholder card */
@@ -831,7 +834,7 @@
       </a>
       <ul>
         <li><a class="nav-link" href="/blog/">Blog</a></li>
-        <li><a class="nav-link" href="#works">Works</a></li>
+        <li><a class="nav-link" href="#works">Links</a></li>
         <li><a class="nav-link" href="#bbs">BBS</a></li>
         <li><a class="nav-link" href="/privacy.html">Privacy</a></li>
         <li>
@@ -912,7 +915,7 @@
 
       <section class="blog-section" id="blog">
         <div class="section-label">Blog</div>
-        <p class="blog-note">
+        <p class="section-note">
           個人ブログです。
         </p>
         <ul class="posts">
@@ -944,7 +947,8 @@
       </section>
 
       <section id="works">
-        <div class="section-label">Works</div>
+        <div class="section-label">Links</div>
+        <p class="section-note">作成したもののリンクです。</p>
         <div class="works">
           <a
             class="card"
@@ -1083,9 +1087,25 @@
             </p>
           </a>
 
+          <a
+            class="card"
+            href="/shindanshi-2ji/"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="arrow"
+              ><i class="fa-solid fa-arrow-up-right-from-square"></i
+            ></span>
+            <div class="card-index">10 / STUDY</div>
+            <h3>診断士2次試験 過去問解説</h3>
+            <p>
+              中小企業診断士2次試験の過去問を事例ごとに解説。与件の根拠、字数内の答案例、予備校の解答例との違いを設問単位で整理している。
+            </p>
+          </a>
+
           <div class="card placeholder">
             <div class="card-index">
-              <span class="blink"></span>10 / COMING SOON
+              <span class="blink"></span>11 / COMING SOON
             </div>
             <h3>More to come...</h3>
             <p>準備中。</p>
