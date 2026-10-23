@@ -1,0 +1,790 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="中小企業診断士2次試験 令和6年度 事例Ⅳ（財務・会計）の設問別解説。飲食・惣菜・加工の3事業部をもつD社の経営分析、2つの時間制約があるセールスミックスと最低販売価格、旧機械の売却損の節税を含む設備更新のNPVと期待値、全部原価基準の振替価格と管理可能性を、計算過程と図つきで整理">
+  <title>令和6年度 事例Ⅳ 解説｜中小企業診断士2次試験 過去問解説</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="site.js" defer></script>
+</head>
+<body data-case="4" data-page="r06-jirei4">
+  <header class="hero" data-mark="Ⅳ">
+    <p class="home"><a href="./">← 2次試験 過去問解説 一覧</a></p>
+    <p class="eyebrow">令和6年度（2024）第2次試験 · 事例Ⅳ 財務・会計</p>
+    <h1>令和6年度 事例Ⅳ 解説</h1>
+    <p class="subtitle">D社：飲食・惣菜・加工の3事業部をもつ地方の食品企業</p>
+    <p class="lead">中心は、<strong>何が制約で、お金がいつ動くか</strong>を先に整理することです。セールスミックスは「制約資源1時間当たりの限界利益」で、設備更新は「旧機械を使い続ける場合との差」と「キャッシュフローが生じる時点」で考えます。計算の前に条件を表と図に置くと、予備校の答えが分かれた理由も見えてきます。</p>
+    <div class="hero-meta">
+      <span>4問・100点</span>
+      <a href="https://www.jf-cmca.jp/attach/test/shikenmondai/2ji2024/D2JI2024.pdf">問題PDF（公式）</a>
+      <a href="https://www.jf-cmca.jp/attach/test/r06/2ji_shushi/r06_2ji_shushi_jirei4.pdf">出題の趣旨（公式）</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="side" aria-label="過去問解説のページ一覧"></aside>
+
+    <main class="content" id="top">
+      <p class="notice"><strong>読む前に：</strong>数値は公式の問題から独自に再計算したもので、記述の答案例も学習用の独自作成例です。<strong>公式の正解は公表されていません</strong>。第2問設問2・第3問設問2・第3問設問3は予備校によって答えが分かれています（<a href="#compare">予備校比較</a>）。設問文は要旨で載せているため、正確な文言と財務諸表は公式の問題PDFで確認してください。ページ番号は問題冊子の印刷ページです。</p>
+
+      <div class="toolbar">
+        <button type="button" class="practice-toggle" aria-pressed="false">答案例を隠して解く</button>
+      </div>
+
+      <section id="overview">
+        <p class="kicker"><span>OVERVIEW</span></p>
+        <h2>事例の概要と計算結果の一覧</h2>
+        <p>D社は地方都市のZ市を本拠地とする、創業約20年の企業です。加工食品の卸売から始まり、資本金1,300万円、総資産約30億円、売上高約54億円、従業員約100名まで成長しました。現在は飲食事業部、惣菜事業部、加工事業部の3事業部制です（p.1）。</p>
+        <ul>
+          <li><strong>飲食事業</strong>：居酒屋を中心に約30店舗、売上高約30億円。契約農場の鶏を自社工場で加工した焼き鳥や唐揚げが評判です。コロナ禍以前の客数・客単価に戻っておらず、大手資本の進出で競争も厳しくなっています。</li>
+          <li><strong>惣菜事業</strong>：ショッピングモールなどに<strong>テナントとして</strong>約40店舗を出店し、売上高約20億円。事業リスクを分散できるので、拡大を続ける方針です。</li>
+          <li><strong>加工事業</strong>：飲食・惣菜事業に製品を供給するほか、冷凍食品として県内外に販売しています。外部顧客への売上高は約4億円で、ここ数年減り続けています。</li>
+        </ul>
+        <p>製品開発から生産、加工、販売までの<strong>一貫体制</strong>は開発の迅速化や品質管理に役立つ一方、構築・維持にコストがかかり、財務リスクを高めていると認識されています（pp.1–2）。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">設問</th><th scope="col">配点</th><th scope="col">本ページの回答</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">第1問(1)</th><td rowspan="2">25点</td><td>優れている：有形固定資産回転率 11.26回／劣っている：売上高売上原価率 40.99％、自己資本比率 14.15％</td></tr>
+              <tr><th scope="row">第1問(2)</th><td>80字。テナント出店で資産効率は高いが、一貫体制のコストで収益性が低く、自己資本も少ない</td></tr>
+              <tr><th scope="row">第2問(1)</th><td rowspan="2">20点</td><td>X社向け 6,500袋・Y社向け 240袋、営業利益 2,670,800円</td></tr>
+              <tr><th scope="row">第2問(2)</th><td>4,905円以上</td></tr>
+              <tr><th scope="row">第3問(1)</th><td rowspan="3">30点</td><td>初年度 69万円、2年度 74万円</td></tr>
+              <tr><th scope="row">第3問(2)</th><td>NPV 51.14万円</td></tr>
+              <tr><th scope="row">第3問(3)</th><td>期待NPV 18.96万円、実行する価値は「ある」</td></tr>
+              <tr><th scope="row">第4問(1)</th><td rowspan="2">25点</td><td>80字。利益が保証され原価低減の誘因が弱まり、非効率が受け入れ側に転嫁される</td></tr>
+              <tr><th scope="row">第4問(2)</th><td>60字。社長が決める設備投資の影響を除き、管理可能利益などで評価する</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">小問別の配点は問題文に示されていません。CF（キャッシュフロー）は現金収支、NPV（正味現在価値）は将来の現金収支を投資時点の価値に換算し、初期投資を差し引いた値です。</p>
+      </section>
+
+      <section id="q1">
+        <p class="kicker"><span>第1問</span><span>配点25点</span><span>設問2は80字以内</span></p>
+        <h2>経営分析：優れた指標1つと劣った指標2つ</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>(設問1) D社と同業他社の財務諸表を用いて経営分析を行い、同業他社と比べてD社が優れていると考えられる財務指標を1つ、劣っていると考えられる財務指標を2つ挙げ、名称と値（小数第3位を四捨五入して第2位まで、単位を明記）を答える。(設問2) D社の当期の財政状態と経営成績について、同業他社と比べた特徴を80字以内で述べる。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>(設問1) D社と同業他社の財務諸表を利用して、診断及び助言の基礎となる財務指標を算出する能力を問う問題である。(設問2) 設問1で算出した財務指標をもとに、D社の財務的特徴を読みとる能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例（設問1）</strong></div>
+          <p class="ans-text">① 有形固定資産回転率 11.26（回）<br>② 売上高売上原価率 40.99（％）<br>③ 自己資本比率 14.15（％）</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>使う数値（単位：百万円）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">項目</th><th scope="col" class="num">D社</th><th scope="col" class="num">同業他社</th></tr></thead>
+            <tbody>
+              <tr><td>売上高</td><td class="num">5,360</td><td class="num">11,151</td></tr>
+              <tr><td>売上原価</td><td class="num">2,197</td><td class="num">3,336</td></tr>
+              <tr><td>売上総利益</td><td class="num">3,163</td><td class="num">7,815</td></tr>
+              <tr><td>販売費及び一般管理費</td><td class="num">3,109</td><td class="num">7,344</td></tr>
+              <tr><td>営業利益</td><td class="num">54</td><td class="num">471</td></tr>
+              <tr><td>有形固定資産</td><td class="num">476</td><td class="num">1,655</td></tr>
+              <tr><td>借入金（短期＋長期）</td><td class="num">1,914</td><td class="num">1,920</td></tr>
+              <tr><td>純資産（自己資本）</td><td class="num">432</td><td class="num">2,297</td></tr>
+              <tr><td>資産合計（総資本）</td><td class="num">3,054</td><td class="num">6,440</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">出典：問題 pp.2–3（2023年3月31日の貸借対照表、2022年度の損益計算書）。</p>
+
+        <h3>① 有形固定資産回転率（優れている）</h3>
+        <pre class="calc">有形固定資産回転率 ＝ 売上高 ÷ 有形固定資産
+D社  ＝ 5,360 ÷ 476    ＝ 11.26回
+他社 ＝ 11,151 ÷ 1,655 ＝ 6.74回</pre>
+        <p>D社は少ない設備で多くの売上を生んでいます。惣菜店をショッピングモールなどに<strong>テナントとして出店</strong>していることは、店舗の建物を自社で持たずに済む要因の一つと考えられます。D社の建物は129百万円で、同業他社の1,482百万円よりずっと少額です。ただし、テナント方式だけで回転率の差のすべてを説明できるわけではありません。</p>
+
+        <h3>② 売上高売上原価率（劣っている）</h3>
+        <pre class="calc">売上高売上原価率 ＝ 売上原価 ÷ 売上高 × 100
+D社  ＝ 2,197 ÷ 5,360 × 100  ＝ 40.99％
+他社 ＝ 3,336 ÷ 11,151 × 100 ＝ 29.92％
+
+（同じ特徴を裏から見た指標）
+売上高総利益率 ＝ 売上総利益 ÷ 売上高 × 100
+D社  ＝ 3,163 ÷ 5,360 × 100  ＝ 59.01％
+他社 ＝ 7,815 ÷ 11,151 × 100 ＝ 70.08％</pre>
+        <p>原価率は低いほうが望ましい指標です。地元産の食材へのこだわりや、一貫体制の構築・維持にかかるコストが背景として考えられます。売上高売上原価率と売上高総利益率は足すと100％になるので、どちらを選んでも同じ特徴を表します。</p>
+        <figure class="fig">
+          <figcaption>図1　売上高の内訳：D社は売上原価の割合が高く、営業利益はわずか1％</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c3"></i>売上原価</li><li><i class="fig-c0"></i>販売費及び一般管理費</li><li><i class="fig-c1"></i>営業利益</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 160" role="img" aria-label="売上高に占める売上原価・販管費・営業利益の割合のD社と同業他社の比較">
+              <text class="fig-cat" x="0" y="45">D社</text>
+              <rect class="fig-c3" x="84" y="30" width="221" height="22"><title>D社 売上原価 40.99％（2,197百万円）</title></rect>
+              <text class="fig-cat" x="84" y="23">売上原価 <tspan class="fig-val">40.99％</tspan></text>
+              <rect class="fig-c0" x="307" y="30" width="313.5" height="22"><title>D社 販売費及び一般管理費 58.00％（3,109百万円）</title></rect>
+              <text class="fig-cat" x="307" y="23">販管費 <tspan class="fig-val">58.00％</tspan></text>
+              <path class="fig-c1" d="M622.5,30H625.3Q628,30 628,32.7V49.3Q628,52 625.3,52H622.5Z"><title>D社 営業利益 1.01％（54百万円）</title></path>
+              <text class="fig-cat" x="628" y="68" text-anchor="end">営業利益 <tspan class="fig-val">1.01％</tspan></text>
+              <text class="fig-cat" x="0" y="125">同業他社</text>
+              <rect class="fig-c3" x="84" y="110" width="160.8" height="22"><title>同業他社 売上原価 29.92％（3,336百万円）</title></rect>
+              <text class="fig-cat" x="84" y="103">売上原価 <tspan class="fig-val">29.92％</tspan></text>
+              <rect class="fig-c0" x="246.8" y="110" width="356.3" height="22"><title>同業他社 販売費及び一般管理費 65.86％（7,344百万円）</title></rect>
+              <text class="fig-cat" x="246.8" y="103">販管費 <tspan class="fig-val">65.86％</tspan></text>
+              <path class="fig-c1" d="M605,110H624Q628,110 628,114V128Q628,132 624,132H605Z"><title>同業他社 営業利益 4.22％（471百万円）</title></path>
+              <text class="fig-cat" x="628" y="148" text-anchor="end">営業利益 <tspan class="fig-val">4.22％</tspan></text>
+            </svg>
+          </div>
+        </figure>
+        <p>販管費の比率はD社のほうが低い（58.00％と65.86％）ので、原価の重さが営業利益を押し下げている構図です。営業利益率（1.01％と4.22％）も劣っている指標の候補ですが、売上原価率のほうが与件の「一貫体制にはコストがかかる」と直接つながります。</p>
+
+        <h3>③ 自己資本比率（劣っている）</h3>
+        <pre class="calc">自己資本比率 ＝ 純資産 ÷ 総資本 × 100
+D社  ＝ 432 ÷ 3,054 × 100   ＝ 14.15％
+他社 ＝ 2,297 ÷ 6,440 × 100 ＝ 35.67％</pre>
+        <p>D社は総資本の6割強を借入金でまかなっています。借入金の額は同業他社とほぼ同じですが、会社の規模は半分ほどなので、負担はずっと重くなります。一貫体制の構築・維持に必要な資金を負債に頼る、財務上のリスクが相対的に大きい状態です。</p>
+        <figure class="fig">
+          <figcaption>図2　総資本の構成：D社は6割強が借入金、純資産は14％</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c3"></i>借入金（短期＋長期）</li><li><i class="fig-c0"></i>その他の負債</li><li><i class="fig-c1"></i>純資産</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 128" role="img" aria-label="総資本に占める借入金・その他の負債・純資産の割合">
+              <text class="fig-cat" x="0" y="45">D社</text>
+              <rect class="fig-c3" x="84" y="30" width="338.9" height="22"><title>D社 借入金 62.67％（短期357＋長期1,557百万円）</title></rect>
+              <text class="fig-cat" x="84" y="23">借入金 <tspan class="fig-val">62.67％</tspan></text>
+              <rect class="fig-c0" x="424.9" y="30" width="124.1" height="22"><title>D社 その他の負債 23.18％（708百万円）</title></rect>
+              <text class="fig-cat" x="424.9" y="23">その他の負債 <tspan class="fig-val">23.18％</tspan></text>
+              <path class="fig-c1" d="M551,30H624Q628,30 628,34V48Q628,52 624,52H551Z"><title>D社 純資産 14.15％（432百万円）</title></path>
+              <text class="fig-cat" x="551" y="23">純資産 <tspan class="fig-val">14.15％</tspan></text>
+              <text class="fig-cat" x="0" y="111">同業他社</text>
+              <rect class="fig-c3" x="84" y="96" width="160.2" height="22"><title>同業他社 借入金 29.81％（短期1,267＋長期653百万円）</title></rect>
+              <text class="fig-cat" x="84" y="89">借入金 <tspan class="fig-val">29.81％</tspan></text>
+              <rect class="fig-c0" x="246.2" y="96" width="185.8" height="22"><title>同業他社 その他の負債 34.52％（2,223百万円）</title></rect>
+              <text class="fig-cat" x="246.2" y="89">その他の負債 <tspan class="fig-val">34.52％</tspan></text>
+              <path class="fig-c1" d="M434,96H624Q628,96 628,100V114Q628,118 624,118H434Z"><title>同業他社 純資産 35.67％（2,297百万円）</title></path>
+              <text class="fig-cat" x="434" y="89">純資産 <tspan class="fig-val">35.67％</tspan></text>
+            </svg>
+          </div>
+        </figure>
+
+        <h3>指標の選び方</h3>
+        <p>受験指導校の解答例は、①と③は一致し、②が分かれました。TACは売上高総利益率 59.01％、KECは本ページと同じ売上高売上原価率 40.99％です。上で見たとおり2つは裏表の関係なので、捉えている特徴は同じです。数値だけなら流動比率（D社243.32％、同業他社119.19％）もD社が優れていますが、与件の記述と結び付けにくいため本ページでは採っていません。採点基準は公表されていないので、本ページの組み合わせ以外が不正解だとは言えません。</p>
+
+        <h3>設問2：特徴を80字で</h3>
+        <ol>
+          <li>設問1で選んだ3指標を、効率性・収益性・安全性に対応させて並べる。</li>
+          <li>「効率性は高い、収益性と安全性は低い」と評価する。</li>
+          <li>与件の原因（テナント出店、一貫体制の構築・維持のコスト）と結び付ける。</li>
+        </ol>
+        <div class="answer">
+          <div class="answer-head"><strong>答案例（設問2）</strong><span class="count">74／80字</span></div>
+          <p class="ans-text">テナント出店等により有形固定資産の効率性は高い。一方、一貫体制の維持に伴うコスト負担が重く収益性は低く、自己資本も少ないため財務安全性に課題がある。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+        <div class="tip"><strong>数値の言い換えで終わらせない</strong>「自己資本比率が低い」と書くだけでは、設問1の結果を繰り返したにすぎません。「なぜそうなっているか（与件の原因）」と「経営上なにが問題か（安全性の課題）」まで書きます。</div>
+      </section>
+
+      <section id="q2">
+        <p class="kicker"><span>第2問</span><span>配点20点</span><span>計算問題</span></p>
+        <h2>セールスミックス：2つの時間制約と最低販売価格</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>加工事業部は、自社工場で製造した唐揚げの一部を業務用冷凍食品として販売している（1袋の販売価格3,300円、変動費1,780円、固定費5,600,000円、1袋の直接作業時間1時間・機械運転時間2時間）。次期に割り当てられる時間は、直接作業が最大10,000時間、機械運転が最大13,600時間。(設問1) X社は最大6,500袋を3,000円で購入したい。Y社は、タレで味付けするなどの追加加工（1袋当たり変動費1,600円、直接作業1.5時間、機械運転0.5時間）をした製品を最大4,200袋、4,800円で購入したい。両社とも数量の調整に応じる。次期の営業利益を最大化する生産数量と、そのときの営業利益を計算過程とともに答える。(設問2) Y社は最低でも2,400袋の購入を希望し、価格の引き上げにも応じる。D社は、設定した販売価格の下で営業利益を最大化するように生産数量を決める方針である。Y社の希望に応じるには、Y社向けの販売価格を何円以上にすればよいか、計算過程とともに答える。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>(設問1) 与えられた条件をもとに、線形計画法を用いて、X社向け及びY社向けの最適な生産数量を算出する能力を問う問題である。(設問2) Y社に対する最低限の販売数量が決まっており、価格の引き上げが可能という条件を追加した上で、Y社の希望を満たすためには、Y社に販売する製品の販売価格を何円以上に設定すればよいかを算出する能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong></div>
+          <p class="ans-text">（設問1）X社向け 6,500袋、Y社向け 240袋、営業利益 2,670,800円<br>（設問2）4,905円</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>条件の整理（1袋当たり）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">条件</th><th scope="col" class="num">X社向け</th><th scope="col" class="num">Y社向け</th></tr></thead>
+            <tbody>
+              <tr><td>販売価格</td><td class="num">3,000円</td><td class="num">4,800円（設問1）</td></tr>
+              <tr><td>変動費</td><td class="num">1,780円</td><td class="num">1,780＋1,600＝3,380円</td></tr>
+              <tr><td><strong>限界利益</strong></td><td class="num"><strong>1,220円</strong></td><td class="num"><strong>1,420円</strong></td></tr>
+              <tr><td>直接作業時間</td><td class="num">1時間</td><td class="num">1＋1.5＝2.5時間</td></tr>
+              <tr><td>機械運転時間</td><td class="num">2時間</td><td class="num">2＋0.5＝2.5時間</td></tr>
+              <tr><td>需要の上限</td><td class="num">6,500袋</td><td class="num">4,200袋</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">出典：問題 pp.4–5。Y社向けは基本製品に追加加工するので、変動費も時間も基本製品の分を足します。</p>
+        <div class="warning"><strong>3,300円は使わない</strong>表の3,300円は当期の販売価格です。設問1ではX社の打診価格3,000円で計算します。固定費5,600,000円は生産数量で変わらないので、どの組み合わせを選ぶかには影響せず、最後に差し引くだけです。</div>
+
+        <h3>設問1：制約資源1時間当たりの限界利益で比べる</h3>
+        <p>1袋当たりの限界利益はY社向けのほうが大きいものの、Y社向けは時間を多く使います。時間に上限がある以上、<strong>時間1時間当たりでいくら稼ぐか</strong>で比べます。</p>
+        <pre class="calc">直接作業1時間当たり  X社向け 1,220 ÷ 1 ＝ 1,220円、Y社向け 1,420 ÷ 2.5 ＝ 568円
+機械運転1時間当たり  X社向け 1,220 ÷ 2 ＝ 610円、  Y社向け 1,420 ÷ 2.5 ＝ 568円
+→ どちらの時間で見てもX社向けが有利。X社向けを需要の上限まで作る
+
+X社向け 6,500袋に使う時間
+  直接作業 6,500×1 ＝ 6,500時間 → 残り 10,000－6,500 ＝ 3,500時間
+  機械運転 6,500×2 ＝ 13,000時間 → 残り 13,600－13,000 ＝ 600時間
+
+Y社向けの生産数量 ＝ min（3,500÷2.5, 600÷2.5）＝ min（1,400, 240）＝ 240袋
+
+営業利益 ＝ 1,220×6,500 ＋ 1,420×240 － 5,600,000
+        ＝ 7,930,000 ＋ 340,800 － 5,600,000 ＝ 2,670,800円</pre>
+        <p>線形計画法の形で書くと、X社向けを x 袋、Y社向けを y 袋として、次の範囲（図3の網かけ）の中で 1,220x＋1,420y を最大にする問題です。</p>
+        <pre class="calc">直接作業時間  x ＋ 2.5y ≦ 10,000
+機械運転時間 2x ＋ 2.5y ≦ 13,600
+需要の上限    0 ≦ x ≦ 6,500、0 ≦ y ≦ 4,200</pre>
+        <figure class="fig">
+          <figcaption>図3　作れる範囲（網かけ）：設問1の最適解はA、Y社向けを2,400袋以上にできる端点はB</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c1"></i>機械運転時間の制約</li><li><i class="fig-c2"></i>直接作業時間の制約</li><li><i class="fig-c3"></i>Y社の希望（2,400袋以上）</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 344" role="img" aria-label="X社向けとY社向けの生産数量の実行可能領域と、端点A・B・C">
+              <line class="fig-grid" x1="70" y1="300" x2="70" y2="20"/>
+              <text class="fig-tick" x="70" y="318" text-anchor="middle">0</text>
+              <line class="fig-grid" x1="145.7" y1="300" x2="145.7" y2="20"/>
+              <text class="fig-tick" x="145.7" y="318" text-anchor="middle">1,000</text>
+              <line class="fig-grid" x1="221.4" y1="300" x2="221.4" y2="20"/>
+              <text class="fig-tick" x="221.4" y="318" text-anchor="middle">2,000</text>
+              <line class="fig-grid" x1="297.1" y1="300" x2="297.1" y2="20"/>
+              <text class="fig-tick" x="297.1" y="318" text-anchor="middle">3,000</text>
+              <line class="fig-grid" x1="372.9" y1="300" x2="372.9" y2="20"/>
+              <text class="fig-tick" x="372.9" y="318" text-anchor="middle">4,000</text>
+              <line class="fig-grid" x1="448.6" y1="300" x2="448.6" y2="20"/>
+              <text class="fig-tick" x="448.6" y="318" text-anchor="middle">5,000</text>
+              <line class="fig-grid" x1="524.3" y1="300" x2="524.3" y2="20"/>
+              <text class="fig-tick" x="524.3" y="318" text-anchor="middle">6,000</text>
+              <line class="fig-grid" x1="600" y1="300" x2="600" y2="20"/>
+              <text class="fig-tick" x="600" y="318" text-anchor="middle">7,000</text>
+              <line class="fig-grid" x1="70" y1="300" x2="600" y2="300"/>
+              <text class="fig-tick" x="62" y="304" text-anchor="end">0</text>
+              <line class="fig-grid" x1="70" y1="250" x2="600" y2="250"/>
+              <text class="fig-tick" x="62" y="254" text-anchor="end">1,000</text>
+              <line class="fig-grid" x1="70" y1="200" x2="600" y2="200"/>
+              <text class="fig-tick" x="62" y="204" text-anchor="end">2,000</text>
+              <line class="fig-grid" x1="70" y1="150" x2="600" y2="150"/>
+              <text class="fig-tick" x="62" y="154" text-anchor="end">3,000</text>
+              <line class="fig-grid" x1="70" y1="100" x2="600" y2="100"/>
+              <text class="fig-tick" x="62" y="104" text-anchor="end">4,000</text>
+              <line class="fig-grid" x1="70" y1="50" x2="600" y2="50"/>
+              <text class="fig-tick" x="62" y="54" text-anchor="end">5,000</text>
+              <text class="fig-tick" x="600" y="336" text-anchor="end">X社向け（袋）</text>
+              <text class="fig-tick" x="70" y="10">Y社向け（袋）</text>
+              <polygon class="fig-wash" points="70,300 562.1,300 562.1,288 342.6,172 70,100"/>
+              <text class="fig-note" x="160.9" y="240">作れる範囲</text>
+              <line class="fig-base" x1="562.1" y1="300" x2="562.1" y2="20"><title>X社の需要上限 6,500袋</title></line>
+              <text class="fig-note" x="558.1" y="30" text-anchor="end">X社の上限 6,500</text>
+              <line class="fig-base" x1="70" y1="90" x2="600" y2="90"><title>Y社の需要上限 4,200袋</title></line>
+              <text class="fig-note" x="403.1" y="85">Y社の上限 4,200（効いていない）</text>
+              <line class="fig-l3" x1="70" y1="180" x2="600" y2="180"><title>Y社の希望 2,400袋以上（設問2）</title></line>
+              <text class="fig-note" x="600" y="175" text-anchor="end">Y社の希望 2,400以上</text>
+              <line class="fig-l2" x1="70" y1="100" x2="600" y2="240"><title>直接作業時間：x＋2.5y ≦ 10,000</title></line>
+              <line class="fig-l1" x1="70" y1="28" x2="584.9" y2="300"><title>機械運転時間：2x＋2.5y ≦ 13,600</title></line>
+              <circle class="fig-dot1" cx="562.1" cy="288" r="5"><title>A（6,500, 240）：設問1の最適解</title></circle>
+              <text class="fig-val" x="554.1" y="280" text-anchor="end">A（6,500, 240）</text>
+              <circle class="fig-dot2" cx="342.6" cy="172" r="5"><title>B（3,600, 2,560）：2本の時間制約の交点</title></circle>
+              <text class="fig-val" x="350.6" y="164">B（3,600, 2,560）</text>
+              <circle class="fig-open" cx="357.7" cy="180" r="4"><title>C（3,800, 2,400）：KECが比べた点</title></circle>
+              <text class="fig-note" x="363.7" y="196">C（3,800, 2,400）</text>
+              <text class="fig-note" x="76" y="42">機械運転 13,600h</text>
+              <text class="fig-note" x="76" y="114">直接作業 10,000h</text>
+            </svg>
+          </div>
+        </figure>
+        <p>網かけの角（端点）は (0, 0)、(6,500, 0)、A (6,500, 240)、B (3,600, 2,560)、(0, 4,000) の5つです。利益が最大になるのは必ずどれかの端点なので、端点の利益を比べても同じ結論になります。Y社の上限4,200袋は、直接作業時間の制約で4,000袋までしか作れないので効いていません。</p>
+        <div class="tip"><strong>検算：2つの時間制約をどちらも満たすか</strong>A (6,500, 240) では、直接作業 6,500＋600＝7,100時間（上限10,000）、機械運転 13,000＋600＝13,600時間（上限ちょうど）です。機械運転時間が先に尽きているので、ボトルネックは機械です。</div>
+
+        <h3>設問2：最適解がBに移る販売価格を求める</h3>
+        <p>求めるのは「設問1と同じ利益を保てる価格」ではありません。D社は<strong>設定した価格の下で利益を最大にする数量を選ぶ</strong>ので、価格を上げたときに最適な計画そのものがY社向け2,400袋以上に切り替わる条件を求めます。</p>
+        <p>Aは機械運転時間を使い切っています。Y社向けの価格を上げていくと、機械運転1時間当たりの限界利益でY社向けがX社向けに追いついた時点で、機械の時間をX社向けからY社向けに回すほうが得になり、最適解は機械運転時間の制約線に沿ってAからBへ移ります。</p>
+        <pre class="calc">Y社向けの販売価格を P 円とする
+
+機械運転1時間当たりの限界利益
+  X社向け 1,220 ÷ 2 ＝ 610円
+  Y社向け（P－3,380）÷ 2.5 円
+
+（P－3,380）÷ 2.5 ≧ 610
+ P－3,380 ≧ 1,525
+ P ≧ 4,905円
+
+B（3,600, 2,560）は y ≧ 2,400 を満たす
+  Y社向け 2,560袋 → 直接作業 6,400時間・機械運転 6,400時間
+  X社向け 3,600袋 → 直接作業 3,600時間・機械運転 7,200時間
+  合計 直接作業 10,000時間、機械運転 13,600時間（どちらも上限ちょうど）
+
+Bから先（X社向けをさらに減らす方向）には進まない
+  直接作業1時間当たり X社向け 1,220円 ＞ Y社向け（4,905－3,380）÷ 2.5 ＝ 610円</pre>
+        <p>TACも同じ考え方で、AとBの営業利益を比べる式「1,220×3,600＋（P－3,380）×2,560 ≧ 1,220×6,500＋（P－3,380）×240」から4,905円を出しています。整理すると 2,320×（P－3,380）≧ 3,538,000 となり、同じ結果です。</p>
+        <figure class="fig">
+          <figcaption>図4　Y社向けの価格と営業利益：4,905円で3つの計画が並び、それより高いとBが最大</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c2"></i>A（X 6,500・Y 240）</li><li><i class="fig-c1"></i>B（X 3,600・Y 2,560）</li><li><i class="fig-c3"></i>C（X 3,800・Y 2,400）</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 292" role="img" aria-label="Y社向けの販売価格ごとに、計画A・B・Cの営業利益を描いたグラフ">
+              <text class="fig-tick" x="70" y="268" text-anchor="middle">4,850</text>
+              <text class="fig-tick" x="202.5" y="268" text-anchor="middle">4,875</text>
+              <text class="fig-tick" x="335" y="268" text-anchor="middle">4,900</text>
+              <text class="fig-tick" x="467.5" y="268" text-anchor="middle">4,925</text>
+              <text class="fig-tick" x="600" y="268" text-anchor="middle">4,950</text>
+              <line class="fig-grid" x1="70" y1="250" x2="600" y2="250"/>
+              <text class="fig-tick" x="62" y="254" text-anchor="end">255</text>
+              <line class="fig-grid" x1="70" y1="211.7" x2="600" y2="211.7"/>
+              <text class="fig-tick" x="62" y="215.7" text-anchor="end">260</text>
+              <line class="fig-grid" x1="70" y1="173.3" x2="600" y2="173.3"/>
+              <text class="fig-tick" x="62" y="177.3" text-anchor="end">265</text>
+              <line class="fig-grid" x1="70" y1="135" x2="600" y2="135"/>
+              <text class="fig-tick" x="62" y="139" text-anchor="end">270</text>
+              <line class="fig-grid" x1="70" y1="96.7" x2="600" y2="96.7"/>
+              <text class="fig-tick" x="62" y="100.7" text-anchor="end">275</text>
+              <line class="fig-grid" x1="70" y1="58.3" x2="600" y2="58.3"/>
+              <text class="fig-tick" x="62" y="62.3" text-anchor="end">280</text>
+              <line class="fig-grid" x1="70" y1="20" x2="600" y2="20"/>
+              <text class="fig-tick" x="62" y="24" text-anchor="end">285</text>
+              <text class="fig-tick" x="600" y="286" text-anchor="end">Y社向けの販売価格（円）</text>
+              <text class="fig-tick" x="70" y="12">営業利益（万円）</text>
+              <line class="fig-base" x1="70" y1="157.4" x2="600" y2="157.4"><title>設問1の営業利益 267.08万円（Y社向け4,800円のとき）</title></line>
+              <text class="fig-note" x="596" y="171.4" text-anchor="end">設問1の利益 267.08（4,800円のとき）</text>
+              <line class="fig-l2" x1="70" y1="148.2" x2="600" y2="129.8"><title>A（6,500, 240）：268.28万円（4,850円）〜270.68万円（4,950円）</title></line>
+              <line class="fig-l1" x1="70" y1="246" x2="600" y2="49.7"><title>B（3,600, 2,560）：255.52万円（4,850円）〜281.12万円（4,950円）</title></line>
+              <line class="fig-l3" x1="70" y1="239.3" x2="600" y2="55.3"><title>C（3,800, 2,400）：256.40万円（4,850円）〜280.40万円（4,950円）</title></line>
+              <circle class="fig-dot1" cx="361.5" cy="138.1" r="5"><title>4,905円で3つの計画が269.60万円で並ぶ</title></circle>
+              <text class="fig-val" x="371.5" y="156.1">4,905円で3本が交わる</text>
+              <circle class="fig-open" cx="305.9" cy="157.4" r="4"><title>KEC：C が設問1の利益に届く 4,894.5円</title></circle>
+              <circle class="fig-dot2" cx="305.9" cy="140" r="4"><title>同じ4,894.5円なら A は 269.35万円</title></circle>
+              <text class="fig-note" x="297.9" y="132" text-anchor="end">4,895円でもAが上（269.35）</text>
+              <text class="fig-note" x="297.9" y="173.4" text-anchor="end">Cが設問1の利益に届く 4,894.5円</text>
+              <text class="fig-cat" x="596" y="43.7" text-anchor="end">B</text>
+              <text class="fig-cat" x="596" y="71.3" text-anchor="end">C</text>
+              <text class="fig-cat" x="596" y="145.8" text-anchor="end">A</text>
+            </svg>
+          </div>
+        </figure>
+
+        <h3>なぜ4,895円ではないのか</h3>
+        <p>KECの解答例は4,895円です。Y社向けを2,400袋にしたときに作れるX社向けの最大数量（C：3,800袋）で、設問1の営業利益2,670,800円を下回らない価格として求めています。</p>
+        <pre class="calc">1,220×3,800 ＋（P－3,380）×2,400 － 5,600,000 ≧ 2,670,800
+P ≧ 4,894.5円 → 4,895円</pre>
+        <p>ところが、価格を4,895円に上げるとAの利益も上がります（240袋分）。4,895円のとき、Y社向けの機械1時間当たり限界利益は（4,895－3,380）÷2.5＝606円で、X社向けの610円に届きません。利益が最大になる計画は依然としてA（Y社向け240袋）で、Y社の希望を満たしません。設問文の「設定した販売価格の下で営業利益を最大化するように生産数量を決定する」という方針を踏まえると、4,905円が整合的です。</p>
+        <div class="tip"><strong>境界の4,905円ちょうどでは、最適解が1つに決まらない</strong>4,905円では、AからBまでの機械運転時間の制約線上のどの計画も同じ利益（2,696,000円）になります（図4で3本の線が1点で交わるのはこのためです）。「Y社向け2,400袋以上を選んでも最適」と言える下限が4,905円で、「どの最適解でも必ず2,400袋以上」としたいなら、円単位では4,906円以上が必要です。どちらを答えるかは設問文の読み方によります。</div>
+      </section>
+
+      <section id="q3-1">
+        <p class="kicker"><span>第3問 設問1</span><span>第3問計30点</span><span>計算問題</span></p>
+        <h2>設備更新：初年度と2年度の増分キャッシュフロー</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>鶏肉のスライス加工に使ってきた機械（旧機械）を新型のスライサー（新機械）に更新する前に、新機械を試験的に1台導入した場合の採算を検討する。旧機械は3年前に240万円で購入し、定額法（耐用年数12年、残存価額ゼロ）で償却している。更新にあたり70万円で売却できる見込み。新機械は540万円で、定額法（耐用年数9年、残存価額ゼロ）で償却し、耐用年数経過後は処分価額ゼロで除却する。営業利益は更新前と比べて初年度30万円、以降は各年度70万円多くなる。各年度末の運転資本の残高は初年度25万円、以降は40万円多くなり、耐用年数経過後は導入前の水準に戻る。税率は30％で、今後9年間は赤字にならない。新機械への初期投資と旧機械の売却収入以外のCFは各年度末に生じる。初年度と2年度のCFの更新前と比べた増加額（初期投資と旧機械の売却収入を除く）を求める。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>与えられた条件をもとに、初年度および2年度のキャッシュフローの更新前と比べた増加額を算出する能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong></div>
+          <p class="ans-text">（a）初年度 69万円<br>（b）2年度 74万円</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>条件の整理</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">項目</th><th scope="col" class="num">旧機械</th><th scope="col" class="num">新機械</th></tr></thead>
+            <tbody>
+              <tr><td>取得価額</td><td class="num">240万円</td><td class="num">540万円</td></tr>
+              <tr><td>耐用年数（定額法・残存ゼロ）</td><td class="num">12年（使用済み3年）</td><td class="num">9年</td></tr>
+              <tr><td>年間減価償却費</td><td class="num">20万円</td><td class="num">60万円</td></tr>
+              <tr><td>売却・処分</td><td class="num">いま70万円で売却</td><td class="num">9年後に処分価額ゼロ</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">出典：問題 p.6。旧機械の残りの耐用年数も9年なので、新機械の使用期間と重なります。</p>
+
+        <h3>前提①：増分減価償却費は40万円</h3>
+        <pre class="calc">旧機械の年間償却費 ＝ 240 ÷ 12 ＝ 20万円（更新しなければ今後9年間も計上される）
+新機械の年間償却費 ＝ 540 ÷ 9  ＝ 60万円
+増分減価償却費     ＝ 60 － 20  ＝ 40万円／年</pre>
+        <p>問題の「営業利益の増加」は、減価償却費を差し引いた後の会計上の利益です。減価償却費は現金の支出ではないので、税引後の営業利益からCFを求めるときは40万円を<strong>足し戻します</strong>。</p>
+
+        <h3>前提②：旧機械の売却と税金</h3>
+        <p>70万円で売却しても、税金がかかるのは売却代金の70万円ではなく、<strong>売却価格と帳簿価額の差（売却損益）</strong>です。</p>
+        <pre class="calc">売却時の帳簿価額 ＝ 240 －（240÷12）×3年 ＝ 180万円
+売却損益         ＝ 70 － 180 ＝ －110万円（売却損）
+売却損による節税 ＝ 110 × 0.3 ＝ 33万円</pre>
+        <p>今後9年間は赤字にならない前提なので、売却損で課税所得が減り、その年の税金が33万円少なくなります。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">旧機械の売却に伴うCF</th><th scope="col" class="num">金額</th><th scope="col">計上する時点</th></tr></thead>
+            <tbody>
+              <tr><td>売却代金</td><td class="num">＋70万円</td><td>0年度（投資時点）</td></tr>
+              <tr><td>売却損による税負担の減少</td><td class="num">＋33万円</td><td>初年度末</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>同じ時点にまとめるなら「売却の税引後CF ＝ 売却価格 －（売却価格－帳簿価額）× 税率 ＝ 70－（70－180）×0.3 ＝ 103万円」という公式もあります。しかし本問では、初期投資と売却収入以外のCFは年度末に生じると指定されているので、<strong>70万円は0年度、33万円は初年度末</strong>に分けて置きます。逆に、帳簿価額180万円の機械を250万円で売れば、売却益70万円に対して税金が 70×0.3＝21万円増えます。</p>
+        <p class="source-note">試験問題の「法人税等」を使った単純化した税効果の計算です。実際の機械の売却では消費税や税務上の帳簿価額などの論点もありますが、本問の計算には含めません。</p>
+
+        <h3>計算（単位：万円）</h3>
+        <pre class="calc">増分CF ＝ 増分営業利益×（1－税率）＋ 増分減価償却費 － 運転資本の増加額 ＋ その他の税効果
+
+初年度
+  30×（1－0.3）＋ 40 － 25 ＋ 33
+  ＝ 21 ＋ 40 － 25 ＋ 33 ＝ 69
+
+2年度
+  運転資本の増加額 ＝ 40 － 25 ＝ 15（残高の差だけが新たな支出）
+  70×（1－0.3）＋ 40 － 15
+  ＝ 49 ＋ 40 － 15 ＝ 74</pre>
+        <figure class="fig">
+          <figcaption>図5　初年度と2年度の増分CFの内訳（単位：万円）</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c1"></i>CFを増やす要素</li><li><i class="fig-c3"></i>CFを減らす要素</li><li><i class="fig-c2"></i>その年度の増分CF</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 284" role="img" aria-label="初年度と2年度の増分キャッシュフローの内訳を積み上げた図">
+              <line class="fig-base" x1="60" y1="230" x2="630" y2="230"/>
+              <text class="fig-tick" x="52" y="234" text-anchor="end">0</text>
+              <line class="fig-grid" x1="60" y1="163.3" x2="630" y2="163.3"/>
+              <text class="fig-tick" x="52" y="167.3" text-anchor="end">40</text>
+              <line class="fig-grid" x1="60" y1="96.7" x2="630" y2="96.7"/>
+              <text class="fig-tick" x="52" y="100.7" text-anchor="end">80</text>
+              <line class="fig-grid" x1="60" y1="30" x2="630" y2="30"/>
+              <text class="fig-tick" x="52" y="34" text-anchor="end">120</text>
+              <text class="fig-tick" x="60" y="12">万円</text>
+              <rect class="fig-c1" x="76" y="195" width="40" height="35"><title>税引後の増分営業利益 30×0.7＝21万円</title></rect>
+              <text class="fig-val" x="96" y="189" text-anchor="middle">21</text>
+              <text class="fig-tick" x="96" y="248" text-anchor="middle">税引後利益</text>
+              <rect class="fig-c1" x="136" y="128.3" width="40" height="66.7"><title>増分減価償却費の加え戻し 60−20＝40万円</title></rect>
+              <text class="fig-val" x="156" y="122.3" text-anchor="middle">＋40</text>
+              <text class="fig-tick" x="156" y="248" text-anchor="middle">償却費</text>
+              <rect class="fig-c3" x="196" y="128.3" width="40" height="41.7"><title>運転資本の増加 0→25万円</title></rect>
+              <text class="fig-val" x="216" y="122.3" text-anchor="middle">−25</text>
+              <text class="fig-tick" x="216" y="248" text-anchor="middle">運転資本</text>
+              <rect class="fig-c1" x="256" y="115" width="40" height="55"><title>旧機械の売却損による節税 110×0.3＝33万円</title></rect>
+              <text class="fig-val" x="276" y="109" text-anchor="middle">＋33</text>
+              <text class="fig-tick" x="276" y="248" text-anchor="middle">売却損節税</text>
+              <path class="fig-c2" d="M316,230V119Q316,115 320,115H352Q356,115 356,119V230Z"><title>初年度 69万円</title></path>
+              <text class="fig-val" x="336" y="109" text-anchor="middle">69</text>
+              <text class="fig-tick" x="336" y="248" text-anchor="middle">初年度</text>
+              <text class="fig-cat" x="76" y="276">初年度：21＋40−25＋33＝69</text>
+              <line class="fig-grid" x1="381" y1="20" x2="381" y2="260"/>
+              <rect class="fig-c1" x="406" y="148.3" width="40" height="81.7"><title>税引後の増分営業利益 70×0.7＝49万円</title></rect>
+              <text class="fig-val" x="426" y="142.3" text-anchor="middle">49</text>
+              <text class="fig-tick" x="426" y="248" text-anchor="middle">税引後利益</text>
+              <rect class="fig-c1" x="466" y="81.7" width="40" height="66.7"><title>増分減価償却費の加え戻し 40万円</title></rect>
+              <text class="fig-val" x="486" y="75.7" text-anchor="middle">＋40</text>
+              <text class="fig-tick" x="486" y="248" text-anchor="middle">償却費</text>
+              <rect class="fig-c3" x="526" y="81.7" width="40" height="25"><title>運転資本の増加 25→40万円</title></rect>
+              <text class="fig-val" x="546" y="75.7" text-anchor="middle">−15</text>
+              <text class="fig-tick" x="546" y="248" text-anchor="middle">運転資本</text>
+              <path class="fig-c2" d="M586,230V110.7Q586,106.7 590,106.7H622Q626,106.7 626,110.7V230Z"><title>2年度 74万円</title></path>
+              <text class="fig-val" x="606" y="100.7" text-anchor="middle">74</text>
+              <text class="fig-tick" x="606" y="248" text-anchor="middle">2年度</text>
+              <text class="fig-cat" x="406" y="276">2年度：49＋40−15＝74</text>
+            </svg>
+          </div>
+        </figure>
+        <div class="warning"><strong>売却代金70万円をここに足さない</strong>設問は「初期投資と旧機械の売却収入を除く」と明示しています。70万円は0年度のCF（設問2の初期投資側）で扱います。初年度に入れるのは、売却損による節税の33万円だけです。</div>
+        <div class="tip"><strong>運転資本は「残高」で与えられている</strong>2年度以降の残高40万円を毎年支出するのではありません。新たな支出は残高が増えた分（2年度に15万円）だけで、3年度以降は残高が変わらないので0です。9年度末に残高が元に戻るので、40万円が回収されます。</div>
+      </section>
+
+      <section id="q3-2">
+        <p class="kicker"><span>第3問 設問2</span><span>第3問計30点</span><span>計算問題</span></p>
+        <h2>試験導入の正味現在価値（NPV）</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>新機械の試験的導入の正味現在価値を、資本コスト9％で計算する（小数第3位を四捨五入、計算過程も示す）。利子率9％の複利現価係数は1年0.917、2年0.842、7年0.547、9年0.460、年金現価係数は7年5.033。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>複利現価係数と年金現価係数を用いて、新機械の試験的導入の正味現在価値を算出する能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong></div>
+          <p class="ans-text">51.14万円</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>時点ごとの増分CF（単位：万円）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">年度</th><th scope="col">内訳</th><th scope="col" class="num">増分CF</th></tr></thead>
+            <tbody>
+              <tr><td>0（投資時点）</td><td>新機械の購入 －540、旧機械の売却 ＋70</td><td class="num">－470</td></tr>
+              <tr><td>1</td><td>21＋40－25＋33（設問1）</td><td class="num">69</td></tr>
+              <tr><td>2</td><td>49＋40－15（設問1）</td><td class="num">74</td></tr>
+              <tr><td>3〜8</td><td>49＋40（運転資本の増減なし）</td><td class="num">毎年 89</td></tr>
+              <tr><td>9</td><td>89＋運転資本の回収 40</td><td class="num">129</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure class="fig">
+          <figcaption>図6　増分CFの時系列（単位：万円）：3〜9年度の89万円を年金現価係数でまとめて割り引く</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c3"></i>初期投資（購入－売却）</li><li><i class="fig-c1"></i>営業上の増分CF</li><li><i class="fig-c0"></i>売却損の節税</li><li><i class="fig-c2"></i>運転資本の回収</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 288" role="img" aria-label="0年度から9年度までの増分キャッシュフロー（単位：万円）">
+              <line class="fig-grid" x1="70" y1="250" x2="630" y2="250"/>
+              <text class="fig-tick" x="62" y="254" text-anchor="end">−400</text>
+              <line class="fig-grid" x1="70" y1="170" x2="630" y2="170"/>
+              <text class="fig-tick" x="62" y="174" text-anchor="end">−200</text>
+              <line class="fig-base" x1="70" y1="90" x2="630" y2="90"/>
+              <text class="fig-tick" x="62" y="94" text-anchor="end">0</text>
+              <line class="fig-grid" x1="70" y1="50" x2="630" y2="50"/>
+              <text class="fig-tick" x="62" y="54" text-anchor="end">100</text>
+              <text class="fig-tick" x="70" y="12">万円</text>
+              <text class="fig-tick" x="98" y="80" text-anchor="middle">0</text>
+              <text class="fig-tick" x="154" y="104" text-anchor="middle">1</text>
+              <text class="fig-tick" x="210" y="104" text-anchor="middle">2</text>
+              <text class="fig-tick" x="266" y="104" text-anchor="middle">3</text>
+              <text class="fig-tick" x="322" y="104" text-anchor="middle">4</text>
+              <text class="fig-tick" x="378" y="104" text-anchor="middle">5</text>
+              <text class="fig-tick" x="434" y="104" text-anchor="middle">6</text>
+              <text class="fig-tick" x="490" y="104" text-anchor="middle">7</text>
+              <text class="fig-tick" x="546" y="104" text-anchor="middle">8</text>
+              <text class="fig-tick" x="602" y="104" text-anchor="middle">9</text>
+              <text class="fig-tick" x="630" y="190" text-anchor="end">年度（0＝投資時点、1〜9＝各年度末）</text>
+              <path class="fig-c3" d="M85,90V274Q85,278 89,278H107Q111,278 111,274V90Z"><title>0年度：新機械 −540＋旧機械の売却 ＋70＝−470万円</title></path>
+              <text class="fig-val" x="117" y="282">−470</text>
+              <rect class="fig-c1" x="141" y="75.6" width="26" height="14.4"><title>1年度：21＋40−25＝36万円</title></rect>
+              <path class="fig-c0" d="M141,74.6V66.4Q141,62.4 145,62.4H163Q167,62.4 167,66.4V74.6Z"><title>1年度：旧機械の売却損による節税 33万円</title></path>
+              <text class="fig-val" x="154" y="56.4" text-anchor="middle">69</text>
+              <path class="fig-c1" d="M197,90V64.4Q197,60.4 201,60.4H219Q223,60.4 223,64.4V90Z"><title>2年度：49＋40−15＝74万円</title></path>
+              <text class="fig-val" x="210" y="54.4" text-anchor="middle">74</text>
+              <path class="fig-c1" d="M253,90V58.4Q253,54.4 257,54.4H275Q279,54.4 279,58.4V90Z"><title>3年度：49＋40＝89万円</title></path>
+              <path class="fig-c1" d="M309,90V58.4Q309,54.4 313,54.4H331Q335,54.4 335,58.4V90Z"><title>4年度：49＋40＝89万円</title></path>
+              <path class="fig-c1" d="M365,90V58.4Q365,54.4 369,54.4H387Q391,54.4 391,58.4V90Z"><title>5年度：49＋40＝89万円</title></path>
+              <path class="fig-c1" d="M421,90V58.4Q421,54.4 425,54.4H443Q447,54.4 447,58.4V90Z"><title>6年度：49＋40＝89万円</title></path>
+              <path class="fig-c1" d="M477,90V58.4Q477,54.4 481,54.4H499Q503,54.4 503,58.4V90Z"><title>7年度：49＋40＝89万円</title></path>
+              <path class="fig-c1" d="M533,90V58.4Q533,54.4 537,54.4H555Q559,54.4 559,58.4V90Z"><title>8年度：49＋40＝89万円</title></path>
+              <text class="fig-val" x="266" y="48.4" text-anchor="middle">89</text>
+              <text class="fig-note" x="406" y="48.4" text-anchor="middle">毎年 89</text>
+              <rect class="fig-c1" x="589" y="54.4" width="26" height="35.6"><title>9年度：通常のCF 89万円</title></rect>
+              <path class="fig-c2" d="M589,53.4V42.4Q589,38.4 593,38.4H611Q615,38.4 615,42.4V53.4Z"><title>9年度：運転資本の回収 40万円</title></path>
+              <text class="fig-val" x="602" y="32.4" text-anchor="middle">129</text>
+              <path class="fig-base" fill="none" d="M253,111V116H615V111"/>
+              <text class="fig-note" x="434" y="130" text-anchor="middle">89×7年：年金現価係数 5.033 で2年度末の価値にし、×0.842 で0年度へ</text>
+              <text class="fig-note" x="615" y="146" text-anchor="end">回収分 40 は 9年の係数 0.460</text>
+            </svg>
+          </div>
+        </figure>
+
+        <h3>計算（単位：万円）</h3>
+        <p>与えられた係数で、3〜9年度の7年間続く89万円をまとめて扱います。7年の年金現価係数5.033を掛けると<strong>2年度末時点</strong>の価値になるので、さらに2年の複利現価係数0.842で投資時点に戻します。9年度の運転資本の回収40万円は、9年の係数0.460で別に割り引きます。</p>
+        <pre class="calc">NPV ＝ －470 ＋ 69×0.917 ＋ 74×0.842 ＋ 89×5.033×0.842 ＋ 40×0.460
+    ＝ －470 ＋ 63.273 ＋ 62.308 ＋ 377.163… ＋ 18.4
+    ＝ 51.143954 ≒ 51.14万円 ＞ 0</pre>
+        <p>NPVが正なので、試験の前提では試験導入に投資する価値があります。TACも同じ式で51.14万円です。</p>
+        <div class="warning"><strong>係数を掛ける年数を数え間違えない</strong>3〜9年度は7年間です。年金現価係数5.033は「1〜7年後」の合計なので、そのまま掛けると2年度末の価値にしかなりません。0.842を掛け忘れると、NPVを大きく過大評価します。なお、7年の複利現価係数0.547はこの解き方では使いません。</div>
+        <div class="tip"><strong>KECの50.74万円との差は係数の丸め</strong>KECは2〜8年度を「89×5.033×0.917」でまとめ、2年度の差（74－89＝－15）を0.842で、9年度の129万円を0.460で割り引いています。考え方は同じで、係数を3桁に丸めてあるため組み合わせ方によって約0.40万円の差が出ます。本ページは、出題の趣旨が複利現価係数と年金現価係数の併用を求めていることと、TACと一致することから51.14万円を採ります。</div>
+      </section>
+
+      <section id="q3-3">
+        <p class="kicker"><span>第3問 設問3</span><span>第3問計30点</span><span>計算問題</span></p>
+        <h2>市場調査の結果を反映した期待NPVと投資判断</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>営業利益の予測が正しいかを探るため、初年度期首に30万円をかけて市場調査を行った。その結果、営業利益は60％の確率で予測どおり、40％の確率で価格競争の激化により予測の7割にとどまることが分かった。営業利益が減っても運転資本の残高の予測は変わらない。新機械の試験的導入を実行すべきかどうか、正味現在価値を示して答える（小数第3位を四捨五入、「ある」か「ない」に○、計算過程も示す）。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>コストをかけて市場調査を行った結果、将来の業績に関する情報が得られたという条件を追加した上で、高業績になる確率と低業績になる確率から正味現在価値の期待値を算出し、投資案を実行すべきかを判断する能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong></div>
+          <p class="ans-text">（a）18.96万円<br>（b）実行する価値は「ある」</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>営業利益の期待値で計算する</h3>
+        <pre class="calc">営業利益の期待値の倍率 ＝ 1.0×0.6 ＋ 0.7×0.4 ＝ 0.88
+  初年度   30×0.88 ＝ 26.4万円
+  2年度以降 70×0.88 ＝ 61.6万円</pre>
+        <p>0.88倍にするのは<strong>営業利益だけ</strong>です。減価償却費の足し戻し、売却損の節税、運転資本は業績に関係なく同じなので、そのまま使います。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">年度</th><th scope="col">計算</th><th scope="col" class="num">期待CF（万円）</th></tr></thead>
+            <tbody>
+              <tr><td>0</td><td>－540＋70</td><td class="num">－470</td></tr>
+              <tr><td>1</td><td>26.4×0.7＋40－25＋33</td><td class="num">66.48</td></tr>
+              <tr><td>2</td><td>61.6×0.7＋40－15</td><td class="num">68.12</td></tr>
+              <tr><td>3〜8</td><td>61.6×0.7＋40</td><td class="num">毎年 83.12</td></tr>
+              <tr><td>9</td><td>83.12＋40</td><td class="num">123.12</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <pre class="calc">期待NPV ＝ －470 ＋ 66.48×0.917 ＋ 68.12×0.842 ＋ 83.12×5.033×0.842 ＋ 40×0.460
+        ＝ －470 ＋ 60.962… ＋ 57.357… ＋ 352.245… ＋ 18.4
+        ＝ 18.96万円 ＞ 0 → 実行する価値は「ある」</pre>
+
+        <h3>シナリオ別のNPVから求めても同じ</h3>
+        <p>TACは、営業利益が7割にとどまる場合のNPVを先に求め、2つのNPVを確率で加重平均しています。NPVは営業利益について一次式なので、どちらの順番でも答えは一致します。</p>
+        <pre class="calc">7割の場合
+  初年度 30×0.7×0.7＋40－25＋33 ＝ 62.7
+  2年度  70×0.7×0.7＋40－15    ＝ 59.3
+  3〜8年度 70×0.7×0.7＋40      ＝ 74.3、9年度 74.3＋40
+  NPV ＝ －470＋62.7×0.917＋59.3×0.842＋74.3×5.033×0.842＋40×0.460 ＝ －29.31
+
+期待NPV ＝ 51.14×0.6 ＋（－29.31）×0.4 ＝ 18.96万円</pre>
+        <figure class="fig">
+          <figcaption>図7　シナリオ別のNPVと期待値（単位：万円）：調査費をどう扱うかで判断が逆になる</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c1"></i>シナリオ別のNPV</li><li><i class="fig-c2"></i>期待NPV（本ページ・TAC）</li><li><i class="fig-c0"></i>調査費30万円を含めた期待NPV（KEC）</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 208" role="img" aria-label="営業利益が予測どおりの場合と7割の場合のNPV、期待NPV、調査費を含めた期待NPV">
+              <line class="fig-grid" x1="200" y1="6" x2="200" y2="168"/>
+              <text class="fig-tick" x="200" y="184" text-anchor="middle">−40</text>
+              <line class="fig-grid" x1="284" y1="6" x2="284" y2="168"/>
+              <text class="fig-tick" x="284" y="184" text-anchor="middle">−20</text>
+              <line class="fig-base" x1="368" y1="6" x2="368" y2="168"/>
+              <text class="fig-tick" x="368" y="184" text-anchor="middle">0</text>
+              <line class="fig-grid" x1="452" y1="6" x2="452" y2="168"/>
+              <text class="fig-tick" x="452" y="184" text-anchor="middle">20</text>
+              <line class="fig-grid" x1="536" y1="6" x2="536" y2="168"/>
+              <text class="fig-tick" x="536" y="184" text-anchor="middle">40</text>
+              <line class="fig-grid" x1="620" y1="6" x2="620" y2="168"/>
+              <text class="fig-tick" x="620" y="184" text-anchor="middle">60</text>
+              <text class="fig-tick" x="620" y="200" text-anchor="end">正味現在価値（万円）</text>
+              <text class="fig-cat" x="0" y="29">予測どおり（60％）</text>
+              <path class="fig-c1" d="M368,14H578.8Q582.8,14 582.8,18V30Q582.8,34 578.8,34H368Z"><title>営業利益が予測どおり：NPV 51.14万円（確率60％）</title></path>
+              <text class="fig-val" x="588.8" y="29">51.14</text>
+              <text class="fig-cat" x="0" y="69">予測の7割（40％）</text>
+              <path class="fig-c1" d="M368,54H248.9Q244.9,54 244.9,58V70Q244.9,74 248.9,74H368Z"><title>営業利益が予測の7割：NPV −29.31万円（確率40％）</title></path>
+              <text class="fig-val" x="238.9" y="69" text-anchor="end">−29.31</text>
+              <text class="fig-cat" x="0" y="109">期待値</text>
+              <path class="fig-c2" d="M368,94H443.6Q447.6,94 447.6,98V110Q447.6,114 443.6,114H368Z"><title>期待値：51.14×0.6＋(−29.31)×0.4＝18.96万円</title></path>
+              <text class="fig-val" x="453.6" y="109">18.96</text>
+              <text class="fig-cat" x="0" y="149">調査費を引く（KEC）</text>
+              <path class="fig-c0" d="M368,134H358.7Q354.7,134 354.7,138V150Q354.7,154 358.7,154H368Z"><title>KEC：調査費30万円を含めた期待NPV −3.16万円</title></path>
+              <text class="fig-val" x="348.7" y="149" text-anchor="end">−3.16</text>
+            </svg>
+          </div>
+        </figure>
+
+        <h3>市場調査費30万円は引かない</h3>
+        <p>問題文は「初年度期首に30万円をかけて市場調査を<strong>行った</strong>。その結果…」と書いています。調査はすでに実施済みで、いまから試験導入をするかどうかにかかわらず30万円は戻りません。このような費用を<strong>埋没原価（サンクコスト）</strong>といい、投資判断の増分CFには含めないのが原則です。TACもこの扱いです。</p>
+        <p>KECは調査費30万円を投資時点の支出に含め、その節税効果も初年度に計上して、期待NPV ▲3.16万円・「ない」と答えています。出題の趣旨も「コストをかけて市場調査を行った結果、…情報が得られた」と書くだけで、調査費の扱いを明示していません。</p>
+        <div class="tip"><strong>判断の時点で、その支出がまだ避けられるか</strong>投資するかどうかを決める時点で支出済みなら埋没原価、これから払うかどうかを選べるなら関連原価です。本問は「行った」という過去形と「その結果が分かった」という流れから、判断時点で支出済みと読むのが自然です。</div>
+      </section>
+
+      <section id="q4">
+        <p class="kicker"><span>第4問</span><span>配点25点</span><span>80字・60字以内</span></p>
+        <h2>事業部の業績評価：振替価格と管理可能性</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>(設問1) D社は事業部の業績評価のため、加工事業部から飲食事業部・惣菜事業部への製品の供給を事業部間の販売とみなし、製品単位当たりの全部原価に一定割合の利潤を上乗せした価格を用いている。この価格の決め方には、事業部の業績評価を行ううえでどのような問題点があるか、80字以内で説明する。(設問2) 創業者である社長が事業部の運営に大きな影響力をもち、設備投資は社長が実質的な意思決定権限をもっている。このとき、財務指標を用いて事業部長の業績評価を行うときに留意すべき点を60字以内で説明する。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>(設問1) 振替価格として全部原価に一定割合の利潤を加えた価格を用いた場合、事業部の業績評価を行う上でどのような問題が生じるかを問う問題である。(設問2) 設備投資に関して社長が実質的な意思決定権限を持っている場合、財務指標を用いて事業部長の業績評価を行う際の留意点を問う問題である。</p></div>
+
+        <h3>設問1：全部原価＋利潤の振替価格の問題点</h3>
+        <div class="answer">
+          <div class="answer-head"><strong>答案例（設問1）</strong><span class="count">73／80字</span></div>
+          <p class="ans-text">加工事業部に一定の利益が保証されて原価低減の誘因が弱くなるほか、非効率な原価が他事業部に転嫁され、部門間の公平な業績評価や適切な意思決定を妨げる。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+        <p>仮の数値で考えます。加工事業部の製品1個の変動費600円、配賦固定費400円（全部原価1,000円）に20％の利潤を上乗せすると、振替価格は1,200円です。加工事業部の原価が1割増えて1,100円になると、振替価格は1,320円に上がり、<strong>加工事業部の利益は200円から220円に増えます</strong>。</p>
+        <figure class="fig">
+          <figcaption>図8　全部原価に20％上乗せする振替価格（仮の数値、単位：円）：原価が増えるほど供給側の利益も増える</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c0"></i>変動費</li><li><i class="fig-c2"></i>配賦固定費</li><li><i class="fig-c1"></i>加工事業部の利潤</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 128" role="img" aria-label="振替価格の内訳を、いまの原価と原価が1割増えた場合で比べた図">
+              <text class="fig-cat" x="0" y="45">いまの原価</text>
+              <rect class="fig-c0" x="84" y="30" width="203.7" height="22"><title>変動費 600円</title></rect>
+              <text class="fig-cat" x="84" y="23">変動費 <tspan class="fig-val">600</tspan></text>
+              <rect class="fig-c2" x="289.7" y="30" width="135.1" height="22"><title>配賦固定費 400円</title></rect>
+              <text class="fig-cat" x="289.7" y="23">配賦固定費 <tspan class="fig-val">400</tspan></text>
+              <path class="fig-c1" d="M426.9,30H491.4Q495.4,30 495.4,34V48Q495.4,52 491.4,52H426.9Z"><title>上乗せ利潤（20％）200円</title></path>
+              <text class="fig-cat" x="426.9" y="23">利潤 <tspan class="fig-val">200</tspan></text>
+              <text class="fig-cat" x="0" y="111">原価が1割増</text>
+              <rect class="fig-c0" x="84" y="96" width="224.3" height="22"><title>変動費 660円</title></rect>
+              <text class="fig-cat" x="84" y="89">変動費 <tspan class="fig-val">660</tspan></text>
+              <rect class="fig-c2" x="310.3" y="96" width="148.9" height="22"><title>配賦固定費 440円</title></rect>
+              <text class="fig-cat" x="310.3" y="89">配賦固定費 <tspan class="fig-val">440</tspan></text>
+              <path class="fig-c1" d="M461.1,96H532.6Q536.6,96 536.6,100V114Q536.6,118 532.6,118H461.1Z"><title>上乗せ利潤（20％）220円</title></path>
+              <text class="fig-cat" x="461.1" y="89">利潤 <tspan class="fig-val">220</tspan></text>
+              <text class="fig-val" x="503.4" y="45">＝1,200円</text>
+              <text class="fig-val" x="544.6" y="111">＝1,320円</text>
+            </svg>
+          </div>
+        </figure>
+        <ul>
+          <li><strong>原価低減の意欲が弱まる</strong>：原価がいくらでも一定割合の利潤が保証されるので、供給側に原価を下げる動機が働きにくくなります。</li>
+          <li><strong>非効率が受け入れ側に転嫁される</strong>：加工事業部の原価が増えた120円分は、飲食・惣菜事業部の仕入原価になり、その業績を悪く見せます。</li>
+          <li><strong>業績評価が公平でなくなる</strong>：社内取引の利潤は、会社全体の外部への売上が増えたことを意味しません。どの事業部が実際に稼いだのかが見えにくくなり、事業部間の利害も対立しやすくなります。</li>
+        </ul>
+
+        <h3>設問2：設備投資の権限が社長にある場合</h3>
+        <div class="answer">
+          <div class="answer-head"><strong>答案例（設問2）</strong><span class="count">57／60字</span></div>
+          <p class="ans-text">社長が決定する設備投資額等の影響を除き、事業部長の権限で管理できる収益・費用から求める管理可能利益などで評価する。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+        <p>ROI（投下資本利益率 ＝ 事業利益 ÷ 投下資本 × 100）やROAで事業部長を評価すると、分母の投下資本や、設備投資から生じる減価償却費が評価に入ります。設備投資を決めるのが社長なら、事業部長はそれを直接コントロールできません。<strong>本人が制御できない要素で評価すると、権限と責任が一致しません</strong>。そこで<strong>管理可能性の原則</strong>に従い、事業部長が管理できる売上高・変動費・固定費から求める管理可能利益などを使います。</p>
+        <div class="tip"><strong>「事業部」の評価と「事業部長」の評価を分ける</strong>事業部そのものの収益性を見るなら、社長が決めた設備投資も含めた指標が必要です。設問が問うのは「事業部長」の業績評価なので、管理できる範囲に絞ります。</div>
+      </section>
+
+      <section id="compare">
+        <p class="kicker"><span>COMPARISON</span></p>
+        <h2>予備校の解答例との比較：計算3か所で分かれる</h2>
+        <p>各校の公開PDFの数値と記述の方向性を比べました。<strong>どれも公式の解答ではありません。</strong></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">論点</th><th scope="col">TAC</th><th scope="col">KEC</th><th scope="col">本ページ</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">第1問の3指標</th><td>有形固定資産回転率 11.26回／<strong>売上高総利益率 59.01％</strong>・自己資本比率 14.15％</td><td>有形固定資産回転率 11.26回／売上高売上原価率 40.99％・自己資本比率 14.15％</td><td>KECと同じ</td></tr>
+              <tr><th scope="row">第2問(1)</th><td>6,500袋・240袋・2,670,800円</td><td>同左</td><td>同左</td></tr>
+              <tr><th scope="row">第2問(2)</th><td>4,905円</td><td><strong>4,895円</strong></td><td>4,905円</td></tr>
+              <tr><th scope="row">第3問(1)</th><td>69万円・74万円</td><td>同左</td><td>同左</td></tr>
+              <tr><th scope="row">第3問(2)</th><td>51.14万円</td><td><strong>50.74万円</strong></td><td>51.14万円</td></tr>
+              <tr><th scope="row">第3問(3)</th><td>18.96万円・ある</td><td><strong>▲3.16万円・ない</strong></td><td>18.96万円・ある</td></tr>
+              <tr><th scope="row">第4問(1)の方向</th><td>事業部間の利害の対立、供給側の利益の保証</td><td>供給側の過大評価と公平性、コスト低減意欲の低下</td><td>原価低減の誘因の低下、非効率の転嫁、公平性</td></tr>
+              <tr><th scope="row">第4問(2)の方向</th><td>管理可能な収益・費用による管理可能利益、権限と責任の一致</td><td>ROAなど設備投資に関わる指標をそのまま評価に使わない</td><td>設備投資の影響を除いた管理可能利益</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>数値が分かれた3か所</h3>
+        <ul>
+          <li><strong>第2問(2)</strong>：KECは「Y社向け2,400袋の計画が設問1の利益を下回らない価格」、TACと本ページは「価格を上げた後に最適な計画がY社向け2,400袋以上に切り替わる価格」を求めています。設問文の方針（設定した価格の下で営業利益を最大化）を踏まえると後者が整合的です（<a href="#q2">第2問</a>、図4）。</li>
+          <li><strong>第3問(2)</strong>：同じ考え方で、係数のまとめ方が違うだけです。丸めた係数を使うため約0.40万円の差が出ます（<a href="#q3-2">第3問設問2</a>）。</li>
+          <li><strong>第3問(3)</strong>：市場調査費30万円を埋没原価として除くか、投資案のコストに含めるかの違いです。結論（ある／ない）まで逆になります（<a href="#q3-3">第3問設問3</a>、図7）。</li>
+        </ul>
+        <div class="tip"><strong>どちらが公式の正解かは確定できない</strong>2校の結論が一致しない以上、本試験でどちらが得点になったかは公開資料から確かめられません。学習では、設問文の条件（意思決定の方針、支出の時点）を根拠に、自分の解き方を説明できるようにしておくことが大切です。</div>
+        <p class="source-note">確認日：2026年10月24日。各校の資料は公開後に改訂されることがあります。リンクは<a href="#sources">出典</a>を参照。</p>
+      </section>
+
+      <section id="points">
+        <p class="kicker"><span>TAKEAWAYS</span></p>
+        <h2>他年度にも使えるチェック手順</h2>
+        <ol>
+          <li><strong>裏表の指標はどちらか一方を選ぶ。</strong>売上高売上原価率と売上高総利益率は足すと100％になる。</li>
+          <li><strong>経営分析の記述は「指標 → 与件の原因 → 課題」の順に書く。</strong>数値の言い換えで終わらせない。</li>
+          <li><strong>セールスミックスは制約資源1時間当たりの限界利益で比べる。</strong>制約が2つあるときは、両方を満たすかを検算し、端点を確かめる。</li>
+          <li><strong>価格を求める問題は、意思決定の方針を読む。</strong>「利益を保つ価格」か「最適な計画が切り替わる価格」かで答えが変わる。</li>
+          <li><strong>設備更新は旧機械を使い続ける場合との差で考える。</strong>増分減価償却費、売却損の節税、運転資本の残高の増減を拾う。</li>
+          <li><strong>売却代金と売却損の節税は、生じる時点を分ける。</strong>税金がかかるのは売却代金ではなく売却損益。</li>
+          <li><strong>年金現価係数を掛けた結果がどの時点の価値かを確かめる。</strong></li>
+          <li><strong>期待値をとるのは不確実な項目だけ。</strong>支出済みの調査費は埋没原価として除く。</li>
+          <li><strong>業績評価は、評価される人が管理できる範囲に絞る。</strong></li>
+        </ol>
+
+        <h3>重要公式のまとめ</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">テーマ</th><th scope="col">公式・要点</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">有形固定資産回転率</th><td>売上高 ÷ 有形固定資産</td></tr>
+              <tr><th scope="row">売上高売上原価率</th><td>売上原価 ÷ 売上高 × 100</td></tr>
+              <tr><th scope="row">自己資本比率</th><td>自己資本 ÷ 総資産 × 100</td></tr>
+              <tr><th scope="row">限界利益</th><td>売上高 － 変動費（営業利益 ＝ 限界利益の合計 － 固定費）</td></tr>
+              <tr><th scope="row">設備更新の増分CF</th><td>増分営業利益×（1－税率）＋ 増分減価償却費 － 運転資本の増加額 ＋ その他の税効果</td></tr>
+              <tr><th scope="row">旧設備の売却損益</th><td>売却価格 － 売却時の帳簿価額</td></tr>
+              <tr><th scope="row">売却損の節税効果</th><td>売却損 × 税率（十分な課税所得がある前提）</td></tr>
+              <tr><th scope="row">NPV</th><td>将来の増分CFの現在価値の合計 － 初期投資</td></tr>
+              <tr><th scope="row">期待値</th><td>各結果 × 発生確率 の合計</td></tr>
+              <tr><th scope="row">埋没原価</th><td>すでに支出し、今回の選択で変わらない費用</td></tr>
+              <tr><th scope="row">管理可能性の原則</th><td>管理者がコントロールできる項目で評価する</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>本番での時間配分（学習上の提案）</h3>
+        <p>第1問（経営分析）と第4問（記述）は標準的な知識で答えやすく、計算問題と独立して得点できます。第2問設問2と第3問設問3は条件の読み方で答えが割れた設問です。<strong>第1問と第4問を確実に取り、第2問・第3問は制約条件やCFの時点を表に整理して部分点を狙う</strong>のが合理的です。shinblogの記事も、第1問と第4問の合計50点の確保を優先し、第2問設問2の深追いを避けるよう勧めています。これは学習・時間配分上の提案で、公式の採点基準を示すものではありません。</p>
+      </section>
+
+      <section id="sources">
+        <p class="kicker"><span>SOURCES</span></p>
+        <h2>出典・参考資料</h2>
+        <h3>公式（一般社団法人 日本中小企業診断士協会連合会）</h3>
+        <ul class="source-list">
+          <li><a href="https://www.jf-cmca.jp/attach/test/shikenmondai/2ji2024/D2JI2024.pdf">令和6年度 第2次試験 事例Ⅳ 問題PDF</a></li>
+          <li><a href="https://www.jf-cmca.jp/attach/test/r06/2ji_shushi/r06_2ji_shushi_jirei4.pdf">令和6年度 事例Ⅳ 出題の趣旨</a></li>
+        </ul>
+        <h3>受験指導校の解答例（比較に使用）</h3>
+        <ul class="source-list">
+          <li><a href="https://www.tac-school.co.jp/file/tac/kouza_chusho/2024pdf/R6_2ji_kaitou_sokuhou.pdf">TAC 令和6年度 第2次試験 解答例</a>（事例Ⅳの答案はPDFの7–8ページ、計算過程は9–11ページ）</li>
+          <li><a href="https://www.kec.ne.jp/shindanshi/wp/wp-content/uploads/c4628d16140e6897bfc43e023044f39c-4.pdf">KECビジネススクール 事例Ⅳ 解答例</a></li>
+        </ul>
+        <h3>参考</h3>
+        <ul class="source-list">
+          <li><a href="https://www.shindanshi-shinblog.com/entry/2026/09/28/070000">中小企業診断士shinblog「【令和6年度 事例Ⅳ】過去問の使い方｜捨て問の見極め」</a></li>
+        </ul>
+        <p class="source-note">財務比率、制約条件つきの最適生産数量と価格条件、増分CF、売却損の節税、指定係数によるNPVと期待NPVを再計算しています。予備校の答案は転載せず、結論の比較にとどめています。記述の答案例は独自作成例で、採点上の必須語句や小問別の配点は公開資料から確定できません。整理・照合：2026年10月24日。</p>
+      </section>
+
+      <nav class="case-nav" aria-label="ほかの事例"></nav>
+      <p class="home-foot"><a href="./">← 2次試験 過去問解説 一覧に戻る</a></p>
+    </main>
+  </div>
+
+  <footer>
+    <p>中小企業診断士2次試験 過去問解説 · <a href="/">tebukuro.me</a></p>
+  </footer>
+
+</body>
+</html>
