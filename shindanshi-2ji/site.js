@@ -21,6 +21,27 @@
         { page: null, no: '事例Ⅳ', name: '財務・会計' },
       ],
     },
+    {
+      label: '令和4年度（2022）',
+      cases: [
+        {
+          page: 'r04-jirei1', no: '事例Ⅰ', name: '組織・人事',
+          toc: [['overview', '概要'], ['q1', '第1問'], ['q2', '第2問'], ['q3', '第3問'], ['q4-1', '第4問(1)'], ['q4-2', '第4問(2)'], ['compare', '予備校比較'], ['points', '学習ポイント'], ['sources', '出典']],
+        },
+        {
+          page: 'r04-jirei2', no: '事例Ⅱ', name: 'マーケティング・流通',
+          toc: [['overview', '概要'], ['q1', '第1問'], ['q2', '第2問'], ['q3', '第3問'], ['q4', '第4問'], ['compare', '予備校比較'], ['points', '学習ポイント'], ['sources', '出典']],
+        },
+        {
+          page: 'r04-jirei3', no: '事例Ⅲ', name: '生産・技術',
+          toc: [['overview', '概要'], ['process', '工程の全体像'], ['q1', '第1問'], ['q2', '第2問'], ['q3', '第3問'], ['q4', '第4問'], ['q5', '第5問'], ['compare', '予備校比較'], ['points', '学習ポイント'], ['sources', '出典']],
+        },
+        {
+          page: 'r04-jirei4', no: '事例Ⅳ', name: '財務・会計',
+          toc: [['overview', '概要'], ['q1', '第1問'], ['q2', '第2問'], ['q3-1', '第3問(1)'], ['q3-2', '第3問(2)'], ['q3-3', '第3問(3)'], ['q4', '第4問'], ['compare', '予備校比較'], ['points', '学習ポイント'], ['sources', '出典']],
+        },
+      ],
+    },
   ];
 
   const current = document.body.dataset.page;
@@ -48,10 +69,10 @@
     side.innerHTML = html;
   }
 
-  // 事例ページ末尾の前後ナビ
+  // 事例ページ末尾の前後ナビ（同じ年度の中だけでたどる。ラベルに年度を出さないため）
   const nav = document.querySelector('.case-nav');
   if (nav) {
-    const all = YEARS.flatMap(y => y.cases);
+    const all = (YEARS.find(y => y.cases.some(c => c.page === current)) || { cases: [] }).cases;
     const i = all.findIndex(c => c.page === current);
     const cell = (c, dir) => {
       const head = dir === 'prev' ? '← 前の事例' : '次の事例 →';

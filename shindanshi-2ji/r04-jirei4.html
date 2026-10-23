@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="中小企業診断士2次試験 令和4年度 事例Ⅳ（財務・会計）の設問別解説。D社の経営分析（労働生産性）、制約条件付きのセールスミックス、点検整備の内外製判断、工場拡張の回収期間と正味現在価値（NPV）、中古車輸出の財務リスクを、計算過程つきで整理">
+  <title>令和4年度 事例Ⅳ 解説｜中小企業診断士2次試験 過去問解説</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="site.js" defer></script>
+</head>
+<body data-case="4" data-page="r04-jirei4">
+  <header class="hero" data-mark="Ⅳ">
+    <p class="home"><a href="./">← 2次試験 過去問解説 一覧</a></p>
+    <p class="eyebrow">令和4年度（2022）第2次試験 · 事例Ⅳ 財務・会計</p>
+    <h1>令和4年度 事例Ⅳ 解説</h1>
+    <p class="subtitle">D社：自動車リユース企業の利益最大化と中古車事業の投資評価</p>
+    <p class="lead">中心は、<strong>制約条件</strong>と<strong>お金が動く時点</strong>を正確に読み分けることです。1個当たりの利益だけで生産を決めない、固定費の配賦を追加の支出と混同しない、月の台数を年に直す、在庫投資を投資時と回収時の両方に置く。この4つを守ると計算がつながります。</p>
+    <div class="hero-meta">
+      <span>4問・100点</span>
+      <a href="https://www.jf-cmca.jp/attach/test/shikenmondai/2ji2022/d2ji2022.pdf">問題PDF（公式）</a>
+      <a href="https://www.jf-cmca.jp/attach/test/r04/2ji_shushi/r04_2ji_shushi_jirei4.pdf">出題の趣旨（公式）</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="side" aria-label="過去問解説のページ一覧"></aside>
+
+    <main class="content" id="top">
+      <p class="notice"><strong>読む前に：</strong>数値は公式の問題から独自に再計算したもので、記述の答案例も学習用の独自作成例です。<strong>公式の正解は公表されていません</strong>。予備校の数値と一致しても、公式の正解が確認できたという意味ではありません。設問文は要旨で載せているため、正確な文言と財務諸表は公式の問題PDFで確認してください。ページ番号は問題冊子の印刷ページです。</p>
+
+      <div class="toolbar">
+        <button type="button" class="practice-toggle" aria-pressed="false">答案例を隠して解く</button>
+      </div>
+
+      <section id="overview">
+        <p class="kicker"><span>OVERVIEW</span></p>
+        <h2>事例の概要と計算結果の一覧</h2>
+        <p>D社は自動車のリユース・リサイクルを行う企業です。新事業として、3Dプリンターによる自動車部品の製造と、買い取った中古車を点検整備して海外に販売する事業を検討しています。既存事業の財務的な特徴を分析したうえで、製造数量、外注の判断、工場拡張の投資、財務リスクを評価します（p.1）。中古車の需要拡大などは試験問題の設定で、現在の中古車市場や為替相場の説明ではありません。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">設問</th><th scope="col">配点</th><th scope="col">本ページの回答</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">第1問(1)</th><td rowspan="2">25点</td><td>売上高総利益率 59.59％、棚卸資産回転率 33.41回、労働生産性 820.17万円／人</td></tr>
+              <tr><th scope="row">第1問(2)</th><td>80字。労働生産性と1人当たり売上高の低さ</td></tr>
+              <tr><th scope="row">第2問(1)</th><td rowspan="2">20点</td><td>Aを1,800個・Bを0個、利益 2,840,000円</td></tr>
+              <tr><th scope="row">第2問(2)</th><td>Aを1,400個・Bを200個、利益 2,200,000円</td></tr>
+              <tr><th scope="row">第3問(1)</th><td rowspan="3">35点</td><td>買取価格 412,500円が内外製の分岐点</td></tr>
+              <tr><th scope="row">第3問(2)</th><td>年間CF 15,660,000円、回収期間 5.24年</td></tr>
+              <tr><th scope="row">第3問(3)</th><td>NPV 10,121,684円</td></tr>
+              <tr><th scope="row">第4問</th><td>20点</td><td>100字。為替変動と資金繰りのリスク管理</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">小問別の配点は問題文に示されていません。CF（キャッシュフロー）は現金収支、NPV（正味現在価値）は将来の現金収支を投資時点の価値に換算し、初期投資を差し引いた値です。</p>
+      </section>
+
+      <section id="q1">
+        <p class="kicker"><span>第1問</span><span>配点25点</span><span>設問2は80字以内</span></p>
+        <h2>経営分析：優れた指標2つと課題の指標1つ</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>(設問1) 同業他社と比べてD社が優れている財務指標を2つ、課題を示す財務指標を1つ挙げ、名称と値（小数点第3位を四捨五入、単位を明記）を答える。少なくとも1つは生産性に関する指標とし、その計算では販管費の「その他」を含めない。(設問2) D社が明らかに劣っている点を指摘し、その要因について財務指標から読み取れる問題を80字以内で述べる。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>(設問1) 財務諸表を利用して、診断及び助言の基礎となる財務比率を算出する能力を問う問題である。(設問2) 財務比率を基に、事例企業の財務的問題点とその要因を分析する能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例（設問1）</strong></div>
+          <p class="ans-text">① 売上高総利益率 59.59（％）<br>② 棚卸資産回転率 33.41（回）<br>③ 労働生産性 820.17（万円／人）</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>使う数値（単位：万円、従業員数を除く）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">項目</th><th scope="col" class="num">D社</th><th scope="col" class="num">同業他社</th></tr></thead>
+            <tbody>
+              <tr><td>売上高</td><td class="num">103,465</td><td class="num">115,138</td></tr>
+              <tr><td>売上総利益</td><td class="num">61,652</td><td class="num">36,595</td></tr>
+              <tr><td>棚卸資産</td><td class="num">3,097</td><td class="num">5,215</td></tr>
+              <tr><td>営業利益</td><td class="num">15,002</td><td class="num">11,327</td></tr>
+              <tr><td>人件費</td><td class="num">22,307</td><td class="num">10,799</td></tr>
+              <tr><td>減価償却費</td><td class="num">2,367</td><td class="num">425</td></tr>
+              <tr><td>地代家賃</td><td class="num">3,114</td><td class="num">4,428</td></tr>
+              <tr><td>租税公課</td><td class="num">679</td><td class="num">559</td></tr>
+              <tr><td>従業員数</td><td class="num">53人</td><td class="num">23人</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">出典：問題 pp.1–2。金額と列の対応は財務諸表の表示でも確認しています。</p>
+
+        <h3>① 売上高総利益率（優れている）</h3>
+        <pre class="calc">売上高総利益率 ＝ 売上総利益 ÷ 売上高 × 100
+D社  ＝ 61,652 ÷ 103,465 × 100 ＝ 59.59％
+他社 ＝ 36,595 ÷ 115,138 × 100 ＝ 31.78％</pre>
+        <p>売上原価を引いた後の利益を、売上に対して多く確保しています。ただし、これだけで人員の効率や全社の安全性まで良いとは言えません。</p>
+
+        <h3>② 棚卸資産回転率（優れている）</h3>
+        <pre class="calc">棚卸資産回転率 ＝ 売上高 ÷ 棚卸資産
+D社  ＝ 103,465 ÷ 3,097 ＝ 33.41回
+他社 ＝ 115,138 ÷ 5,215 ＝ 22.08回</pre>
+        <p>期末残高を使った売上高ベースの指標です。売上原価ベースの回転率もありますが、定義を途中で混ぜないようにします。</p>
+
+        <h3>③ 労働生産性（課題）</h3>
+        <p>労働生産性は従業員1人当たりの付加価値額です。付加価値額はここでは加算法で求めます。</p>
+        <pre class="calc">付加価値額 ＝ 営業利益＋人件費＋減価償却費＋地代家賃＋租税公課
+D社  ＝ 15,002＋22,307＋2,367＋3,114＋679 ＝ 43,469万円
+他社 ＝ 11,327＋10,799＋425＋4,428＋559 ＝ 27,538万円
+
+労働生産性 ＝ 付加価値額 ÷ 従業員数
+D社  ＝ 43,469 ÷ 53 ＝ 820.17万円／人
+他社 ＝ 27,538 ÷ 23 ＝ 1,197.30万円／人</pre>
+        <div class="warning"><strong>「その他」を足しも引きもしない</strong>「その他」は付加価値額に加える項目にしません。かといって、そこから改めて差し引くのでもありません。営業利益はすでに費用を控除した値なので、二重に控除しないようにします。D社は付加価値額の<strong>総額</strong>では他社を上回りますが、<strong>1人当たり</strong>では下回ります。</div>
+
+        <h3>設問2：要因を分解する</h3>
+        <pre class="calc">労働生産性 ＝ 1人当たり売上高 × 付加価値率
+
+1人当たり売上高
+D社  ＝ 103,465 ÷ 53 ＝ 1,952.17万円／人
+他社 ＝ 115,138 ÷ 23 ＝ 5,006.00万円／人
+
+付加価値率
+D社  ＝ 43,469 ÷ 103,465 × 100 ＝ 42.01％
+他社 ＝ 27,538 ÷ 115,138 × 100 ＝ 23.92％</pre>
+        <p>付加価値率は高いのに、1人当たり売上高が低いために労働生産性が劣っています。財務数値で確かめられるのはこの関係までで、働き方や技能の不足まで数値から断定することはできません。</p>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例（設問2）</strong><span class="count">74／80字</span></div>
+          <p class="ans-text">労働生産性が低い。付加価値率は同業他社より高いが、売上高に対して従業員数が多く、１人当たり売上高が低いため、労働投入に見合う付加価値を生めていない。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+      </section>
+
+      <section id="q2">
+        <p class="kicker"><span>第2問</span><span>配点20点</span><span>計算問題</span></p>
+        <h2>3Dプリンター事業のセールスミックス</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>3Dプリンターで製品A・Bを製造・販売する。(設問1) 年間の直接作業時間の上限を3,600時間として、利益を最大にするセールスミックスと利益額を求める。(設問2) さらにアルミニウムの消費量の上限を年間6,000kgとした場合の、利益を最大にするセールスミックスと利益額を求める。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>(設問1) ３Dプリンターを用いた新事業における短期利益計画において、与えられた製品データと制約条件のもとで、利益を最大化するセールスミックスを算出する能力を問う問題である。(設問2) 当該事業の短期利益計画において、制約条件が複数存在する場合のもとで、利益を最大化するセールスミックスを算出する能力を問う問題である。</p></div>
+
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">項目</th><th scope="col" class="num">製品A</th><th scope="col" class="num">製品B</th></tr></thead>
+            <tbody>
+              <tr><td>販売価格</td><td class="num">7,800円</td><td class="num">10,000円</td></tr>
+              <tr><td>材料使用量（400円／kg）</td><td class="num">4kg</td><td class="num">2kg</td></tr>
+              <tr><td>直接作業時間（1,200円／h）</td><td class="num">2時間</td><td class="num">4時間</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">共通固定費は年間4,000,000円（問題 pp.3–4）。</p>
+
+        <h3>設問1：時間だけが制約の場合</h3>
+        <div class="answer">
+          <div class="answer-head"><strong>答案例（設問1）</strong></div>
+          <p class="ans-text">製品Aを1,800個、製品Bを0個。利益 2,840,000円</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+        <p>まず、販売価格から1個つくると増える費用を引いて<strong>限界利益</strong>を求めます。</p>
+        <pre class="calc">Aの限界利益 ＝ 7,800－400×4－1,200×2  ＝ 3,800円／個
+Bの限界利益 ＝ 10,000－400×2－1,200×4 ＝ 4,400円／個</pre>
+        <p>1個当たりではBが大きいのですが、Bは時間も多く使います。制約になっている<strong>時間当たり</strong>に直します。</p>
+        <pre class="calc">A：3,800 ÷ 2 ＝ 1,900円／時間
+B：4,400 ÷ 4 ＝ 1,100円／時間
+
+販売数量の上限など他の制約はないので、全時間をAに配分する
+A ＝ 3,600 ÷ 2 ＝ 1,800個、B ＝ 0個
+利益 ＝ 3,800×1,800－4,000,000 ＝ 2,840,000円</pre>
+        <div class="tip"><strong>共通固定費は優先順位の判断に使わない</strong>どの組み合わせでも同じ額なので、配賦せずに最後の利益計算で一度だけ引きます。</div>
+
+        <h3>設問2：時間と材料の両方が制約の場合</h3>
+        <div class="answer">
+          <div class="answer-head"><strong>答案例（設問2）</strong></div>
+          <p class="ans-text">製品Aを1,400個、製品Bを200個。利益 2,200,000円</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+        <p>Aの数量をx、Bをyと置きます。</p>
+        <pre class="calc">時間制約：2x＋4y ≦ 3,600
+材料制約：4x＋2y ≦ 6,000
+非負条件：x ≧ 0、y ≧ 0
+最大化する利益：3,800x＋4,400y－4,000,000
+
+2つの制約を使い切る交点
+x＋2y ＝ 1,800
+2x＋y ＝ 3,000
+→ y ＝ 200、x ＝ 1,400</pre>
+        <p>ただし、制約式の交点が必ず最適とは限りません。実行可能領域の<strong>端点</strong>を比べます。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col" class="num">A数量</th><th scope="col" class="num">B数量</th><th scope="col" class="num">年間利益</th></tr></thead>
+            <tbody>
+              <tr><td class="num">0</td><td class="num">0</td><td class="num">−4,000,000円</td></tr>
+              <tr><td class="num">1,500</td><td class="num">0</td><td class="num">1,700,000円</td></tr>
+              <tr><td class="num">0</td><td class="num">900</td><td class="num">−40,000円</td></tr>
+              <tr><td class="num">1,400</td><td class="num">200</td><td class="num"><strong>2,200,000円</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <pre class="calc">利益 ＝ 3,800×1,400＋4,400×200－4,000,000 ＝ 2,200,000円
+検算：時間 2×1,400＋4×200 ＝ 3,600時間
+      材料 4×1,400＋2×200 ＝ 6,000kg</pre>
+        <div class="warning"><strong>時間当たりの優先順位だけでは解けない</strong>制約が2つになると、設問1の「時間当たり限界利益の高いAを優先」では最適な組み合わせを見落とします。</div>
+      </section>
+
+      <section id="q3-1">
+        <p class="kicker"><span>第3問 設問1</span><span>第3問計35点</span><span>計算問題</span></p>
+        <h2>点検整備の内外製：関連原価で比べる</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>既存工場では月30台まで自社で点検整備できる（1台当たり直接労務費6,000円、間接費7,500円。間接費の30％は変動費、70％は固定費の配賦額）。近隣の整備会社から、買取価格の2％の料金で請け負うと提案があった。買取価格がいくらまでなら外部に委託すべきかを求める。在庫に関連する費用は考慮しない。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>中古車販売事業における点検整備業務において、与えられた費用データに基づいて関連原価を適切に把握し、外注すべきか否かに関する適切な意思決定について助言する能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong></div>
+          <p class="ans-text">412,500円</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+        <p>内製と外注で<strong>変わる原価（関連原価）</strong>だけを比べます。配賦された固定費は、外注してもなくなるとは書かれていないので比較から外します。</p>
+        <pre class="calc">内製の関連原価 ＝ 6,000＋7,500×30％ ＝ 8,250円／台
+買取価格をP円とすると、外注費 ＝ 0.02P
+外注のほうが安くなる条件：0.02P ≦ 8,250
+P ≦ 412,500円</pre>
+        <p>厳密には同額なら無差別で、それより安ければ外注のほうが費用は小さくなります。平均取得原価50万円の車なら外注費は1万円で、費用の比較では内製が有利です。</p>
+        <div class="tip"><strong>次の小問の在庫投資を混ぜない</strong>この小問では在庫関連の費用は考慮しないと指定されています。</div>
+      </section>
+
+      <section id="q3-2">
+        <p class="kicker"><span>第3問 設問2</span><span>第3問計35点</span><span>計算問題</span></p>
+        <h2>工場拡張の年間CFと回収期間</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>初年度は月30台、2年目以降の5年間は月50台を販売する。既存工場の余力を超える20台分のために、2年目期首に稼働する工場拡張（設備投資7,200万円）を検討する。この投資案の年間キャッシュフロー（初期投資額は含まない）と、それを前提とした回収期間（小数点第3位を四捨五入）を求める。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>工場拡張投資において、与えられた予測情報に基づいて適切に将来キャッシュフローを計算し、回収期間を算出する能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong></div>
+          <p class="ans-text">年間キャッシュフロー 15,660,000円<br>回収期間 5.24年</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>条件の整理</h3>
+        <p>既存の30台分は拡張しなくても扱えるので、評価するのは<strong>増える20台／月の分</strong>です（pp.4–6）。</p>
+        <ul>
+          <li>車の取得原価は1台50万円、販売価格は1台60万円。</li>
+          <li>拡張分の点検整備費は1台当たり 10,000＋4,500＝14,500円（現金支出で、減価償却費を含まない）。</li>
+          <li>設備投資7,200万円、耐用年数15年、定額法、残存価額10％。</li>
+          <li>追加の在庫は販売台数1か月分。税率30％。設備投資と在庫投資は2年目期首にまとめて支出。</li>
+        </ul>
+
+        <h3>年間キャッシュフロー</h3>
+        <pre class="calc">年間売上収入 ＝ 600,000×20×12 ＝ 144,000,000円
+年間仕入支出 ＝ 500,000×20×12 ＝ 120,000,000円
+年間整備支出 ＝  14,500×20×12 ＝   3,480,000円
+
+減価償却費 ＝ 72,000,000×（1－10％）÷15 ＝ 4,320,000円
+
+税引前利益 ＝ 144,000,000－120,000,000－3,480,000－4,320,000
+           ＝ 16,200,000円
+税引後利益 ＝ 16,200,000×70％ ＝ 11,340,000円
+年間CF     ＝ 11,340,000＋4,320,000 ＝ 15,660,000円</pre>
+        <p>減価償却費は利益計算では費用ですが、その年の現金支出ではありません。税額を計算した後で足し戻します。</p>
+
+        <h3>初期投資と回収期間</h3>
+        <pre class="calc">追加在庫投資 ＝ 500,000×20 ＝ 10,000,000円
+初期投資     ＝ 72,000,000＋10,000,000 ＝ 82,000,000円
+
+回収期間 ＝ 82,000,000 ÷ 15,660,000 ＝ 5.236… ≒ 5.24年</pre>
+        <div class="warning"><strong>在庫投資は月20台分</strong>年間240台分ではありません。既存30台分の在庫を拡張投資に加えることもしません。また、次の小問では5年後にCFの条件が変わるので、「実際にも5.24年で必ず回収できる」とは説明しないようにします。</div>
+      </section>
+
+      <section id="q3-3">
+        <p class="kicker"><span>第3問 設問3</span><span>第3問計35点</span><span>計算問題</span></p>
+        <h2>工場拡張の正味現在価値（NPV）</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>当初5年間は月50台を販売し、その後は拡張分から年間150万円のCFが継続的に生じる。5年間の販売期間の終了後には、増えた在庫がすべて取り崩される。CFは期末に一括で発生し、割引率6％、複利現価係数（5年）0.7473、年金現価係数（5年）4.2124を用いて、投資時点のNPV（小数点以下四捨五入）を求める。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>工場拡張投資において、計画された期間終了後のターミナルバリューと各期のキャッシュフローを算出し当該投資案の正味現在価値を求めることで、投資の経済性評価を行う能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong></div>
+          <p class="ans-text">10,121,684円</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>時点を先に並べる</h3>
+        <p>工場拡張の支出時点（中古車事業の2年目期首）を t＝0 とします。「事業開始から何年目か」と「投資から何年後か」を混ぜないことが大切です。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">投資からの時点</th><th scope="col">内容</th><th scope="col" class="num">金額</th></tr></thead>
+            <tbody>
+              <tr><td>t＝0</td><td>設備＋追加在庫の支出</td><td class="num">−82,000,000円</td></tr>
+              <tr><td>t＝1〜5 の各期末</td><td>拡張分の営業CF</td><td class="num">各15,660,000円</td></tr>
+              <tr><td>t＝5</td><td>増えた在庫の回収</td><td class="num">＋10,000,000円</td></tr>
+              <tr><td>t＝6 以後の各期末</td><td>継続するCF</td><td class="num">各1,500,000円</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">継続CFは終わりの指定がないので、一定額が永久に続くとみなす通常の継続価値（ターミナルバリュー）の計算を採ります。出題の趣旨がターミナルバリューを問うていることとも整合します（p.7）。</p>
+
+        <h3>計算</h3>
+        <pre class="calc">① 最初の5年間
+   15,660,000×4.2124（年金現価係数）＝ 65,966,184円
+
+② 5年後の在庫回収
+   10,000,000×0.7473（複利現価係数）＝ 7,473,000円
+
+③ 6年目以後の継続価値
+   t＝5時点の価値 ＝ 1,500,000 ÷ 0.06 ＝ 25,000,000円
+   t＝0への割引   ＝ 25,000,000×0.7473 ＝ 18,682,500円
+
+④ NPV ＝ 65,966,184＋7,473,000＋18,682,500－82,000,000
+       ＝ 10,121,684円</pre>
+        <p>年金現価係数は、同額のCFが毎期末に続くときの現在価値をまとめて求める係数です。NPVが正なので、与えられた条件の下では投資に経済性があります。問題で指定された係数を使った値なので、6％の係数を電卓で厳密につくり直すと末尾の桁が変わることがあります。</p>
+        <div class="warning"><strong>継続価値は「最初の受け取りの1期前」の価値</strong>最初の150万円は t＝6 の期末に発生します。「CF÷割引率」で求めた値は、その1期前の t＝5 時点の価値です。ここから6年分割り引くと、1年余計に割り引くことになります。</div>
+        <div class="tip"><strong>足さないもの</strong>設備の残存価額720万円は設問2の減価償却の計算に使う値です。5年後に設備を売る条件はなく継続利用が前提なので、売却収入として足しません。継続CFの150万円もすでにCFとして与えられているので、もう一度税引きしません。在庫の取り崩しは資金の回収として扱い、問題にない評価損や売却益は加えません。</div>
+      </section>
+
+      <section id="q4">
+        <p class="kicker"><span>第4問</span><span>配点20点</span><span>100字以内</span></p>
+        <h2>中古車販売事業の財務リスクとその管理</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>D社が中古車販売事業を実行する際に考えられるリスクを財務的観点から2点指摘し、それらのマネジメントについて100字以内で助言する。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>新規事業である中古車販売事業の諸特性を理解し、それらに付随する財務的リスクを指摘するとともに、それらのリスクマネジメントについて助言する能力を問う問題である。</p></div>
+        <p>リスクと対応を<strong>一対一</strong>で書きます。</p>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong><span class="count">91／100字</span></div>
+          <p class="ans-text">ドル建て販売は円高による円収入減少のリスクがあるため、為替予約で抑える。仕入・在庫・設備投資による資金不足には、資金繰り表で支出と回収を見通し、仕入量の調整と必要資金の確保で備える。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>与件の根拠</h3>
+        <p>海外販売はドル建ての価格（1台4,800ドル、想定レート1ドル＝125円）で、車は円で先に仕入れます。新事業には在庫と設備の資金負担もあります（pp.1、4–7）。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">リスク</th><th scope="col">中身</th><th scope="col">対応</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">為替変動</th><td>円高になると、同じドル売上でも円で受け取る額が減る</td><td>将来の交換レートを決めておく為替予約など</td></tr>
+              <tr><th scope="row">資金の流動性</th><td>利益が見込めても、仕入れ・在庫・設備の支出に資金が間に合わないおそれ</td><td>資金繰り計画、仕入量と調達枠の管理</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="tip"><strong>直接の根拠があるリスクを優先する</strong>買い取りも販売も現金という条件があるので、売掛金の回収不能を主軸にするより、根拠が直接ある為替と資金繰りを優先しました。</div>
+      </section>
+
+      <section id="compare">
+        <p class="kicker"><span>COMPARISON</span></p>
+        <h2>予備校の解答例との比較：NPVの差をどう扱うか</h2>
+        <p>各校の公開PDFの数値を比べました。<strong>どれも公式の解答ではありません。</strong></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">論点</th><th scope="col">KEC</th><th scope="col">AAS名古屋</th><th scope="col">TAC</th><th scope="col">本ページ</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">第1問の3指標</th><td>指標・数値とも本ページと一致</td><td>同左</td><td>同左</td><td>独立に計算して確認</td></tr>
+              <tr><th scope="row">第2問の利益</th><td>284万円／220万円</td><td>同左</td><td>同左</td><td>端点の比較も実施</td></tr>
+              <tr><th scope="row">外注の分岐点</th><td>412,500円</td><td>同左</td><td>同左</td><td>同額なら無差別と補足</td></tr>
+              <tr><th scope="row">年間CF／回収期間</th><td>1,566万円／5.24年</td><td>同左</td><td>同左</td><td>増分の投資で確認</td></tr>
+              <tr><th scope="row">NPV</th><td><strong>1,591,184円</strong></td><td><strong>10,121,684円</strong></td><td><strong>10,121,684円</strong></td><td><strong>10,121,684円</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>KECの値は、今回確認したリンク先のPDFに載っているものです。同校の他の教材や動画、別の版も同じ値だという意味ではありません。</p>
+        <p>KECの式は、継続価値を「0.7473÷1.06」で割り引いており、増えた在庫の回収を加えていません。本ページは問題文の在庫の取り崩しと、CFが各期末に発生する条件を反映しました。差は次のとおり説明できます。</p>
+        <pre class="calc">継続価値の差 ＝ 18,682,500－17,625,000 ＝ 1,057,500円
+在庫回収の差 ＝                           7,473,000円
+合計の差     ＝                           8,530,500円
+1,591,184＋8,530,500 ＝ 10,121,684円</pre>
+        <div class="tip"><strong>2校が一致したから採ったのではない</strong>時点と回収の条件から10,121,684円が導かれるので採用しています。公式の数値正解が確認できたという意味ではありません。</div>
+        <p>第1問の記述では、AAS名古屋は人員と売上の関係、KECは資本装備などにも触れています。本ページは数値で直接示せる「1人当たり売上高×付加価値率」の分解を採り、生産性が低い具体的な業務上の原因までは断定していません。</p>
+        <p class="source-note">確認日：2026年10月23日。各校の資料は公開後に改訂されることがあります。リンクは<a href="#sources">出典</a>を参照。</p>
+      </section>
+
+      <section id="points">
+        <p class="kicker"><span>TAKEAWAYS</span></p>
+        <h2>他年度にも使えるチェック手順</h2>
+        <ol>
+          <li><strong>金額と時間の単位をそろえる。</strong>万円と円、月と年を計算の途中で混ぜない。</li>
+          <li><strong>経営分析は同業他社と比べ、指標の分母が何を表すかを確かめる。</strong></li>
+          <li><strong>資源の制約が1つなら資源当たり限界利益、複数なら制約式と端点で考える。</strong></li>
+          <li><strong>内外製は、選択によって増減する原価だけを比べる。</strong></li>
+          <li><strong>投資評価は既存分ではなく増分で行う。</strong>運転資金（在庫）も初期投資に含める。</li>
+          <li><strong>将来CFの時点を並べてから割り引く。</strong>永久に続くCFの価値は、最初の受け取りの1期前の時点の値。</li>
+          <li><strong>回収期間とNPVは別の評価方法。</strong>回収が遅いことだけで投資を否定しない。</li>
+        </ol>
+      </section>
+
+      <section id="sources">
+        <p class="kicker"><span>SOURCES</span></p>
+        <h2>出典・参考資料</h2>
+        <h3>公式（一般社団法人 日本中小企業診断士協会連合会）</h3>
+        <ul class="source-list">
+          <li><a href="https://www.jf-cmca.jp/attach/test/shikenmondai/2ji2022/d2ji2022.pdf">令和4年度 第2次試験 事例Ⅳ 問題PDF</a></li>
+          <li><a href="https://www.jf-cmca.jp/attach/test/r04/2ji_shushi/r04_2ji_shushi_jirei4.pdf">令和4年度 事例Ⅳ 出題の趣旨</a></li>
+        </ul>
+        <h3>受験指導校の解答例（比較に使用）</h3>
+        <ul class="source-list">
+          <li><a href="https://www.kec.ne.jp/shindanshi/wp/wp-content/uploads/008f55b6af496dbe6120896174df073e-1.pdf">KECビジネススクール 事例Ⅳ 解答例</a>（NPVはPDFの2ページ）</li>
+          <li><a href="https://www.aas-clover.com/nagoya/images/r4_aasnagoyakaitou_d.pdf">AAS名古屋 事例Ⅳ 模範解答例</a>（PDF記載：11月21日10時現在）</li>
+          <li><a href="https://www.tac-school.co.jp/library/00010dougaChannel/pPwsqUpkvak.pdf">TAC 2022年 2次本試験分析会レジュメ</a>（答案はPDFの10–11ページ、計算過程は12–14ページ）</li>
+        </ul>
+        <p class="source-note">経営指標、限界利益、制約式、内外製の分岐点、減価償却費、税引後CF、回収期間、指定係数によるNPVを再計算しています。記述の答案例は独自作成例で、採点上の必須語句や小問別の配点は公開資料から確定できません。整理・照合：2026年10月23日。</p>
+      </section>
+
+      <nav class="case-nav" aria-label="ほかの事例"></nav>
+      <p class="home-foot"><a href="./">← 2次試験 過去問解説 一覧に戻る</a></p>
+    </main>
+  </div>
+
+  <footer>
+    <p>中小企業診断士2次試験 過去問解説 · <a href="/">tebukuro.me</a></p>
+  </footer>
+
+</body>
+</html>
