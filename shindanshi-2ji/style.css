@@ -29,6 +29,10 @@
   --green-line: #c3dfce;
   --soon: #8a94a6;
   --soon-soft: #eef1f5;
+  --fig-1: #6a45a8;
+  --fig-2: #00897b;
+  --fig-3: #b07a12;
+  --fig-0: #b4bccb;
   --shadow: 0 10px 28px rgba(27, 31, 42, .07);
   --shadow-hover: 0 16px 36px rgba(27, 31, 42, .13);
   --radius: 16px;
@@ -260,6 +264,36 @@ th.num, td.num { text-align: right; white-space: nowrap; font-variant-numeric: t
 .case-nav span { color: var(--muted); border-style: dashed; background: transparent; }
 .home-foot { margin: 28px 0 0; font-size: .85rem; text-align: center; }
 
+/* 図（事例Ⅳのグラフ）。SVG は文字が小さくならないよう最小幅を決め、狭い画面では横スクロール。
+   系列の色は --fig-1〜3（明暗それぞれ色覚多様性の検証済み）、--fig-0 は「その他」の灰色 */
+.fig { margin: 14px 0 18px; padding: 14px 16px 8px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); }
+.fig figcaption { color: var(--deep); font-size: .9rem; font-weight: 700; line-height: 1.5; }
+.fig-legend { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 6px 0 4px; padding: 0; list-style: none; color: var(--muted); font-size: .8rem; }
+.fig-legend li { margin: 0; display: inline-flex; align-items: center; gap: 6px; }
+.fig-legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: currentColor; }
+.fig-scroll { overflow-x: auto; }
+.fig svg { display: block; width: 100%; min-width: 560px; height: auto; font-size: 12px; }
+.fig text { fill: var(--muted); }
+.fig .fig-cat { fill: var(--ink); }
+.fig .fig-val { fill: var(--ink); font-weight: 700; font-variant-numeric: tabular-nums; }
+.fig .fig-tick { font-size: 11px; font-variant-numeric: tabular-nums; }
+.fig .fig-note { font-size: 11px; }
+.fig .fig-grid { stroke: var(--line); stroke-width: 1; }
+.fig .fig-base { stroke: var(--muted); stroke-width: 1; }
+.fig .fig-wash { fill: var(--fig-1); opacity: .08; }
+.fig-c0 { color: var(--fig-0); fill: var(--fig-0); }
+.fig-c1 { color: var(--fig-1); fill: var(--fig-1); }
+.fig-c2 { color: var(--fig-2); fill: var(--fig-2); }
+.fig-c3 { color: var(--fig-3); fill: var(--fig-3); }
+.fig .fig-l1, .fig .fig-l2, .fig .fig-l3 { fill: none; stroke-width: 2; stroke-linecap: round; }
+.fig .fig-l1 { stroke: var(--fig-1); stroke-width: 2.5; }
+.fig .fig-l2 { stroke: var(--fig-2); }
+.fig .fig-l3 { stroke: var(--fig-3); }
+.fig .fig-dot1, .fig .fig-dot2, .fig .fig-open { stroke: var(--card); stroke-width: 2; }
+.fig .fig-dot1 { fill: var(--fig-1); }
+.fig .fig-dot2 { fill: var(--fig-2); }
+.fig .fig-open { fill: var(--card); stroke: var(--fig-1); }
+
 /* === Hub page === */
 .year + .year { margin-top: 36px; }
 .year-title { margin: 0 0 4px; font-size: 1.35rem; color: var(--main); }
@@ -323,6 +357,8 @@ footer a { color: var(--muted); }
   section { box-shadow: none; padding: 16px; margin-bottom: 12px; }
   .ans-text { display: block !important; }
   .calc { white-space: pre-wrap; }
+  .fig { break-inside: avoid; }
+  .fig svg { min-width: 0; }
   a { color: inherit; text-decoration: none; }
 }
 @media screen and (prefers-color-scheme: dark) {
@@ -353,6 +389,10 @@ footer a { color: var(--muted); }
     --green-line: #2b4a36;
     --soon: #6b7586;
     --soon-soft: #1f2530;
+    --fig-1: #9d7fe0;
+    --fig-2: #1fa898;
+    --fig-3: #c08a1c;
+    --fig-0: #4a5366;
     --shadow: 0 10px 28px rgba(0, 0, 0, .4);
     --shadow-hover: 0 16px 36px rgba(0, 0, 0, .5);
   }

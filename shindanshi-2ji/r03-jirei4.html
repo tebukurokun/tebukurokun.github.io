@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="中小企業診断士2次試験 令和3年度 事例Ⅳ（財務・会計）の設問別解説。食品スーパーD社の経営分析、セルフレジの取替投資（差額キャッシュフローとNPV、更新延期の価格条件）、価格帯つきのCVP分析、不採算事業の撤退と企業価値を、計算過程と図つきで整理">
+  <title>令和3年度 事例Ⅳ 解説｜中小企業診断士2次試験 過去問解説</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="site.js" defer></script>
+</head>
+<body data-case="4" data-page="r03-jirei4">
+  <header class="hero" data-mark="Ⅳ">
+    <p class="home"><a href="./">← 2次試験 過去問解説 一覧</a></p>
+    <p class="eyebrow">令和3年度（2021）第2次試験 · 事例Ⅳ 財務・会計</p>
+    <h1>令和3年度 事例Ⅳ 解説</h1>
+    <p class="subtitle">D社：地方の食品スーパーのレジ更新・陸上養殖・不採算事業</p>
+    <p class="lead">中心は、<strong>何と比べるか</strong>を先に決めることです。経営分析は同業他社と、取替投資は「更新しないで使い続ける案」と、延期案は「今すぐ更新する案」と比べます。比べる相手を決めてから、お金が動く時点を並べると、計算がつながります。</p>
+    <div class="hero-meta">
+      <span>4問・100点</span>
+      <a href="https://www.jf-cmca.jp/attach/test/shikenmondai/2ji2021/d2ji2021.pdf">問題PDF（公式）</a>
+      <a href="https://www.jf-cmca.jp/attach/test/r03/2ji_shushi/r03_2ji_shushi_jirei4.pdf">出題の趣旨（公式）</a>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="side" aria-label="過去問解説のページ一覧"></aside>
+
+    <main class="content" id="top">
+      <p class="notice"><strong>読む前に：</strong>数値は公式の問題から独自に再計算したもので、記述の答案例も学習用の独自作成例です。<strong>公式の正解は公表されていません</strong>。特に第2問は予備校によって解き方も結論も分かれています（<a href="#compare">予備校比較</a>）。設問文は要旨で載せているため、正確な文言と財務諸表は公式の問題PDFで確認してください。ページ番号は問題冊子の印刷ページです。</p>
+
+      <div class="toolbar">
+        <button type="button" class="practice-toggle" aria-pressed="false">答案例を隠して解く</button>
+      </div>
+
+      <section id="overview">
+        <p class="kicker"><span>OVERVIEW</span></p>
+        <h2>事例の概要と計算結果の一覧</h2>
+        <p>D社は地方都市に本社を置き、食品スーパーを15店舗展開する創業90年以上の企業です。地元産の商品と地元密着を売りに固定客をつかんできましたが、高齢化・人口減少、コンビニや郊外型ショッピングセンターの進出、低価格の同業他社との競争で、収益性が圧迫されています（p.1）。</p>
+        <p>検討課題は3つあります。セミセルフレジ100台を2022年度期首にフルセルフレジへ更新するか、自治体と組んで廃校で魚種Xを陸上養殖する新事業の採算、不採算になっている移動販売事業への対処です（pp.1–2）。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">設問</th><th scope="col">配点</th><th scope="col">本ページの回答</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">第1問(1)</th><td rowspan="2">30点</td><td>優れている：売上高総利益率 27.78％、総資本回転率 2.42回／課題：売上高営業利益率 0.32％、自己資本比率 19.85％（ほかの組み合わせもありうる）</td></tr>
+              <tr><th scope="row">第1問(2)</th><td>80字。粗利率と資産効率は高いが、販管費負担と借入依存が課題</td></tr>
+              <tr><th scope="row">第2問(1)</th><td rowspan="3">30点</td><td>2022年度中のCF 25,600,000円</td></tr>
+              <tr><th scope="row">第2問(2)</th><td>NPV ＋3,868,800円、取替投資を採用</td></tr>
+              <tr><th scope="row">第2問(3)</th><td>1台 1,932,159円より安ければ延期が有利</td></tr>
+              <tr><th scope="row">第3問(1)</th><td rowspan="2">20点</td><td>32,143kg</td></tr>
+              <tr><th scope="row">第3問(2)</th><td>38,572kg</td></tr>
+              <tr><th scope="row">第4問(1)</th><td rowspan="2">20点</td><td>40字。赤字事業の撤退で売上高営業利益率が改善</td></tr>
+              <tr><th scope="row">第4問(2)</th><td>40字。地域の信頼と主力事業への波及で将来収益に貢献</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">小問別の配点は問題文に示されていません。CF（キャッシュフロー）は現金収支、NPV（正味現在価値）は将来の現金収支を投資時点の価値に換算し、初期投資を差し引いた値です。第2問は差額キャッシュフローで評価する解き方（TACと同じ）を採っています。</p>
+      </section>
+
+      <section id="q1">
+        <p class="kicker"><span>第1問</span><span>配点30点</span><span>設問2は80字以内</span></p>
+        <h2>経営分析：優れた指標2つと課題の指標2つ</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>(設問1) 同業他社と比べてD社が優れていると考えられる財務指標と、D社の課題を示すと考えられる財務指標を2つずつ挙げ、名称と値（小数点第3位を四捨五入、単位を明記）を答える。(設問2) D社の財務的特徴と課題について、同業他社と比べながら財務指標から読み取れる点を80字以内で述べる。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>(設問1) 財務諸表を利用して、診断及び助言の基礎となる財務比率を算出する能力を問う問題である。(設問2) 財務比率を基に、事例企業の財務的特徴とリスク要素を分析する能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例（設問1）</strong></div>
+          <p class="ans-text">① 売上高総利益率 27.78（％）<br>② 総資本回転率 2.42（回）<br>③ 売上高営業利益率 0.32（％）<br>④ 自己資本比率 19.85（％）</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>使う数値（単位：万円）</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">項目</th><th scope="col" class="num">D社</th><th scope="col" class="num">同業他社</th></tr></thead>
+            <tbody>
+              <tr><td>売上高</td><td class="num">1,655,500</td><td class="num">2,358,740</td></tr>
+              <tr><td>売上総利益</td><td class="num">459,900</td><td class="num">607,600</td></tr>
+              <tr><td>販売費及び一般管理費</td><td class="num">454,600</td><td class="num">560,100</td></tr>
+              <tr><td>営業利益</td><td class="num">5,300</td><td class="num">47,500</td></tr>
+              <tr><td>商品（棚卸資産）</td><td class="num">64,200</td><td class="num">112,120</td></tr>
+              <tr><td>当座資産（現金預金＋売掛金＋有価証券）</td><td class="num">112,900</td><td class="num">77,330</td></tr>
+              <tr><td>流動負債</td><td class="num">172,500</td><td class="num">258,210</td></tr>
+              <tr><td>借入金（短期＋長期）</td><td class="num">363,500</td><td class="num">0</td></tr>
+              <tr><td>純資産（自己資本）</td><td class="num">136,000</td><td class="num">1,059,470</td></tr>
+              <tr><td>資産合計（総資本）</td><td class="num">685,200</td><td class="num">1,427,670</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">出典：問題 p.3（2020年度の貸借対照表・損益計算書）。</p>
+
+        <h3>① 売上高総利益率（優れている）</h3>
+        <pre class="calc">売上高総利益率 ＝ 売上総利益 ÷ 売上高 × 100
+D社  ＝ 459,900 ÷ 1,655,500 × 100 ＝ 27.78％
+他社 ＝ 607,600 ÷ 2,358,740 × 100 ＝ 25.76％</pre>
+        <p>地元産の商品にこだわった品揃えで、同業他社より高い粗利率を確保しています。ただし、粗利率が高いことは営業利益率が高いことを意味しません（③で確認します）。</p>
+
+        <h3>② 総資本回転率（優れている）</h3>
+        <pre class="calc">総資本回転率 ＝ 売上高 ÷ 総資本
+D社  ＝ 1,655,500 ÷ 685,200   ＝ 2.42回
+他社 ＝ 2,358,740 ÷ 1,427,670 ＝ 1.65回</pre>
+        <p>資産を使って売上を生む効率は同業他社より高い水準です。</p>
+
+        <h3>③ 売上高営業利益率（課題）</h3>
+        <pre class="calc">売上高営業利益率 ＝ 営業利益 ÷ 売上高 × 100
+D社  ＝ 5,300 ÷ 1,655,500 × 100  ＝ 0.32％
+他社 ＝ 47,500 ÷ 2,358,740 × 100 ＝ 2.01％</pre>
+        <p>粗利率は高いのに営業利益率が低いのは、販管費の負担が大きいからです。3つの比率は「売上高総利益率 − 売上高販管費比率 ＝ 売上高営業利益率」の関係にあります。</p>
+        <figure class="fig">
+          <figcaption>図1　売上高に対する比率：粗利はD社が高いが、販管費でほぼ消える</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c1"></i>D社</li><li><i class="fig-c2"></i>同業他社</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 192" role="img" aria-label="売上高総利益率・販管費比率・営業利益率のD社と同業他社の比較">
+              <line class="fig-grid" x1="132" y1="6" x2="132" y2="168"/>
+              <text class="fig-tick" x="132" y="184" text-anchor="middle">0％</text>
+              <line class="fig-grid" x1="284.7" y1="6" x2="284.7" y2="168"/>
+              <text class="fig-tick" x="284.7" y="184" text-anchor="middle">10％</text>
+              <line class="fig-grid" x1="437.3" y1="6" x2="437.3" y2="168"/>
+              <text class="fig-tick" x="437.3" y="184" text-anchor="middle">20％</text>
+              <line class="fig-grid" x1="590" y1="6" x2="590" y2="168"/>
+              <text class="fig-tick" x="590" y="184" text-anchor="middle">30％</text>
+              <text class="fig-cat" x="0" y="33">売上高総利益率</text>
+              <path class="fig-c1" d="M132,14H552.1Q556.1,14 556.1,18V24Q556.1,28 552.1,28H132Z"><title>D社 売上高総利益率 27.78％</title></path>
+              <text class="fig-val" x="562.1" y="25">27.78％</text>
+              <path class="fig-c2" d="M132,30H521.3Q525.3,30 525.3,34V40Q525.3,44 521.3,44H132Z"><title>同業他社 売上高総利益率 25.76％</title></path>
+              <text class="fig-val" x="531.3" y="41">25.76％</text>
+              <text class="fig-cat" x="0" y="85">売上高販管費比率</text>
+              <path class="fig-c1" d="M132,66H547.2Q551.2,66 551.2,70V76Q551.2,80 547.2,80H132Z"><title>D社 売上高販管費比率 27.46％</title></path>
+              <text class="fig-val" x="557.2" y="77">27.46％</text>
+              <path class="fig-c2" d="M132,82H490.6Q494.6,82 494.6,86V92Q494.6,96 490.6,96H132Z"><title>同業他社 売上高販管費比率 23.75％</title></path>
+              <text class="fig-val" x="500.6" y="93">23.75％</text>
+              <text class="fig-cat" x="0" y="137">売上高営業利益率</text>
+              <path class="fig-c1" d="M132,118H134.4Q136.9,118 136.9,120.4V129.6Q136.9,132 134.4,132H132Z"><title>D社 売上高営業利益率 0.32％</title></path>
+              <text class="fig-val" x="142.9" y="129">0.32％</text>
+              <path class="fig-c2" d="M132,134H158.7Q162.7,134 162.7,138V144Q162.7,148 158.7,148H132Z"><title>同業他社 売上高営業利益率 2.01％</title></path>
+              <text class="fig-val" x="168.7" y="145">2.01％</text>
+              <line class="fig-base" x1="132" y1="6" x2="132" y2="168"/>
+            </svg>
+          </div>
+        </figure>
+
+        <h3>④ 自己資本比率（課題）</h3>
+        <pre class="calc">自己資本比率 ＝ 純資産 ÷ 総資本 × 100
+D社  ＝ 136,000 ÷ 685,200 × 100     ＝ 19.85％
+他社 ＝ 1,059,470 ÷ 1,427,670 × 100 ＝ 74.21％</pre>
+        <p>D社は長期借入金353,500万円を抱え、総資本の半分強が借入金です。同業他社は借入金がゼロで、財務の安全性に大きな差があります。</p>
+        <figure class="fig">
+          <figcaption>図2　総資本の構成：D社は半分以上を借入金でまかなっている</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c3"></i>借入金</li><li><i class="fig-c0"></i>その他の負債</li><li><i class="fig-c1"></i>純資産</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 128" role="img" aria-label="総資本に占める借入金・その他の負債・純資産の割合">
+              <text class="fig-cat" x="0" y="45">D社</text>
+              <rect class="fig-c3" x="84" y="30" width="287.6" height="22"><title>D社 借入金 53.05％（短期10,000＋長期353,500万円）</title></rect>
+              <text class="fig-cat" x="84" y="23">借入金 <tspan class="fig-val">53.05％</tspan></text>
+              <rect class="fig-c0" x="373.6" y="30" width="145.4" height="22"><title>D社 その他の負債 27.10％（185,700万円）</title></rect>
+              <text class="fig-cat" x="373.6" y="23">その他の負債 <tspan class="fig-val">27.10％</tspan></text>
+              <path class="fig-c1" d="M521,30H624Q628,30 628,34V48Q628,52 624,52H521Z"><title>D社 純資産 19.85％（136,000万円）</title></path>
+              <text class="fig-cat" x="521" y="23">純資産 <tspan class="fig-val">19.85％</tspan></text>
+              <text class="fig-cat" x="0" y="111">同業他社</text>
+              <rect class="fig-c0" x="84" y="96" width="139.3" height="22"><title>同業他社 その他の負債 25.79％（368,200万円（借入金なし））</title></rect>
+              <text class="fig-cat" x="84" y="89">その他の負債 <tspan class="fig-val">25.79％</tspan></text>
+              <path class="fig-c1" d="M225.3,96H624Q628,96 628,100V114Q628,118 624,118H225.3Z"><title>同業他社 純資産 74.21％（1,059,470万円）</title></path>
+              <text class="fig-cat" x="225.3" y="89">純資産 <tspan class="fig-val">74.21％</tspan></text>
+            </svg>
+          </div>
+        </figure>
+
+        <h3>指標の選び方は一つではない</h3>
+        <p>受験指導校の解答例も、選んだ指標の組み合わせが分かれています。採点基準は公表されていないので、本ページの組み合わせ以外が不正解だとは言えません。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">区分</th><th scope="col">本ページ</th><th scope="col">TAC</th><th scope="col">KEC</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">優れている①</th><td>売上高総利益率 27.78％</td><td>棚卸資産回転率 25.79回</td><td>売上高総利益率 27.78％</td></tr>
+              <tr><th scope="row">優れている②</th><td>総資本回転率 2.42回</td><td>当座比率 65.45％</td><td>棚卸資産回転率 25.79回</td></tr>
+              <tr><th scope="row">課題③</th><td>売上高営業利益率 0.32％</td><td>売上高営業利益率 0.32％</td><td>売上高販管費比率 27.46％</td></tr>
+              <tr><th scope="row">課題④</th><td>自己資本比率 19.85％</td><td>自己資本比率 19.85％</td><td>自己資本比率 19.85％</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <pre class="calc">棚卸資産回転率 ＝ 売上高 ÷ 棚卸資産
+D社  ＝ 1,655,500 ÷ 64,200  ＝ 25.79回
+他社 ＝ 2,358,740 ÷ 112,120 ＝ 21.04回
+
+当座比率 ＝ 当座資産 ÷ 流動負債 × 100
+D社  ＝ （46,900＋61,600＋4,400）÷ 172,500 × 100 ＝ 65.45％
+他社 ＝ （43,250＋34,080＋0）÷ 258,210 × 100     ＝ 29.95％
+
+売上高販管費比率 ＝ 販管費 ÷ 売上高 × 100
+D社  ＝ 454,600 ÷ 1,655,500 × 100 ＝ 27.46％
+他社 ＝ 560,100 ÷ 2,358,740 × 100 ＝ 23.75％</pre>
+        <ul>
+          <li><strong>棚卸資産回転率</strong>は食品スーパーの在庫管理・販売効率という業態の特徴に結び付けやすい指標です。</li>
+          <li><strong>当座比率</strong>は短期の支払能力を表します。D社は自己資本比率が低い一方、短期の流動性では同業他社を上回ります。</li>
+          <li><strong>売上高販管費比率</strong>は、粗利率が高いのに営業利益が残らない直接の原因を示せます。</li>
+        </ul>
+        <div class="tip"><strong>どの組み合わせでも、設問2の文章と対応させる</strong>設問1で選んだ指標と、設問2で述べる特徴・課題が食い違わないようにします。本ページの組み合わせは「収益性（粗利と営業利益）」「効率性」「安全性」を1つの流れで説明できるように選んでいます。</div>
+
+        <h3>設問2：特徴と課題を80字で</h3>
+        <ol>
+          <li>強み（粗利率・資産効率）と弱み（営業利益率・自己資本比率）を同業他社との比較で特定する。</li>
+          <li>弱みの原因を添える（販管費の負担、借入への依存）。</li>
+          <li>財務上の課題（収益性と安全性）を結論として示す。</li>
+        </ol>
+        <div class="answer">
+          <div class="answer-head"><strong>答案例（設問2）</strong><span class="count">79／80字</span></div>
+          <p class="ans-text">売上高総利益率と総資本回転率が高く、粗利率と資産効率に強み。一方、販管費負担が重く営業利益率が低い。借入依存で自己資本比率が低く、収益性と安全性の改善が課題。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+        <p>TACやKECの指標を選んだ場合は、その指標に合わせて文章も変えます（たとえば棚卸資産回転率なら「在庫の効率」、販管費比率なら「販管費の削減」）。</p>
+      </section>
+
+      <section id="q2-1">
+        <p class="kicker"><span>第2問 設問1</span><span>第2問計30点</span><span>計算問題</span></p>
+        <h2>取替投資：2022年度中の差額キャッシュフロー</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>現在のセミセルフレジ100台を2022年度期首にフルセルフレジへ取り替えた場合の、初期投資額を除いた2022年度中のキャッシュフローを求める（単位：円）。取り替えない場合は、2023年度期首に同じ取得原価・耐用期間のセミセルフレジへ更新する予定。初期投資額は期首に支出し、それ以外のキャッシュフローは年度末に一括して生じる。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>設備更新投資において、耐用年数を残した旧設備を売却し新設備へと更新を行う場合における財務面での変化を整理し、初年度の差額キャッシュフローを算出する能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong></div>
+          <p class="ans-text">25,600,000円</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>条件の整理</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">条件</th><th scope="col">セミセルフレジ（現在・再購入）</th><th scope="col">フルセルフレジ（更新案）</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">台数</th><td>100台</td><td>100台</td></tr>
+              <tr><th scope="row">1台の取得価額</th><td>100万円</td><td>210万円（付随費用込み）</td></tr>
+              <tr><th scope="row">償却</th><td>耐用5年・残存0円・定額法</td><td>耐用6年・残存0円・定額法</td></tr>
+              <tr><th scope="row">年間減価償却費</th><td>2,000万円</td><td>3,500万円</td></tr>
+              <tr><th scope="row">時期</th><td>現在の分は2018年度期首に取得（2022年度期首で残り1年）。更新しない場合は2023年度期首に再購入</td><td>2022年度期首に全店一斉に更新</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>このほか、現在のセミセルフレジは1台8万円で下取りされ、フルセルフレジの代価から差し引かれます。更新すると人件費が毎年2,500万円減ります。全社の課税所得は今後も黒字で、税率は30％です（pp.4–5）。</p>
+        <figure class="fig">
+          <figcaption>図3　比べる2つの案：どの年度に、どのレジを使い、いつ支出するか</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c1"></i>フルセルフレジ</li><li><i class="fig-c0"></i>今のセミセルフレジ</li><li><i class="fig-c2"></i>買い直すセミセルフレジ</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 192" role="img" aria-label="更新する案と更新しない案で、各年度に使うレジと支出の時期">
+              <text class="fig-tick" x="195" y="16" text-anchor="middle">2022</text>
+              <line class="fig-grid" x1="156" y1="24" x2="156" y2="186"/>
+              <text class="fig-tick" x="273" y="16" text-anchor="middle">2023</text>
+              <line class="fig-grid" x1="234" y1="24" x2="234" y2="186"/>
+              <text class="fig-tick" x="351" y="16" text-anchor="middle">2024</text>
+              <line class="fig-grid" x1="312" y1="24" x2="312" y2="186"/>
+              <text class="fig-tick" x="429" y="16" text-anchor="middle">2025</text>
+              <line class="fig-grid" x1="390" y1="24" x2="390" y2="186"/>
+              <text class="fig-tick" x="507" y="16" text-anchor="middle">2026</text>
+              <line class="fig-grid" x1="468" y1="24" x2="468" y2="186"/>
+              <text class="fig-tick" x="585" y="16" text-anchor="middle">2027</text>
+              <line class="fig-grid" x1="546" y1="24" x2="546" y2="186"/>
+              <line class="fig-grid" x1="624" y1="24" x2="624" y2="186"/>
+              <text class="fig-cat" x="0" y="62">更新する<tspan x="0" dy="16">（2022年度期首）</tspan></text>
+              <text class="fig-cat" x="160" y="52">フルセルフレジ 100台　償却 3,500万円／年</text>
+              <path class="fig-c1" d="M158,58H618Q622,58 622,62V72Q622,76 618,76H158Z"><title>フルセルフレジ 210万円×100台、耐用6年、2022〜2027年度</title></path>
+              <text class="fig-note" x="160" y="94">期首に 21,000 − 下取り 800 ＝ 20,200万円を支出</text>
+              <text class="fig-cat" x="0" y="140">更新しない<tspan x="0" dy="16">（2023年度に再購入）</tspan></text>
+              <text class="fig-cat" x="160" y="130">旧レジ</text>
+              <text class="fig-cat" x="238" y="130">セミセルフレジ 100台を新規購入　償却 2,000万円／年</text>
+              <rect class="fig-c0" x="158" y="136" width="75" height="18"><title>既存のセミセルフレジ（2018年度取得、残り1年、償却2,000万円）</title></rect>
+              <path class="fig-c2" d="M235,136H618Q622,136 622,140V150Q622,154 618,154H235Z"><title>セミセルフレジ 100万円×100台、耐用5年、2023〜2027年度</title></path>
+              <text class="fig-note" x="238" y="172">2023年度期首に 10,000万円を支出（更新する案では不要）</text>
+            </svg>
+          </div>
+        </figure>
+        <p>評価するのはフルセルフレジ単体の採算ではなく、<strong>2つの案の差</strong>です。どちらの案も2027年度末で使い終わるので、期間がそろっています。</p>
+
+        <h3>計算（単位：万円）</h3>
+        <pre class="calc">① 人件費削減（税引後）
+   2,500 ×（1－0.3）＝ 1,750
+
+② 減価償却費の差による節税
+   フルセルフ 21,000 ÷ 6 ＝ 3,500
+   旧セミセルフ 10,000 ÷ 5 ＝ 2,000（更新しなければ2022年度も計上される）
+   （3,500－2,000）× 0.3 ＝ 450
+
+③ 旧レジの売却損による節税
+   帳簿価額 ＝ 10,000－2,000×4年 ＝ 2,000
+   下取り額 ＝ 8×100 ＝ 800
+   売却損   ＝ 2,000－800 ＝ 1,200
+   節税額   ＝ 1,200 × 0.3 ＝ 360
+
+2022年度中のCF ＝ 1,750＋450＋360 ＝ 2,560万円 ＝ 25,600,000円</pre>
+        <p>減価償却費と売却損は現金の支出ではありませんが、課税所得を減らして税金を減らします。そのため「費用 × 税率」だけが現金の増加になります。</p>
+        <div class="warning"><strong>下取り代金800万円をここに足さない</strong>下取り額はフルセルフレジの代価から差し引かれるので、期首の初期投資（21,000－800＝20,200万円）に反映済みです。年度末のCFに入れると二重計上になります。売却損の節税は、問題の「それ以外のキャッシュフローは年度末に一括」の指定に従って年度末に置きます。</div>
+        <div class="tip"><strong>2023年度期首の購入回避はこの小問に入れない</strong>更新しない案で必要になるセミセルフレジ購入10,000万円は「2023年度期首」の支出です。2022年度中のCFではないので、設問2のNPVで扱います。</div>
+      </section>
+
+      <section id="q2-2">
+        <p class="kicker"><span>第2問 設問2</span><span>第2問計30点</span><span>計算問題</span></p>
+        <h2>取替投資の正味現在価値（NPV）と採否</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>当該取替投資案の採否を現在価値法で判定する。割引率は6％で、指定の現価係数（1年0.943、2年0.890、3年0.840、4年0.792、5年0.747、6年0.705）を使う。計算過程も示す。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>設備更新投資における毎期の差額キャッシュフローを計算し、正味現在価値を算出する能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong></div>
+          <p class="ans-text">正味現在価値は3,868,800円で正となるため、取替投資案を採用する。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>時点ごとの差額CF</h3>
+        <p>2023年度期首は2022年度末と同じ時点として、1年目の現価係数で割り引きます。</p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">時点</th><th scope="col">内容</th><th scope="col" class="num">差額CF（万円）</th><th scope="col" class="num">現価係数</th></tr></thead>
+            <tbody>
+              <tr><td>2022年度期首</td><td>フルセルフレジ購入 − 下取り</td><td class="num">−20,200</td><td class="num">1.000</td></tr>
+              <tr><td>2022年度末</td><td>年度中のCF＋2023年度期首の購入回避</td><td class="num">＋12,560</td><td class="num">0.943</td></tr>
+              <tr><td>2023年度末</td><td>人件費削減＋償却費の差による節税</td><td class="num">＋2,200</td><td class="num">0.890</td></tr>
+              <tr><td>2024年度末</td><td>同上</td><td class="num">＋2,200</td><td class="num">0.840</td></tr>
+              <tr><td>2025年度末</td><td>同上</td><td class="num">＋2,200</td><td class="num">0.792</td></tr>
+              <tr><td>2026年度末</td><td>同上</td><td class="num">＋2,200</td><td class="num">0.747</td></tr>
+              <tr><td>2027年度末</td><td>同上</td><td class="num">＋2,200</td><td class="num">0.705</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <figure class="fig">
+          <figcaption>図4　差額キャッシュフロー（単位：万円）：2022年度末の山の大半は「払わずに済んだ購入代金」</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c3"></i>初期投資</li><li><i class="fig-c1"></i>営業上の差額CF</li><li><i class="fig-c2"></i>回避した購入支出</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 272" role="img" aria-label="取替投資の差額キャッシュフロー（単位：万円）">
+              <line class="fig-grid" x1="78" y1="209.7" x2="630" y2="209.7"/>
+              <text class="fig-tick" x="70" y="213.7" text-anchor="end">−20,000</text>
+              <line class="fig-grid" x1="78" y1="153.9" x2="630" y2="153.9"/>
+              <text class="fig-tick" x="70" y="157.9" text-anchor="end">−10,000</text>
+              <line class="fig-base" x1="78" y1="98.1" x2="630" y2="98.1"/>
+              <text class="fig-tick" x="70" y="102.1" text-anchor="end">0</text>
+              <line class="fig-grid" x1="78" y1="42.3" x2="630" y2="42.3"/>
+              <text class="fig-tick" x="70" y="46.3" text-anchor="end">10,000</text>
+              <text class="fig-tick" x="117.4" y="250" text-anchor="middle">2022<tspan x="117.4" dy="14">期首</tspan></text>
+              <text class="fig-tick" x="196.3" y="250" text-anchor="middle">2022<tspan x="196.3" dy="14">期末</tspan></text>
+              <text class="fig-tick" x="275.1" y="250" text-anchor="middle">2023<tspan x="275.1" dy="14">期末</tspan></text>
+              <text class="fig-tick" x="354" y="250" text-anchor="middle">2024<tspan x="354" dy="14">期末</tspan></text>
+              <text class="fig-tick" x="432.9" y="250" text-anchor="middle">2025<tspan x="432.9" dy="14">期末</tspan></text>
+              <text class="fig-tick" x="511.7" y="250" text-anchor="middle">2026<tspan x="511.7" dy="14">期末</tspan></text>
+              <text class="fig-tick" x="590.6" y="250" text-anchor="middle">2027<tspan x="590.6" dy="14">期末</tspan></text>
+              <path class="fig-c3" d="M105.4,98.1V206.8Q105.4,210.8 109.4,210.8H125.4Q129.4,210.8 129.4,206.8V98.1Z"><title>2022年度期首：初期投資 −20,200万円</title></path>
+              <text class="fig-val" x="117.4" y="226.8" text-anchor="middle">−20,200</text>
+              <rect class="fig-c1" x="184.3" y="83.8" width="24" height="14.3"><title>2022年度末：年度中の差額CF 2,560万円</title></rect>
+              <path class="fig-c2" d="M184.3,81.8V32Q184.3,28 188.3,28H204.3Q208.3,28 208.3,32V81.8Z"><title>2023年度期首（＝2022年度末）：回避したセミセルフレジ購入 10,000万円</title></path>
+              <text class="fig-val" x="196.3" y="21" text-anchor="middle">＋12,560</text>
+              <text class="fig-note" x="216.3" y="32.3">← 上：回避した購入 10,000</text>
+              <text class="fig-note" x="216.3" y="47.3">　 下：年度中のCF 2,560</text>
+              <path class="fig-c1" d="M263.1,98.1V89.8Q263.1,85.8 267.1,85.8H283.1Q287.1,85.8 287.1,89.8V98.1Z"><title>2023年度末：差額CF 2,200万円</title></path>
+              <path class="fig-c1" d="M342,98.1V89.8Q342,85.8 346,85.8H362Q366,85.8 366,89.8V98.1Z"><title>2024年度末：差額CF 2,200万円</title></path>
+              <path class="fig-c1" d="M420.9,98.1V89.8Q420.9,85.8 424.9,85.8H440.9Q444.9,85.8 444.9,89.8V98.1Z"><title>2025年度末：差額CF 2,200万円</title></path>
+              <path class="fig-c1" d="M499.7,98.1V89.8Q499.7,85.8 503.7,85.8H519.7Q523.7,85.8 523.7,89.8V98.1Z"><title>2026年度末：差額CF 2,200万円</title></path>
+              <path class="fig-c1" d="M578.6,98.1V89.8Q578.6,85.8 582.6,85.8H598.6Q602.6,85.8 602.6,89.8V98.1Z"><title>2027年度末：差額CF 2,200万円</title></path>
+              <text class="fig-val" x="275.1" y="78.8" text-anchor="middle">＋2,200</text>
+              <text class="fig-note" x="590.6" y="78.8" text-anchor="middle">毎年同額</text>
+            </svg>
+          </div>
+        </figure>
+
+        <h3>計算（単位：万円）</h3>
+        <pre class="calc">2023〜2027年度末の差額CF
+  2,500×（1－0.3）＋（3,500－2,000）×0.3 ＝ 2,200
+  （売却損の節税は2022年度だけ。2023年度以降は新しいセミセルフレジの償却費2,000と比べる）
+
+2022年度末の差額CF
+  2,560 ＋ 10,000（2023年度期首のセミセルフレジ購入を回避）＝ 12,560
+
+NPV ＝ －20,200 ＋ 12,560×0.943
+       ＋ 2,200×（0.890＋0.840＋0.792＋0.747＋0.705）
+    ＝ －20,200 ＋ 11,844.08 ＋ 2,200×3.974
+    ＝ －20,200 ＋ 11,844.08 ＋ 8,742.80
+    ＝ 386.88万円 ＝ 3,868,800円 ＞ 0  → 採用</pre>
+        <div class="warning"><strong>「払わずに済む支出」はプラスのCF</strong>更新する案では、2023年度期首のセミセルフレジ購入10,000万円が不要になります。実際に入金があるわけではありませんが、更新しない案との差では10,000万円のプラスです。これを落とすとNPVが大きくマイナスになり、判定が逆になります。</div>
+      </section>
+
+      <section id="q2-3">
+        <p class="kicker"><span>第2問 設問3</span><span>第2問計30点</span><span>計算問題</span></p>
+        <h2>更新を1年延期する場合の価格条件</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>フルセルフレジへの更新を1年延期し、2023年度期首に更新する場合、1台当たりいくら（付随費用込み）で購入できれば延期しない場合より有利になるかを求める（単位：円、小数点以下切り捨て）。延期すると現在のセミセルフレジの下取り価格は0円になり、人件費の削減は同じ2,500万円。更新するフルセルフレジは耐用年数5年・残存価額0円・定額法で償却する。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>設備更新投資において、更新時期を遅らせるという代替案が正味現在価値上有利となるための条件を求める能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong></div>
+          <p class="ans-text">1,932,159円</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>延期案を「更新しない案」と比べ、その結果を設問2と比べる</h3>
+        <p>1台の価格を x 万円とします。延期案でも2022年度は今のセミセルフレジを使うので、更新しない案との差は2023年度期首から生じます。</p>
+        <pre class="calc">2023年度期首（＝2022年度末、係数0.943）
+  セミセルフレジ購入の回避 10,000 － フルセルフレジ購入 100x
+  ＝ 10,000－100x
+
+2023〜2027年度末（係数 0.890〜0.705、合計3.974）
+  償却費 ＝ 100x ÷ 5 ＝ 20x
+  差額CF ＝ 2,500×（1－0.3）＋（20x－2,000）×0.3
+         ＝ 1,150＋6x
+
+延期案のNPV ＝（10,000－100x）×0.943 ＋（1,150＋6x）×3.974
+           ＝ 9,430－94.3x ＋ 4,570.1＋23.844x
+           ＝ 14,000.1－70.456x
+
+延期のほうが有利になる条件
+  14,000.1－70.456x ＞ 386.88（設問2のNPV）
+  x ＜ 13,613.22 ÷ 70.456 ＝ 193.2159…万円 ＝ 1,932,159.07…円
+  → 1,932,159円（円未満切り捨て）</pre>
+        <figure class="fig">
+          <figcaption>図5　延期した場合のNPVと1台の価格：今の210万円では延期しないほうが有利</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c1"></i>1年延期した場合のNPV</li><li><i class="fig-c2"></i>2022年度に更新した場合のNPV（386.88万円）</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 272" role="img" aria-label="1年延期した場合のNPVをフルセルフレジ1台の価格ごとに描いたグラフ">
+              <line class="fig-grid" x1="70" y1="230" x2="620" y2="230"/>
+              <text class="fig-tick" x="62" y="234" text-anchor="end">−2,000</text>
+              <line class="fig-base" x1="70" y1="160" x2="620" y2="160"/>
+              <text class="fig-tick" x="62" y="164" text-anchor="end">0</text>
+              <line class="fig-grid" x1="70" y1="90" x2="620" y2="90"/>
+              <text class="fig-tick" x="62" y="94" text-anchor="end">2,000</text>
+              <line class="fig-grid" x1="70" y1="20" x2="620" y2="20"/>
+              <text class="fig-tick" x="62" y="24" text-anchor="end">4,000</text>
+              <text class="fig-tick" x="70" y="248" text-anchor="middle">150</text>
+              <text class="fig-tick" x="148.6" y="248" text-anchor="middle">160</text>
+              <text class="fig-tick" x="227.1" y="248" text-anchor="middle">170</text>
+              <text class="fig-tick" x="305.7" y="248" text-anchor="middle">180</text>
+              <text class="fig-tick" x="384.3" y="248" text-anchor="middle">190</text>
+              <text class="fig-tick" x="462.9" y="248" text-anchor="middle">200</text>
+              <text class="fig-tick" x="541.4" y="248" text-anchor="middle">210</text>
+              <text class="fig-tick" x="620" y="248" text-anchor="middle">220</text>
+              <text class="fig-tick" x="620" y="266" text-anchor="end">1台当たり価格（万円）</text>
+              <rect class="fig-wash" x="70" y="20" width="339.6" height="210"/>
+              <text class="fig-note" x="80" y="220">延期したほうが有利な価格帯</text>
+              <line class="fig-l2" x1="70" y1="146.5" x2="620" y2="146.5"><title>2022年度期首に更新した場合のNPV 386.88万円</title></line>
+              <line class="fig-l1" x1="70" y1="39.9" x2="620" y2="212.5"><title>1年延期した場合のNPV ＝ 14,000.1 − 70.456x</title></line>
+              <circle class="fig-dot1" cx="409.6" cy="146.5" r="5"><title>分岐点 193.2159万円（386.88万円で並ぶ）</title></circle>
+              <text class="fig-val" x="419.6" y="136.5">193.22万円で並ぶ</text>
+              <circle class="fig-dot1" cx="541.4" cy="187.8" r="5"><title>210万円のまま延期：NPV −795.66万円</title></circle>
+              <text class="fig-val" x="531.4" y="209.8" text-anchor="end">210万円のまま延期すると −795.66</text>
+            </svg>
+          </div>
+        </figure>
+        <p>210万円からおよそ16.8万円（約8％）値引きされれば、延期案が上回ります。延期すると下取り800万円がなくなり、人件費の削減も1年分失うので、その分を価格で取り戻す必要があります。</p>
+        <div class="tip"><strong>延期案も「更新しない案」との差で測る</strong>設問2のNPVは「更新しない案」を基準にした値です。延期案のNPVも同じ基準で計算すると、2つのNPVをそのまま大小比較できます。2022年度は両案とも同じレジを使うので、差は0です。</div>
+      </section>
+
+      <section id="q3">
+        <p class="kicker"><span>第3問</span><span>配点20点</span><span>計算問題</span></p>
+        <h2>陸上養殖事業のCVP分析</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>最大年間養殖量50,000kgの水槽で50,000kg生産したときの総経費は3,000万円で、うち変動費60％・固定費40％。(設問1) 販売単価1,200円／kgのとき、年間1,500万円の目標利益を達成する販売数量（kg、小数点以下切り上げ）を求める。(設問2) 販売数量に応じて単価が変わる販売計画（下表）のもとで、目標利益を達成する販売数量を求める（kg、小数点以下切り上げ）。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>(設問1) 短期利益計画の策定に利用する損益分岐点分析において、与えられた情報を用いて目標利益を達成する販売量を算出する能力を問う問題である。(設問2) 目標販売量に応じて販売単価の設定が異なる場合において、与えられた条件に基づいて目標利益を達成するための販売量を算出する能力を問う問題である。</p></div>
+
+        <div class="answer">
+          <div class="answer-head"><strong>答案例</strong></div>
+          <p class="ans-text">（設問1）32,143kg<br>（設問2）38,572kg</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+
+        <h3>まず費用を分ける</h3>
+        <pre class="calc">固定費     ＝ 30,000,000×40％ ＝ 12,000,000円
+変動費総額 ＝ 30,000,000×60％ ＝ 18,000,000円
+単位変動費 ＝ 18,000,000 ÷ 50,000kg ＝ 360円／kg</pre>
+
+        <h3>設問1：単価1,200円</h3>
+        <pre class="calc">販売数量 ＝（固定費＋目標利益）÷（販売単価－単位変動費）
+        ＝（12,000,000＋15,000,000）÷（1,200－360）
+        ＝ 27,000,000 ÷ 840 ＝ 32,142.85… → 32,143kg（切り上げ）</pre>
+        <p>1kg売るごとに840円の限界利益が残り、それを積み上げて固定費と目標利益の合計2,700万円をまかなう、という考え方です。</p>
+
+        <h3>設問2：販売数量で単価が変わる</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">目標販売数量</th><th scope="col" class="num">単価（全量に適用）</th><th scope="col" class="num">限界利益</th><th scope="col" class="num">必要数量</th><th scope="col">その価格帯に入るか</th></tr></thead>
+            <tbody>
+              <tr><td>0〜20,000kg以下</td><td class="num">1,400円</td><td class="num">1,040円</td><td class="num">25,962kg</td><td>入らない（20,000kgを超える）</td></tr>
+              <tr><td>20,000kg超〜30,000kg以下</td><td class="num">1,240円</td><td class="num">880円</td><td class="num">30,682kg</td><td>入らない（30,000kgを超える）</td></tr>
+              <tr><td>30,000kg超〜40,000kg以下</td><td class="num">1,060円</td><td class="num">700円</td><td class="num"><strong>38,572kg</strong></td><td><strong>入る</strong></td></tr>
+              <tr><td>40,000kg超〜50,000kg以下</td><td class="num">860円</td><td class="num">500円</td><td class="num">54,000kg</td><td>入らない（最大養殖量を超える）</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="source-note">必要数量 ＝ 27,000,000 ÷ 限界利益（切り上げ）。販売計画は問題 p.7 の表。</p>
+        <pre class="calc">単価1,060円の帯で
+  （1,060－360）× Q － 12,000,000 ＝ 15,000,000
+  Q ＝ 27,000,000 ÷ 700 ＝ 38,571.42… → 38,572kg（切り上げ）</pre>
+        <figure class="fig">
+          <figcaption>図6　販売数量と利益（単位：万円）：価格帯の境目で利益が下に跳ぶ</figcaption>
+          <ul class="fig-legend"><li><i class="fig-c1"></i>販売計画の単価（設問2）</li><li><i class="fig-c2"></i>1,200円一律（設問1）</li><li><i class="fig-c3"></i>目標利益 1,500万円</li></ul>
+          <div class="fig-scroll">
+            <svg viewBox="0 0 640 280" role="img" aria-label="販売数量と利益の関係。価格帯ごとに利益の直線が切り替わる">
+              <line class="fig-grid" x1="70" y1="221.9" x2="620" y2="221.9"/>
+              <text class="fig-tick" x="62" y="225.9" text-anchor="end">−1,000</text>
+              <line class="fig-grid" x1="70" y1="186.5" x2="620" y2="186.5"/>
+              <text class="fig-tick" x="62" y="190.5" text-anchor="end">−500</text>
+              <line class="fig-base" x1="70" y1="151.2" x2="620" y2="151.2"/>
+              <text class="fig-tick" x="62" y="155.2" text-anchor="end">0</text>
+              <line class="fig-grid" x1="70" y1="115.9" x2="620" y2="115.9"/>
+              <text class="fig-tick" x="62" y="119.9" text-anchor="end">500</text>
+              <line class="fig-grid" x1="70" y1="80.5" x2="620" y2="80.5"/>
+              <text class="fig-tick" x="62" y="84.5" text-anchor="end">1,000</text>
+              <text class="fig-tick" x="62" y="49.2" text-anchor="end">1,500</text>
+              <text class="fig-tick" x="70" y="254" text-anchor="middle">0</text>
+              <text class="fig-tick" x="180" y="254" text-anchor="middle">10,000</text>
+              <text class="fig-tick" x="290" y="254" text-anchor="middle">20,000</text>
+              <text class="fig-tick" x="400" y="254" text-anchor="middle">30,000</text>
+              <text class="fig-tick" x="510" y="254" text-anchor="middle">40,000</text>
+              <text class="fig-tick" x="620" y="254" text-anchor="middle">50,000</text>
+              <text class="fig-tick" x="620" y="272" text-anchor="end">年間販売数量（kg）</text>
+              <text class="fig-tick" x="180" y="16" text-anchor="middle">1,400円</text>
+              <line class="fig-grid" x1="290" y1="24" x2="290" y2="236"/>
+              <text class="fig-tick" x="345" y="16" text-anchor="middle">1,240円</text>
+              <line class="fig-grid" x1="400" y1="24" x2="400" y2="236"/>
+              <text class="fig-tick" x="455" y="16" text-anchor="middle">1,060円</text>
+              <line class="fig-grid" x1="510" y1="24" x2="510" y2="236"/>
+              <text class="fig-tick" x="565" y="16" text-anchor="middle">860円</text>
+              <line class="fig-l3" x1="70" y1="45.2" x2="620" y2="45.2"><title>目標利益 1,500万円</title></line>
+              <line class="fig-l2" x1="70" y1="236" x2="462.9" y2="24"><title>設問1：単価1,200円一律、利益 ＝ 840円×数量 − 1,200万円</title></line>
+              <line class="fig-l1" x1="70" y1="236" x2="290" y2="89"><title>単価1,400円（0kg超〜20,000kg）：利益 -1,200〜880万円</title></line>
+              <circle class="fig-dot1" cx="290" cy="89" r="4"><title>20,000kgちょうど（単価1,400円）：利益 880万円</title></circle>
+              <line class="fig-l1" x1="290" y1="111.6" x2="400" y2="49.4"><title>単価1,240円（20,000kg超〜30,000kg）：利益 560〜1,440万円</title></line>
+              <circle class="fig-open" cx="290" cy="111.6" r="4"><title>20,000kg超は単価1,240円：利益 560万円から</title></circle>
+              <circle class="fig-dot1" cx="400" cy="49.4" r="4"><title>30,000kgちょうど（単価1,240円）：利益 1,440万円</title></circle>
+              <line class="fig-l1" x1="400" y1="87.6" x2="510" y2="38.1"><title>単価1,060円（30,000kg超〜40,000kg）：利益 900〜1,600万円</title></line>
+              <circle class="fig-open" cx="400" cy="87.6" r="4"><title>30,000kg超は単価1,060円：利益 900万円から</title></circle>
+              <circle class="fig-dot1" cx="510" cy="38.1" r="4"><title>40,000kgちょうど（単価1,060円）：利益 1,600万円</title></circle>
+              <line class="fig-l1" x1="510" y1="94.7" x2="620" y2="59.3"><title>単価860円（40,000kg超〜50,000kg）：利益 800〜1,300万円</title></line>
+              <circle class="fig-open" cx="510" cy="94.7" r="4"><title>40,000kg超は単価860円：利益 800万円から</title></circle>
+              <circle class="fig-dot1" cx="620" cy="59.3" r="4"><title>50,000kgちょうど（単価860円）：利益 1,300万円</title></circle>
+              <circle class="fig-dot2" cx="423.6" cy="45.2" r="5"><title>設問1：32,143kgで目標利益に届く</title></circle>
+              <text class="fig-val" x="415.6" y="35.2" text-anchor="end">32,143kg</text>
+              <circle class="fig-dot1" cx="494.3" cy="45.2" r="5"><title>設問2：38,572kgで目標利益に届く</title></circle>
+              <text class="fig-val" x="498.3" y="67.2" text-anchor="middle">38,572kg</text>
+            </svg>
+          </div>
+        </figure>
+        <p>数量を増やして次の価格帯に入ると、全量の単価が下がるので利益が下に跳びます。30,000kgちょうど（単価1,240円）では1,440万円で目標に60万円届かず、30,000kgを超えると単価1,060円になって900万円まで下がります。そこから数量を積み増して38,572kgで目標に届きます。</p>
+        <div class="warning"><strong>よくある誤り</strong>
+          <p>① 変動費率30％（360÷1,200）を設問2でも使う：一定なのは<strong>1kg当たり360円</strong>で、単価が変われば変動費率も変わります。② 数量の段階ごとに一部だけ別の単価で売ると読む：表の注のとおり、数量のすべてに同じ単価を適用します。③ 計算した数量が、仮定した価格帯に入っているかを確かめない。</p>
+        </div>
+      </section>
+
+      <section id="q4">
+        <p class="kicker"><span>第4問</span><span>配点20点</span><span>各40字以内</span></p>
+        <h2>移動販売事業：撤退の短期メリットと継続の価値</h2>
+        <div class="ask"><span class="label">設問（要旨）</span><p>不採算の移動販売事業を廃止してネット通販事業に一本化することを検討している。(設問1) 一本化による短期的なメリットを、財務指標を挙げながら40字以内で述べる。(設問2) D社の経営者は、移動販売事業の継続が必ずしも企業価値を低下させるとは考えていない。その理由を推測して40字以内で述べる。</p></div>
+        <div class="aim"><span class="label">出題の趣旨（公式）</span><p>(設問1) 不採算事業の状況を把握するとともに不採算となる要因を分析し、それを踏まえて対処法である業務統合が与える財務指標への短期的効果について適切に助言する能力を問う問題である。(設問2) 不採算事業の特徴を理解し、その継続による企業価値への影響を長期的観点から適切に助言する能力を問う問題である。</p></div>
+
+        <h3>与件の根拠</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">与件の記述（pp.1–2）</th><th scope="col">つながる論点</th></tr></thead>
+            <tbody>
+              <tr><td>移動販売事業は期待された成果が出せず不採算</td><td>撤退すれば赤字がなくなり営業損益が改善</td></tr>
+              <tr><td>販売用のトラックはすべてD社が保有</td><td>車両を処分すれば固定資産を圧縮できる</td></tr>
+              <tr><td>担当店舗の従業員が運転と販売を担う</td><td>人員を店舗やネット通販に振り向けられる</td></tr>
+              <tr><td>自分で買い物に行けない高齢者向け</td><td>地域の買い物弱者を支える役割</td></tr>
+              <tr><td>創業以来の地元密着経営。各事業は主な事業との親和性やシナジーを勘案して展開</td><td>地元の信頼やブランド、主力事業への波及</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>設問1：撤退の短期メリット</h3>
+        <div class="answer">
+          <div class="answer-head"><strong>答案例（設問1）</strong><span class="count">37／40字</span></div>
+          <p class="ans-text">赤字事業から撤退し、経営資源の集中と費用削減で売上高営業利益率を改善する。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+        <p>赤字の要因がなくなれば、売上高営業利益率の改善が見込めます。ただし、撤退しても残る固定費や、失う売上の大きさで実際の改善幅は変わります。KECは車両の処分による<strong>有形固定資産回転率</strong>の改善も挙げています。資産は減っても売上も減るので必ず改善するとは言えず、40字では営業利益率に絞るのも合理的です。</p>
+
+        <h3>設問2：継続しても企業価値が下がるとは限らない理由</h3>
+        <div class="answer">
+          <div class="answer-head"><strong>答案例（設問2）</strong><span class="count">39／40字</span></div>
+          <p class="ans-text">買い物弱者支援で地元の信頼を高め、主力事業との相乗効果で将来収益が増えるため。</p>
+          <button type="button" class="reveal">答案例を表示</button>
+        </div>
+        <p>企業価値は、会社全体が将来生むキャッシュフローの現在価値で考えます。移動販売が単体で赤字でも、店舗への送客や企業イメージの向上といった<strong>間接的な効果が赤字を上回れば</strong>、全社の価値を下げるとは限りません。そこで「地域貢献 → 信頼の向上 → 主力事業への波及 → 将来の収益」という因果で組み立てます。</p>
+        <div class="tip"><strong>設問1は短期・事業単体、設問2は長期・全社</strong>出題の趣旨も設問1を「短期的効果」、設問2を「長期的観点」と書き分けています。なお、移動販売が全社の収益にどれだけ貢献しているかは与件から数値で確かめられないので、確定した事実のようには書きません。</div>
+      </section>
+
+      <section id="compare">
+        <p class="kicker"><span>COMPARISON</span></p>
+        <h2>予備校の解答例との比較：第2問で結論が逆になる</h2>
+        <p>各校の公開PDFの数値を比べました。<strong>どれも公式の解答ではありません。</strong></p>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th scope="col">論点</th><th scope="col">TAC</th><th scope="col">KEC</th><th scope="col">本ページ</th></tr></thead>
+            <tbody>
+              <tr><th scope="row">第1問の4指標</th><td>棚卸資産回転率・当座比率／営業利益率・自己資本比率</td><td>総利益率・棚卸資産回転率／販管費比率・自己資本比率</td><td>総利益率・総資本回転率／営業利益率・自己資本比率</td></tr>
+              <tr><th scope="row">第2問(1) CF</th><td>25,600,000円</td><td><strong>31,600,000円</strong></td><td>25,600,000円</td></tr>
+              <tr><th scope="row">第2問(2) NPV</th><td>＋3,868,800円・採用</td><td><strong>−6,092.92万円・不採用</strong></td><td>＋3,868,800円・採用</td></tr>
+              <tr><th scope="row">第2問(3) 価格</th><td>1,932,159円</td><td><strong>1,851,853円</strong></td><td>1,932,159円</td></tr>
+              <tr><th scope="row">第3問</th><td>32,143kg／38,572kg</td><td>同左</td><td>同左</td></tr>
+              <tr><th scope="row">第4問(1)の指標</th><td>売上高営業利益率</td><td>有形固定資産回転率・売上高営業利益率</td><td>売上高営業利益率</td></tr>
+              <tr><th scope="row">第4問(2)の方向</th><td>地域貢献で地元密着の強みを強化</td><td>買い物弱者支援で地域密着・企業イメージ向上</td><td>地元の信頼と主力事業への波及</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>第2問の差はどこから来るか</h3>
+        <p>KECの計算は、フルセルフレジの減価償却費3,500万円をそのまま節税に使い、更新しない案で生じる旧レジ・新しいセミセルフレジの償却費（2,000万円／年）と、2023年度期首のセミセルフレジ購入10,000万円を比較に入れていません。差は次のとおり説明できます。</p>
+        <pre class="calc">設問1の差 ＝ 3,160－2,560 ＝ 600万円（＝ セミセルフレジの償却費 2,000×30％）
+
+設問2の差（万円）
+  2023年度期首の購入回避      ＋10,000×0.943 ＝ ＋9,430.00
+  2022年度末の差 600 の割引    －600×0.943    ＝  －565.80
+  2023〜2027年度末の差 600     －600×3.974    ＝ －2,384.40
+  合計                                        ＝ ＋6,479.80
+  －6,092.92＋6,479.80 ＝ 386.88</pre>
+        <p>本ページがTACと同じ差額の解き方を採ったのは、問題が「取替投資を行わない場合は2023年度期首にセミセルフレジへ更新する」と比較相手を明示し、出題の趣旨も設問1・2を「差額キャッシュフロー」と書いているからです。</p>
+        <div class="tip"><strong>どちらが公式の正解かは確定できない</strong>2校の結論が一致しない以上、本試験でどちらが得点になったかは公開資料から確かめられません。学習では「どの案と比べるか」「どの時点でお金が動くか」を図3のように描いてから計算する習慣をつけるのが確実です。</div>
+        <p class="source-note">確認日：2026年10月23日。KECの値は、今回確認したリンク先のPDF（令和3年11月8日19時00分現在の版）に載っているものです。各校の資料は公開後に改訂されることがあります。リンクは<a href="#sources">出典</a>を参照。</p>
+      </section>
+
+      <section id="points">
+        <p class="kicker"><span>TAKEAWAYS</span></p>
+        <h2>他年度にも使えるチェック手順</h2>
+        <ol>
+          <li><strong>1つの指標だけで良し悪しを決めない。</strong>粗利率が高くても、販管費比率が高ければ営業利益率は低くなる。</li>
+          <li><strong>指標の組み合わせは記述と一本の筋でつなぐ。</strong>選んだ指標と、設問2の特徴・課題を対応させる。</li>
+          <li><strong>取替投資は「更新しない案」との差額で評価する。</strong>旧設備の償却費、売却損の節税、払わずに済む将来の支出を拾う。</li>
+          <li><strong>下取り代金は初期投資側で一度だけ数える。</strong></li>
+          <li><strong>「期首」と「前年度末」は同じ時点。</strong>割引の年数を数え間違えない。</li>
+          <li><strong>CVP分析で一定なのは単位変動費。</strong>単価が変われば変動費率は変わる。価格帯を仮定したら、答えがその帯に入るか確かめる。</li>
+          <li><strong>撤退の記述は、短期の採算と長期の全社価値を分ける。</strong></li>
+        </ol>
+      </section>
+
+      <section id="sources">
+        <p class="kicker"><span>SOURCES</span></p>
+        <h2>出典・参考資料</h2>
+        <h3>公式（一般社団法人 日本中小企業診断士協会連合会）</h3>
+        <ul class="source-list">
+          <li><a href="https://www.jf-cmca.jp/attach/test/shikenmondai/2ji2021/d2ji2021.pdf">令和3年度 第2次試験 事例Ⅳ 問題PDF</a></li>
+          <li><a href="https://www.jf-cmca.jp/attach/test/r03/2ji_shushi/r03_2ji_shushi_jirei4.pdf">令和3年度 事例Ⅳ 出題の趣旨</a></li>
+        </ul>
+        <h3>受験指導校の解答例（比較に使用）</h3>
+        <ul class="source-list">
+          <li><a href="https://www.tac-school.co.jp/file/tac/kouza_chusho/2021pdf/2021_bunsekikai_resume.pdf">TAC 2021年 2次本試験分析会レジュメ</a>（事例Ⅳの答案はPDFの10–11ページ、計算過程は12–15ページ。PDF記載：2021年11月10日現在）</li>
+          <li><a href="https://www.kec.ne.jp/shindanshi/wp/wp-content/uploads/fdb2a009a1b20e2883306692e39708b8.pdf">KECビジネススクール 事例Ⅳ 解答例</a>（PDF記載：令和3年11月8日19時00分現在）</li>
+        </ul>
+        <p class="source-note">財務比率、差額キャッシュフロー、売却損の節税、指定係数によるNPV、延期案の価格条件、価格帯ごとの必要数量を再計算しています。予備校の答案は転載せず、結論の比較にとどめています。記述の答案例は独自作成例で、採点上の必須語句や小問別の配点は公開資料から確定できません。整理・照合：2026年10月23日。</p>
+      </section>
+
+      <nav class="case-nav" aria-label="ほかの事例"></nav>
+      <p class="home-foot"><a href="./">← 2次試験 過去問解説 一覧に戻る</a></p>
+    </main>
+  </div>
+
+  <footer>
+    <p>中小企業診断士2次試験 過去問解説 · <a href="/">tebukuro.me</a></p>
+  </footer>
+
+</body>
+</html>
