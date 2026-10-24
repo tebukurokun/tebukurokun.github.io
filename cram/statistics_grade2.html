@@ -109,9 +109,9 @@
     .warning { background: var(--red-soft); border-color: #efc8c2; }
     .example { background: #f4f1fb; border-color: #ddd3f1; }
     .exam { background: var(--amber-soft); border-color: #ecd2a5; }
-    .tip > strong, .warning > strong, .example > strong, .exam > strong { display: block; margin-bottom: 3px; }
-    .warning > strong { color: var(--red); }
-    .exam > strong { color: #8a4c00; }
+    .tip > strong:first-child, .warning > strong:first-child, .example > strong:first-child, .exam > strong:first-child { display: block; margin-bottom: 3px; }
+    .warning > strong:first-child { color: var(--red); }
+    .exam > strong:first-child { color: #8a4c00; }
 
     .table-wrap { overflow-x: auto; margin: 14px 0 20px; border: 1px solid var(--line); border-radius: 12px; }
     table { width: 100%; border-collapse: collapse; min-width: 680px; background: white; font-size: .9rem; }
@@ -203,7 +203,7 @@
       #search { border-color: var(--line); background: #0d1214; color: var(--ink); }
       .progress-line { background: #24302f; }
       .notice, .exam { border-color: #5a4520; }
-      .notice strong, .exam > strong { color: #f3c27a; }
+      .notice strong, .exam > strong:first-child { color: #f3c27a; }
       h3, summary { color: #8fcfe0; }
       .formula .label { color: #8fd3c8; }
       .pill { color: #7fdccf; }
@@ -330,6 +330,7 @@
           <li>左右対称な単峰分布では3つはほぼ一致します。歪度の符号は、この3つの並び順とだいたい対応します。</li>
           <li>全データを a 倍して b を足すと、平均も a x̄ + b に移ります（線形変換に対する平均の性質）。</li>
         </ul>
+        <div class="exam"><strong>度数分布表しか与えられないとき</strong>個々の値が分からないので、各階級のデータはすべて<strong>階級値</strong>（階級の中央の値）に集まっているとみなします。平均 ≈ Σ(階級値 × 度数) / n。中央値は「累積相対度数が初めて0.5以上になる階級」に含まれ、最頻値は度数が最大の階級の階級値で代表させます。四分位数も同じ要領で、累積相対度数が0.25・0.75を超える階級を探します。</div>
 
         <h3>散らばりを測る：分散・標準偏差・四分位範囲</h3>
         <div class="formula"><span class="label">偏差平方和と標本分散（不偏分散）</span>Sxx = Σ(xᵢ - x̄)²　　s² = Sxx / (n - 1)　　s = √(s²)</div>
@@ -399,7 +400,7 @@
         <div class="formula"><span class="label">決定係数</span>R² = SSR / SST = 1 - SSE / SST　　（0 ≤ R² ≤ 1）</div>
         <p>「y の変動のうち何割を x で説明できたか」を表します。<strong>単回帰では R² = r²</strong> が成り立つため、r = 0.7 なら説明できたのは49%にとどまる、という読み方ができます。</p>
         <h4>残差を必ず見る</h4>
-        <p>残差 <em>eᵢ = yᵢ - ŷᵢ</em> は、モデルが取りこぼした情報です。最小二乗法の性質から Σeᵢ = 0、また Σxᵢeᵢ = 0 となるので、残差に「まだ構造が残っている」なら、それはモデルの不足を意味します。</p>
+        <p>残差 <em>eᵢ = yᵢ - ŷᵢ</em> は、モデルが取りこぼした情報です。最小二乗法の性質から Σeᵢ = 0、また Σxᵢeᵢ = 0 となるので（Σeᵢ = 0 は<strong>定数項を含むモデルに限る</strong>。原点を通る回帰では成り立ちません）、残差に「まだ構造が残っている」なら、それはモデルの不足を意味します。</p>
         <ul>
           <li><strong>残差 vs 予測値</strong>に曲線パターン → 直線では足りない。二次項や対数変換を検討。</li>
           <li><strong>扇形に広がる</strong> → 等分散性の破れ（不均一分散）。y の対数変換などを検討。</li>
@@ -414,6 +415,16 @@
         <h4>変化率と指数化</h4>
         <div class="formula"><span class="label">成長率（変化率）</span>成長率 = (当期の値 / 前期の値) - 1　　指数 = (当期の値 / 基準時点の値) × 100</div>
         <p>指数化は、単位も水準も違う系列を「基準時点＝100」にそろえて比較するための操作です。基準時点を変えれば見え方も変わるので、どこを100にしたかは必ず明示します。</p>
+        <p>月次データの<strong>前月比</strong>は季節変動をそのまま含むため、「12月に売上が急増」は季節要因かもしれません。<strong>前年同月比</strong>は同じ月どうしを比べるので季節変動が打ち消され、基調の変化を読みやすくなります（簡易的な季節調整）。</p>
+        <h4>物価指数：ラスパイレスとパーシェ</h4>
+        <p>複数の品目の価格をまとめて1つの指数にするには、「同じ買い物かご（数量）を、基準時点と比較時点の価格で買うと金額が何倍になるか」を計算します。違いは<strong>どの時点の数量をかごに入れるか</strong>だけです（p：価格、q：数量、添字 0 が基準時点、t が比較時点）。</p>
+        <div class="formula"><span class="label">ラスパイレス価格指数（基準時点の数量で固定）</span>P<sub>L</sub> = Σp<sub>t</sub>q<sub>0</sub> / Σp<sub>0</sub>q<sub>0</sub> × 100 = Σ w<sub>i</sub> (p<sub>t</sub>/p<sub>0</sub>) × 100　　（w<sub>i</sub> = p<sub>0</sub>q<sub>0</sub> / Σp<sub>0</sub>q<sub>0</sub>：基準時点の支出シェア）</div>
+        <div class="formula"><span class="label">パーシェ価格指数（比較時点の数量で固定）</span>P<sub>P</sub> = Σp<sub>t</sub>q<sub>t</sub> / Σp<sub>0</sub>q<sub>t</sub> × 100</div>
+        <p>ラスパイレスは基準時点の数量さえあれば毎期計算できるので、消費者物価指数（CPI）など公的な物価指数の多くはこの形です。右側の書き換えのとおり、<strong>各品目の価格比 p<sub>t</sub>/p<sub>0</sub> を基準時点の支出シェアで加重平均したもの</strong>とも読めます。消費者は値上がりした品目を減らし相対的に安くなった品目を増やすため、基準時点のかごを使い続けるラスパイレスは値上がり品目を重く数えがちで、一般に<strong>ラスパイレス ≥ パーシェ</strong>になりやすい傾向があります。価格と数量の役割を入れ替えれば、同じ形で数量指数も作れます。</p>
+        <div class="example"><strong>数値で確認</strong>品目A：価格 100→120、数量 10→8。品目B：価格 50→50、数量 20→30。<br>
+        ラスパイレス = (120×10 + 50×20) / (100×10 + 50×20) × 100 = 2200 / 2000 × 100 = <strong>110</strong>。<br>
+        パーシェ = (120×8 + 50×30) / (100×8 + 50×30) × 100 = 2460 / 2300 × 100 ≈ <strong>107.0</strong>。<br>
+        値上がりしたAの数量が減ったため、比較時点のかごを使うパーシェのほうが低く出ます。</div>
         <h4>なぜ平均成長率は幾何平均なのか</h4>
         <p>成長率は毎期<strong>掛け算</strong>で積み上がります。n期後の値は 初期値 × (1+r₁)(1+r₂)…(1+rₙ) なので、「毎期これで置き換えても同じ最終値になる率」を求めるには、算術平均ではなく積のn乗根を取る必要があります。</p>
         <div class="formula"><span class="label">平均成長率（幾何平均）</span>1 + r̄ = {(1+r₁)(1+r₂)…(1+rₙ)}<sup>1/n</sup> = (最終値 / 初期値)<sup>1/n</sup></div>
@@ -533,6 +544,16 @@
         <p>期待値の加法性は無条件で成り立つ強力な性質です。一方<strong>分散を単純に足せるのは Cov(X,Y) = 0 のときだけ</strong>。共分散は「2つが同じ向きにずれる傾向」を表し、正なら合計のばらつきは各々の和より大きくなります。確率変数の相関係数は ρ = Cov(X,Y) / {SD(X)SD(Y)} で定義され、-1 ≤ ρ ≤ 1 です。</p>
         <div class="warning"><strong>差でも分散は足し算</strong>独立なら Cov = 0 なので Var(X - Y) = Var(X) + Var(Y) です。引き算なのに足すのは、X と Y のどちらのばらつきも「差」の不確かさを増やすからです。2標本の平均差の標準誤差が √(σ₁²/n₁ + σ₂²/n₂) と和の形になるのは、この性質が根拠になっています。</div>
         <div class="warning"><strong>独立 ⇒ 無相関、逆は不成立</strong>独立なら必ず Cov = 0 ですが、Cov = 0 でも独立とは限りません。たとえば X が -1, 0, 1 を等確率で取り Y = X² とすると、完全な従属関係があるのに共分散は0です。共分散が捉えるのは直線的な連動だけだからです。例外的に、<strong>2変量正規分布に従う場合に限り</strong>無相関と独立が同値になります。</div>
+        <h4>同時確率分布・周辺分布・条件付き期待値</h4>
+        <p>2つの離散確率変数の組 (X, Y) の分布は、すべての組み合わせの確率 P(X = x, Y = y) を並べた<strong>同時確率関数</strong>（表の形で与えられることが多い）で表します。共分散や独立性の問題は、この表から次の順に計算します。</p>
+        <div class="formula"><span class="label">周辺分布・独立の判定・条件付き分布</span>P(X = x) = Σ<sub>y</sub> P(X = x, Y = y)　　独立 ⇔ すべての (x, y) で P(x, y) = P(X = x)P(Y = y)　　P(Y = y | X = x) = P(x, y) / P(X = x)</div>
+        <div class="formula"><span class="label">条件付き期待値と全期待値の法則</span>E(Y | X = x) = Σ<sub>y</sub> y P(Y = y | X = x)　　E(Y) = Σ<sub>x</sub> E(Y | X = x) P(X = x)</div>
+        <p>周辺分布は表の行和・列和です。独立は「1つのセルでも積に一致しなければ従属」なので、反例を1つ見つければ判定は終わります。E(XY) = ΣΣ xy P(x, y) を求めれば、Cov = E(XY) - E(X)E(Y) が出ます。全期待値の法則は全確率の定理の期待値版で、「1段階目の結果ごとに2段階目の平均を出し、1段階目の確率で重み付けする」という<strong>2段階の実験</strong>の計算に使います。</p>
+        <div class="example"><strong>数値で確認</strong>P(0,0) = 0.3、P(0,1) = 0.2、P(1,0) = 0.1、P(1,1) = 0.4（(x, y) の順）。<br>
+        周辺：P(X=1) = 0.1 + 0.4 = 0.5、P(Y=1) = 0.2 + 0.4 = 0.6。P(X=1)P(Y=1) = 0.3 ≠ 0.4 なので<strong>従属</strong>。<br>
+        E(XY) = 1×1×0.4 = 0.4 より Cov = 0.4 - 0.5×0.6 = <strong>0.1</strong>。<br>
+        E(Y | X=1) = 0.4/0.5 = 0.8、E(Y | X=0) = 0.2/0.5 = 0.4。全期待値の法則で E(Y) = 0.8×0.5 + 0.4×0.5 = 0.6 となり、周辺から出した値と一致します。<br>
+        2段階の例：サイコロの出た目 X の枚数だけコインを投げ、表の枚数を Y とすると E(Y | X = x) = x/2 なので、E(Y) = E(X)/2 = 3.5/2 = <strong>1.75</strong>。</div>
         <div class="quiz"><strong>30秒チェック：</strong>独立な X, Y があり Var(X) = 4、Var(Y) = 9。Var(2X - Y) は？<br><button type="button" data-answer="a-prob">答えを見る</button><div class="answer" id="a-prob">Var(2X - Y) = 2²Var(X) + (-1)²Var(Y) = 4×4 + 9 = 25。係数は2乗して掛かり、符号は分散には影響しません。</div></div>
       </section>
 
@@ -543,6 +564,13 @@
                 <p class="section-summary">問題文に出てくる名詞ではなく、試行の独立性・復元の有無・数える対象・時間や空間の連続性で選びます。</p>
         <h3>分布を表す関数</h3>
         <p>離散型の分布は<strong>確率質量関数</strong> P(X = k) で「その値ちょうどが出る確率」を与えます。連続型では1点の確率は0になるため、<strong>確率密度関数</strong> f(x) を使い、確率は面積（積分）として P(a ≤ X ≤ b) = ∫<sub>a</sub><sup>b</sup> f(x)dx で表します。どちらも全体を足す／積分すると1です。累積分布関数 F(x) = P(X ≤ x) は両者に共通で、数表はこの形で与えられることが多くあります。</p>
+        <h4>連続型の定番計算：定数の決定・分布関数・E[g(X)]</h4>
+        <div class="formula"><span class="label">密度関数まわりの4つの道具</span>∫ f(x) dx = 1（定数を決める）　　F(x) = ∫<sub>-∞</sub><sup>x</sup> f(t) dt　　f(x) = F′(x)　　E[g(X)] = ∫ g(x) f(x) dx</div>
+        <p>「f(x) = c × (式)」と定数入りで与えられたら、まず全体の積分が1になるように c を決めます。分布関数 F が与えられたら微分すれば密度 f に戻り、P(a &lt; X ≤ b) = F(b) - F(a) で確率が出ます。中央値は F(m) = 0.5 を満たす m です。E[g(X)] は「値 g(x) に密度を掛けて積分」で、離散なら Σ g(x) P(X = x) と同じ形です。一般に E[g(X)] ≠ g(E[X]) で、たとえば E(X²) と {E(X)}² の差がちょうど分散です。</p>
+        <div class="example"><strong>数値で確認</strong>f(x) = c x(1 - x)（0 ≤ x ≤ 1）。<br>
+        ∫<sub>0</sub><sup>1</sup> (x - x²) dx = 1/2 - 1/3 = 1/6 なので <strong>c = 6</strong>。<br>
+        E(X) = 6∫(x² - x³)dx = 6(1/3 - 1/4) = 1/2、E(X²) = 6∫(x³ - x⁴)dx = 6(1/4 - 1/5) = 0.3、Var(X) = 0.3 - 0.5² = <strong>0.05</strong>。<br>
+        F(x) = 3x² - 2x³ で、F(1/2) = 3/4 - 1/4 = 0.5 なので中央値は 1/2（左右対称な密度なので平均と一致）。</div>
         <div class="tip"><strong>分布を選ぶ4つの質問</strong>①数えているのは「回数」か「時間・量」か。②試行回数は固定か、成功回数が固定か。③1回ごとの成功確率は一定か（＝復元抽出か、母集団が十分大きいか）。④対象は有限集団からの非復元抽出か。この4つに答えると、下表のどれかに必ず落ちます。</div>
 <div class="table-wrap"><table>
           <thead><tr><th>分布</th><th>使う状況</th><th>平均</th><th>分散</th><th>見分ける語</th></tr></thead>
@@ -572,6 +600,8 @@
         <div class="formula"><span class="label">二項分布 Bin(n, p)</span>P(X = k) = <sub>n</sub>C<sub>k</sub> p<sup>k</sup>(1-p)<sup>n-k</sup>　　(k = 0, 1, …, n)</div>
         <p>式の3つの部分が、それぞれ別の役割を持ちます。p<sup>k</sup> は「成功が k 回起きる確率」、(1-p)<sup>n-k</sup> は「残りが失敗である確率」、そして <sub>n</sub>C<sub>k</sub> は「n回のうちどの回が成功だったか」の並び方の数です。順序を区別しないので組合せを掛けます。</p>
         <p>二項分布は<strong>独立なベルヌーイ試行の和</strong> X = X₁ + … + Xₙ なので、期待値と分散は加法性から即座に出ます。1回あたり E(Xᵢ) = p、Var(Xᵢ) = E(Xᵢ²) - p² = p - p² = p(1-p) なので、n倍して <strong>E(X) = np、Var(X) = np(1-p)</strong>。分散は p = 0.5 のとき最大になり、p が0や1に近いほど小さくなります（結果がほぼ決まっているため）。</p>
+        <div class="formula"><span class="label">隣り合う確率の比</span>P(X = k+1) / P(X = k) = {(n - k) / (k + 1)} · {p / (1 - p)}</div>
+        <p>組合せの比 <sub>n</sub>C<sub>k+1</sub> / <sub>n</sub>C<sub>k</sub> = (n-k)/(k+1) から出る式です。P(X = 0) = (1-p)<sup>n</sup> から順に掛けていけば階乗を毎回計算せずに済み、比が1を超える間は確率が増えるので、比が初めて1以下になる k が最も起こりやすい値（モード）になります。</p>
         <h4>ポアソン分布</h4>
         <div class="formula"><span class="label">ポアソン分布 Po(λ)</span>P(X = k) = e<sup>-λ</sup> λ<sup>k</sup> / k!　　(k = 0, 1, 2, …)</div>
         <p>「一定の時間・面積・区間のなかで、めったに起きない事象が何回起きるか」を表します。1時間の来客数、1ページの誤植数、単位面積あたりの事故件数など。二項分布で n を大きく、p を小さくし、np = λ を一定に保った極限がこの分布です（少数の法則）。そのため<strong>E(X) = Var(X) = λ</strong> となります。二項の分散 np(1-p) で p → 0 とすれば np = λ に一致する、と見れば納得できます。</p>
@@ -643,11 +673,12 @@
         <p>推測統計で使う分布は、実質この4つだけです。すべて<strong>標準正規分布から作られている</strong>と理解すると、関係が一本につながります。</p>
         <div class="formula"><span class="label">定義（すべて独立な標準正規 Z から作る）</span>χ²(k) = Z₁² + Z₂² + … + Z<sub>k</sub>²　　t(ν) = Z / √(V/ν)　（V ∼ χ²(ν)）　　F(ν₁,ν₂) = (V₁/ν₁) / (V₂/ν₂)</div>
         <ul>
-          <li><strong>χ²分布</strong>は「標準正規の2乗和」。2乗するので<strong>必ず0以上</strong>、そして右に裾を引きます。自由度 k は足し合わせた個数で、期待値は k です。分散を扱う場面（分散は2乗の和）で自然に登場します。</li>
-          <li><strong>t分布</strong>は「Z の分母 σ を、推定値 S に置き換えたときの分布」。分母自体がばらつくぶん、標準正規より<strong>裾が重く</strong>なります。自由度 ν が大きくなると S が σ に近づくため、t は N(0,1) に収束します（ν = 30 程度でかなり近い）。左右対称で期待値0。</li>
+          <li><strong>χ²分布</strong>は「標準正規の2乗和」。2乗するので<strong>必ず0以上</strong>、そして右に裾を引きます。自由度 k は足し合わせた個数で、<strong>期待値は k、分散は 2k</strong> です。分散を扱う場面（分散は2乗の和）で自然に登場します。</li>
+          <li><strong>t分布</strong>は「Z の分母 σ を、推定値 S に置き換えたときの分布」。分母自体がばらつくぶん、標準正規より<strong>裾が重く</strong>なります。自由度 ν が大きくなると S が σ に近づくため、t は N(0,1) に収束します（ν = 30 程度でかなり近い）。左右対称で期待値0、分散は ν/(ν-2)（ν &gt; 2）と1より大きく、ν → ∞ で1に近づきます。</li>
           <li><strong>F分布</strong>は「2つの χ² を自由度で割って比を取ったもの」。比なので0以上、右に歪みます。分子・分母の自由度2つを持ち、<strong>F(ν₁,ν₂) と F(ν₂,ν₁) は別物</strong>です。分散の比較（分散比検定・分散分析・回帰の全体検定）に使います。</li>
         </ul>
         <div class="tip"><strong>3つの関係式</strong>t(ν)² = F(1, ν)、分母の自由度を無限大にした F(ν, ∞) = χ²(ν)/ν、そして t(∞) = N(0,1)。「2群の t 検定と、2群の分散分析の結論が必ず一致する」のは1つ目の関係式が理由です。</div>
+        <div class="exam"><strong>F表には上側しか載っていない</strong>V ∼ F(ν₁, ν₂) なら 1/V ∼ F(ν₂, ν₁) なので、<strong>F(ν₁, ν₂) の下側α点 = 1 / {F(ν₂, ν₁) の上側α点}</strong> です。自由度を入れ替えて逆数を取る、の2点を忘れないこと。母分散比の区間推定や、両側の等分散検定で下側の棄却限界が必要になったときに使います。</div>
 
 <div class="table-wrap"><table>
           <thead><tr><th>分布</th><th>中心となる統計量</th><th>主な用途</th><th>自由度</th></tr></thead>
@@ -807,6 +838,14 @@
           </tbody>
         </table></div>
 
+        <h3>小標本の比率：二項分布で p値を直接計算する</h3>
+        <p>n が小さく正規近似が使えないときは、H₀ の下で X ∼ Bin(n, p₀) として、<strong>観測値と同じかそれ以上に極端な値の確率をそのまま足し合わせて</strong>p値にします（正確な検定）。ポアソン分布の件数でも手順は同じです。</p>
+        <div class="example"><strong>数値で確認</strong>コインを10回投げて表が9回。H₀: p = 0.5、H₁: p &gt; 0.5。<br>
+        p値 = P(X ≥ 9) = (<sub>10</sub>C<sub>9</sub> + <sub>10</sub>C<sub>10</sub>) / 2¹⁰ = (10 + 1) / 1024 ≈ <strong>0.0107</strong>。5%で棄却します。<br>
+        両側（H₁: p ≠ 0.5）なら、p₀ = 0.5 では分布が左右対称なので片側の2倍で 0.0215。これも5%で棄却です。<br>
+        棄却域を「9以上」とした検定の第1種の過誤の確率は 11/1024 ≈ 1.1% で、「8以上」に広げると P(X ≥ 8) = 56/1024 ≈ 5.5% と5%を超えます。</div>
+        <div class="tip"><strong>離散分布では α ちょうどにならない</strong>統計量が飛び飛びの値しか取らないため、棄却域の確率（実際の第1種の過誤の確率）は α 以下の最大値で止まります。「棄却域が◯以上のときの第1種の過誤の確率は？」と聞かれたら、H₀ の分布で棄却域の確率を足すだけです。p₀ ≠ 0.5 の両側検定は分布が非対称になるため、片側を2倍するなど問題文の指定に従います。</div>
+
                 <h3>両側か片側か</h3>
         <p>対立仮説の形が、α をどこに配置するかを決めます。</p>
         <ul>
@@ -890,7 +929,35 @@
         <div class="warning"><strong>ダミー変数トラップ</strong>切片と k 個すべてのダミーを同時に入れると、ダミーの合計が常に1（＝切片の列と一致）になり、完全な多重共線性が生じて解が一意に定まりません。だから必ず1つ落とします。</div>
         <p class="source-note">説明変数どうしの<strong>交互作用</strong>（例：X₁ × X₂ の積を投入）を入れると、「X₂ の水準によって X₁ の効果が変わる」状況を表現できます。この場合、X₁ の主効果の係数は「X₂ = 0 のときの効果」に読み替わる点に注意します。</p>
 <div class="warning"><strong>係数の有意性 ≠ 因果効果</strong>交絡、逆因果、選択バイアス、測定誤差があれば、調整済みでも因果とは限りません。また補外（観測範囲外の予測）は危険です。</div>
-        <div class="exam"><strong>出力表の読む順</strong>①モデル全体FとR̄² → ②係数・符号・単位 → ③標準誤差・t・p・信頼区間 → ④残差診断 → ⑤データ設計と解釈範囲。</div>
+        <h3>統計ソフトの出力を読む（R の summary）</h3>
+        <p>回帰の問題は、R の <code>summary(lm(...))</code> の出力を見せて正誤を問う形がほぼ毎回出ます。欄の名前と、欄どうしの関係を押さえれば、空欄の穴埋めも逆算もできます。</p>
+<div class="table-wrap"><table>
+          <thead><tr><th>出力の項目</th><th>中身</th><th>試験での使い方</th></tr></thead>
+          <tbody>
+            <tr><td>Estimate</td><td>係数の推定値 bⱼ。(Intercept) は切片</td><td>符号で向き、値で「1単位あたりの変化」を読む。予測値は各 Estimate に x を代入して足す</td></tr>
+            <tr><td>Std. Error</td><td>係数の標準誤差 SE(bⱼ)</td><td>信頼区間 bⱼ ± t<sub>n-p-1</sub> × SE(bⱼ)</td></tr>
+            <tr><td>t value</td><td>Estimate ÷ Std. Error</td><td>空欄なら割り算で埋める。|t| がおよそ2を超えれば5%で有意の目安</td></tr>
+            <tr><td>Pr(&gt;|t|)</td><td>H₀: βⱼ = 0 の<strong>両側</strong>p値</td><td>α と比べる。片側検定なら、符号が対立仮説の向きと合っているときに半分にする</td></tr>
+            <tr><td>Residual standard error: s on d degrees of freedom</td><td>残差の標準偏差 s = √{SSE/(n-p-1)} と、その自由度 d = n-p-1</td><td><strong>n = d + p + 1</strong> で標本サイズを逆算。s² × d で SSE も出る</td></tr>
+            <tr><td>Multiple R-squared ／ Adjusted R-squared</td><td>決定係数 R² ／ 自由度調整済み R̄²</td><td>説明変数の数が違うモデルの比較は Adjusted のほう</td></tr>
+            <tr><td>F-statistic: F on p and d DF, p-value</td><td>モデル全体の F 検定</td><td>自由度は (p, n-p-1)。H₀ は「切片以外の係数がすべて0」</td></tr>
+          </tbody>
+        </table></div>
+        <div class="example"><strong>数値で確認</strong>説明変数3つで「Residual standard error: 2.31 on 46 degrees of freedom」なら、n = 46 + 3 + 1 = <strong>50</strong>。ある係数の Estimate が 0.84、Std. Error が 0.21 なら t value = 0.84 / 0.21 = <strong>4.0</strong>。この t は自由度46の t 分布で評価します。</div>
+        <h4>対数変換したモデルの係数の読み方</h4>
+        <p>R の <code>log()</code> は自然対数です。対数を取った変数では「1単位」ではなく<strong>「何倍・何%」</strong>で読みます。</p>
+<div class="table-wrap"><table>
+          <thead><tr><th>モデル</th><th>係数 b の読み方</th></tr></thead>
+          <tbody>
+            <tr><td>y = b₀ + b x</td><td>x が1増えると y が b 増える</td></tr>
+            <tr><td>log y = b₀ + b x</td><td>x が1増えると y が exp(b) 倍。b が小さければ約 100b % 増える</td></tr>
+            <tr><td>y = b₀ + b log x</td><td>x が1%増えると y が約 b/100 増える</td></tr>
+            <tr><td>log y = b₀ + b log x</td><td>x が1%増えると y が約 b % 変化する（<strong>弾力性</strong>）</td></tr>
+            <tr><td>log y にダミー D を入れる</td><td>D = 1 のグループは y が exp(b) 倍。b = -0.223 なら exp(-0.223) ≈ 0.80 で<strong>2割減</strong></td></tr>
+          </tbody>
+        </table></div>
+        <p>予測値を求めるときは、説明変数も対数の値で代入し、出てきた log y を最後に exp で y に戻します。係数の符号は対数を取っても変わらないので、「x が大きいほど y が大きい傾向か」は符号だけで判断できます。</p>
+        <div class="exam"><strong>出力表の読む順</strong>①モデル全体FとR̄² → ②係数・符号・単位 → ③標準誤差・t・p・信頼区間 → ④残差診断 → ⑤データ設計と解釈範囲。モデル比較は R² ではなく Adjusted R-squared で行います。R̄² は説明変数が1つの単回帰でも R² と一致しません（n-p-1 で調整されるため）。</div>
       </section>
 
       <section id="anova" data-title="実験計画 一元配置 分散分析 F比 処理群 対照群 反復 ブロック化">
@@ -992,20 +1059,20 @@
             <thead><tr><th>公式の大項目</th><th>このシート</th><th>含む内容</th></tr></thead>
             <tbody>
               <tr><td>データソース／データの分布</td><td>1・2</td><td>公的統計、変数型、グラフ、中心・散らばり、歪度・尖度、ジニ係数</td></tr>
-              <tr><td>2変数以上／時系列</td><td>1</td><td>相関・偏相関、単回帰、残差、指数・成長率・自己相関・移動平均</td></tr>
+              <tr><td>2変数以上／時系列</td><td>1</td><td>相関・偏相関、単回帰、残差、指数・物価指数（ラスパイレス／パーシェ）・成長率・自己相関・移動平均</td></tr>
               <tr><td>データ収集法</td><td>2</td><td>観察・実験、母集団・標本、抽出法、フィッシャー3原則</td></tr>
-              <tr><td>確率モデル</td><td>3・4</td><td>条件付き確率・ベイズ、期待値・分散、指定された全確率分布</td></tr>
+              <tr><td>確率モデル</td><td>3・4</td><td>条件付き確率・ベイズ、期待値・分散、同時分布・条件付き期待値、密度関数の計算、指定された全確率分布</td></tr>
               <tr><td>標本分布</td><td>5</td><td>大数・CLT・チェビシェフ、正規近似、Z・t・χ²・F</td></tr>
               <tr><td>推定</td><td>6</td><td>点推定の性質、1・2母集団の平均・分散・比率、相関</td></tr>
-              <tr><td>仮説検定</td><td>7・8</td><td>誤り・検出力、1・2母集団、適合度・独立性</td></tr>
+              <tr><td>仮説検定</td><td>7・8</td><td>誤り・検出力、1・2母集団、二項分布による正確な検定、適合度・独立性</td></tr>
               <tr><td>線形モデル／実験計画</td><td>9・10</td><td>重回帰、ダミー、多重共線性、調整R²、一元配置ANOVA・F比</td></tr>
-              <tr><td>統計ソフトウェアの活用</td><td>11</td><td>出力の読み方、問題解決への接続</td></tr>
+              <tr><td>統計ソフトウェアの活用</td><td>9・11</td><td>R の回帰出力の読み方、対数モデルの係数、問題解決への接続</td></tr>
             </tbody>
           </table></div>
         </div></details>
 
         <div class="quiz"><strong>仕上げチェック：</strong>「対象母数・条件・標準誤差・分布・自由度・結論」を、各典型問題で言葉にできれば合格圏の骨格ができています。<br><button type="button" data-answer="a-final">学習の次の一手</button><div class="answer" id="a-final">過去問を解き、誤答を「知識不足」「手法選択」「計算」「表の読み」「解釈」の5種類に分類してください。手法選択の誤りは、このシートの選択表に戻るのが最短です。</div></div>
-        <p class="source-note">根拠：日本統計学会公式認定 統計検定「統計検定2級 出題範囲表」（2018年12月14日）。このHTMLは学習用に再構成した解説であり、公式問題・公式解説の転載ではありません。</p>
+        <p class="source-note">根拠：日本統計学会公式認定 統計検定「統計検定2級 出題範囲表」（2018年12月14日）。過去問（2014〜2021年の紙の試験と CBT 公式問題集）の出題テーマとも照合済み（2026年10月）。このHTMLは学習用に再構成した解説であり、公式問題・公式解説の転載ではありません。</p>
       </section>
     </main>
   </div>
