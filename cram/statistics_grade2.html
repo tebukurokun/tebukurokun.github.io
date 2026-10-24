@@ -219,6 +219,20 @@
       .quiz { border-top-color: var(--line); }
       .quiz button { background: #15576b; }
     }
+    /* スマホでは表を行ごとのカードに組み替える（.stack と data-label は末尾のスクリプトが付ける） */
+    @media screen and (max-width: 640px) {
+      .table-wrap:has(> .stack) { overflow: visible; border: 0; border-radius: 0; }
+      .stack, .stack thead, .stack tbody, .stack tr, .stack th, .stack td, .stack caption { display: block; }
+      .stack { min-width: 0; background: transparent; font-size: .9rem; }
+      .stack caption { margin-bottom: 8px; color: var(--muted); font-size: .82rem; text-align: left; }
+      .stack thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+      .stack tbody tr { margin-bottom: 10px; padding: 11px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); overflow: hidden; }
+      .stack th, .stack td { padding: 3px 0; border: 0; background: transparent; }
+      .stack .stack-head { margin-bottom: 4px; padding-bottom: 7px; border-bottom: 1px solid var(--line); color: var(--navy); font-weight: 800; }
+      .stack .stack-group { margin: -11px -14px 10px; padding: 7px 14px; background: var(--teal-soft); color: var(--navy); }
+      .stack [data-label]::before { content: attr(data-label); display: block; color: var(--muted); font-size: .74rem; font-weight: 800; letter-spacing: .04em; }
+      .stack [data-label] + [data-label] { margin-top: 6px; }
+    }
   </style>
 </head>
 <body>
@@ -1024,6 +1038,35 @@
           const answer = document.getElementById(button.dataset.answer);
           answer.classList.toggle('show');
           button.textContent = answer.classList.contains('show') ? '答えを隠す' : (button.dataset.answer === 'a-final' ? '学習の次の一手' : '答えを見る');
+        });
+      });
+
+      // スマホ幅では表をカード表示にする。display:block にすると表の意味が失われるブラウザがあるので role で補う
+      document.querySelectorAll('.table-wrap > table').forEach(table => {
+        const labels = [...table.querySelectorAll('thead th')].map(th => th.textContent.trim());
+        const spans = [];
+        table.classList.add('stack');
+        table.setAttribute('role', 'table');
+        table.querySelectorAll('thead, tbody').forEach(group => group.setAttribute('role', 'rowgroup'));
+        table.querySelectorAll('thead th').forEach(th => th.setAttribute('role', 'columnheader'));
+        table.querySelectorAll('tr').forEach(tr => tr.setAttribute('role', 'row'));
+        table.querySelectorAll('tbody tr').forEach(tr => {
+          let col = 0, head = null;
+          for (const cell of tr.cells) {
+            while (spans[col] > 0) { spans[col]--; col++; }
+            cell.setAttribute('role', cell.tagName === 'TH' ? 'rowheader' : 'cell');
+            if (cell.rowSpan > 1) {
+              spans[col] = cell.rowSpan - 1;
+              cell.classList.add('stack-group');
+            } else if (!head) {
+              head = cell;
+              cell.classList.add('stack-head');
+            } else if (labels[col]) {
+              cell.dataset.label = labels[col];
+            }
+            col += cell.colSpan;
+          }
+          for (; col < spans.length; col++) if (spans[col] > 0) spans[col]--;
         });
       });
 

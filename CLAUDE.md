@@ -48,6 +48,7 @@ Self-contained study sheets, one HTML file per exam subject, indexed by `cram/in
 
 - Every sheet links back to the hub twice: `.home` in the hero and `.home-foot` before `<footer>`. Both are hidden in `@media print`.
 - Dark mode follows the OS setting: each file ends its `<style>` with a `@media screen and (prefers-color-scheme: dark)` block that redefines the `:root` tokens and overrides the hard-coded colors (the `screen` guard keeps printing light). When you add a rule with a literal color, add its dark override there too.
+- Tables go inside `<div class="table-wrap">` with a `<thead>`. At ≤640px each sheet's end-of-body script turns them into one card per row: it adds `.stack`, marks each row's first cell `.stack-head`, copies the column header into the other cells' `data-label`, and the `@media screen and (max-width: 640px)` block at the end of `<style>` lays them out. A new sheet needs both the CSS block and the script.
 - Adding a sheet means adding a `.card` to `cram/index.html` (pick an accent class) and the two back links to the new file.
 - The pages moved out of the repo root on 2026-08-21. `chushokigyo_seisaku.html` and `keiei_houmu.html` were published at the root beforehand, so a Cloudflare Redirect Rule is needed if those old URLs are still shared.
 
