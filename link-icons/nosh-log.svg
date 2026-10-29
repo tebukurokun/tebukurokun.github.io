@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img">
+  <title>nosh-log</title>
+  <rect width="64" height="64" rx="14" fill="#2e7d4f"/>
+  <path d="M16 48V17h7l14 20.5V17h7v31h-7L23 27.5V48z" fill="#ffffff"/>
+  <path d="M50 8l2.2 4.5 5 .7-3.6 3.5.8 5-4.4-2.4-4.4 2.4.8-5-3.6-3.5 5-.7z" fill="#ffd54f"/>
+</svg>

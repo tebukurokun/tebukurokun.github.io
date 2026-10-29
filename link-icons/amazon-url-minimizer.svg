@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
+  <!-- Amazon URL Minimizer: 両側から中央へ縮む＝URL を短くする、を表すアイコン -->
+  <rect width="128" height="128" rx="28" fill="#232F3E"/>
+  <path d="M18 42 L18 86 L42 64 Z" fill="#FF9900"/>
+  <path d="M110 42 L110 86 L86 64 Z" fill="#FF9900"/>
+  <rect x="50" y="58" width="28" height="12" rx="6" fill="#FF9900"/>
+</svg>
