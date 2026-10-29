@@ -527,17 +527,28 @@
       /* === Works grid === */
       .works {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 1.5rem;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1rem;
+      }
+      @media (max-width: 860px) {
+        .works {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      @media (max-width: 600px) {
+        .works {
+          grid-template-columns: repeat(2, 1fr);
+          gap: 0.75rem;
+        }
       }
 
       .card {
         position: relative;
         display: block;
-        padding: 1.75rem 1.6rem 1.6rem;
+        padding: 1.15rem 1.1rem 1.1rem;
         background: var(--card-bg);
         border: 1px solid var(--card-border);
-        border-radius: 16px;
+        border-radius: 12px;
         color: inherit;
         text-decoration: none;
         backdrop-filter: blur(10px);
@@ -684,16 +695,16 @@
 
       .card .card-index {
         font-family: "JetBrains Mono", monospace;
-        font-size: 0.75rem;
+        font-size: 0.68rem;
         color: var(--neon-2);
         letter-spacing: 0.1em;
-        margin-bottom: 0.85rem;
+        margin-bottom: 0.6rem;
       }
       .card h3 {
-        font-size: 1.3rem;
+        font-size: 1.05rem;
         font-weight: 600;
         letter-spacing: -0.01em;
-        margin-bottom: 0.65rem;
+        margin-bottom: 0.45rem;
         transition: color 0.3s ease;
       }
       .card:hover h3 {
@@ -704,14 +715,14 @@
       }
       .card p {
         color: var(--muted);
-        font-size: 0.92rem;
-        line-height: 1.6;
+        font-size: 0.8rem;
+        line-height: 1.55;
       }
       .card .arrow {
         position: absolute;
-        top: 1.6rem;
-        right: 1.4rem;
-        font-size: 0.95rem;
+        top: 1.05rem;
+        right: 1rem;
+        font-size: 0.8rem;
         color: var(--muted);
         transition:
           transform 0.3s ease,
@@ -784,7 +795,7 @@
           margin-bottom: 4rem;
         }
         .card {
-          padding: 1.5rem 1.3rem 1.3rem;
+          padding: 1rem 0.9rem 0.95rem;
         }
       }
 
@@ -1008,6 +1019,22 @@
 
           <a
             class="card"
+            href="https://github.com/tebukurokun/amazon-url-minimizer"
+            target="_blank"
+            rel="noopener"
+          >
+            <span class="arrow"
+              ><i class="fa-solid fa-arrow-up-right-from-square"></i
+            ></span>
+            <div class="card-index">EXTENSION</div>
+            <h3>Amazon URL Minimizer</h3>
+            <p>
+              Amazonの長い商品URLを最小形にして、右クリックからコピーできるChrome拡張機能。
+            </p>
+          </a>
+
+          <a
+            class="card"
             href="https://nosh-log.tebukuro.me/"
             target="_blank"
             rel="noopener"
@@ -1033,22 +1060,6 @@
             <h3>運命観測所</h3>
             <p>
               名前・年齢・性別・星座・血液型から、あなただけの運勢を鑑定する占いサイト。
-            </p>
-          </a>
-
-          <a
-            class="card"
-            href="https://github.com/tebukurokun/amazon-url-minimizer"
-            target="_blank"
-            rel="noopener"
-          >
-            <span class="arrow"
-              ><i class="fa-solid fa-arrow-up-right-from-square"></i
-            ></span>
-            <div class="card-index">EXTENSION</div>
-            <h3>Amazon URL Minimizer</h3>
-            <p>
-              Amazonの長い商品URLを最小形にして、右クリックからコピーできるChrome拡張機能。
             </p>
           </a>
 
