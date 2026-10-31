@@ -1,0 +1,46 @@
+---
+/* 2次試験 過去問解説の共通レイアウト（目次ページと各事例ページ）。
+   ヒーローは slot="hero"、本文は既定の slot で渡す。
+   見た目は public/shindanshi-2ji/style.css、操作は site.js（練習モードと目次の強調）。 */
+import Head from '../components/Head.astro';
+import CaseNav from '../components/shindanshi/CaseNav.astro';
+import Sidebar from '../components/shindanshi/Sidebar.astro';
+import { findCase } from '../data/shindanshi';
+
+interface Props {
+  /** 'hub' か、事例ページの page（data/shindanshi.ts） */
+  page: string;
+  title: string;
+  description: string;
+}
+
+const { page, title, description } = Astro.props;
+const hub = page === 'hub';
+const info = hub ? undefined : findCase(page);
+const path = hub ? '/shindanshi-2ji/' : `/shindanshi-2ji/${page}.html`;
+---
+
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <Head title={title} description={description} path={path} />
+  <link rel="stylesheet" href="style.css">
+  <script is:inline src="site.js" defer></script>
+</head>
+<body class={hub ? 'hub' : undefined} data-case={info?.c.num} data-page={page}>
+  <slot name="hero" />
+  <div class="layout">
+    <aside class="side" aria-label="過去問解説のページ一覧"><Sidebar current={page} /></aside>
+    <main class="content" id={hub ? undefined : 'top'}>
+      <slot />
+      {info && <CaseNav prev={info.prev} next={info.next} />}
+      {info && <p class="home-foot"><a href="./">← 2次試験 過去問解説 一覧に戻る</a></p>}
+    </main>
+  </div>
+  <footer>
+    {hub ? <p><a href="/">tebukuro.me</a></p> : <p>中小企業診断士2次試験 過去問解説 · <a href="/">tebukuro.me</a></p>}
+  </footer>
+</body>
+</html>

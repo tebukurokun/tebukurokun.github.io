@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Shindanshi.astro';
+import { YEARS } from '../../data/shindanshi';
+---
+
+<Layout
+  page="hub"
+  title="中小企業診断士2次試験 過去問解説"
+  description="中小企業診断士2次試験の過去問を、設問ごとに与件の根拠・答案例・予備校解答例との比較つきで解説するページの目次。令和7年度〜令和3年度の事例Ⅰ〜Ⅳを掲載"
+>
+  <header class="hero" slot="hero" data-mark="Ⅰ Ⅱ Ⅲ Ⅳ">
+    <p class="eyebrow">SMALL BUSINESS CONSULTANT · PAST EXAMS</p>
+    <h1>中小企業診断士2次試験<br>過去問解説</h1>
+    <p class="lead">事例ごとに1ページ。設問の要求と出題の趣旨、与件のどの事実を根拠にするか、字数内の答案例、受験指導校の解答例とどこで分かれたかを、設問単位で整理しています。</p>
+  </header>
+
+  {YEARS.map(year => (
+    <div class="year">
+      <h2 class="year-title" id={year.id}>{year.heading}</h2>
+      <p class="year-note">{year.note}</p>
+      <div class="cases">
+        {year.cases.map(c => (
+          <a class="case" data-case={c.num} href={`${c.page}.html`}>
+            <p class="case-no">{c.no} · {c.name}</p>
+            <p class="case-title">{c.title}</p>
+            <p class="case-note">{c.note}</p>
+            <ul class="tags">{c.tags.map(t => <li>{t}</li>)}</ul>
+          </a>
+        ))}
+      </div>
+    </div>
+  ))}
+
+  <div class="about">
+    <h2>このページの方針</h2>
+    <ul>
+      <li><strong>答案例は学習用の独自作成例です。</strong>2次試験では公式の模範解答も詳細な採点基準も公表されていません。</li>
+      <li>設問文は要旨で掲載しています。正確な文言と与件文は、各ページから公式の問題PDFで確認してください。</li>
+      <li>与件に書かれた事実と、そこからの推論・提案を分けて書いています。</li>
+      <li>予備校の解答例との比較は、公開資料を確認した日付を各ページに記載しています。</li>
+    </ul>
+  </div>
+
+  <p class="related">解き方の手順と事例別の知識は、<a href="/cram/shindanshi_2ji.html">一夜漬けシート「事例I〜IV 解法プロセス＆知識シート」</a>にまとめています。</p>
+</Layout>

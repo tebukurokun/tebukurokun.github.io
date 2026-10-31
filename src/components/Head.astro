@@ -1,0 +1,34 @@
+---
+/* cram/・shindanshi-2ji/ のページの head（description から twitter:card まで）。
+   og:title / og:description / og:url は title / description / canonical と同じ値を出す。
+   manifest と theme-color は暗いトップページ用なので、ここには入れない。 */
+interface Props {
+  title: string;
+  description: string;
+  /** サイト内のパス。ディレクトリの目次ページは `/` で終える（`/cram/`）。 */
+  path: string;
+}
+
+const { title, description, path } = Astro.props;
+const url = new URL(path, Astro.site).href;
+// 目次ページは website、個々のシート・事例は article。
+const type = path.endsWith('/') ? 'website' : 'article';
+---
+
+<meta name="description" content={description}>
+<title>{title}</title>
+<link rel="canonical" href={url}>
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<meta property="og:type" content={type}>
+<meta property="og:site_name" content="tebukuro">
+<meta property="og:title" content={title}>
+<meta property="og:description" content={description}>
+<meta property="og:url" content={url}>
+<meta property="og:image" content="https://tebukuro.me/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="tebukuro">
+<meta property="og:locale" content="ja_JP">
+<meta name="twitter:card" content="summary_large_image">

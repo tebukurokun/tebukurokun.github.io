@@ -1,0 +1,16 @@
+---
+/* 事例ページ末尾の前後ナビ。同じ年度の中だけでたどる（ラベルに年度を出さないため）。 */
+import type { Case } from '../../data/shindanshi';
+
+interface Props {
+  prev?: Case;
+  next?: Case;
+}
+
+const { prev, next } = Astro.props;
+---
+
+<nav class="case-nav" aria-label="ほかの事例">
+  {prev ? <a href={`${prev.page}.html`}><small>← 前の事例</small><b>{prev.no}</b> {prev.name}</a> : <span><small>前の事例</small>—</span>}
+  {next ? <a href={`${next.page}.html`}><small>次の事例 →</small><b>{next.no}</b> {next.name}</a> : <span><small>次の事例</small>—</span>}
+</nav>

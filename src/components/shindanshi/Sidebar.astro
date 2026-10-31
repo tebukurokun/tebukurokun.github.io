@@ -1,0 +1,32 @@
+---
+/* 左サイドバーのページ一覧。いま開いているページは aria-current を付け、
+   その事例の目次だけ .is-current にする（site.js がスクロールに合わせて強調する）。 */
+import { YEARS } from '../../data/shindanshi';
+
+interface Props {
+  /** 'hub' か、事例ページの page */
+  current: string;
+}
+
+const { current } = Astro.props;
+---
+
+<a class="side-home" href="./" aria-current={current === 'hub' ? 'page' : undefined}>中小企業診断士2次試験<br>過去問解説</a>
+{YEARS.map(year => (
+  <>
+    <p class="side-year">{year.label}</p>
+    <ul class="side-cases">
+      {year.cases.map(c => {
+        const here = c.page === current;
+        return (
+          <li>
+            <a class="side-case" href={`${c.page}.html`} aria-current={here ? 'page' : undefined}><small>{c.no}</small>{c.name}</a>
+            <ul class={here ? 'side-toc is-current' : 'side-toc'}>
+              {c.toc.map(([id, label]) => <li><a href={`${here ? '' : `${c.page}.html`}#${id}`}>{label}</a></li>)}
+            </ul>
+          </li>
+        );
+      })}
+    </ul>
+  </>
+))}
