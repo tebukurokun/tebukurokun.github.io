@@ -58,4 +58,5 @@ Disallow: /
 User-agent: meta-externalagent
 Disallow: /
 
+Sitemap: https://tebukuro.me/sitemap.xml
 Sitemap: https://tebukuro.me/blog/sitemap-index.xml

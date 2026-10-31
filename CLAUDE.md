@@ -51,7 +51,7 @@ Self-contained study sheets, one HTML file per exam subject, indexed by `cram/in
 - Every sheet links back to the hub twice: `.home` in the hero and `.home-foot` before `<footer>`. Both are hidden in `@media print`.
 - Dark mode follows the OS setting: each file ends its `<style>` with a `@media screen and (prefers-color-scheme: dark)` block that redefines the `:root` tokens and overrides the hard-coded colors (the `screen` guard keeps printing light). When you add a rule with a literal color, add its dark override there too.
 - Tables go inside `<div class="table-wrap">` with a `<thead>`. At ≤640px each sheet's end-of-body script turns them into one card per row: it adds `.stack`, marks each row's first cell `.stack-head`, copies the column header into the other cells' `data-label`, and the `@media screen and (max-width: 640px)` block at the end of `<style>` lays them out. A new sheet needs both the CSS block and the script.
-- Adding a sheet means adding a `.card` to `cram/index.html` (pick an accent class) and the two back links to the new file.
+- Adding a sheet means adding a `.card` to `cram/index.html` (pick an accent class), the two back links to the new file, the head block (see "Head and sitemap"), and a `<url>` in `sitemap.xml`.
 - The pages moved out of the repo root on 2026-08-21. `chushokigyo_seisaku.html` and `keiei_houmu.html` were published at the root beforehand, so a Cloudflare Redirect Rule is needed if those old URLs are still shared.
 
 ## `shindanshi-2ji/` (2次試験 過去問解説)
@@ -65,7 +65,7 @@ Per-case explanation pages for the 中小企業診断士2次試験, kept separat
 - Each answer example (`.ans-text`) shows its length in `.count` as `N／上限字`. Recount when editing an answer — every character, including punctuation, is one square on the answer sheet. 事例Ⅳ's numeric answers have no `.count`; its calculation steps go in `<pre class="calc">`, and numeric table cells use `class="num"`.
 - Answers are original study examples, not official model answers. 設問 text is paraphrased (要旨), with links to the official 問題PDF and 出題の趣旨. Prep-school comparisons carry the date they were checked against the published sources.
 - "答案例を隠して解く" toggles `body.practice`; the state is kept in `localStorage` key `shindanshi-2ji-practice-v1`. Print always shows the answers.
-- Adding a case means: copy an existing case page (set `data-page`/`data-case`, add a `[data-case]` color block to `style.css` if it's a new number), add an entry to `YEARS` in `site.js`, and add a card to the hub's `index.html`.
+- Adding a case means: copy an existing case page (set `data-page`/`data-case`, add a `[data-case]` color block to `style.css` if it's a new number), add an entry to `YEARS` in `site.js`, add a card to the hub's `index.html`, and add a `<url>` to `sitemap.xml`. Rewrite the copied page's canonical / `og:url` / `og:title` / `og:description` too.
 
 ## Icon policy
 
@@ -75,6 +75,12 @@ Two sources: `icon.svg` (the dark neon background, pure vector, same palette as 
 - **`icon-maskable-512x512.png` carries a smaller glyph** so it survives Android's adaptive-icon crop (safe zone is the inner 80% circle). It's declared `"purpose": "maskable"` in `site.webmanifest`, separate from the `"any"` entries.
 - **`favicon.svg` stays the transparent emoji SVG** — it's the browser-tab icon and should sit on the tab bar without a dark box. `favicon.ico` is the fallback for browsers without SVG favicon support.
 - Both `index.html` and `privacy.html` carry the full head block (icons + manifest + `apple-mobile-web-app-*`). Keep them in sync.
+
+## Head and sitemap
+
+- **Every page carries canonical, favicon, OGP and Twitter Card tags.** Pages under `cram/` and `shindanshi-2ji/` have a lighter block placed right after `<title>`: canonical, the three icon links (no manifest or `theme-color`, since those belong to the dark root site), and `og:*` + `twitter:card`. `og:title` / `og:description` repeat the page's `<title>` / `meta description`, and `og:url` repeats the canonical, so edit them together. Hubs use `og:type` `website`, sheets and cases use `article`. All pages share `og-image.png`.
+- **Canonical URLs:** directory index pages end in `/` (`/cram/`, `/shindanshi-2ji/`), every other page keeps `.html`, matching the internal links.
+- **`sitemap.xml` is hand-maintained** and lists every page of this repo (28 URLs). Add a `<url>` when you add a page; `lastmod` is the date of the page's last content change. `robots.txt` lists it next to the blog's `sitemap-index.xml`, which the blog Worker serves.
 
 ## OGP image policy
 
