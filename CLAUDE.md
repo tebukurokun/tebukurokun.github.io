@@ -4,34 +4,38 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A personal site deployed via GitHub Pages at `https://tebukuro.me/` (custom domain via `CNAME`; `tebukurokun.github.io` 301-redirects there). The main page is `index.html`, plus a standalone `privacy.html` (privacy policy, required for AdSense) and `cram/` (資格試験一夜漬けシート: `cram/index.html` is the hub, one HTML per exam subject alongside it). There is no build system, no framework, no package manager — just static HTML files. All CSS lives inline in each file's `<style>` block, all JS in a `<script>` block at the end of `<body>` — except `shindanshi-2ji/`, whose pages share `style.css` and `site.js`.
+A personal site deployed via GitHub Pages at `https://tebukuro.me/` (custom domain set in the repo's Pages settings, with `public/CNAME` kept as a record; `tebukurokun.github.io` 301-redirects there). The main page is `index.html`, plus a standalone `privacy.html` (privacy policy, required for AdSense), `cram/` (資格試験一夜漬けシート) and `shindanshi-2ji/` (2次試験 過去問解説).
 
-The `master` branch is the deployment branch. Pushing to `origin/master` publishes the site.
+**The site is mid-migration to Astro** (plan: the Claude Doc "tebukuro.me Astro 移行計画"; the last pure-static version is tagged `pre-astro`). Astro (`astro` is the only dependency) builds `src/pages/` and copies `public/` as-is into `dist/`. Pages not yet migrated live in `public/` unchanged, so paths below like `index.html` or `cram/` mean `public/index.html`, `public/cram/` until they move to `src/pages/`. `astro.config.mjs` uses `build.format: 'preserve'` so the URLs (`/cram/`, `/cram/keiei_houmu.html`) stay exactly as before, and `compressHTML: false` so output can be diffed against the old HTML. All CSS of a static page lives inline in its `<style>` block, all JS in a `<script>` at the end of `<body>` — except `shindanshi-2ji/`, whose pages share `style.css` and `site.js`.
+
+The `master` branch is the deployment branch. Pushing to `origin/master` runs `.github/workflows/deploy.yml` (Pages Source = GitHub Actions), which runs `npm ci && npm run build` and publishes `dist/`. It also runs daily at 06:00 JST and on manual dispatch.
 
 Traffic to the apex domain is proxied through Cloudflare (DNS zone lives there). `https://tebukuro.me/blog/*` is **not** served by this repo — a Cloudflare Worker route (`tebukuro.me/blog*`, repo `../tebukuro-blog`) handles it. The old `blog.tebukuro.me` 301s to `/blog/` via a Cloudflare Redirect Rule. Keep root-page links to the blog as `/blog/` (same origin).
 
 ## Commands
 
 ```bash
-# Local preview
-open index.html
+npm install          # first time
+npm run dev          # local preview with live reload (http://localhost:4321)
+npm run build        # build to dist/
+npm run preview      # serve dist/
 
 # Regenerate OGP image after editing og-image.svg (requires rsvg-convert from librsvg)
-rsvg-convert -w 1200 -h 630 og-image.svg -o og-image.png
+rsvg-convert -w 1200 -h 630 og-image.svg -o public/og-image.png
 
 # Regenerate app icons after editing icon.svg or icon-glyph.png (requires rsvg-convert + ImageMagick)
 rsvg-convert -w 512 -h 512 icon.svg -o /tmp/bg512.png
 magick /tmp/bg512.png \( icon-glyph.png -resize 380x380 \) -gravity center -composite \
   -background "#08060f" -flatten /tmp/icon512.png
 magick /tmp/bg512.png \( icon-glyph.png -resize 272x272 \) -gravity center -composite \
-  -background "#08060f" -flatten icon-maskable-512x512.png
-magick /tmp/icon512.png -resize 512x512 -strip android-chrome-512x512.png
-magick /tmp/icon512.png -resize 192x192 -strip android-chrome-192x192.png
-magick /tmp/icon512.png -resize 180x180 -strip apple-touch-icon.png
-magick /tmp/icon512.png -define icon:auto-resize=48,32,16 favicon.ico
+  -background "#08060f" -flatten public/icon-maskable-512x512.png
+magick /tmp/icon512.png -resize 512x512 -strip public/android-chrome-512x512.png
+magick /tmp/icon512.png -resize 192x192 -strip public/android-chrome-192x192.png
+magick /tmp/icon512.png -resize 180x180 -strip public/apple-touch-icon.png
+magick /tmp/icon512.png -define icon:auto-resize=48,32,16 public/favicon.ico
 ```
 
-There is no linter, formatter, test suite, or CI configured. The repo formatter (Prettier-style) appears to be applied externally by the user's editor — preserve the existing whitespace style when editing.
+There is no linter, formatter or test suite; the only CI is the deploy workflow. The repo formatter (Prettier-style) appears to be applied externally by the user's editor — preserve the existing whitespace style when editing.
 
 ## Architecture notes
 
@@ -69,7 +73,7 @@ Per-case explanation pages for the 中小企業診断士2次試験, kept separat
 
 ## Icon policy
 
-Two sources: `icon.svg` (the dark neon background, pure vector, same palette as `og-image.svg`) and `icon-glyph.png` (the 🧤 glyph, background already cut to transparent). Everything else is generated — don't hand-edit `apple-touch-icon.png`, `android-chrome-*.png`, `icon-maskable-512x512.png`, or `favicon.ico`.
+Two sources, kept at the repo root (not published): `icon.svg` (the dark neon background, pure vector, same palette as `og-image.svg`) and `icon-glyph.png` (the 🧤 glyph, background already cut to transparent). Everything else is generated — don't hand-edit `apple-touch-icon.png`, `android-chrome-*.png`, `icon-maskable-512x512.png`, or `favicon.ico`.
 
 - **Home-screen icons must be opaque.** iOS composites alpha onto black and Android onto white, so the generated PNGs are flattened onto `#08060f`.
 - **`icon-maskable-512x512.png` carries a smaller glyph** so it survives Android's adaptive-icon crop (safe zone is the inner 80% circle). It's declared `"purpose": "maskable"` in `site.webmanifest`, separate from the `"any"` entries.
@@ -84,4 +88,4 @@ Two sources: `icon.svg` (the dark neon background, pure vector, same palette as 
 
 ## OGP image policy
 
-`og-image.svg` is the source; `og-image.png` is generated from it. Keep the OGP image **content-agnostic** — only durable elements (site name, URL, decoration). Do **not** bake in self-intro lines, tech stack, or works lists, because those change frequently in `index.html` and would otherwise force a regeneration on every edit.
+`og-image.svg` (repo root, not published) is the source; `public/og-image.png` is generated from it. Keep the OGP image **content-agnostic** — only durable elements (site name, URL, decoration). Do **not** bake in self-intro lines, tech stack, or works lists, because those change frequently in `index.html` and would otherwise force a regeneration on every edit.
