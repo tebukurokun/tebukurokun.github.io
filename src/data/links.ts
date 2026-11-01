@@ -52,7 +52,7 @@ export const WORKS: LinkCard[] = [
     label: 'EXTENSION',
     title: 'Amazon URL Minimizer',
     icon: 'amazon-url-minimizer.svg',
-    desc: 'Amazonの長い商品URLを最小形にし、右クリックからコピーできるChrome拡張機能。',
+    desc: 'Amazonの長い商品URLを最小形にし、右クリックからコピーできるChrome/Firefox拡張機能。',
   },
   {
     href: 'https://nosh-log.tebukuro.me/',
