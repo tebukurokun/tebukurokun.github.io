@@ -1,26 +1,20 @@
+---
+/* 一夜漬けシートの目次。カードは data/cram.ts の SHEETS から作る。 */
+import Head from '../../components/Head.astro';
+import { SHEETS } from '../../data/cram';
+---
+
 <!doctype html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="中小企業診断士1次試験・2次試験・統計検定2級の直前チェックシートをまとめた目次ページ">
-  <title>資格試験 一夜漬けシート</title>
-  <link rel="canonical" href="https://tebukuro.me/cram/">
-  <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="tebukuro">
-  <meta property="og:title" content="資格試験 一夜漬けシート">
-  <meta property="og:description" content="中小企業診断士1次試験・2次試験・統計検定2級の直前チェックシートをまとめた目次ページ">
-  <meta property="og:url" content="https://tebukuro.me/cram/">
-  <meta property="og:image" content="https://tebukuro.me/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="tebukuro">
-  <meta property="og:locale" content="ja_JP">
-  <meta name="twitter:card" content="summary_large_image">
-  <style>
+  <Head
+    title="資格試験 一夜漬けシート"
+    description="中小企業診断士1次試験・2次試験・統計検定2級の直前チェックシートをまとめた目次ページ"
+    path="/cram/"
+  />
+  <style is:inline>
     :root {
       --ink: #172033;
       --muted: #5b667a;
@@ -144,37 +138,15 @@
   <div class="layout">
     <h2>シート一覧</h2>
     <div class="cards">
-      <a class="card green" href="chushokigyo_seisaku.html">
-        <p class="card-exam">中小企業診断士 1次試験</p>
-        <p class="card-title">中小企業経営・中小企業政策</p>
-        <p class="card-note">最終チェックシート／60点狙い増補版。白書の数値は大小・増減・順位で押さえ、政策は「対象・作成者・認定者・支援内容」の4点セットで整理。全35セクション。</p>
-        <ul class="tags"><li>中小企業者の定義</li><li>白書の代表数値</li><li>計画制度</li><li>補助金・共済</li></ul>
-        <p class="card-open">シートを開く</p>
-      </a>
-
-      <a class="card blue" href="keiei_houmu.html">
-        <p class="card-exam">中小企業診断士 1次試験</p>
-        <p class="card-title">経営法務</p>
-        <p class="card-note">最終チェックシート／60点狙い増補版。法令基準日2026年5月1日で整理。会社法・知的財産権・契約・倒産処理まで、条文の要件を表で比較。全21セクション。</p>
-        <ul class="tags"><li>会社法</li><li>知的財産権</li><li>契約・債権</li><li>組織再編</li></ul>
-        <p class="card-open">シートを開く</p>
-      </a>
-
-      <a class="card teal" href="statistics_grade2.html">
-        <p class="card-exam">統計検定 2級</p>
-        <p class="card-title">学習ナビ＆解説シート</p>
-        <p class="card-note">出題範囲を「どの場面で、なぜ、その手法を選ぶか」の流れに再編。推測統計と線形モデルを厚めに。シート内検索と理解度チェック付き、全12セクション。</p>
-        <ul class="tags"><li>確率分布</li><li>推定・検定</li><li>回帰</li><li>分散分析</li></ul>
-        <p class="card-open">シートを開く</p>
-      </a>
-
-      <a class="card orange" href="shindanshi_2ji.html">
-        <p class="card-exam">中小企業診断士 2次試験</p>
-        <p class="card-title">事例I〜IV 解法プロセス＆知識シート</p>
-        <p class="card-note">令和8年度対応。80分のタイムマネジメント、与件文マーキング、設問解釈、解答骨子のテンプレ文型を前半に、事例I〜IVの必要知識を後半に。公式の「出題の趣旨」令和5〜7年度を読んで設問構成の型を整理。事例IVは式の意味と導出つきで厚めに。全13セクション。</p>
-        <ul class="tags"><li>80分の型</li><li>設問解釈</li><li>事例別ナレッジ</li><li>事例IV計算</li></ul>
-        <p class="card-open">シートを開く</p>
-      </a>
+      {SHEETS.map(sheet => (
+        <a class={`card ${sheet.accent}`} href={`${sheet.page}.html`}>
+          <p class="card-exam">{sheet.exam}</p>
+          <p class="card-title">{sheet.title}</p>
+          <p class="card-note">{sheet.note}</p>
+          <ul class="tags">{sheet.tags.map(t => <li>{t}</li>)}</ul>
+          <p class="card-open">シートを開く</p>
+        </a>
+      ))}
 
       <div class="card placeholder">
         <p class="card-exam">COMING SOON</p>

@@ -1,26 +1,14 @@
-<!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="中小企業診断士2次試験の解法シート。80分の使い方、与件文マーキング、設問解釈、解答骨子のテンプレ文型と、事例I〜IVの必要知識。事例IVは計算パターンを厚めに解説">
-  <title>中小企業診断士2次試験 解法プロセス＆知識シート</title>
-  <link rel="canonical" href="https://tebukuro.me/cram/shindanshi_2ji.html">
-  <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="tebukuro">
-  <meta property="og:title" content="中小企業診断士2次試験 解法プロセス＆知識シート">
-  <meta property="og:description" content="中小企業診断士2次試験の解法シート。80分の使い方、与件文マーキング、設問解釈、解答骨子のテンプレ文型と、事例I〜IVの必要知識。事例IVは計算パターンを厚めに解説">
-  <meta property="og:url" content="https://tebukuro.me/cram/shindanshi_2ji.html">
-  <meta property="og:image" content="https://tebukuro.me/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="tebukuro">
-  <meta property="og:locale" content="ja_JP">
-  <meta name="twitter:card" content="summary_large_image">
-  <style>
+---
+import Layout from '../../layouts/CramSheet.astro';
+---
+
+<Layout
+  page="shindanshi_2ji"
+  title="中小企業診断士2次試験 解法プロセス＆知識シート"
+  description="中小企業診断士2次試験の解法シート。80分の使い方、与件文マーキング、設問解釈、解答骨子のテンプレ文型と、事例I〜IVの必要知識。事例IVは計算パターンを厚めに解説"
+  footer="© Study sheet · 中小企業診断士2次試験（令和8年度）対応。手順の再現性を上げるためのシートです。印刷時は検索・進捗UIを省略し、解答を展開します。"
+>
+  <style is:inline slot="head">
     :root {
       --ink: #211a15;
       --muted: #6d6259;
@@ -258,10 +246,8 @@
       .quiz button { background: #8a4517; }
     }
   </style>
-</head>
-<body>
   <header class="hero">
-    <p class="home"><a href="index.html">← 一夜漬けシート一覧</a></p>
+    <p class="home"><a href="./">← 一夜漬けシート一覧</a></p>
     <p class="eyebrow">SMALL BUSINESS CONSULTANT · SECOND EXAM</p>
     <h1>中小企業診断士2次試験<br>解法プロセス＆知識シート</h1>
     <p class="lead">2次は<strong>知識を与件企業に当てはめ、80分で解答にまとめる</strong>試験。時間配分と解答作成の手順を前半に、事例I〜IVの知識を後半にまとめました。2016〜2025年度の過去問10年分・40事例を照合し、設問の例外や計算条件も補っています。</p>
@@ -1412,11 +1398,7 @@
       </section>
     </main>
   </div>
-
-  <p class="home-foot"><a href="index.html">← 一夜漬けシート一覧に戻る</a></p>
-  <footer>© Study sheet · 中小企業診断士2次試験（令和8年度）対応。手順の再現性を上げるためのシートです。印刷時は検索・進捗UIを省略し、解答を展開します。</footer>
-
-  <script>
+  <script is:inline slot="script">
     (() => {
       const checks = [...document.querySelectorAll('.done')];
       const key = 'shindanshi-2ji-study-progress-v1';
@@ -1444,35 +1426,6 @@
         });
       });
 
-      // display:block にすると表の意味が失われるブラウザがあるので role で補う
-      document.querySelectorAll('.table-wrap > table').forEach(table => {
-        const labels = [...table.querySelectorAll('thead th')].map(th => th.textContent.trim());
-        const spans = [];
-        table.classList.add('stack');
-        table.setAttribute('role', 'table');
-        table.querySelectorAll('thead, tbody').forEach(group => group.setAttribute('role', 'rowgroup'));
-        table.querySelectorAll('thead th').forEach(th => th.setAttribute('role', 'columnheader'));
-        table.querySelectorAll('tr').forEach(tr => tr.setAttribute('role', 'row'));
-        table.querySelectorAll('tbody tr').forEach(tr => {
-          let col = 0, head = null;
-          for (const cell of tr.cells) {
-            while (spans[col] > 0) { spans[col]--; col++; }
-            cell.setAttribute('role', cell.tagName === 'TH' ? 'rowheader' : 'cell');
-            if (cell.rowSpan > 1) {
-              spans[col] = cell.rowSpan - 1;
-              cell.classList.add('stack-group');
-            } else if (!head) {
-              head = cell;
-              cell.classList.add('stack-head');
-            } else if (labels[col]) {
-              cell.dataset.label = labels[col];
-            }
-            col += cell.colSpan;
-          }
-          for (; col < spans.length; col++) if (spans[col] > 0) spans[col]--;
-        });
-      });
-
       const search = document.getElementById('search');
       const sections = [...document.querySelectorAll('main section')];
       search.addEventListener('input', () => {
@@ -1483,5 +1436,4 @@
       });
     })();
   </script>
-</body>
-</html>
+</Layout>

@@ -1,26 +1,14 @@
-<!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="統計検定2級の出題範囲を、用語の羅列ではなく式の意味・導出・使い分けから解説した学習シート。推定と検定を一本の流れで理解する">
-  <title>統計検定2級 学習ナビ＆解説シート</title>
-  <link rel="canonical" href="https://tebukuro.me/cram/statistics_grade2.html">
-  <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="tebukuro">
-  <meta property="og:title" content="統計検定2級 学習ナビ＆解説シート">
-  <meta property="og:description" content="統計検定2級の出題範囲を、用語の羅列ではなく式の意味・導出・使い分けから解説した学習シート。推定と検定を一本の流れで理解する">
-  <meta property="og:url" content="https://tebukuro.me/cram/statistics_grade2.html">
-  <meta property="og:image" content="https://tebukuro.me/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="tebukuro">
-  <meta property="og:locale" content="ja_JP">
-  <meta name="twitter:card" content="summary_large_image">
-  <style>
+---
+import Layout from '../../layouts/CramSheet.astro';
+---
+
+<Layout
+  page="statistics_grade2"
+  title="統計検定2級 学習ナビ＆解説シート"
+  description="統計検定2級の出題範囲を、用語の羅列ではなく式の意味・導出・使い分けから解説した学習シート。推定と検定を一本の流れで理解する"
+  footer="© Study sheet · 内容は2018-12-14版の統計検定2級出題範囲表に準拠。印刷時は検索・進捗UIを省略し、解答を展開します。"
+>
+  <style is:inline slot="head">
     :root {
       --ink: #18212b;
       --muted: #5e6b75;
@@ -249,10 +237,8 @@
       .stack [data-label] + [data-label] { margin-top: 6px; }
     }
   </style>
-</head>
-<body>
   <header class="hero">
-    <p class="home"><a href="index.html">← 一夜漬けシート一覧</a></p>
+    <p class="home"><a href="./">← 一夜漬けシート一覧</a></p>
     <p class="eyebrow">STATISTICS CERTIFICATE · GRADE 2</p>
     <h1>統計検定2級<br>学習ナビ＆解説シート</h1>
     <p class="lead">公式出題範囲を、暗記する用語の列ではなく「どの場面で、なぜ、その手法を選ぶか」という一本の流れに再編。公式は結論だけでなく<strong>なぜその形になるのか</strong>まで解説し、推測統計と線形モデルを厚めに扱います。</p>
@@ -379,7 +365,7 @@
         <p>2つの量が「一緒に動くか」を測る出発点は<strong>共分散</strong>です。x が平均より大きいとき y も平均より大きければ、偏差の積 (xᵢ-x̄)(yᵢ-ȳ) は正になります。これを平均すれば、同じ向きに動く傾向が正、逆向きなら負として表せます。</p>
         <div class="formula"><span class="label">共分散</span>Sxy = Σ(xᵢ-x̄)(yᵢ-ȳ)　　s<sub>xy</sub> = Sxy / (n-1)</div>
         <p>ただし共分散には単位が残ります（身長cm×体重kgなら「cm·kg」）。単位を変えるだけで数値が変わってしまい、強さの比較ができません。そこで、それぞれの標準偏差で割って無次元化したものが<strong>相関係数</strong>です。</p>
-        <div class="formula"><span class="label">標本相関係数</span>r = Sxy / √{Sxx · Syy} = s<sub>xy</sub> / (s<sub>x</sub> s<sub>y</sub>)</div>
+        <div class="formula"><span class="label">標本相関係数</span>r = Sxy / √{'{'}Sxx · Syy{'}'} = s<sub>xy</sub> / (s<sub>x</sub> s<sub>y</sub>)</div>
         <p>これは「x と y をそれぞれ標準化してから共分散を取った値」と同じです。標準化した2変数の共分散は必ず -1 と +1 の間に収まる（コーシー・シュワルツの不等式）ため、<strong>-1 ≤ r ≤ 1</strong> が保証されます。r = ±1 は全点が完全に1本の直線上に乗る場合で、符号は直線の傾きの向きを表します。</p>
         <div class="table-wrap"><table>
           <thead><tr><th>r の値</th><th>散布図の見え方</th><th>読み方の注意</th></tr></thead>
@@ -397,7 +383,7 @@
         </ul>
         <div class="warning"><strong>擬相関（みかけの相関）</strong>アイスの売上と水難事故件数はよく相関しますが、共通原因は「気温」です。第3の変数 z が x と y の双方を動かしているとき、x と y の間に因果がなくても相関は現れます。相関は因果の必要条件のひとつにすぎません。</div>
         <h4>偏相関係数：第3の変数を差し引く</h4>
-        <div class="formula"><span class="label">偏相関係数</span>r<sub>xy·z</sub> = (r<sub>xy</sub> - r<sub>xz</sub> r<sub>yz</sub>) / √{(1 - r<sub>xz</sub>²)(1 - r<sub>yz</sub>²)}</div>
+        <div class="formula"><span class="label">偏相関係数</span>r<sub>xy·z</sub> = (r<sub>xy</sub> - r<sub>xz</sub> r<sub>yz</sub>) / √{'{'}(1 - r<sub>xz</sub>²)(1 - r<sub>yz</sub>²){'}'}</div>
         <p>意味は「x から z の線形な影響を取り除いた残り」と「y から z の線形な影響を取り除いた残り」の相関です。上の例で z = 気温 を調整すると r<sub>xy·z</sub> は0に近づき、見かけの相関が z によるものだったと分かります。ただし調整できるのは<strong>測定済みの変数の、線形な影響だけ</strong>なので、これでも因果の証明にはなりません。</p>
         <p>3変数以上を一覧するときは<strong>相関行列</strong>を作りますが、対角は必ず1、上三角と下三角は対称です。多数の組を同時に眺めると偶然大きい値が紛れ込むこと（多重比較の問題）、変数が実質的に重複していること、外れ値の影響も併せて点検します。</p>
 
@@ -442,7 +428,7 @@
         値上がりしたAの数量が減ったため、比較時点のかごを使うパーシェのほうが低く出ます。</div>
         <h4>なぜ平均成長率は幾何平均なのか</h4>
         <p>成長率は毎期<strong>掛け算</strong>で積み上がります。n期後の値は 初期値 × (1+r₁)(1+r₂)…(1+rₙ) なので、「毎期これで置き換えても同じ最終値になる率」を求めるには、算術平均ではなく積のn乗根を取る必要があります。</p>
-        <div class="formula"><span class="label">平均成長率（幾何平均）</span>1 + r̄ = {(1+r₁)(1+r₂)…(1+rₙ)}<sup>1/n</sup> = (最終値 / 初期値)<sup>1/n</sup></div>
+        <div class="formula"><span class="label">平均成長率（幾何平均）</span>1 + r̄ = {'{'}(1+r₁)(1+r₂)…(1+rₙ){'}'}<sup>1/n</sup> = (最終値 / 初期値)<sup>1/n</sup></div>
         <div class="example"><strong>数値で確認</strong>1年目 +100%（2倍）、2年目 -50%（0.5倍）なら、資産は元に戻るので平均成長率は0%であるべきです。算術平均は (100% - 50%)/2 = +25% と誤り、幾何平均は √(2 × 0.5) - 1 = 0% と正しく答えます。比率・倍率の平均は幾何平均、というのはこの構造から来ています。</div>
         <h4>系列の依存構造：自己相関と移動平均</h4>
         <div class="formula"><span class="label">ラグk の自己相関係数</span>r<sub>k</sub> = Σ<sub>t=k+1</sub><sup>n</sup>(x<sub>t</sub>-x̄)(x<sub>t-k</sub>-x̄) / Σ<sub>t=1</sub><sup>n</sup>(x<sub>t</sub>-x̄)²</div>
@@ -547,7 +533,7 @@
         <p><strong>確率変数</strong>とは、試行の結果に数値を割り当てた変数です（サイコロの目、身長など）。取りうる値が飛び飛びなら<strong>離散型</strong>、連続的なら<strong>連続型</strong>で、前者は確率質量関数 P(X = x)、後者は確率密度関数 f(x) で分布を表します。</p>
         <div class="formula"><span class="label">期待値（平均）</span>離散型：E(X) = Σ x P(X = x)　　連続型：E(X) = ∫ x f(x) dx</div>
         <p>期待値は「値 × その確率」の総和、つまり<strong>確率で重み付けした平均</strong>です。長期的に試行を繰り返したときの平均値の落ち着き先であり、1回の試行で実際に出る値ではありません（サイコロの期待値3.5はどの目にもない）。</p>
-        <div class="formula"><span class="label">分散</span>Var(X) = E[(X - μ)²] = E(X²) - {E(X)}²　　（μ = E(X)）</div>
+        <div class="formula"><span class="label">分散</span>Var(X) = E[(X - μ)²] = E(X²) - {'{'}E(X){'}'}²　　（μ = E(X)）</div>
         <p>右側の展開形は計算に便利です。「2乗の平均 - 平均の2乗」と覚えます。標準偏差は SD(X) = √Var(X) で、X と同じ単位に戻ります。</p>
         <h4>線形変換の公式</h4>
         <div class="formula">E(aX + b) = aE(X) + b　　Var(aX + b) = a²Var(X)　　SD(aX + b) = |a|SD(X)</div>
@@ -556,7 +542,7 @@
         <div class="formula">E(X + Y) = E(X) + E(Y)　　（常に成立。独立性は不要）</div>
         <div class="formula">Cov(X, Y) = E[(X-μ<sub>X</sub>)(Y-μ<sub>Y</sub>)] = E(XY) - E(X)E(Y)</div>
         <div class="formula">Var(X ± Y) = Var(X) + Var(Y) ± 2Cov(X, Y)</div>
-        <p>期待値の加法性は無条件で成り立つ強力な性質です。一方<strong>分散を単純に足せるのは Cov(X,Y) = 0 のときだけ</strong>。共分散は「2つが同じ向きにずれる傾向」を表し、正なら合計のばらつきは各々の和より大きくなります。確率変数の相関係数は ρ = Cov(X,Y) / {SD(X)SD(Y)} で定義され、-1 ≤ ρ ≤ 1 です。</p>
+        <p>期待値の加法性は無条件で成り立つ強力な性質です。一方<strong>分散を単純に足せるのは Cov(X,Y) = 0 のときだけ</strong>。共分散は「2つが同じ向きにずれる傾向」を表し、正なら合計のばらつきは各々の和より大きくなります。確率変数の相関係数は ρ = Cov(X,Y) / {'{'}SD(X)SD(Y){'}'} で定義され、-1 ≤ ρ ≤ 1 です。</p>
         <div class="warning"><strong>差でも分散は足し算</strong>独立なら Cov = 0 なので Var(X - Y) = Var(X) + Var(Y) です。引き算なのに足すのは、X と Y のどちらのばらつきも「差」の不確かさを増やすからです。2標本の平均差の標準誤差が √(σ₁²/n₁ + σ₂²/n₂) と和の形になるのは、この性質が根拠になっています。</div>
         <div class="warning"><strong>独立 ⇒ 無相関、逆は不成立</strong>独立なら必ず Cov = 0 ですが、Cov = 0 でも独立とは限りません。たとえば X が -1, 0, 1 を等確率で取り Y = X² とすると、完全な従属関係があるのに共分散は0です。共分散が捉えるのは直線的な連動だけだからです。例外的に、<strong>2変量正規分布に従う場合に限り</strong>無相関と独立が同値になります。</div>
         <h4>同時確率分布・周辺分布・条件付き期待値</h4>
@@ -581,7 +567,7 @@
         <p>離散型の分布は<strong>確率質量関数</strong> P(X = k) で「その値ちょうどが出る確率」を与えます。連続型では1点の確率は0になるため、<strong>確率密度関数</strong> f(x) を使い、確率は面積（積分）として P(a ≤ X ≤ b) = ∫<sub>a</sub><sup>b</sup> f(x)dx で表します。どちらも全体を足す／積分すると1です。累積分布関数 F(x) = P(X ≤ x) は両者に共通で、数表はこの形で与えられることが多くあります。</p>
         <h4>連続型の定番計算：定数の決定・分布関数・E[g(X)]</h4>
         <div class="formula"><span class="label">密度関数まわりの4つの道具</span>∫ f(x) dx = 1（定数を決める）　　F(x) = ∫<sub>-∞</sub><sup>x</sup> f(t) dt　　f(x) = F′(x)　　E[g(X)] = ∫ g(x) f(x) dx</div>
-        <p>「f(x) = c × (式)」と定数入りで与えられたら、まず全体の積分が1になるように c を決めます。分布関数 F が与えられたら微分すれば密度 f に戻り、P(a &lt; X ≤ b) = F(b) - F(a) で確率が出ます。中央値は F(m) = 0.5 を満たす m です。E[g(X)] は「値 g(x) に密度を掛けて積分」で、離散なら Σ g(x) P(X = x) と同じ形です。一般に E[g(X)] ≠ g(E[X]) で、たとえば E(X²) と {E(X)}² の差がちょうど分散です。</p>
+        <p>「f(x) = c × (式)」と定数入りで与えられたら、まず全体の積分が1になるように c を決めます。分布関数 F が与えられたら微分すれば密度 f に戻り、P(a &lt; X ≤ b) = F(b) - F(a) で確率が出ます。中央値は F(m) = 0.5 を満たす m です。E[g(X)] は「値 g(x) に密度を掛けて積分」で、離散なら Σ g(x) P(X = x) と同じ形です。一般に E[g(X)] ≠ g(E[X]) で、たとえば E(X²) と {'{'}E(X){'}'}² の差がちょうど分散です。</p>
         <div class="example"><strong>数値で確認</strong>f(x) = c x(1 - x)（0 ≤ x ≤ 1）。<br>
         ∫<sub>0</sub><sup>1</sup> (x - x²) dx = 1/2 - 1/3 = 1/6 なので <strong>c = 6</strong>。<br>
         E(X) = 6∫(x² - x³)dx = 6(1/3 - 1/4) = 1/2、E(X²) = 6∫(x³ - x⁴)dx = 6(1/4 - 1/5) = 0.3、Var(X) = 0.3 - 0.5² = <strong>0.05</strong>。<br>
@@ -615,7 +601,7 @@
         <div class="formula"><span class="label">二項分布 Bin(n, p)</span>P(X = k) = <sub>n</sub>C<sub>k</sub> p<sup>k</sup>(1-p)<sup>n-k</sup>　　(k = 0, 1, …, n)</div>
         <p>式の3つの部分が、それぞれ別の役割を持ちます。p<sup>k</sup> は「成功が k 回起きる確率」、(1-p)<sup>n-k</sup> は「残りが失敗である確率」、そして <sub>n</sub>C<sub>k</sub> は「n回のうちどの回が成功だったか」の並び方の数です。順序を区別しないので組合せを掛けます。</p>
         <p>二項分布は<strong>独立なベルヌーイ試行の和</strong> X = X₁ + … + Xₙ なので、期待値と分散は加法性から即座に出ます。1回あたり E(Xᵢ) = p、Var(Xᵢ) = E(Xᵢ²) - p² = p - p² = p(1-p) なので、n倍して <strong>E(X) = np、Var(X) = np(1-p)</strong>。分散は p = 0.5 のとき最大になり、p が0や1に近いほど小さくなります（結果がほぼ決まっているため）。</p>
-        <div class="formula"><span class="label">隣り合う確率の比</span>P(X = k+1) / P(X = k) = {(n - k) / (k + 1)} · {p / (1 - p)}</div>
+        <div class="formula"><span class="label">隣り合う確率の比</span>P(X = k+1) / P(X = k) = {'{'}(n - k) / (k + 1){'}'} · {'{'}p / (1 - p){'}'}</div>
         <p>組合せの比 <sub>n</sub>C<sub>k+1</sub> / <sub>n</sub>C<sub>k</sub> = (n-k)/(k+1) から出る式です。P(X = 0) = (1-p)<sup>n</sup> から順に掛けていけば階乗を毎回計算せずに済み、比が1を超える間は確率が増えるので、比が初めて1以下になる k が最も起こりやすい値（モード）になります。</p>
         <h4>ポアソン分布</h4>
         <div class="formula"><span class="label">ポアソン分布 Po(λ)</span>P(X = k) = e<sup>-λ</sup> λ<sup>k</sup> / k!　　(k = 0, 1, 2, …)</div>
@@ -638,7 +624,7 @@
         <div class="formula"><span class="label">指数分布 Exp(λ)</span>f(x) = λe<sup>-λx</sup>　(x ≥ 0)　　P(X &gt; x) = e<sup>-λx</sup>　　E(X) = 1/λ　　Var(X) = 1/λ²</div>
         <p>ポアソン過程で「次の事象が起きるまでの待ち時間」を表します。ポアソン分布と指数分布は<strong>同じ現象の裏表</strong>で、1時間あたり平均3件（λ = 3）なら、次の到着までの平均待ち時間は 1/3 時間 = 20分。P(X &gt; x) = e<sup>-λx</sup> は「時間 x のあいだに1件も起きない確率」＝ポアソン分布で k = 0 とした e<sup>-λx</sup> そのものです。指数分布も無記憶性を持つため、「もう30分待った」ことは残り待ち時間の分布を変えません。</p>
         <h4>正規分布</h4>
-        <div class="formula"><span class="label">正規分布 N(μ, σ²)</span>f(x) = 1/(σ√(2π)) · exp{ -(x-μ)² / (2σ²) }</div>
+        <div class="formula"><span class="label">正規分布 N(μ, σ²)</span>f(x) = 1/(σ√(2π)) · exp{'{'} -(x-μ)² / (2σ²) {'}'}</div>
         <p>式を丸暗記する必要はありませんが、構造は読めます。指数の中身が -(x-μ)²/(2σ²) なので、<strong>平均 μ を中心に左右対称</strong>で、離れるほど二乗の速さで密度が落ちます。σ は幅を決める尺度母数で、前の 1/(σ√(2π)) は全体の面積を1にそろえる係数です。多数の小さな独立要因が<strong>足し合わさって</strong>できる量が正規分布に近づく（中心極限定理）ため、測定誤差や身長などに現れます。</p>
         <ul>
           <li><strong>68-95-99.7の法則：</strong>μ±σ に約68%、μ±2σ に約95%、μ±3σ に約99.7%。厳密に95%なら係数は1.96です。</li>
@@ -693,7 +679,7 @@
           <li><strong>F分布</strong>は「2つの χ² を自由度で割って比を取ったもの」。比なので0以上、右に歪みます。分子・分母の自由度2つを持ち、<strong>F(ν₁,ν₂) と F(ν₂,ν₁) は別物</strong>です。分散の比較（分散比検定・分散分析・回帰の全体検定）に使います。</li>
         </ul>
         <div class="tip"><strong>3つの関係式</strong>t(ν)² = F(1, ν)、分母の自由度を無限大にした F(ν, ∞) = χ²(ν)/ν、そして t(∞) = N(0,1)。「2群の t 検定と、2群の分散分析の結論が必ず一致する」のは1つ目の関係式が理由です。</div>
-        <div class="exam"><strong>F表には上側しか載っていない</strong>V ∼ F(ν₁, ν₂) なら 1/V ∼ F(ν₂, ν₁) なので、<strong>F(ν₁, ν₂) の下側α点 = 1 / {F(ν₂, ν₁) の上側α点}</strong> です。自由度を入れ替えて逆数を取る、の2点を忘れないこと。母分散比の区間推定や、両側の等分散検定で下側の棄却限界が必要になったときに使います。</div>
+        <div class="exam"><strong>F表には上側しか載っていない</strong>V ∼ F(ν₁, ν₂) なら 1/V ∼ F(ν₂, ν₁) なので、<strong>F(ν₁, ν₂) の下側α点 = 1 / {'{'}F(ν₂, ν₁) の上側α点{'}'}</strong> です。自由度を入れ替えて逆数を取る、の2点を忘れないこと。母分散比の区間推定や、両側の等分散検定で下側の棄却限界が必要になったときに使います。</div>
 
 <div class="table-wrap"><table>
           <thead><tr><th>分布</th><th>中心となる統計量</th><th>主な用途</th><th>自由度</th></tr></thead>
@@ -719,7 +705,7 @@
         <p>ただし<strong>離散を連続で近似する</strong>ため、そのままでは境界の扱いがずれます。二項分布では P(X ≤ 3) に X = 3 の確率が丸ごと含まれますが、連続分布では1点の確率は0だからです。そこで、整数 k を「k を中心とする幅1の区間」とみなし、境界を0.5だけ外側にずらします。これが<strong>連続修正（半整数補正）</strong>です。</p>
         <div class="formula"><span class="label">連続修正</span>P(X ≤ k) ≈ P(Y ≤ k + 0.5)　　P(X ≥ k) ≈ P(Y ≥ k - 0.5)　　P(X = k) ≈ P(k - 0.5 ≤ Y ≤ k + 0.5)</div>
         <p>方向を間違えないコツは「<strong>含めたい整数を必ず内側に取り込むように広げる</strong>」と考えることです。P(X ≥ 3) なら3を含めたいので 2.5 から、P(X &gt; 3) なら3を除きたいので 3.5 から数えます。n が非常に大きければ0.5のずれは相対的に小さくなりますが、n が中程度のときは無視できません。</p>
-        <p>標本比率 p̂ = X/n についても同じことで、SE(p̂) = √{p(1-p)/n} を使って p̂ ≈ N(p, p(1-p)/n) とするのが、比率の推定・検定の出発点になります。</p>
+        <p>標本比率 p̂ = X/n についても同じことで、SE(p̂) = √{'{'}p(1-p)/n{'}'} を使って p̂ ≈ N(p, p(1-p)/n) とするのが、比率の推定・検定の出発点になります。</p>
 <div class="exam"><strong>上側確率点の読み方</strong>表が「P(T ≥ t<sub>α</sub>)=α」を載せるか、下側累積確率を載せるかを確認。両側5%なら片側2.5%ずつです。</div>
       </section>
 
@@ -738,7 +724,7 @@
             <tr><td>有効性</td><td>Var(θ̂) が小さい</td><td>不偏なもの同士なら、ばらつきが小さいほど良い</td></tr>
           </tbody>
         </table></div>
-        <div class="formula"><span class="label">平均二乗誤差（MSE）</span>MSE(θ̂) = E[(θ̂ - θ)²] = Var(θ̂) + {バイアス}²</div>
+        <div class="formula"><span class="label">平均二乗誤差（MSE）</span>MSE(θ̂) = E[(θ̂ - θ)²] = Var(θ̂) + {'{'}バイアス{'}'}²</div>
         <p>推定の悪さは「ばらつき」と「偏り」の2成分に分解できる、という重要な式です。不偏（バイアス0）でも分散が大きければ実用にならず、多少偏っても分散が小さいほうが総合的に良い場合もあります。標本平均 X̄ は μ に対して不偏かつ一致、不偏分散 S² は σ² に対して不偏かつ一致です。</p>
         <p class="source-note">点推定量の作り方には、母集団のモーメントと標本のモーメントを対応させる<strong>モーメント法</strong>と、「観測されたデータが最も起こりやすくなる母数」を選ぶ<strong>最尤法</strong>があります。二項の p を p̂ = x/n と推定するのは、どちらの方法でも同じ答えになる例です。</p>
 
@@ -762,7 +748,7 @@
             <tr><td>母平均μ・σ既知</td><td>x̄ ± z<sub>1-α/2</sub> σ/√n</td><td>Z</td></tr>
             <tr><td>母平均μ・σ未知、正規</td><td>x̄ ± t<sub>n-1,1-α/2</sub> s/√n</td><td>t、自由度n-1</td></tr>
             <tr><td>母分散σ²・正規</td><td>((n-1)s²/χ²<sub>n-1,1-α/2</sub>, (n-1)s²/χ²<sub>n-1,α/2</sub>)</td><td>逆順になる</td></tr>
-            <tr><td>母比率p・大標本</td><td>p̂ ± z<sub>1-α/2</sub>√{p̂(1-p̂)/n}</td><td>正規近似の妥当性</td></tr>
+            <tr><td>母比率p・大標本</td><td>p̂ ± z<sub>1-α/2</sub>√{'{'}p̂(1-p̂)/n{'}'}</td><td>正規近似の妥当性</td></tr>
             <tr><td>相関ρ・2変量正規</td><td>Fisher変換 z<sub>r</sub>=atanh(r)、SE=1/√(n-3)、最後にtanhで戻す</td><td>rを直接正規近似しない</td></tr>
           </tbody>
         </table></div>
@@ -772,19 +758,19 @@
           <li><strong>母平均（σ未知）：</strong>σ を s で代用したぶんの不確かさを、t 分布の広い裾が吸収します。同じ信頼係数なら区間は Z のときより必ず広くなります。</li>
           <li><strong>母分散：</strong>χ² は左右非対称なので<strong>「± の形にできません</strong>」。区間の下限と上限で別々の分位点を使い、しかも (n-1)s² を χ² で<strong>割る</strong>ため、大きい分位点で割った側が下限になります（上下が入れ替わって見えるのはこのため）。</li>
           <li><strong>母比率：</strong>SE の中の p が未知なので p̂ で代用します。np̂ と n(1-p̂) がともに5以上程度でないと、正規近似が成り立たず区間が信用できません。</li>
-          <li><strong>相関係数：</strong>r は -1〜1 に閉じ込められており、ρ が ±1 に近いと分布が強く歪みます。そこで z<sub>r</sub> = atanh(r) = (1/2)log{(1+r)/(1-r)} と変換すると、ほぼ正規で分散が 1/(n-3) に安定します（<strong>フィッシャーのz変換</strong>）。この尺度で ± z·SE の区間を作り、最後に tanh で元に戻します。</li>
+          <li><strong>相関係数：</strong>r は -1〜1 に閉じ込められており、ρ が ±1 に近いと分布が強く歪みます。そこで z<sub>r</sub> = atanh(r) = (1/2)log{'{'}(1+r)/(1-r){'}'} と変換すると、ほぼ正規で分散が 1/(n-3) に安定します（<strong>フィッシャーのz変換</strong>）。この尺度で ± z·SE の区間を作り、最後に tanh で元に戻します。</li>
         </ul>
         <h4>必要な標本サイズを逆算する</h4>
         <p>「誤差の幅（許容誤差）E 以内で母平均を推定したい」なら、E = z<sub>1-α/2</sub>·σ/√n を n について解きます。</p>
         <div class="formula"><span class="label">標本サイズの設計</span>n ≥ (z<sub>1-α/2</sub> · σ / E)²　　比率なら n ≥ z<sub>1-α/2</sub>² · p(1-p) / E²</div>
         <p>比率の場合、p が未知なら p = 0.5 と置くのが安全です。p(1-p) は p = 0.5 で最大値 0.25 を取るため、最も条件の悪いケースで見積もることになります。95%・許容誤差3%なら n ≈ 1.96²×0.25/0.03² ≈ 1067。世論調査の標本が1000人前後である理由がこれです。<strong>母集団の大きさ N はこの式に入っていません</strong>——全国調査でも県内調査でも必要数はほぼ同じ、というのが直感に反しつつ重要な点です。</p>
-        <div class="tip"><strong>有限母集団補正</strong>有限母集団 N から非復元で n 個を単純無作為抽出するときは、標準誤差に √{(N-n)/(N-1)} を掛けます。第4章の超幾何分布に現れた因子と同じものです。抽出率 n/N が小さければ1に近く無視できますが、n/N が大きい（母集団の相当部分を調べた）ときは誤差が実際より小さくなり、区間は狭くなります。</div>
+        <div class="tip"><strong>有限母集団補正</strong>有限母集団 N から非復元で n 個を単純無作為抽出するときは、標準誤差に √{'{'}(N-n)/(N-1){'}'} を掛けます。第4章の超幾何分布に現れた因子と同じものです。抽出率 n/N が小さければ1に近く無視できますが、n/N が大きい（母集団の相当部分を調べた）ときは誤差が実際より小さくなり、区間は狭くなります。</div>
 
         <h3>2母集団の区間推定</h3>
         <p>2群を比べるときは、母数そのものではなく<strong>差 μ₁-μ₂ や比 σ₁²/σ₂²</strong> を推定します。作り方は1母集団と同じで、「差の推定値 ± 臨界値 × 差の標準誤差」です。差の標準誤差は、独立なら分散が足せることから次のようになります。</p>
         <div class="formula"><span class="label">平均差の標準誤差（独立2標本）</span>SE(x̄₁-x̄₂) = √(σ₁²/n₁ + σ₂²/n₂)</div>
         <p>引き算なのに中身が足し算なのは、両群の不確かさがどちらも差をぼやけさせるからです（Var(X-Y) = Var(X)+Var(Y)）。母分散が未知のときは、等分散を仮定するかどうかで2通りに分かれます。</p>
-        <div class="formula"><span class="label">プールした分散（等分散を仮定する場合）</span>s<sub>p</sub>² = {(n₁-1)s₁² + (n₂-1)s₂²} / (n₁+n₂-2)</div>
+        <div class="formula"><span class="label">プールした分散（等分散を仮定する場合）</span>s<sub>p</sub>² = {'{'}(n₁-1)s₁² + (n₂-1)s₂²{'}'} / (n₁+n₂-2)</div>
         <p>これは2群の不偏分散を<strong>自由度で重み付けした加重平均</strong>です。「どちらの群も同じ σ² を持つ」という仮定のもと、両群のデータを合わせて σ² を1つ推定するので、自由度も n₁-1 と n₂-1 を足した n₁+n₂-2 になります。標本サイズが大きい群の情報が強く反映される点に注目してください。</p>
         <p>等分散が疑わしいときは<strong>ウェルチ法</strong>を使い、各群の分散を別々に使った √(s₁²/n₁ + s₂²/n₂) を標準誤差とし、自由度は近似式で求めます。分散が大きく違い n も違う場面ではプール法の誤差が大きくなるため、実務では最初からウェルチ法を既定とすることが多くなっています。</p>
 
@@ -795,7 +781,7 @@
             <tr><td>平均差・未知だが等分散</td><td>(x̄₁-x̄₂) ± t s<sub>p</sub>√(1/n₁+1/n₂)</td><td>プールt、df=n₁+n₂-2</td></tr>
             <tr><td>平均差・未知、等分散不明</td><td>(x̄₁-x̄₂) ± t √(s₁²/n₁+s₂²/n₂)</td><td>Welch、近似自由度</td></tr>
             <tr><td>母分散比 σ₁²/σ₂²</td><td>s₁²/s₂²をF分位点で割る</td><td>正規母集団、分子・分母の順序</td></tr>
-            <tr><td>母比率差 p₁-p₂</td><td>(p̂₁-p̂₂) ± z√{p̂₁(1-p̂₁)/n₁+p̂₂(1-p̂₂)/n₂}</td><td>区間では通常プールしない</td></tr>
+            <tr><td>母比率差 p₁-p₂</td><td>(p̂₁-p̂₂) ± z√{'{'}p̂₁(1-p̂₁)/n₁+p̂₂(1-p̂₂)/n₂{'}'}</td><td>区間では通常プールしない</td></tr>
           </tbody>
         </table></div>
                 <div class="exam"><strong>対応ありデータ</strong>同じ人の前後測定は独立2標本ではありません。各人の差 dᵢ = 後 - 前 をまず作り、その差の母平均に対する1標本 t として扱います（区間は d̄ ± t<sub>n-1</sub>·s<sub>d</sub>/√n、自由度は n-1）。個人差という大きな変動が引き算で消えるので、対応をつけた設計は同じ n でも検出力が高くなります。<strong>データが「2列で1人1行」なら対応あり、「2群で別々の人」なら独立2標本</strong>と見分けます。</div>
@@ -844,12 +830,12 @@
             <tr><td>1母平均=μ₀、σ既知</td><td>(x̄-μ₀)/(σ/√n)</td><td>Z</td><td>σ既知は実務では稀</td></tr>
             <tr><td>1母平均=μ₀、σ未知</td><td>(x̄-μ₀)/(s/√n)</td><td>t(n-1)</td><td>小標本は正規性</td></tr>
             <tr><td>1母分散=σ₀²</td><td>(n-1)s²/σ₀²</td><td>χ²(n-1)</td><td>正規性に敏感</td></tr>
-            <tr><td>1母比率=p₀</td><td>(p̂-p₀)/√{p₀(1-p₀)/n}</td><td>近似Z</td><td>H₀のp₀でSE</td></tr>
+            <tr><td>1母比率=p₀</td><td>(p̂-p₀)/√{'{'}p₀(1-p₀)/n{'}'}</td><td>近似Z</td><td>H₀のp₀でSE</td></tr>
             <tr><td>独立2群・平均差、等分散</td><td>プール分散のt</td><td>t(n₁+n₂-2)</td><td>等分散仮定</td></tr>
             <tr><td>独立2群・平均差、等分散不明</td><td>Welchのt</td><td>近似t</td><td>通常はこちらが堅牢</td></tr>
             <tr><td>対応あり平均差</td><td>d̄/(s<sub>d</sub>/√n)</td><td>t(n-1)</td><td>差を1標本として扱う</td></tr>
             <tr><td>2母分散の比=1</td><td>s₁²/s₂²</td><td>F(n₁-1,n₂-1)</td><td>正規性に敏感</td></tr>
-            <tr><td>2母比率の差=0</td><td>(p̂₁-p̂₂)/√{p̂(1-p̂)(1/n₁+1/n₂)}</td><td>近似Z</td><td>検定ではプールp̂</td></tr>
+            <tr><td>2母比率の差=0</td><td>(p̂₁-p̂₂)/√{'{'}p̂(1-p̂)(1/n₁+1/n₂){'}'}</td><td>近似Z</td><td>検定ではプールp̂</td></tr>
           </tbody>
         </table></div>
 
@@ -870,7 +856,7 @@
         <div class="warning"><strong>データを見てから片側に変えない</strong>結果が出てから「都合の良い向き」に片側検定へ切り替えると、実質的な第1種の過誤の確率は宣言した α を超えます。片側にできるのは、反対方向の効果が理論上あり得ない、あるいは反対方向なら結論が変わらない場合に限られます。迷ったら両側が既定です。</div>
         <p>χ² 検定や分散分析の F 検定は「H₀ からのずれが大きいほど統計量が大きくなる」構造なので、<strong>対立仮説が両側的（どの方向に違っていてもよい）でも棄却域は上側だけ</strong>に取ります。これは片側検定という意味ではなく、統計量の作り方の帰結です。</p>
 <div class="exam"><strong>区間推定との対応</strong>両側α検定でH₀: θ=θ₀を棄却することと、信頼係数1-αの両側信頼区間がθ₀を含まないことは、同じ前提・手法なら対応します。</div>
-        <details><summary>Welchの自由度（必要時に参照）</summary><div><div class="formula">ν ≈ (s₁²/n₁+s₂²/n₂)² / {(s₁²/n₁)²/(n₁-1)+(s₂²/n₂)²/(n₂-1)}</div><p>通常はソフトウェアが計算します。試験では、等分散プールtとの「分母と自由度の違い」を優先して理解。</p></div></details>
+        <details><summary>Welchの自由度（必要時に参照）</summary><div><div class="formula">ν ≈ (s₁²/n₁+s₂²/n₂)² / {'{'}(s₁²/n₁)²/(n₁-1)+(s₂²/n₂)²/(n₂-1){'}'}</div><p>通常はソフトウェアが計算します。試験では、等分散プールtとの「分母と自由度の違い」を優先して理解。</p></div></details>
         <div class="quiz"><strong>30秒チェック：</strong>p=0.08だった。「H₀が真である確率は8%」でよい？<br><button type="button" data-answer="a-test">答えを見る</button><div class="answer" id="a-test">誤り。p値はH₀を仮定した条件付き確率 P(観測以上に極端な統計量 | H₀) です。仮説の確率 P(H₀ | データ) ではありません。</div></div>
       </section>
 
@@ -913,11 +899,11 @@
         <h3>2種類の検定：個別のt検定と全体のF検定</h3>
         <div class="formula"><span class="label">個別の係数（t検定）</span>t = bⱼ / SE(bⱼ)　　H₀: βⱼ = 0　　自由度 n - p - 1</div>
         <p>「他の変数を調整したうえで、Xⱼ には説明力があるか」を見ます。分母の SE(bⱼ) は、残差分散が大きいほど、また Xⱼ が他の説明変数と強く相関しているほど大きくなります。自由度が n-p-1 なのは、β₀ を含む p+1 個の母数を推定したぶん減るからです。</p>
-        <div class="formula"><span class="label">モデル全体（F検定）</span>F = (SSR / p) / {SSE / (n-p-1)} = MSR / MSE　　H₀: β₁ = β₂ = … = β<sub>p</sub> = 0</div>
+        <div class="formula"><span class="label">モデル全体（F検定）</span>F = (SSR / p) / {'{'}SSE / (n-p-1){'}'} = MSR / MSE　　H₀: β₁ = β₂ = … = β<sub>p</sub> = 0</div>
         <p>「説明変数を全部まとめて、切片だけのモデルより説明力が上がっているか」を見ます。分子が「説明できた変動の1自由度あたりの大きさ」、分母が「説明できなかった変動の1自由度あたりの大きさ」なので、比が大きいほどモデルは有効です。<strong>全体のF が有意でも個別のt がどれも有意でない</strong>ことがあり、その典型的な原因が次の多重共線性です。</p>
         <h3>決定係数と自由度調整済み決定係数</h3>
         <p>R² には「説明変数を追加すると、無意味な変数でも決して下がらない」という欠点があります。変数を増やせば最小二乗法はより細かくデータに合わせられるので、SSE は必ず減るからです。これを罰するのが自由度調整済み決定係数です。</p>
-        <div class="formula"><span class="label">自由度調整済み決定係数</span>R̄² = 1 - {SSE/(n-p-1)} / {SST/(n-1)}</div>
+        <div class="formula"><span class="label">自由度調整済み決定係数</span>R̄² = 1 - {'{'}SSE/(n-p-1){'}'} / {'{'}SST/(n-1){'}'}</div>
         <p>平方和そのものではなく、<strong>自由度で割った平均平方の比</strong>を使うのがポイントです。変数を1つ増やすと SSE は減りますが、同時に分母の自由度 n-p-1 も減ります。減り方が小さければ SSE/(n-p-1) はむしろ増え、R̄² は下がります。つまり「増やした変数が、その1自由度に見合う説明をしたか」を判定しているわけです。R̄² は負の値も取り得ます。</p>
         <h3>モデルの前提を残差で点検する</h3>
 <div class="table-wrap"><table>
@@ -953,7 +939,7 @@
             <tr><td>Std. Error</td><td>係数の標準誤差 SE(bⱼ)</td><td>信頼区間 bⱼ ± t<sub>n-p-1</sub> × SE(bⱼ)</td></tr>
             <tr><td>t value</td><td>Estimate ÷ Std. Error</td><td>空欄なら割り算で埋める。|t| がおよそ2を超えれば5%で有意の目安</td></tr>
             <tr><td>Pr(&gt;|t|)</td><td>H₀: βⱼ = 0 の<strong>両側</strong>p値</td><td>α と比べる。片側検定なら、符号が対立仮説の向きと合っているときに半分にする</td></tr>
-            <tr><td>Residual standard error: s on d degrees of freedom</td><td>残差の標準偏差 s = √{SSE/(n-p-1)} と、その自由度 d = n-p-1</td><td><strong>n = d + p + 1</strong> で標本サイズを逆算。s² × d で SSE も出る</td></tr>
+            <tr><td>Residual standard error: s on d degrees of freedom</td><td>残差の標準偏差 s = √{'{'}SSE/(n-p-1){'}'} と、その自由度 d = n-p-1</td><td><strong>n = d + p + 1</strong> で標本サイズを逆算。s² × d で SSE も出る</td></tr>
             <tr><td>Multiple R-squared ／ Adjusted R-squared</td><td>決定係数 R² ／ 自由度調整済み R̄²</td><td>説明変数の数が違うモデルの比較は Adjusted のほう</td></tr>
             <tr><td>F-statistic: F on p and d DF, p-value</td><td>モデル全体の F 検定</td><td>自由度は (p, n-p-1)。H₀ は「切片以外の係数がすべて0」</td></tr>
           </tbody>
@@ -983,7 +969,7 @@
         <p>H₀: μ₁ = μ₂ = … = μ<sub>k</sub>（すべての群の母平均が等しい）、H₁: 少なくとも1組は異なる。判断の材料は、<strong>群の平均どうしのばらつき</strong>と<strong>群の内部でのばらつき</strong>の比です。群平均が多少バラついていても、もともと個体差が大きければ偶然の範囲。逆に群内が揃っているのに群平均が離れていれば、処理の効果を疑う——この直感を式にしたものが分散分析です。</p>
         <div class="formula"><span class="label">平方和の分解</span>SST = SSB + SSE　　（全体の変動 ＝ 群間変動 ＋ 群内変動）</div>
         <p>各データの全体平均からのずれを、(xᵢⱼ - x̄) = (x̄ⱼ - x̄) + (xᵢⱼ - x̄ⱼ) と、<strong>「群平均が全体平均からどれだけずれているか」</strong>と<strong>「個体が自分の群平均からどれだけずれているか」</strong>に分けて2乗和を取ると、交差項が消えてこの分解が得られます。</p>
-        <div class="formula"><span class="label">F比</span>F = MSB / MSE = {SSB/(k-1)} / {SSE/(N-k)}</div>
+        <div class="formula"><span class="label">F比</span>F = MSB / MSE = {'{'}SSB/(k-1){'}'} / {'{'}SSE/(N-k){'}'}</div>
         <p>平方和はデータ数が増えれば増えるので、そのままでは比べられません。それぞれを自由度で割った<strong>平均平方</strong>（1自由度あたりの変動）に直してから比を取ります。自由度は、群間が「k個の群平均のうち自由に動けるのは k-1 個」、群内が「N個のデータから k 個の群平均を引いた N-k」です。</p>
 <div class="table-wrap"><table>
           <thead><tr><th>変動源</th><th>平方和</th><th>自由度</th><th>平均平方</th></tr></thead>
@@ -995,7 +981,7 @@
         </table></div>
                 <h3>なぜ F 比で平均の差が判定できるのか</h3>
         <p>鍵は2つの平均平方の期待値にあります。</p>
-        <div class="formula">E(MSE) = σ²　　E(MSB) = σ² + {Σ nⱼ(μⱼ - μ)²} / (k-1)</div>
+        <div class="formula">E(MSE) = σ²　　E(MSB) = σ² + {'{'}Σ nⱼ(μⱼ - μ)²{'}'} / (k-1)</div>
         <p>MSE は群平均からのずれだけを使うので、<strong>群平均が違っていても影響を受けず</strong>、常に誤差分散 σ² を推定します。一方 MSB は、H₀ が正しければ（すべての μⱼ が等しく第2項が0になり）同じく σ² を推定しますが、群平均に差があれば第2項のぶんだけ大きくなります。</p>
         <p>つまり <strong>H₀ の下では F = MSB/MSE ≈ 1</strong>、差があれば分子だけが膨らんで F は1より大きくなる。だから「平均の差」の検定でありながら、統計量は分散の比になり、<strong>棄却域は上側だけ</strong>になるのです。F が1より十分大きいかを F(k-1, N-k) 分布で判定します。</p>
         <p><strong>前提は3つ：</strong>各群の観測が独立、各群が正規分布に従う、各群の分散が等しい（等分散性）。等分散性は MSE を「共通の σ²」として1つにプールするために必要で、独立2標本のプールt検定と同じ発想です。実際、<strong>k = 2 のとき分散分析のF は 2標本t検定の t の2乗に一致し、結論も必ず一致します</strong>（前章の t(ν)² = F(1,ν) の関係）。</p>
@@ -1053,7 +1039,7 @@
           <tbody>
             <tr><td>母平均（σ既知）</td><td>σ/√n</td><td>Z</td></tr>
             <tr><td>母平均（σ未知）</td><td>s/√n</td><td>t(n-1)</td></tr>
-            <tr><td>母比率</td><td>√{p(1-p)/n}</td><td>近似Z</td></tr>
+            <tr><td>母比率</td><td>√{'{'}p(1-p)/n{'}'}</td><td>近似Z</td></tr>
             <tr><td>平均差（等分散）</td><td>s<sub>p</sub>√(1/n₁+1/n₂)</td><td>t(n₁+n₂-2)</td></tr>
             <tr><td>平均差（Welch）</td><td>√(s₁²/n₁+s₂²/n₂)</td><td>近似t</td></tr>
             <tr><td>回帰係数</td><td>SE(bⱼ)（出力表から読む）</td><td>t(n-p-1)</td></tr>
@@ -1091,11 +1077,7 @@
       </section>
     </main>
   </div>
-
-  <p class="home-foot"><a href="index.html">← 一夜漬けシート一覧に戻る</a></p>
-  <footer>© Study sheet · 内容は2018-12-14版の統計検定2級出題範囲表に準拠。印刷時は検索・進捗UIを省略し、解答を展開します。</footer>
-
-  <script>
+  <script is:inline slot="script">
     (() => {
       const checks = [...document.querySelectorAll('.done')];
       const key = 'statistics-grade2-study-progress-v1';
@@ -1123,35 +1105,6 @@
         });
       });
 
-      // スマホ幅では表をカード表示にする。display:block にすると表の意味が失われるブラウザがあるので role で補う
-      document.querySelectorAll('.table-wrap > table').forEach(table => {
-        const labels = [...table.querySelectorAll('thead th')].map(th => th.textContent.trim());
-        const spans = [];
-        table.classList.add('stack');
-        table.setAttribute('role', 'table');
-        table.querySelectorAll('thead, tbody').forEach(group => group.setAttribute('role', 'rowgroup'));
-        table.querySelectorAll('thead th').forEach(th => th.setAttribute('role', 'columnheader'));
-        table.querySelectorAll('tr').forEach(tr => tr.setAttribute('role', 'row'));
-        table.querySelectorAll('tbody tr').forEach(tr => {
-          let col = 0, head = null;
-          for (const cell of tr.cells) {
-            while (spans[col] > 0) { spans[col]--; col++; }
-            cell.setAttribute('role', cell.tagName === 'TH' ? 'rowheader' : 'cell');
-            if (cell.rowSpan > 1) {
-              spans[col] = cell.rowSpan - 1;
-              cell.classList.add('stack-group');
-            } else if (!head) {
-              head = cell;
-              cell.classList.add('stack-head');
-            } else if (labels[col]) {
-              cell.dataset.label = labels[col];
-            }
-            col += cell.colSpan;
-          }
-          for (; col < spans.length; col++) if (spans[col] > 0) spans[col]--;
-        });
-      });
-
       const search = document.getElementById('search');
       const sections = [...document.querySelectorAll('main section')];
       search.addEventListener('input', () => {
@@ -1162,5 +1115,4 @@
       });
     })();
   </script>
-</body>
-</html>
+</Layout>

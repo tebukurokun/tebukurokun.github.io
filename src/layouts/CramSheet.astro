@@ -1,0 +1,65 @@
+---
+/* 一夜漬けシートの共通レイアウト。head、一覧への戻りリンク（末尾）、footer、
+   表をスマホ幅でカードにするスクリプトを出す。
+   配色と表のカード表示の CSS はシートごとに違うので、各ページが slot="head" の
+   <style is:inline> で持つ。シート固有のスクリプトは slot="script" で渡す。 */
+import Head from '../components/Head.astro';
+
+interface Props {
+  /** ファイル名（拡張子なし）。src/pages/cram/<page>.astro */
+  page: string;
+  title: string;
+  description: string;
+  /** footer の一文 */
+  footer: string;
+}
+
+const { page, title, description, footer } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <Head title={title} description={description} path={`/cram/${page}.html`} />
+  <slot name="head" />
+</head>
+<body id="top">
+  <slot />
+  <p class="home-foot"><a href="./">← 一夜漬けシート一覧に戻る</a></p>
+  <footer>{footer}</footer>
+  <script is:inline>
+    // スマホ幅では表をカード表示にする（見た目は各シートの @media (max-width: 640px)）。
+    // display:block にすると表の意味が失われるブラウザがあるので role で補う
+    document.querySelectorAll('.table-wrap > table').forEach(table => {
+      const labels = [...table.querySelectorAll('thead th')].map(th => th.textContent.trim());
+      const spans = [];
+      table.classList.add('stack');
+      table.setAttribute('role', 'table');
+      table.querySelectorAll('thead, tbody').forEach(group => group.setAttribute('role', 'rowgroup'));
+      table.querySelectorAll('thead th').forEach(th => th.setAttribute('role', 'columnheader'));
+      table.querySelectorAll('tr').forEach(tr => tr.setAttribute('role', 'row'));
+      table.querySelectorAll('tbody tr').forEach(tr => {
+        let col = 0, head = null;
+        for (const cell of tr.cells) {
+          while (spans[col] > 0) { spans[col]--; col++; }
+          cell.setAttribute('role', cell.tagName === 'TH' ? 'rowheader' : 'cell');
+          if (cell.rowSpan > 1) {
+            spans[col] = cell.rowSpan - 1;
+            cell.classList.add('stack-group');
+          } else if (!head) {
+            head = cell;
+            cell.classList.add('stack-head');
+          } else if (labels[col]) {
+            cell.dataset.label = labels[col];
+          }
+          col += cell.colSpan;
+        }
+        for (; col < spans.length; col++) if (spans[col] > 0) spans[col]--;
+      });
+    });
+  </script>
+  <slot name="script" />
+</body>
+</html>

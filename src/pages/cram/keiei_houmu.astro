@@ -1,26 +1,14 @@
-<!doctype html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="中小企業診断士1次試験「経営法務」の最終チェックシート。会社法・知的財産権・契約・倒産処理の要件を表で比較。法令基準日2026年5月1日、2026年度試験対応">
-  <title>中小企業診断士1次試験 最終チェックシート｜経営法務</title>
-  <link rel="canonical" href="https://tebukuro.me/cram/keiei_houmu.html">
-  <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <meta property="og:type" content="article">
-  <meta property="og:site_name" content="tebukuro">
-  <meta property="og:title" content="中小企業診断士1次試験 最終チェックシート｜経営法務">
-  <meta property="og:description" content="中小企業診断士1次試験「経営法務」の最終チェックシート。会社法・知的財産権・契約・倒産処理の要件を表で比較。法令基準日2026年5月1日、2026年度試験対応">
-  <meta property="og:url" content="https://tebukuro.me/cram/keiei_houmu.html">
-  <meta property="og:image" content="https://tebukuro.me/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="tebukuro">
-  <meta property="og:locale" content="ja_JP">
-  <meta name="twitter:card" content="summary_large_image">
-  <style>
+---
+import Layout from '../../layouts/CramSheet.astro';
+---
+
+<Layout
+  page="keiei_houmu"
+  title="中小企業診断士1次試験 最終チェックシート｜経営法務"
+  description="中小企業診断士1次試験「経営法務」の最終チェックシート。会社法・知的財産権・契約・倒産処理の要件を表で比較。法令基準日2026年5月1日、2026年度試験対応"
+  footer="60点狙い増補版｜最終更新 2026-08-01｜直前は「最後の5分チェック」→過去3年マップ→表の順で確認。"
+>
+  <style is:inline slot="head">
     :root {
       --ink: #172033;
       --muted: #5b667a;
@@ -185,10 +173,8 @@
       .stack [data-label] + [data-label] { margin-top: 6px; }
     }
   </style>
-</head>
-<body id="top">
   <header class="hero">
-    <p class="home"><a href="index.html">← 一夜漬けシート一覧</a></p>
+    <p class="home"><a href="./">← 一夜漬けシート一覧</a></p>
     <p class="eyebrow">中小企業診断士1次試験</p>
     <h1>最終チェックシート</h1>
     <p class="subtitle">経営法務</p>
@@ -692,37 +678,4 @@
       </section>
     </main>
   </div>
-  <p class="home-foot"><a href="index.html">← 一夜漬けシート一覧に戻る</a></p>
-  <footer>60点狙い増補版｜最終更新 2026-08-01｜直前は「最後の5分チェック」→過去3年マップ→表の順で確認。</footer>
-  <script>
-    // スマホ幅では表をカード表示にする。display:block にすると表の意味が失われるブラウザがあるので role で補う
-    document.querySelectorAll('.table-wrap > table').forEach(table => {
-      const labels = [...table.querySelectorAll('thead th')].map(th => th.textContent.trim());
-      const spans = [];
-      table.classList.add('stack');
-      table.setAttribute('role', 'table');
-      table.querySelectorAll('thead, tbody').forEach(group => group.setAttribute('role', 'rowgroup'));
-      table.querySelectorAll('thead th').forEach(th => th.setAttribute('role', 'columnheader'));
-      table.querySelectorAll('tr').forEach(tr => tr.setAttribute('role', 'row'));
-      table.querySelectorAll('tbody tr').forEach(tr => {
-        let col = 0, head = null;
-        for (const cell of tr.cells) {
-          while (spans[col] > 0) { spans[col]--; col++; }
-          cell.setAttribute('role', cell.tagName === 'TH' ? 'rowheader' : 'cell');
-          if (cell.rowSpan > 1) {
-            spans[col] = cell.rowSpan - 1;
-            cell.classList.add('stack-group');
-          } else if (!head) {
-            head = cell;
-            cell.classList.add('stack-head');
-          } else if (labels[col]) {
-            cell.dataset.label = labels[col];
-          }
-          col += cell.colSpan;
-        }
-        for (; col < spans.length; col++) if (spans[col] > 0) spans[col]--;
-      });
-    });
-  </script>
-</body>
-</html>
+</Layout>
