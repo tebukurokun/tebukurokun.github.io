@@ -52,7 +52,7 @@ export const WORKS: LinkCard[] = [
     label: 'EXTENSION',
     title: 'Amazon URL Minimizer',
     icon: 'amazon-url-minimizer.svg',
-    desc: 'Amazonの長い商品URLを最小形にして、右クリックからコピーできるChrome拡張機能。',
+    desc: 'Amazonの長い商品URLを最小形にし、右クリックからコピーできるChrome拡張機能。',
   },
   {
     href: 'https://nosh-log.tebukuro.me/',
@@ -66,21 +66,21 @@ export const WORKS: LinkCard[] = [
     label: 'FORTUNE',
     title: '運命観測所',
     icon: 'uranai.png',
-    desc: '名前・年齢・性別・星座・血液型から、あなただけの運勢を鑑定する占いサイト。',
+    desc: 'あなただけの運勢を鑑定する占いサイト。',
   },
   {
     href: '/cram/',
     label: 'STUDY',
     title: '資格試験 一夜漬けシート',
     icon: 'study.svg',
-    desc: '中小企業診断士1次・2次試験、統計検定2級の直前チェックシート集。定義・数値・判断ルールと解法手順を1ページにまとめている。',
+    desc: '中小企業診断士1次・2次試験、統計検定2級の直前チェックシート集。',
   },
   {
     href: '/shindanshi-2ji/',
     label: 'STUDY',
     title: '診断士2次試験 過去問解説',
     icon: 'study.svg',
-    desc: '中小企業診断士2次試験の過去問を事例ごとに解説。与件の根拠、字数内の答案例、予備校の解答例との違いを設問単位で整理している。',
+    desc: '中小企業診断士2次試験の過去問を事例ごとに解説。',
   },
   {
     href: 'https://harmonic-bench.tebukuro.me/',
