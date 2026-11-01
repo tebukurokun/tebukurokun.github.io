@@ -776,7 +776,11 @@ const posts = await getLatestPosts(3);
         <span class="brand-name">tebukuro</span>
       </a>
       <ul>
-        <li><a class="nav-link" href="/blog/">Blog</a></li>
+        <li>
+          <a class="nav-link" href="/blog/" target="_blank" rel="noopener"
+            >Blog</a
+          >
+        </li>
         <li><a class="nav-link" href="#works">Links</a></li>
         <li><a class="nav-link" href="#bbs">BBS</a></li>
         <li><a class="nav-link" href="/privacy.html">Privacy</a></li>
@@ -823,7 +827,12 @@ const posts = await getLatestPosts(3);
           >
             <i class="fa-brands fa-github"></i>
           </a>
-          <a href="https://tebukuro.me/blog/" aria-label="Blog">
+          <a
+            href="/blog/"
+            target="_blank"
+            rel="noopener"
+            aria-label="Blog"
+          >
             <i class="fa-solid fa-blog"></i>
           </a>
           <a
@@ -845,14 +854,14 @@ const posts = await getLatestPosts(3);
         <ul class="posts">
           {posts.map(post => (
             <li>
-              <a href={post.path}>
+              <a href={post.path} target="_blank" rel="noopener">
                 <span class="post-date">{post.date}</span>
                 <span class="post-title">{post.title}</span>
               </a>
             </li>
           ))}
         </ul>
-        <a class="chip" href="/blog/">
+        <a class="chip" href="/blog/" target="_blank" rel="noopener">
           <i class="fa-solid fa-blog"></i>
           ブログ記事一覧
         </a>
