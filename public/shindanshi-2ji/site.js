@@ -9,15 +9,22 @@
     const apply = on => {
       document.body.classList.toggle('practice', on);
       toggle.setAttribute('aria-pressed', String(on));
-      if (!on) document.querySelectorAll('.answer.shown').forEach(a => a.classList.remove('shown'));
+      if (!on)
+        document.querySelectorAll('.answer.shown').forEach(a => {
+          a.classList.remove('shown');
+        });
     };
     let saved = false;
-    try { saved = localStorage.getItem(key) === '1'; } catch (_) {}
+    try {
+      saved = localStorage.getItem(key) === '1';
+    } catch (_) {}
     apply(saved);
     toggle.addEventListener('click', () => {
       const on = !document.body.classList.contains('practice');
       apply(on);
-      try { localStorage.setItem(key, on ? '1' : '0'); } catch (_) {}
+      try {
+        localStorage.setItem(key, on ? '1' : '0');
+      } catch (_) {}
     });
     document.querySelectorAll('.reveal').forEach(btn => {
       btn.addEventListener('click', () => btn.closest('.answer').classList.add('shown'));
@@ -32,12 +39,23 @@
     const spy = () => {
       ticking = false;
       let active = links[0];
-      targets.forEach((t, j) => { if (t && t.getBoundingClientRect().top <= 120) active = links[j]; });
-      links.forEach(a => a.classList.toggle('active', a === active));
+      targets.forEach((t, j) => {
+        if (t && t.getBoundingClientRect().top <= 120) active = links[j];
+      });
+      links.forEach(a => {
+        a.classList.toggle('active', a === active);
+      });
     };
-    addEventListener('scroll', () => {
-      if (!ticking) { ticking = true; requestAnimationFrame(spy); }
-    }, { passive: true });
+    addEventListener(
+      'scroll',
+      () => {
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(spy);
+        }
+      },
+      { passive: true },
+    );
     spy();
   }
 })();

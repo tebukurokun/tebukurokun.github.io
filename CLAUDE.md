@@ -30,6 +30,8 @@ npm install          # first time
 npm run dev          # local preview with live reload (http://localhost:4321)
 npm run build        # build to dist/
 npm run preview      # serve dist/
+npm run lint         # Biome: lint + format check (no writes)
+npm run format       # Biome: apply formatting and safe fixes
 
 # Regenerate OGP image after editing og-image.svg (requires rsvg-convert from librsvg)
 rsvg-convert -w 1200 -h 630 og-image.svg -o public/og-image.png
@@ -46,7 +48,7 @@ magick /tmp/icon512.png -resize 180x180 -strip public/apple-touch-icon.png
 magick /tmp/icon512.png -define icon:auto-resize=48,32,16 public/favicon.ico
 ```
 
-There is no linter, formatter or test suite; the only CI is the deploy workflow. The repo formatter (Prettier-style) appears to be applied externally by the user's editor — preserve the existing whitespace style when editing.
+**Biome** (`biome.json`, pinned in `devDependencies`) lints and formats TS/JS/JSON/YAML and the frontmatter of `.astro` files; run `npm run format` after editing them. Deliberately left out: `.astro` templates (Biome's HTML support is experimental, and reflowing the Japanese page bodies would rewrite ~25k lines and can insert visible spaces between CJK characters), CSS formatting (the compact one-rule-per-line style of `style.css` and the inline `<style>`s is intentional; CSS is still linted), Markdown and standalone `.svg` files. The unused-import/variable rules are off for `.astro` because Biome can't see what the template uses. There is no test suite, and Biome doesn't run in CI; the only CI is the deploy workflow. For the parts Biome doesn't format, preserve the existing whitespace style.
 
 ## Architecture notes
 

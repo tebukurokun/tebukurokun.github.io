@@ -7,7 +7,7 @@ on:
     branches: [master]
   # トップの「最新記事」を blog の RSS から作るため、毎日作り直す（06:00 JST）。
   schedule:
-    - cron: '0 21 * * *'
+    - cron: "0 21 * * *"
   workflow_dispatch:
 
 permissions:

@@ -3,8 +3,9 @@
    コミット（件名が refactor: / build: / chore: / docs: / ci: / style: で始まるものと IGNORED_COMMITS）は数えない。
    目次ページとトップは、カードの元データ（src/data/）の変更も含める。トップは最新記事の日付も見る。
    git の履歴が要るので、Actions の checkout は fetch-depth: 0 にしている。 */
-import type { APIRoute } from 'astro';
+
 import { execFileSync } from 'node:child_process';
+import type { APIRoute } from 'astro';
 import { getLatestPosts } from '../lib/blog';
 
 /** ページ本体以外に、内容に効くファイル */

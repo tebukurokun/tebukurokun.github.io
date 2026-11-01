@@ -109,7 +109,7 @@ export const NEIGHBORS: LinkCard[] = [
   {
     href: 'https://scn-adm1n.f5.si/',
     label: 'PREHAX',
-    title: 'prehax\'s Homepage',
+    title: "prehax's Homepage",
     desc: 'prehaxさんの個人サイト。',
   },
   {
@@ -136,7 +136,7 @@ export const NEIGHBORS: LinkCard[] = [
   {
     href: 'https://dandango.pw/archive/',
     label: 'MACLAURIN',
-    title: 'Maclaurin\'s Archive',
+    title: "Maclaurin's Archive",
     desc: 'Maclaurinさんの個人サイト。',
   },
   {

@@ -21,12 +21,18 @@ const text = (item: string, tag: string) => {
   const cdata = raw.match(/^<!\[CDATA\[([\s\S]*)\]\]>$/);
   if (cdata) return cdata[1];
   return raw.replace(/&(#x[0-9a-f]+|#\d+|\w+);/gi, (all, e: string) => {
-    if (e[0] === '#') return String.fromCodePoint(e[1] === 'x' || e[1] === 'X' ? parseInt(e.slice(2), 16) : Number(e.slice(1)));
+    if (e[0] === '#')
+      return String.fromCodePoint(e[1] === 'x' || e[1] === 'X' ? parseInt(e.slice(2), 16) : Number(e.slice(1)));
     return ENTITIES[e] ?? all;
   });
 };
 
-const ymd = new Intl.DateTimeFormat('ja-JP', { timeZone: 'Asia/Tokyo', year: 'numeric', month: '2-digit', day: '2-digit' });
+const ymd = new Intl.DateTimeFormat('ja-JP', {
+  timeZone: 'Asia/Tokyo',
+  year: 'numeric',
+  month: '2-digit',
+  day: '2-digit',
+});
 
 async function fetchFeed(): Promise<string> {
   let error: unknown;
