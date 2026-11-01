@@ -1,53 +1,14 @@
-<!doctype html>
-<html lang="ja">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>プライバシーポリシー | tebukuro</title>
-    <meta
-      name="description"
-      content="tebukuro.me のプライバシーポリシー。広告配信・アクセス解析における情報の取り扱いについて説明します。"
-    />
-    <meta name="theme-color" content="#08060f" />
-    <link rel="canonical" href="https://tebukuro.me/privacy.html" />
-    <link rel="icon" href="/favicon.ico" sizes="48x48" />
-    <link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <meta name="apple-mobile-web-app-title" content="tebukuro" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="mobile-web-app-capable" content="yes" />
+---
+import Layout from '../layouts/Root.astro';
+---
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="tebukuro" />
-    <meta property="og:title" content="プライバシーポリシー | tebukuro" />
-    <meta
-      property="og:description"
-      content="tebukuro.me のプライバシーポリシー。広告配信・アクセス解析における情報の取り扱いについて説明します。"
-    />
-    <meta property="og:url" content="https://tebukuro.me/privacy.html" />
-    <meta
-      property="og:image"
-      content="https://tebukuro.me/og-image.png"
-    />
-    <meta property="og:image:width" content="1200" />
-    <meta property="og:image:height" content="630" />
-    <meta
-      property="og:image:alt"
-      content="tebukuro"
-    />
-    <meta property="og:locale" content="ja_JP" />
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
-      rel="stylesheet"
-    />
-    <style>
+<Layout
+  title="プライバシーポリシー | tebukuro"
+  description="tebukuro.me のプライバシーポリシー。広告配信・アクセス解析における情報の取り扱いについて説明します。"
+  path="/privacy.html"
+>
+  <Fragment slot="head">
+    <style is:inline>
       :root {
         --bg: #08060f;
         --bg-2: #0d0a1c;
@@ -217,8 +178,7 @@
         margin: 0 0.5rem;
       }
     </style>
-  </head>
-  <body>
+  </Fragment>
     <div class="bg-gradient" aria-hidden="true"></div>
     <div class="bg-grid" aria-hidden="true"></div>
 
@@ -315,5 +275,4 @@
     </main>
 
     <footer>© tebukuro <span class="dot">◆</span> built with care</footer>
-  </body>
-</html>
+</Layout>

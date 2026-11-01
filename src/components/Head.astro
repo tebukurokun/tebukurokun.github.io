@@ -1,18 +1,19 @@
 ---
-/* cram/・shindanshi-2ji/ のページの head（description から twitter:card まで）。
+/* 全ページ共通の head（description から twitter:card まで）。
    og:title / og:description / og:url は title / description / canonical と同じ値を出す。
-   manifest と theme-color は暗いトップページ用なので、ここには入れない。 */
+   manifest と theme-color は暗いトップページ用なので、ここではなく layouts/Root.astro が出す。 */
 interface Props {
   title: string;
   description: string;
   /** サイト内のパス。ディレクトリの目次ページは `/` で終える（`/cram/`）。 */
   path: string;
+  /** 省略時は、目次ページ（`/` で終わる）が website、個々のシート・事例が article */
+  type?: 'website' | 'article';
 }
 
 const { title, description, path } = Astro.props;
 const url = new URL(path, Astro.site).href;
-// 目次ページは website、個々のシート・事例は article。
-const type = path.endsWith('/') ? 'website' : 'article';
+const type = Astro.props.type ?? (path.endsWith('/') ? 'website' : 'article');
 ---
 
 <meta name="description" content={description}>

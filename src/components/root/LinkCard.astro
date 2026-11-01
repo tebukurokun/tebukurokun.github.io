@@ -1,0 +1,19 @@
+---
+/* トップページのリンクカード 1 枚。i は並び順（0 始まり）で、出現アニメーションの遅延に使う
+   （index.astro の .works .card の animation-delay）。 */
+import type { LinkCard } from '../../data/links';
+
+interface Props {
+  card: LinkCard;
+  i: number;
+}
+
+const { card, i } = Astro.props;
+---
+
+<a class="card" href={card.href} target="_blank" rel="noopener" style={`--i: ${i}`}>
+  <span class="arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+  <div class="card-index">{card.label}</div>
+  <h3>{card.icon && <img class="card-icon" src={`link-icons/${card.icon}`} alt="" width="18" height="18">}{card.title}</h3>
+  <p>{card.desc}</p>
+</a>

@@ -1,0 +1,39 @@
+---
+/* トップページと privacy の共通レイアウト（暗いネオンのサイト本体）。
+   head にはアイコン・manifest・theme-color・apple-mobile-web-app-* とフォントまで出す。
+   ページごとの CSS やリンクは slot="head"、本文は既定の slot で渡す。 */
+import Head from '../components/Head.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  /** サイト内のパス（`/`、`/privacy.html`） */
+  path: string;
+}
+
+const { title, description, path } = Astro.props;
+---
+
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <Head title={title} description={description} path={path} type="website" />
+    <meta name="theme-color" content="#08060f" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="apple-mobile-web-app-title" content="tebukuro" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <slot name="head" />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
