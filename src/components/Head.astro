@@ -9,19 +9,25 @@ interface Props {
   path: string;
   /** 省略時は、目次ページ（`/` で終わる）が website、個々のシート・事例が article */
   type?: 'website' | 'article';
+  /** タブのアイコン。site はトップと同じ 🧤、study は一夜漬けシートと 2次試験解説の本のアイコン */
+  icon?: 'site' | 'study';
 }
 
 const { title, description, path } = Astro.props;
 const url = new URL(path, Astro.site).href;
 const type = Astro.props.type ?? (path.endsWith('/') ? 'website' : 'article');
+const icons = {
+  site: { ico: '/favicon.ico', svg: '/favicon.svg', touch: '/apple-touch-icon.png' },
+  study: { ico: '/study-favicon.ico', svg: '/link-icons/study.svg', touch: '/study-apple-touch-icon.png' },
+}[Astro.props.icon ?? 'site'];
 ---
 
 <meta name="description" content={description}>
 <title>{title}</title>
 <link rel="canonical" href={url}>
-<link rel="icon" href="/favicon.ico" sizes="48x48">
-<link rel="icon" href="/favicon.svg" sizes="any" type="image/svg+xml">
-<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" href={icons.ico} sizes="48x48">
+<link rel="icon" href={icons.svg} sizes="any" type="image/svg+xml">
+<link rel="apple-touch-icon" sizes="180x180" href={icons.touch}>
 <meta property="og:type" content={type}>
 <meta property="og:site_name" content="tebukuro">
 <meta property="og:title" content={title}>
