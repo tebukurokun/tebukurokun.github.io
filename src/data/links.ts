@@ -72,12 +72,14 @@ export const WORKS: LinkCard[] = [
     href: '/cram/',
     label: 'STUDY',
     title: '資格試験 一夜漬けシート',
+    icon: 'study.svg',
     desc: '中小企業診断士1次・2次試験、統計検定2級の直前チェックシート集。定義・数値・判断ルールと解法手順を1ページにまとめている。',
   },
   {
     href: '/shindanshi-2ji/',
     label: 'STUDY',
     title: '診断士2次試験 過去問解説',
+    icon: 'study.svg',
     desc: '中小企業診断士2次試験の過去問を事例ごとに解説。与件の根拠、字数内の答案例、予備校の解答例との違いを設問単位で整理している。',
   },
   {
