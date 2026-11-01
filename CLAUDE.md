@@ -6,11 +6,22 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 A personal site deployed via GitHub Pages at `https://tebukuro.me/` (custom domain set in the repo's Pages settings, with `public/CNAME` kept as a record; `tebukurokun.github.io` 301-redirects there). The main page is `index.html` (`src/pages/index.astro`), plus a standalone `privacy.html` (privacy policy, required for AdSense), `cram/` (資格試験一夜漬けシート) and `shindanshi-2ji/` (2次試験 過去問解説).
 
-**Built with Astro** (`astro` is the only dependency; the migration plan is the Claude Doc "tebukuro.me Astro 移行計画", and the last pure-static version is tagged `pre-astro`). Astro builds `src/pages/` and copies `public/` as-is into `dist/`; `public/` now holds only static assets (icons, OGP image, `link-icons/`, `robots.txt`, `ads.txt`, `site.webmanifest`, `CNAME`, `shindanshi-2ji/style.css` and `site.js`). `astro.config.mjs` uses `build.format: 'preserve'` so the URLs (`/cram/`, `/cram/keiei_houmu.html`, `/privacy.html`) stay exactly as before, and `compressHTML: false` so output can be diffed against the old HTML. Layouts are in `src/layouts/` (`Root.astro` for the top page and privacy, `CramSheet.astro`, `Shindanshi.astro`), page lists in `src/data/`. Page CSS stays inline in a `<style is:inline>` and page JS in a `<script is:inline>` at the end of `<body>` — keep `is:inline`, or Astro scopes the CSS and bundles the JS. Exceptions: `shindanshi-2ji/` shares `style.css` and `site.js`, and the cram sheets' table-card script comes from their layout.
+**Built with Astro** (`astro` is the only dependency; the last pure-static version is tagged `pre-astro`). Astro builds `src/pages/` and copies `public/` as-is into `dist/`; `public/` now holds only static assets (icons, OGP image, `link-icons/`, `robots.txt`, `ads.txt`, `site.webmanifest`, `CNAME`, `shindanshi-2ji/style.css` and `site.js`). `astro.config.mjs` uses `build.format: 'preserve'` so the URLs (`/cram/`, `/cram/keiei_houmu.html`, `/privacy.html`) stay exactly as before, and `compressHTML: false` so output can be diffed against the old HTML. Layouts are in `src/layouts/` (`Root.astro` for the top page and privacy, `CramSheet.astro`, `Shindanshi.astro`), page lists in `src/data/`. Page CSS stays inline in a `<style is:inline>` and page JS in a `<script is:inline>` at the end of `<body>` — keep `is:inline`, or Astro scopes the CSS and bundles the JS. Exceptions: `shindanshi-2ji/` shares `style.css` and `site.js`, and the cram sheets' table-card script comes from their layout.
 
 The `master` branch is the deployment branch. Pushing to `origin/master` runs `.github/workflows/deploy.yml` (Pages Source = GitHub Actions), which runs `npm ci && npm run build` and publishes `dist/`. It also runs daily at 06:00 JST (so a new blog article reaches the top page's latest-post list by the next morning) and on manual dispatch. The checkout uses `fetch-depth: 0` because the sitemap reads git history.
 
 Traffic to the apex domain is proxied through Cloudflare (DNS zone lives there). `https://tebukuro.me/blog/*` is **not** served by this repo — a Cloudflare Worker route (`tebukuro.me/blog*`, repo `../tebukuro-blog`) handles it. The old `blog.tebukuro.me` 301s to `/blog/` via a Cloudflare Redirect Rule. Keep root-page links to the blog as `/blog/` (same origin).
+
+## Adding content
+
+| To add | Touch | Details |
+| --- | --- | --- |
+| A 2次試験 case | one page + one entry in `src/data/shindanshi.ts` | "`shindanshi-2ji/`" below |
+| A cram sheet | one page + one entry in `src/data/cram.ts` | "`cram/`" below |
+| A link card (Links / Neighbors) | one entry in `src/data/links.ts` (+ favicon in `public/link-icons/`) | "Architecture notes" |
+| A blog article on the top page | nothing — the next build (daily 06:00 JST) reads the RSS | "Architecture notes" |
+
+Sidebars, hub cards, head tags and the sitemap are generated from these; don't edit them by hand.
 
 ## Commands
 
