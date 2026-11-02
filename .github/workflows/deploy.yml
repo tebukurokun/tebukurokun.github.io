@@ -5,9 +5,12 @@ name: Deploy
 on:
   push:
     branches: [master]
-  # トップの「最新記事」を blog の RSS から作るため、毎日作り直す（06:00 JST）。
+  # トップの「最新記事」（blog の RSS）と「今日の Wikipedia」を更新するため、毎日作り直す。
+  # Wikipedia の選り抜き記事は 0:00 JST に切り替わる。GitHub の定期実行は数時間遅れることがあるので、
+  # 00:05 と 03:10 JST の 2 回動かす（同じ日に何度作っても結果は同じ）。混む毎時 0 分は避ける。
   schedule:
-    - cron: "0 21 * * *"
+    - cron: "5 15 * * *"
+    - cron: "10 18 * * *"
   workflow_dispatch:
 
 permissions:

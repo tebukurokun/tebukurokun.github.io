@@ -1,12 +1,15 @@
 ---
 /* トップページ。最新記事 3 件はビルド時に RSS から取る（lib/blog.ts）。取れなければビルドが止まる。
+   ヒーロー右の「今日の Wikipedia」もビルド時に取る（lib/wikipedia.ts）。こちらは取れなければ出さないだけ。
    リンクカードは data/links.ts から作る。 */
 import LinkCard from '../components/root/LinkCard.astro';
+import WikiCard from '../components/root/WikiCard.astro';
 import { NEIGHBORS, WORKS } from '../data/links';
 import Layout from '../layouts/Root.astro';
 import { getLatestPosts } from '../lib/blog';
+import { getFeaturedArticle } from '../lib/wikipedia';
 
-const posts = await getLatestPosts(3);
+const [posts, wiki] = await Promise.all([getLatestPosts(3), getFeaturedArticle()]);
 ---
 
 <Layout title="tebukuro" description="tebukuroの個人サイト。" path="/">
@@ -296,6 +299,100 @@ const posts = await getLatestPosts(3);
         border-color: var(--neon-2);
         box-shadow: 0 0 16px rgba(0, 224, 255, 0.4);
         transform: translateY(-2px);
+      }
+
+      /* === Today's Wikipedia（ヒーロー右） === */
+      /* 広い画面では自己紹介の右に並べ、狭ければ下に回す。
+         記事が取れなかったビルドでは .has-wiki が付かず、ヒーローは従来どおり 1 列。 */
+      @media (min-width: 820px) {
+        .hero.has-wiki {
+          display: grid;
+          grid-template-columns: minmax(0, 1fr) 290px;
+          gap: 2.5rem;
+          align-items: center;
+        }
+      }
+      .wiki {
+        max-width: 360px;
+      }
+      @media (max-width: 819px) {
+        .wiki {
+          margin-top: 2.5rem;
+        }
+      }
+      .wiki .card {
+        animation-delay: 0.3s;
+      }
+      .wiki .card-index {
+        padding-right: 1.5rem; /* 右上の .arrow と重ならないように */
+      }
+      .wiki-thumb {
+        display: block;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 16 / 10;
+        object-fit: cover;
+        border-radius: 8px;
+        background: #f4f2fb; /* 透過 PNG の図を暗い背景で見えなくしない */
+        margin-bottom: 0.8rem;
+      }
+      .wiki-extract {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+        line-clamp: 4;
+        overflow: hidden;
+      }
+      /* 縦に並ぶ幅では、画像を左の小さな正方形にして文章を右に回し、高さを抑える */
+      @media (max-width: 819px) {
+        .wiki {
+          max-width: 520px;
+        }
+        .wiki-card.has-thumb {
+          display: grid;
+          grid-template-columns: 84px minmax(0, 1fr);
+          grid-template-rows: auto auto 1fr;
+          grid-template-areas:
+            "index index"
+            "thumb title"
+            "thumb text";
+          column-gap: 0.9rem;
+        }
+        .wiki-card.has-thumb .card-index {
+          grid-area: index;
+        }
+        .wiki-card.has-thumb .wiki-thumb {
+          grid-area: thumb;
+          align-self: start;
+          aspect-ratio: 1;
+          margin-bottom: 0;
+        }
+        .wiki-card.has-thumb h3 {
+          grid-area: title;
+          margin-bottom: 0.25rem;
+        }
+        .wiki-card.has-thumb .wiki-extract {
+          grid-area: text;
+          -webkit-line-clamp: 3;
+          line-clamp: 3;
+        }
+      }
+      .wiki-credit {
+        margin-top: 0.5rem;
+        padding-left: 0.25rem;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.68rem;
+        color: var(--muted);
+        opacity: 0;
+        animation: fadeUp 0.7s ease 0.4s forwards;
+      }
+      .wiki-credit a {
+        color: inherit;
+        text-underline-offset: 2px;
+        transition: color 0.25s ease;
+      }
+      .wiki-credit a:hover {
+        color: var(--neon-2);
       }
 
       /* === Section headings === */
@@ -801,49 +898,53 @@ const posts = await getLatestPosts(3);
     </div>
 
     <main>
-      <section class="hero">
-        <span class="badge">HELLO, WORLD</span>
-        <h1>tebukuro</h1>
-        <p class="tagline">
-          <span class="line"><span class="prompt">&gt;</span>born in 1995</span>
-          <span class="line"
-            ><span class="prompt">&gt;</span>professional software developer
-            since 2018</span
-          >
-          <span class="line"
-            ><span class="prompt">&gt;</span>based in Tokyo, Japan</span
-          >
-          <span class="line"
-            ><span class="prompt">&gt;</span>Yomiuri Giants fan</span
-          >
-        </p>
+      <section class={wiki ? "hero has-wiki" : "hero"}>
+        <div class="hero-intro">
+          <span class="badge">HELLO, WORLD</span>
+          <h1>tebukuro</h1>
+          <p class="tagline">
+            <span class="line"><span class="prompt">&gt;</span>born in 1995</span>
+            <span class="line"
+              ><span class="prompt">&gt;</span>professional software developer
+              since 2018</span
+            >
+            <span class="line"
+              ><span class="prompt">&gt;</span>based in Tokyo, Japan</span
+            >
+            <span class="line"
+              ><span class="prompt">&gt;</span>Yomiuri Giants fan</span
+            >
+          </p>
 
-        <div class="socials">
-          <a
-            href="https://github.com/tebukurokun"
-            target="_blank"
-            rel="noopener"
-            aria-label="GitHub"
-          >
-            <i class="fa-brands fa-github"></i>
-          </a>
-          <a
-            href="/blog/"
-            target="_blank"
-            rel="noopener"
-            aria-label="Blog"
-          >
-            <i class="fa-solid fa-blog"></i>
-          </a>
-          <a
-            href="https://steamcommunity.com/id/tebkuro/"
-            target="_blank"
-            rel="noopener"
-            aria-label="Steam"
-          >
-            <i class="fa-brands fa-steam"></i>
-          </a>
+          <div class="socials">
+            <a
+              href="https://github.com/tebukurokun"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub"
+            >
+              <i class="fa-brands fa-github"></i>
+            </a>
+            <a
+              href="/blog/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Blog"
+            >
+              <i class="fa-solid fa-blog"></i>
+            </a>
+            <a
+              href="https://steamcommunity.com/id/tebkuro/"
+              target="_blank"
+              rel="noopener"
+              aria-label="Steam"
+            >
+              <i class="fa-brands fa-steam"></i>
+            </a>
+          </div>
         </div>
+
+        {wiki && <WikiCard article={wiki} />}
       </section>
 
       <section class="blog-section" id="blog">

@@ -1,0 +1,34 @@
+---
+/* ヒーロー右の「今日の Wikipedia」カード。記事はビルド時に lib/wikipedia.ts で取る。
+   見た目は .card（index.astro）を流用し、.wiki-* で画像と行数の上限を足す。
+   要約文は CC BY-SA 4.0 なので、出典とライセンスを下に添える。 */
+import type { WikiArticle } from '../../lib/wikipedia';
+
+interface Props {
+  article: WikiArticle;
+}
+
+const { article } = Astro.props;
+---
+
+<aside class="wiki" aria-label="今日のWikipedia">
+  <a class:list={['card', 'wiki-card', { 'has-thumb': article.thumbnail }]} href={article.url} target="_blank" rel="noopener">
+    <span class="arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+    <div class="card-index"><i class="fa-brands fa-wikipedia-w"></i> TODAY'S WIKIPEDIA</div>
+    {article.thumbnail && (
+      <img
+        class="wiki-thumb"
+        src={article.thumbnail.src}
+        width={article.thumbnail.width}
+        height={article.thumbnail.height}
+        alt=""
+        decoding="async"
+      >
+    )}
+    <h3>{article.title}</h3>
+    <p class="wiki-extract">{article.extract}</p>
+  </a>
+  <p class="wiki-credit">
+    出典: <a href={article.url} target="_blank" rel="noopener">Wikipedia</a>（<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ja" target="_blank" rel="noopener">CC BY-SA 4.0</a>）
+  </p>
+</aside>
